@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>  
+  <IncidentDef>
+		<defName>CrashedShip</defName>
+		<label>Crashed Ship</label>
+		<category>Misc</category>
+		<targetType>MapPlayerHome</targetType>
+		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_CrashedShip</workerClass>
+		<letterLabel>Starship down</letterLabel>
+		<letterText>Our comms console detected a distress call from a ship shortly before it crashed! Other factions may try to loot the wreck, so you will only have a few days to visit the site!</letterText>
+		<letterDef>Good</letterDef>
+		<baseChance>6</baseChance>
+		<minRefireDays>8</minRefireDays>
+		<chanceFactorByPopulationCurve>
+			<points>
+				<li>(2,0)</li>
+				<li>(6,1)</li>
+			</points>
+		</chanceFactorByPopulationCurve>
+  </IncidentDef>
+ 
+  <SiteCoreDef>
+    <defName>CrashedShip</defName>
+    <label>crashed ship</label>
+		<description>The approximate place a ship came down.</description>
+    <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
+    <expandingIconTexture>World/WorldObjects/AdventureSymbol</expandingIconTexture>
+  </SiteCoreDef>
+  
+  <GenStepDef>
+    <defName>CrashedShipGen</defName>
+    <linkWithSite>CrashedShip</linkWithSite>
+    <order>800</order>
+    <genStep Class="ReconAndDiscovery.Maps.GenStep_CrashedShip">
+    </genStep>
+  </GenStepDef>
+  
+  
+   <SitePartDef>
+    <defName>ScatteredTreasure</defName>
+    <label>treasure</label>
+    <description>Some scattered valuables.</description>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>false</showFactionInInspectString>
+    <knownDanger>false</knownDanger>
+    <requiresFaction>false</requiresFaction>
+  </SitePartDef>
+
+  <GenStepDef>
+    <defName>ScatteredTreasureGen</defName>
+    <linkWithSite>ScatteredTreasure</linkWithSite>
+    <order>2500</order>
+    <genStep Class="ReconAndDiscovery.Maps.GenStep_ScatteredTreasure"/>
+  </GenStepDef>
+  
+  
+  <SitePartDef>
+    <defName>ScatteredManhunters</defName>
+    <label>manhunters</label>
+    <description>Trapped animals going crazy.</description>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>false</showFactionInInspectString>
+    <knownDanger>false</knownDanger>
+    <requiresFaction>false</requiresFaction>
+  </SitePartDef>
+
+  <GenStepDef>
+    <defName>ScatteredManhuntersGen</defName>
+    <linkWithSite>ScatteredManhunters</linkWithSite>
+    <order>2500</order>
+    <genStep Class="ReconAndDiscovery.Maps.GenStep_ScatteredManhunters"/>
+  </GenStepDef>
+  
+  <SitePartDef>
+    <defName>MechanoidForces</defName>
+    <label>mechanoids</label>
+    <description>A mechanoid hive has forces active here.</description>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>false</showFactionInInspectString>
+    <knownDanger>false</knownDanger>
+    <requiresFaction>false</requiresFaction>
+  </SitePartDef>
+
+  <GenStepDef>
+    <defName>MechanoidForcesGen</defName>
+    <linkWithSite>MechanoidForces</linkWithSite>
+    <order>2500</order>
+    <genStep Class="ReconAndDiscovery.Maps.GenStep_MechanoidForces"/>
+  </GenStepDef>
+  
+  
+    <SitePartDef>
+    <defName>EnemyRaidOnArrival</defName>
+    <label>raid</label>
+    <description>An enemy faction will arrive here imminently.</description>
+    <workerClass>ReconAndDiscovery.Maps.SitePartWorker_EnemyRaidOnArrival</workerClass>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>false</showFactionInInspectString>
+    <knownDanger>true</knownDanger>
+    <requiresFaction>false</requiresFaction>
+  </SitePartDef>
+  
+
+  <GenStepDef>
+    <defName>EnemyRaidOnArrivalGen</defName>
+    <linkWithSite>EnemyRaidOnArrival</linkWithSite>
+    <order>2500</order>
+    <genStep Class="ReconAndDiscovery.Maps.GenStep_EnemyRaidOnArrival"/>
+  </GenStepDef>
+  
+   <SitePartDef>
+    <defName>MedicalEmergency</defName>
+    <label>medical emergency</label>
+    <description>There is an urgent need for medical assistance here.</description>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <workerClass>ReconAndDiscovery.Maps.SitePartWorker_MedicalEmergency</workerClass>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>false</showFactionInInspectString>
+    <knownDanger>true</knownDanger>
+    <requiresFaction>false</requiresFaction>
+  </SitePartDef>
+  
+   <SitePartDef>
+    <defName>RareBeasts</defName>
+    <label>rare beasts</label>
+    <description>Rare, unusual animals roam near here.</description>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>false</showFactionInInspectString>
+    <knownDanger>true</knownDanger>
+    <requiresFaction>false</requiresFaction>
+  </SitePartDef>
+
+  <GenStepDef>
+    <defName>RareBeastsGen</defName>
+    <linkWithSite>RareBeasts</linkWithSite>
+    <order>2500</order>
+    <genStep Class="ReconAndDiscovery.Maps.GenStep_RareBeasts"/>
+  </GenStepDef>
+
+</Defs>

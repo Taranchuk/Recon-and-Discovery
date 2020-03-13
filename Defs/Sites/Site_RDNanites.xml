@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>   
+  <SiteCoreDef>
+    <defName>Nanites</defName>
+    <label>Abandoned lab</label>
+		<description>The source of the mystery nanites.</description>
+    <siteTexture>World/WorldObjects/Science</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Science</expandingIconTexture>
+  </SiteCoreDef>
+  
+  <GenStepDef>
+    <defName>AbandonedLabNanites</defName>
+     <linkWithSite>Nanites</linkWithSite>
+    <order>2000</order>
+    <genStep Class="ReconAndDiscovery.Maps.GenStep_AbandonedLab">
+    </genStep>
+  </GenStepDef>
+
+</Defs>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<JobDefs>
+
+  <JobDef>
+    <defName>Job_LayDown_Scyther</defName>
+    <driverClass>ReconAndDiscovery.JobDriver_LayDown_Scyther</driverClass>
+    <reportString>lying down.</reportString>
+    <checkOverrideOnDamage>Always</checkOverrideOnDamage>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
+  <JobDef>
+    <defName>LayDown</defName>
+    <driverClass>ReconAndDiscovery.JobDriver_LayDown_Scyther</driverClass>
+    <reportString>lying down.</reportString>
+    <checkOverrideOnDamage>Always</checkOverrideOnDamage>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
+   <JobDef>
+    <defName>LayDownHuman</defName>
+    <driverClass>JobDriver_LayDown</driverClass>
+    <reportString>lying down.</reportString>
+    <checkOverrideOnDamage>Always</checkOverrideOnDamage>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
+  
+</JobDefs>

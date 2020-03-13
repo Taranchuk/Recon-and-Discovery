@@ -1,0 +1,415 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using RimWorld;
+using RimWorld.Planet;
+using Verse;
+using Verse.AI.Group;
+
+namespace ReconAndDiscovery.Missions
+{
+	public class QuestComp_MedicalEmergency : WorldObjectComp, IThingHolder
+	{
+		public QuestComp_MedicalEmergency()
+		{
+			this.rewards = new ThingOwner<Thing>(this);
+		}
+
+		public bool Active
+		{
+			get
+			{
+				return this.active;
+			}
+		}
+
+		private bool CheckAllStanding()
+		{
+			foreach (Pawn pawn in this.injured)
+			{
+				if (!pawn.Dead)
+				{
+					if (pawn.Downed)
+					{
+						return false;
+					}
+					if (!pawn.health.capacities.CapableOf(PawnCapacityDefOf.Moving))
+					{
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+
+		public override string CompInspectStringExtra()
+		{
+			return null;
+		}
+
+		private void CalculateQuestOutcome()
+		{
+			int num = (from p in this.injured
+			where !p.Dead && p.RaceProps.Humanlike
+			select p).Count<Pawn>();
+			bool giveTech = false;
+			if (num - this.maxPawns == 0)
+			{
+				if ((double)Rand.Value < 0.1 * (double)num)
+				{
+					giveTech = true;
+				}
+			}
+			int num2 = (from p in this.injured
+			where !p.Dead && p.RaceProps.Humanlike && p.Faction != Faction.OfPlayer
+			select p).Count<Pawn>();
+			bool newFaction = num > 4 && Rand.Value < 0.6f;
+			if (num > 0)
+			{
+				this.GiveRewardsAndSendLetter(giveTech, newFaction);
+			}
+			this.StopQuest();
+		}
+
+		public override void CompTick()
+		{
+			base.CompTick();
+			if (this.active)
+			{
+				MapParent mapParent = this.parent as MapParent;
+				if (mapParent != null && mapParent.Map != null)
+				{
+					if (this.injured.NullOrEmpty<Pawn>())
+					{
+						this.injured = (from p in mapParent.Map.mapPawns.AllPawns
+						where p.Faction == QuestComp_MedicalEmergency.fac && p.RaceProps.Humanlike
+						select p).ToList<Pawn>();
+						Log.Message(string.Format("Found {0} injured pawns", this.injured.Count));
+					}
+					else
+					{
+						Log.Message(string.Format("Active with {0} in list and max of {1}.", this.injured.Count, this.maxPawns));
+						foreach (Pawn pawn in this.injured)
+						{
+							if (!pawn.Dead && !pawn.Downed && pawn.GetLord() == null)
+							{
+								LordJob_DefendBase lordJob = new LordJob_DefendBase(QuestComp_MedicalEmergency.fac, pawn.Position);
+								List<Pawn> list = new List<Pawn>();
+								list.Add(pawn);
+								LordMaker.MakeNewLord(QuestComp_MedicalEmergency.fac, lordJob, mapParent.Map, list);
+							}
+						}
+						if (this.CheckAllStanding())
+						{
+							this.CalculateQuestOutcome();
+						}
+					}
+				}
+			}
+		}
+
+		public void GetChildHolders(List<IThingHolder> outChildren)
+		{
+			ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, this.GetDirectlyHeldThings());
+		}
+
+		public ThingOwner GetDirectlyHeldThings()
+		{
+			return this.rewards;
+		}
+
+		private ThingDef RandomHiTechReward()
+		{
+			float value = Rand.Value;
+			ThingDef result;
+			if (value <= 0f)
+			{
+				result = ThingDef.Named("Gun_ChargeRifle");
+			}
+			else if (value <= 0.25f)
+			{
+				result = ThingDef.Named("HolographicEmitter");
+			}
+			else if (value <= 0.5f)
+			{
+				result = ThingDef.Named("DeflectorArray");
+			}
+			else if (value <= 0.75f)
+			{
+				result = ThingDef.Named("Teleporter");
+			}
+			else if (value <= 1f)
+			{
+				result = ThingDef.Named("GattlingLaser");
+			}
+			else
+			{
+				result = ThingDef.Named("Gun_ChargeRifle");
+			}
+			return result;
+		}
+
+		private void CloseMapImmediate()
+		{
+			MapParent mapParent = this.parent as MapParent;
+			if (mapParent != null)
+			{
+				if (Dialog_FormCaravan.AllSendablePawns(mapParent.Map, true).Any((Pawn x) => x.IsColonist || x.IsPrisonerOfColony || x.Faction == Faction.OfPlayer || x.HostFaction == Faction.OfPlayer))
+				{
+					foreach (Pawn pawn in mapParent.Map.mapPawns.AllPawnsSpawned)
+					{
+						if (pawn.RaceProps.Humanlike)
+						{
+							Lord lord = pawn.GetLord();
+							if (lord != null)
+							{
+								lord.Notify_PawnLost(pawn, PawnLostCondition.ExitedMap);
+								pawn.ClearMind(false);
+							}
+						}
+					}
+					Messages.Message(Translator.Translate("MessageYouHaveToReformCaravanNow"), new GlobalTargetInfo(mapParent.Tile), 1);
+					Current.Game.VisibleMap = mapParent.Map;
+					Dialog_FormCaravan window = new Dialog_FormCaravan(mapParent.Map, true, delegate()
+					{
+						if (mapParent.HasMap)
+						{
+							Find.WorldObjects.Remove(mapParent);
+						}
+					}, false);
+					List<Pawn> list = mapParent.Map.mapPawns.AllPawnsSpawned.ToList<Pawn>();
+					for (int i = 0; i < list.Count; i++)
+					{
+						Pawn pawn2 = list[i];
+						if (!pawn2.HostileTo(Faction.OfPlayer) && (pawn2.Faction == Faction.OfPlayer || pawn2.IsPrisonerOfColony))
+						{
+							Log.Message(pawn2.NameStringShort + " Meets criteria in CaravanUtility.");
+						}
+						else
+						{
+							Log.Message(pawn2.NameStringShort + " NOT ALLOWED by in CaravanUtility.");
+						}
+					}
+					Find.WindowStack.Add(window);
+				}
+				else
+				{
+					List<Pawn> list2 = new List<Pawn>();
+					list2.AddRange(from x in mapParent.Map.mapPawns.AllPawns
+					where x.IsColonist || x.IsPrisonerOfColony || x.Faction == Faction.OfPlayer || x.HostFaction == Faction.OfPlayer
+					select x);
+					if (list2.Any<Pawn>())
+					{
+						if (list2.Any((Pawn x) => CaravanUtility.IsOwner(x, Faction.OfPlayer)))
+						{
+							Caravan o = CaravanExitMapUtility.ExitMapAndCreateCaravan(list2, Faction.OfPlayer, mapParent.Tile);
+							Messages.Message(Translator.Translate("MessageAutomaticallyReformedCaravan"), o, 3);
+						}
+						else
+						{
+							StringBuilder stringBuilder = new StringBuilder();
+							for (int j = 0; j < list2.Count; j++)
+							{
+								stringBuilder.AppendLine("    " + list2[j].LabelCap);
+							}
+							Find.LetterStack.ReceiveLetter(Translator.Translate("LetterLabelPawnsLostDueToMapCountdown"), "LetterPawnsLostDueToMapCountdown".Translate(new object[]
+							{
+								stringBuilder.ToString().TrimEndNewlines()
+							}), LetterDefOf.BadNonUrgent, new GlobalTargetInfo(mapParent.Tile), null);
+						}
+						list2.Clear();
+					}
+					Find.WorldObjects.Remove(mapParent);
+				}
+			}
+		}
+
+		private void GiveRewardsAndSendLetter(bool giveTech, bool newFaction)
+		{
+			string label = "Grateful survivors";
+			string text = "The survivors of the crash are very thankful for your help, and have send some supplies as a gesture of gratitude.";
+			if (giveTech)
+			{
+				ThingDef.Named("Gun_ChargeRifle");
+				ThingDef thingDef = this.RandomHiTechReward();
+				ThingDef stuff = null;
+				if (thingDef.MadeFromStuff)
+				{
+					stuff = GenStuff.DefaultStuffFor(thingDef);
+				}
+				this.rewards.TryAdd(ThingMaker.MakeThing(thingDef, stuff), true);
+				text = "The survivors of the crash are amazed by your rapid and professional emergency medical response, thanks to which no-one died. In gratitude, they have included a special system removed form the wreck.";
+			}
+			Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.Good, null);
+			Map map = Find.AnyPlayerHomeMap ?? ((MapParent)this.parent).Map;
+			QuestComp_MedicalEmergency.tmpRewards.AddRange(this.rewards);
+			this.rewards.Clear();
+			IntVec3 intVec = DropCellFinder.TradeDropSpot(map);
+			DropPodUtility.DropThingsNear(intVec, map, QuestComp_MedicalEmergency.tmpRewards, 110, false, false, true);
+			QuestComp_MedicalEmergency.tmpRewards.Clear();
+			if (newFaction)
+			{
+				int tile = this.parent.Tile;
+				this.CloseMapImmediate();
+				Faction faction = FactionGenerator.NewGeneratedFaction(FactionDefOf.Outlander);
+				map.pawnDestinationManager.RegisterFaction(faction);
+				Find.FactionManager.Add(faction);
+				FactionBase factionBase = (FactionBase)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.FactionBase);
+				factionBase.SetFaction(faction);
+				factionBase.Tile = tile;
+				factionBase.Name = FactionBaseNameGenerator.GenerateFactionBaseName(factionBase);
+				Find.WorldObjects.Add(factionBase);
+				faction.leader = null;
+				foreach (Pawn pawn in this.injured)
+				{
+					if (!pawn.Dead && pawn.Faction != Faction.OfPlayer)
+					{
+						pawn.SetFactionDirect(faction);
+						if (faction.leader == null)
+						{
+							faction.leader = pawn;
+						}
+					}
+				}
+				faction.AffectGoodwillWith(Faction.OfPlayer, 100f);
+				string label2 = "New Faction!";
+				string text2 = string.Format("The survivors of the crash have decided to make a life for themselves here, and have founded a new faction, {0} lead by {1}.", faction.Name, faction.leader.Name);
+				Find.LetterStack.ReceiveLetter(label2, text2, LetterDefOf.Good, null);
+			}
+		}
+
+		public override void PostExposeData()
+		{
+			base.PostExposeData();
+			Scribe_Collections.Look<Pawn>(ref this.injured, true, "injured", LookMode.Reference, new object[0]);
+			Scribe_Values.Look<bool>(ref this.active, "active", false, false);
+			Scribe_Values.Look<int>(ref this.maxPawns, "maxPawns", 0, false);
+			Scribe_Values.Look<float>(ref this.relationsImprovement, "relationsImprovement", 0f, false);
+			Scribe_References.Look<Faction>(ref this.requestingFaction, "requestingFaction", false);
+			Scribe_Deep.Look<ThingOwner>(ref this.rewards, "rewards", new object[]
+			{
+				this
+			});
+		}
+
+		public override void PostPostRemove()
+		{
+			base.PostPostRemove();
+			this.rewards.ClearAndDestroyContents(DestroyMode.Vanish);
+		}
+
+		public void StartQuest(List<Thing> rewards)
+		{
+			this.active = true;
+			this.rewards.ClearAndDestroyContents(DestroyMode.Vanish);
+			this.rewards.TryAddRange(rewards, true);
+		}
+
+		public void StopQuest()
+		{
+			this.active = false;
+			this.requestingFaction = null;
+			this.rewards.ClearAndDestroyContents(DestroyMode.Vanish);
+		}
+
+		// Note: this type is marked as 'beforefieldinit'.
+		static QuestComp_MedicalEmergency()
+		{
+		}
+
+		[CompilerGenerated]
+		private static bool <CalculateQuestOutcome>m__0(Pawn p)
+		{
+			return !p.Dead && p.RaceProps.Humanlike;
+		}
+
+		[CompilerGenerated]
+		private static bool <CalculateQuestOutcome>m__1(Pawn p)
+		{
+			return !p.Dead && p.RaceProps.Humanlike && p.Faction != Faction.OfPlayer;
+		}
+
+		[CompilerGenerated]
+		private static bool <CompTick>m__2(Pawn p)
+		{
+			return p.Faction == QuestComp_MedicalEmergency.fac && p.RaceProps.Humanlike;
+		}
+
+		[CompilerGenerated]
+		private static bool <CloseMapImmediate>m__3(Pawn x)
+		{
+			return x.IsColonist || x.IsPrisonerOfColony || x.Faction == Faction.OfPlayer || x.HostFaction == Faction.OfPlayer;
+		}
+
+		[CompilerGenerated]
+		private static bool <CloseMapImmediate>m__4(Pawn x)
+		{
+			return x.IsColonist || x.IsPrisonerOfColony || x.Faction == Faction.OfPlayer || x.HostFaction == Faction.OfPlayer;
+		}
+
+		[CompilerGenerated]
+		private static bool <CloseMapImmediate>m__5(Pawn x)
+		{
+			return CaravanUtility.IsOwner(x, Faction.OfPlayer);
+		}
+
+		IThingHolder IThingHolder.get_ParentHolder()
+		{
+			return base.ParentHolder;
+		}
+
+		private static List<Thing> tmpRewards = new List<Thing>();
+
+		private static Faction fac = Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer);
+
+		private List<Pawn> injured = new List<Pawn>();
+
+		private bool active;
+
+		public int maxPawns;
+
+		public ThingOwner rewards;
+
+		public float relationsImprovement;
+
+		public Faction requestingFaction;
+
+		[CompilerGenerated]
+		private static Func<Pawn, bool> <>f__am$cache0;
+
+		[CompilerGenerated]
+		private static Func<Pawn, bool> <>f__am$cache1;
+
+		[CompilerGenerated]
+		private static Func<Pawn, bool> <>f__am$cache2;
+
+		[CompilerGenerated]
+		private static Predicate<Pawn> <>f__am$cache3;
+
+		[CompilerGenerated]
+		private static Func<Pawn, bool> <>f__am$cache4;
+
+		[CompilerGenerated]
+		private static Predicate<Pawn> <>f__am$cache5;
+
+		[CompilerGenerated]
+		private sealed class <CloseMapImmediate>c__AnonStorey0
+		{
+			public <CloseMapImmediate>c__AnonStorey0()
+			{
+			}
+
+			internal void <>m__0()
+			{
+				if (this.mapParent.HasMap)
+				{
+					Find.WorldObjects.Remove(this.mapParent);
+				}
+			}
+
+			internal MapParent mapParent;
+		}
+	}
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>  
+
+  <SiteCoreDef>
+    <defName>AbandonedCastle</defName>
+    <label>abandoned castle</label>
+		<description>A long-disused medieval castle.</description>
+    <siteTexture>World/WorldObjects/Psi</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Psi</expandingIconTexture>
+  </SiteCoreDef>
+  
+  <GenStepDef>
+    <defName>AbandonedCastle</defName>
+    <linkWithSite>AbandonedCastle</linkWithSite>
+    <order>500</order>
+    <genStep Class="ReconAndDiscovery.Maps.GenStep_OldCastle">
+    </genStep>
+  </GenStepDef>  
+  
+   <IncidentDef>
+		<defName>QuestOsiris</defName>
+		<label>osirisquest</label>
+		<category>Misc</category>
+		<targetType>MapPlayerHome</targetType>
+		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_OsirisCasket</workerClass>
+		<baseChance>0.3</baseChance>
+		<minRefireDays>90</minRefireDays>
+		<chanceFactorByPopulationCurve>
+			<points>
+				<li>(3,0)</li>
+				<li>(9,1)</li>
+			</points>
+		</chanceFactorByPopulationCurve>
+  </IncidentDef>
+  
+  <SitePartDef>
+    <defName>OsirisCasket</defName>
+    <label>osiris casket</label>
+    <description>There is an Osiris Casket found here.</description>
+    <workerClass>ReconAndDiscovery.Maps.SitePartWorker_Osiris</workerClass>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>false</showFactionInInspectString>
+    <knownDanger>true</knownDanger>
+    <requiresFaction>false</requiresFaction>
+  </SitePartDef>
+  
+   <SitePartDef>
+    <defName>WeatherSat</defName>
+    <label>weather god</label>
+    <description>A weather control AI is stationed here.</description>
+    <workerClass>ReconAndDiscovery.Maps.SitePartWorker_WeatherSat</workerClass>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>false</showFactionInInspectString>
+    <knownDanger>true</knownDanger>
+    <requiresFaction>false</requiresFaction>
+  </SitePartDef>
+
+</Defs>

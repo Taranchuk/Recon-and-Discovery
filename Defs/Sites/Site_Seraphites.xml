@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>   
+  <IncidentDef>
+		<defName>SeraphitesLab</defName>
+		<label>seraphitelab</label>
+		<category>Misc</category>
+		<targetType>MapPlayerHome</targetType>
+		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_SeraphitesQuest</workerClass>
+		<letterLabel>Rumour</letterLabel>
+		<letterText>{0}, seeing that {1} is addicted to luciferum, has told us that a cure was under development near here. The lab has since been abandoned, but its location is now marked on our map.</letterText>
+		<letterDef>Good</letterDef>
+		<baseChance>10</baseChance>
+		<minRefireDays>15</minRefireDays>
+		<chanceFactorByPopulationCurve>
+			<points>
+				<li>(2,0)</li>
+				<li>(5,1)</li>
+			</points>
+		</chanceFactorByPopulationCurve>
+  </IncidentDef>
+  
+  <SiteCoreDef>
+    <defName>SeraphitesQuest</defName>
+    <label>Abandoned lab</label>
+		<description>The rumoured location of the luciferium cure.</description>
+    <siteTexture>World/WorldObjects/Science</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Science</expandingIconTexture>
+  </SiteCoreDef>
+  
+  <GenStepDef>
+    <defName>AbandonedLabNanites</defName>
+     <linkWithSite>SeraphitesQuest</linkWithSite>
+    <order>800</order>
+    <genStep Class="ReconAndDiscovery.Maps.GenStep_AbandonedLab">
+    </genStep>
+  </GenStepDef>
+  
+    <SitePartDef>
+    <defName>SitePart_Computer</defName>
+    <label>computer</label>
+    <description>A computer!</description>
+    <workerClass>ReconAndDiscovery.Maps.SitePartWorker_Computer</workerClass>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
+    <showFactionInInspectString>false</showFactionInInspectString>
+    <knownDanger>true</knownDanger>
+    <requiresFaction>false</requiresFaction>
+  </SitePartDef>
+
+</Defs>

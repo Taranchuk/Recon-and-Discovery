@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>  
+
+  <SiteCoreDef>
+    <defName>Festival</defName>
+    <label>trade fair</label>
+		<description>The site of a trade fair.</description>
+		<workerClass>ReconAndDiscovery.Missions.SiteCoreWorker_Festival</workerClass>
+    <siteTexture>World/WorldObjects/Diplomacy</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Diplomacy</expandingIconTexture>
+    <forceExitAndRemoveMapCountdownDurationDays>1</forceExitAndRemoveMapCountdownDurationDays>
+  </SiteCoreDef>
+  
+   <IncidentDef>
+		<defName>TradeFair</defName>
+		<label>tradefair</label>
+		<category>Misc</category>
+		<targetType>World</targetType>
+		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_Festival</workerClass>
+		<baseChance>1.5</baseChance>
+		<letterLabel>Trade Fair</letterLabel>
+		<letterText>{0} are hosting a trade fair. Your people are invited to attend.</letterText>
+		<letterDef>Good</letterDef>
+		<minRefireDays>30</minRefireDays>
+  </IncidentDef>
+
+</Defs>

@@ -1,0 +1,187 @@
+﻿using System;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using RimWorld;
+using RimWorld.Planet;
+using Verse;
+
+namespace ReconAndDiscovery.Missions
+{
+	public class QuestComp_PeaceTalks : WorldObjectComp
+	{
+		public QuestComp_PeaceTalks()
+		{
+		}
+
+		public Pawn Negotiator
+		{
+			get
+			{
+				if (this.negotiator == null)
+				{
+					MapParent mapParent = this.parent as MapParent;
+					if (mapParent != null && mapParent.Map != null)
+					{
+						this.negotiator = (from p in mapParent.Map.mapPawns.AllPawnsSpawned
+						where p.Faction == this.requestingFaction
+						select p).RandomElement<Pawn>();
+					}
+				}
+				return this.negotiator;
+			}
+			set
+			{
+				this.negotiator = value;
+			}
+		}
+
+		public bool Active
+		{
+			get
+			{
+				return this.active;
+			}
+		}
+
+		public override void CompTick()
+		{
+			base.CompTick();
+			try
+			{
+				if (this.active)
+				{
+					MapParent mapParent = this.parent as MapParent;
+					if (mapParent != null && mapParent.Map != null)
+					{
+						if (this.Negotiator != null && this.Negotiator.Spawned)
+						{
+							this.Negotiator.mindState.wantsToTradeWithColony = true;
+							if (this.Negotiator.GetComp<CompNegotiator>() == null)
+							{
+								ThingComp thingComp = new CompNegotiator();
+								thingComp.parent = this.Negotiator;
+								this.Negotiator.AllComps.Add(thingComp);
+							}
+						}
+					}
+				}
+			}
+			catch (NullReferenceException ex)
+			{
+				this.StopQuest();
+			}
+		}
+
+		public override void PostExposeData()
+		{
+			base.PostExposeData();
+			Scribe_Values.Look<bool>(ref this.active, "active", false, false);
+			Scribe_Values.Look<int>(ref this.facOriginalRelationship, "facOriginalRelationship", 0, false);
+			Scribe_Values.Look<float>(ref this.relationsImprovement, "relationsImprovement", 0f, false);
+			Scribe_References.Look<Faction>(ref this.requestingFaction, "requestingFaction", false);
+			Scribe_References.Look<Pawn>(ref this.negotiator, "negotiator", false);
+		}
+
+		public void ResolveNegotiations(Pawn playerNegotiator, Pawn otherNegotiator)
+		{
+			if (Rand.Chance(0.95f))
+			{
+				QualityCategory qualityCategory = QualityUtility.RandomCreationQuality(playerNegotiator.skills.GetSkill(SkillDefOf.Social).Level);
+				int num = 0;
+				string text = "";
+				switch (qualityCategory)
+				{
+				case QualityCategory.Awful:
+					text = "The flailing diplomatic \"strategy\" of {0} seemed chiefly to involve wild swings between aggression and panic, peppered liberally with lewd insults involving the negotiator for {1}'s antecedents. Your already strained relations have, understandably, worsened ({2} to relations).";
+					num = -5;
+					break;
+				case QualityCategory.Poor:
+					text = "The chief negotiation tactic employed by {0} seemed to be staring bored at the wall. This did little to diffuse tensions and engender a feeling of respect ({2} to relations))";
+					num = -1;
+					break;
+				case QualityCategory.Normal:
+					text = "{0}'s negotiation was plodding and confused. Though it was clearly well enough intentioned, it did little to address any concerns raised by {1}  ({2} to relations)).";
+					num = 2;
+					break;
+				case QualityCategory.Good:
+				case QualityCategory.Excellent:
+					text = "{0}'s negotiation adequately dealt with some minor disputes you have with {1}. Your relations have improved by {2}.";
+					num = 8;
+					break;
+				case QualityCategory.Masterwork:
+				case QualityCategory.Legendary:
+					text = "{0}'s easy, but unyielding manner dealt well with a number of the negotiator for {1}'s concerns. Your relations have improved by {2}";
+					num = 16;
+					break;
+				case (QualityCategory)7:
+				case (QualityCategory)8:
+					text = "{0} made diplomacy look as easy as breathing, with an almost magical ability to make {1}'s negotiator see your perspective. Your relations have undergone a substantial improvement of {2}.";
+					num = 32;
+					break;
+				}
+				text = string.Format(text, playerNegotiator.NameStringShort, this.requestingFaction.Name, num);
+				DiaNode diaNode = new DiaNode(text);
+				DiaOption diaOption = new DiaOption(Translator.Translate("OK"));
+				diaOption.resolveTree = true;
+				diaNode.options.Add(diaOption);
+				Dialog_NodeTree window = new Dialog_NodeTree(diaNode, false, false, null);
+				Find.WindowStack.Add(window);
+				this.facOriginalRelationship += num;
+				this.active = false;
+				ThingComp comp = this.Negotiator.GetComp<CompNegotiator>();
+				if (comp != null)
+				{
+					this.Negotiator.AllComps.Remove(comp);
+				}
+			}
+			else
+			{
+				DiaNode diaNode2 = new DiaNode("Thje negotiations are a trap!");
+				DiaOption diaOption2 = new DiaOption(Translator.Translate("OK"));
+				diaOption2.resolveTree = true;
+				diaNode2.options.Add(diaOption2);
+				Dialog_NodeTree window2 = new Dialog_NodeTree(diaNode2, false, false, null);
+				Find.WindowStack.Add(window2);
+				this.requestingFaction.AffectGoodwillWith(Faction.OfPlayer, -101f);
+			}
+		}
+
+		public void StartQuest(Faction faction)
+		{
+			this.active = true;
+			this.requestingFaction = faction;
+			this.facOriginalRelationship = (int)faction.PlayerGoodwill;
+			this.requestingFaction.AffectGoodwillWith(Faction.OfPlayer, 1f - faction.PlayerGoodwill);
+		}
+
+		public void StopQuest()
+		{
+			this.active = false;
+			float num = this.requestingFaction.PlayerGoodwill - (float)this.facOriginalRelationship;
+			this.requestingFaction.AffectGoodwillWith(Faction.OfPlayer, (float)this.facOriginalRelationship);
+			this.requestingFaction = null;
+		}
+
+		public override void PostPostRemove()
+		{
+			this.StopQuest();
+			base.PostPostRemove();
+		}
+
+		[CompilerGenerated]
+		private bool <get_Negotiator>m__0(Pawn p)
+		{
+			return p.Faction == this.requestingFaction;
+		}
+
+		private bool active;
+
+		public int facOriginalRelationship;
+
+		public float relationsImprovement;
+
+		public Faction requestingFaction;
+
+		private Pawn negotiator;
+	}
+}

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GameConditionDefs>
+
+  <GameConditionDef>
+    <defName>TargetedStorm</defName>
+    <conditionClass>ReconAndDiscovery.GameCondition_TargetedStorm</conditionClass>
+    <label>flashstorm</label>
+    <description>Extreme amounts of lightning are hitting a small region.</description>
+    <endMessage>The flashstorm is over.</endMessage>
+    <preventRain>true</preventRain>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+   <GameConditionDef>
+    <defName>Tremors</defName>
+    <conditionClass>ReconAndDiscovery.GameCondition_Tremors</conditionClass>
+    <label>tremors</label>
+    <description>Occasional quakes are collapsing roofed areas.</description>
+    <endMessage>The tremors have ended.</endMessage>
+    <canBePermanent>true</canBePermanent>
+  </GameConditionDef>
+  
+  <GameConditionDef>
+    <defName>Radiation</defName>
+    <conditionClass>ReconAndDiscovery.GameCondition_Radiation</conditionClass>
+    <label>radiation</label>
+    <description>The air contains radioactive fallout. This will be hazardous to all life in the area.</description>
+    <endMessage>radiation levels have returned to normal.</endMessage>
+    <canBePermanent>true</canBePermanent>
+  </GameConditionDef>
+  
+</GameConditionDefs>
