@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.BaseGen;
 using Verse;
@@ -8,10 +7,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_MilitaryBase : GenStep_AdventureGenerator
 	{
-		public GenStep_MilitaryBase()
-		{
-		}
-
 		public override void Generate(Map map)
 		{
 			if (!map.TileInfo.WaterCovered)
@@ -33,14 +28,5 @@ namespace ReconAndDiscovery.Maps
 				MapGenUtility.ScatterWeaponsWhere(baseResolveParams.rect, num, map, (ThingDef thing) => thing.IsRangedWeapon && !thing.destroyOnDrop && thing.weaponTags != null && thing.weaponTags.Contains("Gun") && (thing.weaponTags.Contains("GunHeavy") || !thing.weaponTags.Contains("AdvancedGun")));
 			}
 		}
-
-		[CompilerGenerated]
-		private static bool <Generate>m__0(ThingDef thing)
-		{
-			return thing.IsRangedWeapon && !thing.destroyOnDrop && thing.weaponTags != null && thing.weaponTags.Contains("Gun") && (thing.weaponTags.Contains("GunHeavy") || !thing.weaponTags.Contains("AdvancedGun"));
-		}
-
-		[CompilerGenerated]
-		private static Predicate<ThingDef> <>f__am$cache0;
 	}
 }

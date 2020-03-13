@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_AbandonedLab : GenStep_AdventureGenerator
 	{
-		public GenStep_AbandonedLab()
-		{
-		}
-
 		public override void Generate(Map map)
 		{
 			if (!map.TileInfo.WaterCovered)

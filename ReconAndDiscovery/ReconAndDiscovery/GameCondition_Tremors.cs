@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using Verse;
 
@@ -7,10 +6,6 @@ namespace ReconAndDiscovery
 {
 	public class GameCondition_Tremors : GameCondition
 	{
-		public GameCondition_Tremors()
-		{
-		}
-
 		public override void End()
 		{
 			base.End();
@@ -56,12 +51,6 @@ namespace ReconAndDiscovery
 		{
 			this.CollapseRandomRoof();
 			base.Init();
-		}
-
-		[CompilerGenerated]
-		private bool <CollapseRandomRoof>m__0(IntVec3 c)
-		{
-			return c.Standable(base.Map) && base.Map.roofGrid.Roofed(c);
 		}
 	}
 }

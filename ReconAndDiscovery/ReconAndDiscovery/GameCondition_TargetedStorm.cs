@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -10,10 +9,6 @@ namespace ReconAndDiscovery
 {
 	public class GameCondition_TargetedStorm : GameCondition
 	{
-		public GameCondition_TargetedStorm()
-		{
-		}
-
 		public override void End()
 		{
 			base.Map.weatherDecider.DisableRainFor(30000);
@@ -50,10 +45,11 @@ namespace ReconAndDiscovery
 			}
 			else if (Find.TickManager.TicksGame > this.nextLightningTicks)
 			{
-				Vector2 a = new Vector2(Rand.Gaussian(0f, 1f), Rand.Gaussian(0f, 1f));
-				a.Normalize();
-				a *= Rand.Range(0f, (float)this.areaRadius);
-				IntVec3 intVec = new IntVec3((int)Math.Round((double)a.x) + this.target.Position.x, 0, (int)Math.Round((double)a.y) + this.target.Position.z);
+				Vector2 vector;
+				vector..ctor(Rand.Gaussian(0f, 1f), Rand.Gaussian(0f, 1f));
+				vector.Normalize();
+				vector *= Rand.Range(0f, (float)this.areaRadius);
+				IntVec3 intVec = new IntVec3((int)Math.Round((double)vector.x) + this.target.Position.x, 0, (int)Math.Round((double)vector.y) + this.target.Position.z);
 				if (this.IsGoodLocationForStrike(intVec))
 				{
 					base.Map.weatherManager.eventHandler.AddEvent(new WeatherEvent_LightningStrike(base.Map, intVec));
@@ -77,17 +73,6 @@ namespace ReconAndDiscovery
 			return loc.InBounds(base.Map) && !loc.Roofed(base.Map) && loc.Standable(base.Map);
 		}
 
-		// Note: this type is marked as 'beforefieldinit'.
-		static GameCondition_TargetedStorm()
-		{
-		}
-
-		[CompilerGenerated]
-		private static bool <FindNewTarget>m__0(Pawn p)
-		{
-			return p.HostileTo(Faction.OfPlayer);
-		}
-
 		private const int RainDisableTicksAfterConditionEnds = 30000;
 
 		private static readonly IntRange TicksBetweenStrikes = new IntRange(250, 600);
@@ -97,8 +82,5 @@ namespace ReconAndDiscovery
 		private int areaRadius = 5;
 
 		public Thing target;
-
-		[CompilerGenerated]
-		private static Func<Pawn, bool> <>f__am$cache0;
 	}
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using Verse;
 
@@ -61,21 +60,6 @@ namespace ReconAndDiscovery.Triggers
 				result = list.FirstOrDefault<Pawn>();
 			}
 			return result;
-		}
-
-		[CompilerGenerated]
-		private sealed class <FindBest>c__AnonStorey0
-		{
-			public <FindBest>c__AnonStorey0()
-			{
-			}
-
-			internal int <>m__0(Pawn p)
-			{
-				return p.skills.GetSkill(this.skill).Level;
-			}
-
-			internal SkillDef skill;
 		}
 	}
 }

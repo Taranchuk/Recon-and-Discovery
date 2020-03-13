@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.BaseGen;
 using Verse;
@@ -124,7 +123,7 @@ namespace ReconAndDiscovery.Maps
 				{
 					foreach (Thing thing in map.thingGrid.ThingsAt(new IntVec3(num, 1, j)))
 					{
-						thing.TakeDamage(new DamageInfo(DamageDefOf.Blunt, 10000, -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown));
+						thing.TakeDamage(new DamageInfo(DamageDefOf.Blunt, 10000, -1f, null, null, null, 0));
 					}
 					MapGenUtility.TryToSetFloorTile(new IntVec3(num, 1, j), map, rp.floorDef);
 					if (j == rp.rect.minZ + num2 || j == rp.rect.minZ + num3 || j == rp.rect.minZ + rp.rect.Width - (num2 + 1) || j == rp.rect.minZ + rp.rect.Width - (num3 + 1))
@@ -244,10 +243,10 @@ namespace ReconAndDiscovery.Maps
 				{
 					compQuality.SetQuality(QualityUtility.RandomCreationQuality(12), ArtGenerationContext.Outsider);
 				}
-				IntVec3 intVec;
-				if (thing != null && CellFinder.TryFindRandomCellInsideWith(within, (IntVec3 loc) => loc.Standable(map), out intVec))
+				IntVec3 loc2;
+				if (thing != null && CellFinder.TryFindRandomCellInsideWith(within, (IntVec3 loc) => loc.Standable(map), out loc2))
 				{
-					GenSpawn.Spawn(thing, intVec, map);
+					GenSpawn.Spawn(thing, loc2, map);
 				}
 			}
 		}
@@ -291,8 +290,8 @@ namespace ReconAndDiscovery.Maps
 				thingList[j].Destroy(DestroyMode.Vanish);
 			}
 			map.terrainGrid.SetTerrain(c, BaseGenUtility.CorrespondingTerrainDef(stuffDef, true));
-			Thing thing = ThingMaker.MakeThing(ThingDefOf.Wall, stuffDef);
-			GenSpawn.Spawn(thing, c, map);
+			Thing newThing = ThingMaker.MakeThing(ThingDefOf.Wall, stuffDef);
+			GenSpawn.Spawn(newThing, c, map);
 		}
 
 		public static void DestroyAllAtLocation(IntVec3 c, Map map)
@@ -346,8 +345,8 @@ namespace ReconAndDiscovery.Maps
 			{
 				thingList[j].Destroy(DestroyMode.Vanish);
 			}
-			Thing thing = ThingMaker.MakeThing(ThingDefOf.Door, doorStuff);
-			GenSpawn.Spawn(thing, c, map);
+			Thing newThing = ThingMaker.MakeThing(ThingDefOf.Door, doorStuff);
+			GenSpawn.Spawn(newThing, c, map);
 		}
 
 		public static void UnfogFromRandomEdge(Map map)
@@ -426,84 +425,10 @@ namespace ReconAndDiscovery.Maps
 			MapGenUtility.DoorPosList.Clear();
 		}
 
-		// Note: this type is marked as 'beforefieldinit'.
-		static MapGenUtility()
-		{
-		}
-
-		[CompilerGenerated]
-		private static bool <FillPossibleObjectLists>m__0(ThingDef td)
-		{
-			return td.IsWeapon && !td.weaponTags.NullOrEmpty<string>();
-		}
-
 		private static List<IntVec3> DoorPosList = new List<IntVec3>();
 
 		private static List<ThingStuffPair> weapons;
 
 		private static List<GenStepDef> customGenSteps = new List<GenStepDef>();
-
-		[CompilerGenerated]
-		private static Predicate<ThingDef> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private sealed class <TryFindRandomCellWhere>c__AnonStorey0
-		{
-			public <TryFindRandomCellWhere>c__AnonStorey0()
-			{
-			}
-
-			internal bool <>m__0(IntVec3 v)
-			{
-				return this.validator(v);
-			}
-
-			internal Predicate<IntVec3> validator;
-		}
-
-		[CompilerGenerated]
-		private sealed class <ScatterWeaponsWhere>c__AnonStorey1
-		{
-			public <ScatterWeaponsWhere>c__AnonStorey1()
-			{
-			}
-
-			internal bool <>m__0(IntVec3 loc)
-			{
-				return loc.Standable(this.map);
-			}
-
-			internal Map map;
-		}
-
-		[CompilerGenerated]
-		private sealed class <UnfogFromRandomEdge>c__AnonStorey2
-		{
-			public <UnfogFromRandomEdge>c__AnonStorey2()
-			{
-			}
-
-			internal bool <>m__0(IntVec3 loc)
-			{
-				return loc.Standable(this.map) && (loc.x < 4 || loc.z < 4 || loc.x > this.map.Size.x - 5 || loc.z > this.map.Size.z - 5);
-			}
-
-			internal Map map;
-		}
-
-		[CompilerGenerated]
-		private sealed class <RandomExpensiveWallStuff>c__AnonStorey3
-		{
-			public <RandomExpensiveWallStuff>c__AnonStorey3()
-			{
-			}
-
-			internal bool <>m__0(ThingDef d)
-			{
-				return d.IsStuff && d.stuffProps.CanMake(ThingDefOf.Wall) && (!this.notVeryFlammable || d.BaseFlammability < 0.5f) && d.BaseMarketValue / d.VolumePerUnit > 8f;
-			}
-
-			internal bool notVeryFlammable;
-		}
 	}
 }

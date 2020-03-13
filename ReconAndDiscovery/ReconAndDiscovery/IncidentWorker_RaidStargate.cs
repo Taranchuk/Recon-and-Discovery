@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -11,11 +10,7 @@ namespace ReconAndDiscovery
 {
 	public class IncidentWorker_RaidStargate : IncidentWorker_RaidEnemy
 	{
-		public IncidentWorker_RaidStargate()
-		{
-		}
-
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			Map map = (Map)parms.target;
 			IEnumerable<Building> source = map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("Stargate"));
@@ -86,14 +81,5 @@ namespace ReconAndDiscovery
 			}
 			return result;
 		}
-
-		[CompilerGenerated]
-		private static bool <TryExecute>m__0(Apparel ap)
-		{
-			return ap is ShieldBelt;
-		}
-
-		[CompilerGenerated]
-		private static Predicate<Apparel> <>f__am$cache0;
 	}
 }

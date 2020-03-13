@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using RimWorld;
 using RimWorld.Planet;
@@ -170,7 +169,7 @@ namespace ReconAndDiscovery.Missions
 							}
 						}
 					}
-					Messages.Message(Translator.Translate("MessageYouHaveToReformCaravanNow"), new GlobalTargetInfo(mapParent.Tile), 1);
+					Messages.Message("MessageYouHaveToReformCaravanNow".Translate(), new GlobalTargetInfo(mapParent.Tile), MessageSound.Standard);
 					Current.Game.VisibleMap = mapParent.Map;
 					Dialog_FormCaravan window = new Dialog_FormCaravan(mapParent.Map, true, delegate()
 					{
@@ -205,7 +204,7 @@ namespace ReconAndDiscovery.Missions
 						if (list2.Any((Pawn x) => CaravanUtility.IsOwner(x, Faction.OfPlayer)))
 						{
 							Caravan o = CaravanExitMapUtility.ExitMapAndCreateCaravan(list2, Faction.OfPlayer, mapParent.Tile);
-							Messages.Message(Translator.Translate("MessageAutomaticallyReformedCaravan"), o, 3);
+							Messages.Message("MessageAutomaticallyReformedCaravan".Translate(), o, MessageSound.Benefit);
 						}
 						else
 						{
@@ -214,7 +213,7 @@ namespace ReconAndDiscovery.Missions
 							{
 								stringBuilder.AppendLine("    " + list2[j].LabelCap);
 							}
-							Find.LetterStack.ReceiveLetter(Translator.Translate("LetterLabelPawnsLostDueToMapCountdown"), "LetterPawnsLostDueToMapCountdown".Translate(new object[]
+							Find.LetterStack.ReceiveLetter("LetterLabelPawnsLostDueToMapCountdown".Translate(), "LetterPawnsLostDueToMapCountdown".Translate(new object[]
 							{
 								stringBuilder.ToString().TrimEndNewlines()
 							}), LetterDefOf.BadNonUrgent, new GlobalTargetInfo(mapParent.Tile), null);
@@ -228,8 +227,8 @@ namespace ReconAndDiscovery.Missions
 
 		private void GiveRewardsAndSendLetter(bool giveTech, bool newFaction)
 		{
-			string label = "Grateful survivors";
-			string text = "The survivors of the crash are very thankful for your help, and have send some supplies as a gesture of gratitude.";
+			string text = "Grateful survivors";
+			string text2 = "The survivors of the crash are very thankful for your help, and have send some supplies as a gesture of gratitude.";
 			if (giveTech)
 			{
 				ThingDef.Named("Gun_ChargeRifle");
@@ -240,14 +239,14 @@ namespace ReconAndDiscovery.Missions
 					stuff = GenStuff.DefaultStuffFor(thingDef);
 				}
 				this.rewards.TryAdd(ThingMaker.MakeThing(thingDef, stuff), true);
-				text = "The survivors of the crash are amazed by your rapid and professional emergency medical response, thanks to which no-one died. In gratitude, they have included a special system removed form the wreck.";
+				text2 = "The survivors of the crash are amazed by your rapid and professional emergency medical response, thanks to which no-one died. In gratitude, they have included a special system removed form the wreck.";
 			}
-			Find.LetterStack.ReceiveLetter(label, text, LetterDefOf.Good, null);
+			Find.LetterStack.ReceiveLetter(text, text2, LetterDefOf.Good, null);
 			Map map = Find.AnyPlayerHomeMap ?? ((MapParent)this.parent).Map;
 			QuestComp_MedicalEmergency.tmpRewards.AddRange(this.rewards);
 			this.rewards.Clear();
-			IntVec3 intVec = DropCellFinder.TradeDropSpot(map);
-			DropPodUtility.DropThingsNear(intVec, map, QuestComp_MedicalEmergency.tmpRewards, 110, false, false, true);
+			IntVec3 dropCenter = DropCellFinder.TradeDropSpot(map);
+			DropPodUtility.DropThingsNear(dropCenter, map, QuestComp_MedicalEmergency.tmpRewards, 110, false, false, true);
 			QuestComp_MedicalEmergency.tmpRewards.Clear();
 			if (newFaction)
 			{
@@ -274,9 +273,9 @@ namespace ReconAndDiscovery.Missions
 					}
 				}
 				faction.AffectGoodwillWith(Faction.OfPlayer, 100f);
-				string label2 = "New Faction!";
-				string text2 = string.Format("The survivors of the crash have decided to make a life for themselves here, and have founded a new faction, {0} lead by {1}.", faction.Name, faction.leader.Name);
-				Find.LetterStack.ReceiveLetter(label2, text2, LetterDefOf.Good, null);
+				string text3 = "New Faction!";
+				string text4 = string.Format("The survivors of the crash have decided to make a life for themselves here, and have founded a new faction, {0} lead by {1}.", faction.Name, faction.leader.Name);
+				Find.LetterStack.ReceiveLetter(text3, text4, LetterDefOf.Good, null);
 			}
 		}
 
@@ -314,47 +313,6 @@ namespace ReconAndDiscovery.Missions
 			this.rewards.ClearAndDestroyContents(DestroyMode.Vanish);
 		}
 
-		// Note: this type is marked as 'beforefieldinit'.
-		static QuestComp_MedicalEmergency()
-		{
-		}
-
-		[CompilerGenerated]
-		private static bool <CalculateQuestOutcome>m__0(Pawn p)
-		{
-			return !p.Dead && p.RaceProps.Humanlike;
-		}
-
-		[CompilerGenerated]
-		private static bool <CalculateQuestOutcome>m__1(Pawn p)
-		{
-			return !p.Dead && p.RaceProps.Humanlike && p.Faction != Faction.OfPlayer;
-		}
-
-		[CompilerGenerated]
-		private static bool <CompTick>m__2(Pawn p)
-		{
-			return p.Faction == QuestComp_MedicalEmergency.fac && p.RaceProps.Humanlike;
-		}
-
-		[CompilerGenerated]
-		private static bool <CloseMapImmediate>m__3(Pawn x)
-		{
-			return x.IsColonist || x.IsPrisonerOfColony || x.Faction == Faction.OfPlayer || x.HostFaction == Faction.OfPlayer;
-		}
-
-		[CompilerGenerated]
-		private static bool <CloseMapImmediate>m__4(Pawn x)
-		{
-			return x.IsColonist || x.IsPrisonerOfColony || x.Faction == Faction.OfPlayer || x.HostFaction == Faction.OfPlayer;
-		}
-
-		[CompilerGenerated]
-		private static bool <CloseMapImmediate>m__5(Pawn x)
-		{
-			return CaravanUtility.IsOwner(x, Faction.OfPlayer);
-		}
-
 		IThingHolder IThingHolder.get_ParentHolder()
 		{
 			return base.ParentHolder;
@@ -375,41 +333,5 @@ namespace ReconAndDiscovery.Missions
 		public float relationsImprovement;
 
 		public Faction requestingFaction;
-
-		[CompilerGenerated]
-		private static Func<Pawn, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private static Func<Pawn, bool> <>f__am$cache1;
-
-		[CompilerGenerated]
-		private static Func<Pawn, bool> <>f__am$cache2;
-
-		[CompilerGenerated]
-		private static Predicate<Pawn> <>f__am$cache3;
-
-		[CompilerGenerated]
-		private static Func<Pawn, bool> <>f__am$cache4;
-
-		[CompilerGenerated]
-		private static Predicate<Pawn> <>f__am$cache5;
-
-		[CompilerGenerated]
-		private sealed class <CloseMapImmediate>c__AnonStorey0
-		{
-			public <CloseMapImmediate>c__AnonStorey0()
-			{
-			}
-
-			internal void <>m__0()
-			{
-				if (this.mapParent.HasMap)
-				{
-					Find.WorldObjects.Remove(this.mapParent);
-				}
-			}
-
-			internal MapParent mapParent;
-		}
 	}
 }

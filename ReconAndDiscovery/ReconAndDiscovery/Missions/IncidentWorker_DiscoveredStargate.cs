@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_DiscoveredStargate : IncidentWorker
 	{
-		public IncidentWorker_DiscoveredStargate()
-		{
-		}
-
 		protected override bool CanFireNowSub(IIncidentTarget target)
 		{
 			int num;
@@ -78,7 +74,7 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			Site site = this.MakeSite(10);
 			bool result;

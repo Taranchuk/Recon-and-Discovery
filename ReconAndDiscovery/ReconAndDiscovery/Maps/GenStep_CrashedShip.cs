@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_CrashedShip : GenStep_AdventureGenerator
 	{
-		public GenStep_CrashedShip()
-		{
-		}
-
 		public override void Generate(Map map)
 		{
 			base.Generate(map);

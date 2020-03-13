@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -12,9 +11,12 @@ namespace ReconAndDiscovery
 	{
 		public GameCondition_Radiation()
 		{
-			Color sky = new Color(0.8f, 0.8f, 0.3f);
-			Color shadow = new Color(0.9f, 0.9f, 1f);
-			Color overlay = new Color(0.7f, 0.7f, 0.5f);
+			Color sky;
+			sky..ctor(0.8f, 0.8f, 0.3f);
+			Color shadow;
+			shadow..ctor(0.9f, 0.9f, 1f);
+			Color overlay;
+			overlay..ctor(0.7f, 0.7f, 0.5f);
 			this.SkyColours = new SkyColorSet(sky, shadow, overlay, 9f);
 		}
 
@@ -32,7 +34,7 @@ namespace ReconAndDiscovery
 		{
 			if (p.Faction == Faction.OfPlayer)
 			{
-				Messages.Message(string.Format("{0} has developed radiation sickness", p.NameStringShort), p, 4);
+				Messages.Message(string.Format("{0} has developed radiation sickness", p.NameStringShort), p, MessageSound.Negative);
 				p.health.AddHediff(HediffDef.Named("RadiationSickness"), null, null);
 			}
 		}
@@ -91,14 +93,14 @@ namespace ReconAndDiscovery
 			{
 				if (pawn.Faction == Faction.OfPlayer)
 				{
-					Messages.Message(string.Format("{0} has miscarried due to radiation poisoning.", pawn.LabelIndefinite()), pawn, 4);
+					Messages.Message(string.Format("{0} has miscarried due to radiation poisoning.", pawn.LabelIndefinite()), pawn, MessageSound.Negative);
 				}
 			}
 		}
 
 		private bool IsProtectedAt(IntVec3 c)
 		{
-			Room room = c.GetRoom(base.Map, RegionType.Set_Passable);
+			Room room = GridsUtility.GetRoom(c, base.Map, 6);
 			bool result;
 			if (room == null)
 			{
@@ -130,7 +132,7 @@ namespace ReconAndDiscovery
 		{
 			if (Rand.Chance(0.006666667f))
 			{
-				List<Thing> list = base.Map.listerThings.ThingsInGroup(ThingRequestGroup.FoodSource);
+				List<Thing> list = base.Map.listerThings.ThingsInGroup(ThingRequestGroup.Plant);
 				if (list.Count != 0)
 				{
 					Plant plant = list.RandomElement<Thing>() as Plant;
@@ -143,7 +145,7 @@ namespace ReconAndDiscovery
 								plant.CropBlighted();
 								if (plant.sown)
 								{
-									Messages.Message("A plant has died due to radiation damage", 4);
+									Messages.Message("A plant has died due to radiation damage", MessageSound.Negative);
 								}
 							}
 						}
@@ -177,31 +179,16 @@ namespace ReconAndDiscovery
 			base.Init();
 		}
 
-		public virtual SkyTarget? SkyTarget()
+		public override SkyTarget? SkyTarget()
 		{
 			return new SkyTarget?(new SkyTarget(0.1f, this.SkyColours, 1f, 1f));
 		}
 
-		public virtual float SkyTargetLerpFactor()
+		public override float SkyTargetLerpFactor()
 		{
 			return GameConditionUtility.LerpInOutValue((float)base.TicksPassed, (float)base.TicksLeft, 2500f, 0.25f);
 		}
 
 		private SkyColorSet SkyColours;
-
-		[CompilerGenerated]
-		private sealed class <GiveCarcinoma>c__AnonStorey0
-		{
-			public <GiveCarcinoma>c__AnonStorey0()
-			{
-			}
-
-			internal bool <>m__0(BodyPartRecord part)
-			{
-				return part.def == this.partDef;
-			}
-
-			internal BodyPartDef partDef;
-		}
 	}
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -9,10 +8,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_FaultyGenerator : IncidentWorker
 	{
-		public IncidentWorker_FaultyGenerator()
-		{
-		}
-
 		protected override bool CanFireNowSub(IIncidentTarget target)
 		{
 			int num;
@@ -50,7 +45,7 @@ namespace ReconAndDiscovery.Missions
 			return site;
 		}
 
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			bool result;
@@ -74,8 +69,8 @@ namespace ReconAndDiscovery.Missions
 				else
 				{
 					int num = 30;
-					GameCondition cond = GameConditionMaker.MakeCondition(GameConditionDef.Named("Tremors"), 60000 * num, 100);
-					map.gameConditionManager.RegisterCondition(cond);
+					GameCondition gameCondition = GameConditionMaker.MakeCondition(GameConditionDef.Named("Tremors"), 60000 * num, 100);
+					map.gameConditionManager.RegisterCondition(gameCondition);
 					site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
 					base.SendStandardLetter(site, new string[0]);
 					result = true;
@@ -83,14 +78,5 @@ namespace ReconAndDiscovery.Missions
 			}
 			return result;
 		}
-
-		[CompilerGenerated]
-		private static bool <TryExecute>m__0(WorldObject wo)
-		{
-			return wo is Site && (wo as Site).core == SiteDefOfReconAndDiscovery.QuakesQuest;
-		}
-
-		[CompilerGenerated]
-		private static Func<WorldObject, bool> <>f__am$cache0;
 	}
 }

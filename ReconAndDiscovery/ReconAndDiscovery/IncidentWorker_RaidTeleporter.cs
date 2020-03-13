@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using Verse;
 using Verse.AI.Group;
@@ -10,11 +9,7 @@ namespace ReconAndDiscovery
 {
 	public class IncidentWorker_RaidTeleporter : IncidentWorker_RaidEnemy
 	{
-		public IncidentWorker_RaidTeleporter()
-		{
-		}
-
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			Map map = (Map)parms.target;
 			IEnumerable<Pawn> source = from p in map.mapPawns.AllPawnsSpawned
@@ -54,23 +49,5 @@ namespace ReconAndDiscovery
 			}
 			return result;
 		}
-
-		[CompilerGenerated]
-		private static bool <TryExecute>m__0(Pawn p)
-		{
-			return p.Faction == Faction.OfMechanoids && !p.Downed;
-		}
-
-		[CompilerGenerated]
-		private static bool <TryExecute>m__1(Building b)
-		{
-			return b.GetComp<CompPowerTrader>().PowerOn && b.GetComp<CompTeleporter>().ReadyToTransport;
-		}
-
-		[CompilerGenerated]
-		private static Func<Pawn, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private static Func<Building, bool> <>f__am$cache1;
 	}
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.BaseGen;
 using Verse;
@@ -9,10 +8,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class SymbolResolver_OldCastle : SymbolResolver
 	{
-		public SymbolResolver_OldCastle()
-		{
-		}
-
 		public override bool CanResolve(ResolveParams rp)
 		{
 			return base.CanResolve(rp);
@@ -205,23 +200,5 @@ namespace ReconAndDiscovery.Maps
 			BaseGen.symbolStack.Push("edgeWalls", resolveParams12);
 			BaseGen.symbolStack.Push("floor", resolveParams12);
 		}
-
-		[CompilerGenerated]
-		private static bool <Resolve>m__0(ThingDef d)
-		{
-			return d.IsStuff && d.stuffProps.CanMake(ThingDefOf.Wall) && d.stuffProps.categories.Contains(StuffCategoryDefOf.Stony) && d != ThingDef.Named("Jade");
-		}
-
-		[CompilerGenerated]
-		private static float <Resolve>m__1(ThingDef x)
-		{
-			return 3f + 1f / x.BaseMarketValue;
-		}
-
-		[CompilerGenerated]
-		private static Func<ThingDef, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private static Func<ThingDef, float> <>f__am$cache1;
 	}
 }

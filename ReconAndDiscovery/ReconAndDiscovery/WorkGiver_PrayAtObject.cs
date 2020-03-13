@@ -7,10 +7,6 @@ namespace ReconAndDiscovery
 {
 	public class WorkGiver_PrayAtObject : WorkGiver_Scanner
 	{
-		public WorkGiver_PrayAtObject()
-		{
-		}
-
 		public override ThingRequest PotentialWorkThingRequest
 		{
 			get
@@ -32,13 +28,13 @@ namespace ReconAndDiscovery
 			return t.Thing.GetStatValue(StatDefOf.ResearchSpeedFactor, true);
 		}
 
-		public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
+		public virtual bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			Building building = t as Building;
-			return building != null && pawn.CanReserve(t, 4, -1, null, forced);
+			return building != null && ReservationUtility.CanReserve(pawn, t, 4, -1, null, forced);
 		}
 
-		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
+		public virtual Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			return new Job(JobDefOfReconAndDiscovery.PrayAtObject, t);
 		}

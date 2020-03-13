@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Triggers
 {
 	public class RectActionTrigger : ActionTrigger
 	{
-		public RectActionTrigger()
-		{
-		}
-
 		public CellRect Rect
 		{
 			get

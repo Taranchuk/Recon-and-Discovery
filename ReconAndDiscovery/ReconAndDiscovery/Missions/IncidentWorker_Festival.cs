@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -10,10 +9,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_Festival : IncidentWorker
 	{
-		public IncidentWorker_Festival()
-		{
-		}
-
 		protected override bool CanFireNowSub(IIncidentTarget target)
 		{
 			int num;
@@ -81,7 +76,7 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			bool result;
 			Faction faction;
@@ -115,66 +110,6 @@ namespace ReconAndDiscovery.Missions
 				}
 			}
 			return result;
-		}
-
-		[CompilerGenerated]
-		private static bool <TryExecute>m__0(WorldObject wo)
-		{
-			return wo.def == SiteDefOfReconAndDiscovery.AdventurePeaceTalks;
-		}
-
-		[CompilerGenerated]
-		private bool <TryExecute>m__1(Faction f)
-		{
-			return f != Faction.OfPlayer && f.PlayerGoodwill > 10f && this.FriendsCount(f) >= 2 && f.def.humanlikeFaction;
-		}
-
-		[CompilerGenerated]
-		private static Func<WorldObject, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private sealed class <GetAllNonPlayerFriends>c__AnonStorey0
-		{
-			public <GetAllNonPlayerFriends>c__AnonStorey0()
-			{
-			}
-
-			internal bool <>m__0(Faction f)
-			{
-				return this.faction.GoodwillWith(f) > 10f;
-			}
-
-			internal Faction faction;
-		}
-
-		[CompilerGenerated]
-		private sealed class <FriendsCount>c__AnonStorey1
-		{
-			public <FriendsCount>c__AnonStorey1()
-			{
-			}
-
-			internal bool <>m__0(Faction f)
-			{
-				return this.faction.GoodwillWith(f) > 10f;
-			}
-
-			internal Faction faction;
-		}
-
-		[CompilerGenerated]
-		private sealed class <TryFindFaction>c__AnonStorey2
-		{
-			public <TryFindFaction>c__AnonStorey2()
-			{
-			}
-
-			internal bool <>m__0(Faction f)
-			{
-				return this.validator(f);
-			}
-
-			internal Predicate<Faction> validator;
 		}
 	}
 }

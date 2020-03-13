@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -10,10 +9,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_CrashedShip : IncidentWorker
 	{
-		public IncidentWorker_CrashedShip()
-		{
-		}
-
 		protected override bool CanFireNowSub(IIncidentTarget target)
 		{
 			int num;
@@ -30,7 +25,7 @@ namespace ReconAndDiscovery.Missions
 			return itemCollectionGenerator.Generate(itemCollectionGeneratorParams);
 		}
 
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			bool result;
@@ -130,20 +125,6 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		// Note: this type is marked as 'beforefieldinit'.
-		static IncidentWorker_CrashedShip()
-		{
-		}
-
-		[CompilerGenerated]
-		private static bool <TryExecute>m__0(Pawn p)
-		{
-			return p.CurJob.def == JobDefOfReconAndDiscovery.Skygaze || p.CurJob.def == JobDefOfReconAndDiscovery.UseTelescope;
-		}
-
 		private static readonly IntRange TimeoutDaysRange = new IntRange(6, 10);
-
-		[CompilerGenerated]
-		private static Func<Pawn, bool> <>f__am$cache0;
 	}
 }

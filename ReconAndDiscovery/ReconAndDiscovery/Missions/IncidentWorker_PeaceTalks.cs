@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -10,10 +9,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_PeaceTalks : IncidentWorker
 	{
-		public IncidentWorker_PeaceTalks()
-		{
-		}
-
 		protected override bool CanFireNowSub(IIncidentTarget target)
 		{
 			int num;
@@ -55,7 +50,7 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			bool result;
 			Faction faction;
@@ -93,39 +88,6 @@ namespace ReconAndDiscovery.Missions
 				}
 			}
 			return result;
-		}
-
-		[CompilerGenerated]
-		private static bool <TryExecute>m__0(WorldObject wo)
-		{
-			return wo.def == SiteDefOfReconAndDiscovery.AdventurePeaceTalks;
-		}
-
-		[CompilerGenerated]
-		private static bool <TryExecute>m__1(Faction f)
-		{
-			return f != Faction.OfPlayer && f.PlayerGoodwill < 0f && f.def.CanEverBeNonHostile && f.def.humanlikeFaction;
-		}
-
-		[CompilerGenerated]
-		private static Func<WorldObject, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private static Predicate<Faction> <>f__am$cache1;
-
-		[CompilerGenerated]
-		private sealed class <TryFindFaction>c__AnonStorey0
-		{
-			public <TryFindFaction>c__AnonStorey0()
-			{
-			}
-
-			internal bool <>m__0(Faction f)
-			{
-				return this.validator(f);
-			}
-
-			internal Predicate<Faction> validator;
 		}
 	}
 }

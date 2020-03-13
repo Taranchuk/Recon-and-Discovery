@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using ReconAndDiscovery.Things;
 using RimWorld;
 using Verse;
@@ -11,10 +10,6 @@ namespace ReconAndDiscovery
 {
 	public class WorkGiver_LoadIntoEmitter : WorkGiver_Scanner
 	{
-		public WorkGiver_LoadIntoEmitter()
-		{
-		}
-
 		public override PathEndMode PathEndMode
 		{
 			get
@@ -38,8 +33,8 @@ namespace ReconAndDiscovery
 			select def;
 			foreach (ThingDef singleDef in enumerable)
 			{
-				Predicate<Thing> validator = (Thing x) => ((HoloEmitter)x).GetComp<CompHoloEmitter>().SimPawn == null && p.CanReserve(x, 1, -1, null, false);
-				HoloEmitter holoEmitter = (HoloEmitter)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.ByPawn, false), 9999f, validator, null, 0, -1, false, RegionType.Set_Passable, false);
+				Predicate<Thing> predicate = (Thing x) => ((HoloEmitter)x).GetComp<CompHoloEmitter>().SimPawn == null && ReservationUtility.CanReserve(p, x, 1, -1, null, false);
+				HoloEmitter holoEmitter = (HoloEmitter)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.PassAnything, false), 9999f, predicate, null, 0, -1, false, 6, false);
 				if (holoEmitter != null)
 				{
 					return holoEmitter;
@@ -48,14 +43,14 @@ namespace ReconAndDiscovery
 			return null;
 		}
 
-		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
+		public virtual Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			Job result;
 			if (t.def.defName != "HoloDisk")
 			{
 				result = null;
 			}
-			else if (!pawn.CanReserveAndReach(t, PathEndMode.Touch, Danger.Deadly, 1, 1, null, false))
+			else if (!ReservationUtility.CanReserveAndReach(pawn, t, PathEndMode.Touch, Danger.Deadly, 1, 1, null, false))
 			{
 				result = null;
 			}
@@ -81,33 +76,9 @@ namespace ReconAndDiscovery
 			return result;
 		}
 
-		public virtual bool ShouldSkip(Pawn pawn)
+		public override bool ShouldSkip(Pawn pawn)
 		{
 			return pawn.Map.listerThings.ThingsOfDef(ThingDef.Named("HoloDisk")).Count == 0;
-		}
-
-		[CompilerGenerated]
-		private static bool <FindEmitter>m__0(ThingDef def)
-		{
-			return typeof(HoloEmitter).IsAssignableFrom(def.thingClass);
-		}
-
-		[CompilerGenerated]
-		private static Func<ThingDef, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private sealed class <FindEmitter>c__AnonStorey0
-		{
-			public <FindEmitter>c__AnonStorey0()
-			{
-			}
-
-			internal bool <>m__0(Thing x)
-			{
-				return ((HoloEmitter)x).GetComp<CompHoloEmitter>().SimPawn == null && this.p.CanReserve(x, 1, -1, null, false);
-			}
-
-			internal Pawn p;
 		}
 	}
 }

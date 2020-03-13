@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.BaseGen;
 using Verse;
@@ -8,10 +7,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_OldCastle : GenStep_AdventureGenerator
 	{
-		public GenStep_OldCastle()
-		{
-		}
-
 		public override void Generate(Map map)
 		{
 			if (!map.TileInfo.WaterCovered)
@@ -34,14 +29,5 @@ namespace ReconAndDiscovery.Maps
 				MapGenUtility.ResolveCustomGenSteps(map);
 			}
 		}
-
-		[CompilerGenerated]
-		private static bool <Generate>m__0(ThingDef thing)
-		{
-			return thing.weaponTags != null && thing.equipmentType == EquipmentType.Primary && !thing.destroyOnDrop && !thing.weaponTags.Contains("Gun");
-		}
-
-		[CompilerGenerated]
-		private static Predicate<ThingDef> <>f__am$cache0;
 	}
 }

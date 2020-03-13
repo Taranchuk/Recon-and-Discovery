@@ -5,10 +5,6 @@ namespace ReconAndDiscovery
 {
 	public class ReconBase : ModBase
 	{
-		public ReconBase()
-		{
-		}
-
 		public override void Initialize()
 		{
 			base.Initialize();

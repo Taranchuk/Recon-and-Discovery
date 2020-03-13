@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class SymbolResolver_RoomWithDoor : SymbolResolver
 	{
-		public SymbolResolver_RoomWithDoor()
-		{
-		}
-
 		public override bool CanResolve(ResolveParams rp)
 		{
 			return base.CanResolve(rp);

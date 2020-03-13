@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using ReconAndDiscovery.Triggers;
 using RimWorld;
 using Verse;
@@ -11,10 +10,6 @@ namespace ReconAndDiscovery
 {
 	public class CompComputerTerminal : ThingComp
 	{
-		public CompComputerTerminal()
-		{
-		}
-
 		public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
 		{
 			List<FloatMenuOption> list = base.CompFloatMenuOptions(selPawn).ToList<FloatMenuOption>();
@@ -25,7 +20,7 @@ namespace ReconAndDiscovery
 					Label = "Use computer",
 					action = delegate()
 					{
-						selPawn.jobs.TryTakeOrderedJob(this.UseComputerJob(), JobTag.Misc);
+						selPawn.jobs.TryTakeOrderedJob(this.UseComputerJob(), JobTag.NoTag);
 					}
 				});
 			}
@@ -44,22 +39,5 @@ namespace ReconAndDiscovery
 		}
 
 		public ActivatedActionDef actionDef;
-
-		[CompilerGenerated]
-		private sealed class <CompFloatMenuOptions>c__AnonStorey0
-		{
-			public <CompFloatMenuOptions>c__AnonStorey0()
-			{
-			}
-
-			internal void <>m__0()
-			{
-				this.selPawn.jobs.TryTakeOrderedJob(this.$this.UseComputerJob(), JobTag.Misc);
-			}
-
-			internal Pawn selPawn;
-
-			internal CompComputerTerminal $this;
-		}
 	}
 }

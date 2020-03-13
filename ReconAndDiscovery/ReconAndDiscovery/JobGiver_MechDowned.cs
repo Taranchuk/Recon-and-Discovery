@@ -7,10 +7,6 @@ namespace ReconAndDiscovery
 {
 	public class JobGiver_MechDowned : ThinkNode_JobGiver
 	{
-		public JobGiver_MechDowned()
-		{
-		}
-
 		protected override Job TryGiveJob(Pawn pawn)
 		{
 			Job result;

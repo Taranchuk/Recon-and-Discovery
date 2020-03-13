@@ -6,10 +6,6 @@ namespace ReconAndDiscovery
 {
 	public class OsirisCasket : Building_CryptosleepCasket
 	{
-		public OsirisCasket()
-		{
-		}
-
 		public Corpse Corpse
 		{
 			get

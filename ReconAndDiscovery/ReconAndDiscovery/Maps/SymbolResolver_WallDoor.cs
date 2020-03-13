@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class SymbolResolver_WallDoor : SymbolResolver
 	{
-		public SymbolResolver_WallDoor()
-		{
-		}
-
 		public override bool CanResolve(ResolveParams rp)
 		{
 			return base.CanResolve(rp);
@@ -38,7 +34,7 @@ namespace ReconAndDiscovery.Maps
 		private bool IsOutdoorsAt(IntVec3 c)
 		{
 			Map map = BaseGen.globalSettings.map;
-			return c.GetRegion(map, RegionType.Set_Passable) != null && c.GetRegion(map, RegionType.Set_Passable).Room.PsychologicallyOutdoors;
+			return GridsUtility.GetRegion(c, map, 6) != null && GridsUtility.GetRegion(c, map, 6).Room.PsychologicallyOutdoors;
 		}
 	}
 }

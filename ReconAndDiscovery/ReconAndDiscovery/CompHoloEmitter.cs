@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using ReconAndDiscovery.Things;
 using RimWorld;
 using Verse;
@@ -11,10 +10,6 @@ namespace ReconAndDiscovery
 	[StaticConstructorOnStartup]
 	public class CompHoloEmitter : ThingComp
 	{
-		public CompHoloEmitter()
-		{
-		}
-
 		public Pawn SimPawn
 		{
 			get
@@ -32,7 +27,7 @@ namespace ReconAndDiscovery
 			base.PostDestroy(mode, previousMap);
 			if (this.pawn != null)
 			{
-				DamageInfo value = new DamageInfo(DamageDefOf.Blunt, 1000, -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+				DamageInfo value = new DamageInfo(DamageDefOf.Blunt, 1000, -1f, null, null, null, 0);
 				this.SimPawn.Kill(new DamageInfo?(value));
 				this.SimPawn.Corpse.Destroy(DestroyMode.Vanish);
 			}
@@ -64,7 +59,7 @@ namespace ReconAndDiscovery
 				floatMenuOption.Label = "Format Occupant";
 				floatMenuOption.action = delegate()
 				{
-					DamageInfo value = new DamageInfo(DamageDefOf.ExecutionCut, 1000, -1f, selPawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+					DamageInfo value = new DamageInfo(DamageDefOf.ExecutionCut, 1000, -1f, selPawn, null, null, 0);
 					this.pawn.Kill(new DamageInfo?(value));
 					this.pawn.Corpse.Destroy(DestroyMode.Vanish);
 					this.pawn = null;
@@ -173,7 +168,7 @@ namespace ReconAndDiscovery
 			where cell.InHorDistOf(this.parent.Position, 12f) && GenSight.LineOfSight(this.parent.Position, cell, this.parent.Map, true, null, 0, 0)
 			select cell;
 			Area_Allowed area_Allowed;
-			this.parent.Map.areaManager.TryMakeNewAllowed(1, ref area_Allowed);
+			this.parent.Map.areaManager.TryMakeNewAllowed(AllowedAreaMode.Humanlike, out area_Allowed);
 			foreach (IntVec3 c in enumerable)
 			{
 				area_Allowed[this.parent.Map.cellIndices.CellToIndex(c)] = true;
@@ -209,52 +204,6 @@ namespace ReconAndDiscovery
 			}
 		}
 
-		[CompilerGenerated]
-		private bool <MakeValidAllowedZone>m__0(IntVec3 cell)
-		{
-			return cell.InHorDistOf(this.parent.Position, 12f) && GenSight.LineOfSight(this.parent.Position, cell, this.parent.Map, true, null, 0, 0);
-		}
-
 		private Pawn pawn;
-
-		[CompilerGenerated]
-		private sealed class <CompFloatMenuOptions>c__AnonStorey0
-		{
-			public <CompFloatMenuOptions>c__AnonStorey0()
-			{
-			}
-
-			internal void <>m__0()
-			{
-				DamageInfo value = new DamageInfo(DamageDefOf.ExecutionCut, 1000, -1f, this.selPawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
-				this.$this.pawn.Kill(new DamageInfo?(value));
-				this.$this.pawn.Corpse.Destroy(DestroyMode.Vanish);
-				this.$this.pawn = null;
-			}
-
-			internal void <>m__1()
-			{
-				foreach (Thing thing in this.$this.parent.Map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("HolographicEmitter")))
-				{
-					HoloEmitter holoEmitter = thing as HoloEmitter;
-					if (holoEmitter == null)
-					{
-						break;
-					}
-					if (holoEmitter.GetComp<CompHoloEmitter>().SimPawn == this.selPawn)
-					{
-						holoEmitter.GetComp<CompHoloEmitter>().SimPawn = null;
-						this.$this.pawn = this.selPawn;
-						this.$this.parent.Map.areaManager.AllAreas.Remove(this.$this.pawn.playerSettings.AreaRestriction);
-						this.$this.MakeValidAllowedZone();
-						break;
-					}
-				}
-			}
-
-			internal Pawn selPawn;
-
-			internal CompHoloEmitter $this;
-		}
 	}
 }

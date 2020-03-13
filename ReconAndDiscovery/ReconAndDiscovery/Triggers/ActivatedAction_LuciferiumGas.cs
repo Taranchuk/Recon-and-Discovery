@@ -5,10 +5,6 @@ namespace ReconAndDiscovery.Triggers
 {
 	public class ActivatedAction_LuciferiumGas : ActivatedAction
 	{
-		public ActivatedAction_LuciferiumGas()
-		{
-		}
-
 		protected override void DoAnyFurtherActions(Pawn activatedBy, Map map, Thing trigger)
 		{
 			foreach (IntVec3 c in base.GetEffectArea(activatedBy.Position))

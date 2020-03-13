@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -9,11 +8,7 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_ScatteredTreasure : GenStep
 	{
-		public GenStep_ScatteredTreasure()
-		{
-		}
-
-		public virtual void Generate(Map map)
+		public override void Generate(Map map)
 		{
 			float num = Mathf.Min(18000f, Mathf.Max(new float[]
 			{
@@ -37,35 +32,11 @@ namespace ReconAndDiscovery.Maps
 					thing.stackCount = thing.def.stackLimit;
 				}
 				IntVec3 intVec;
-				if (CellFinderLoose.TryGetRandomCellWith((IntVec3 x) => x.Standable(map) && x.Fogged(map) && x.GetRoom(map, RegionType.Set_Passable).CellCount >= 2, map, 1000, out intVec))
+				if (CellFinderLoose.TryGetRandomCellWith((IntVec3 x) => x.Standable(map) && x.Fogged(map) && GridsUtility.GetRoom(x, map, 6).CellCount >= 2, map, 1000, out intVec))
 				{
 					GenSpawn.Spawn(thing, intVec, map, Rot4.Random, false);
 				}
 			}
-		}
-
-		[CompilerGenerated]
-		private static bool <Generate>m__0(ThingDef t)
-		{
-			return t.defName != "Silver";
-		}
-
-		[CompilerGenerated]
-		private static Predicate<ThingDef> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private sealed class <Generate>c__AnonStorey0
-		{
-			public <Generate>c__AnonStorey0()
-			{
-			}
-
-			internal bool <>m__0(IntVec3 x)
-			{
-				return x.Standable(this.map) && x.Fogged(this.map) && x.GetRoom(this.map, RegionType.Set_Passable).CellCount >= 2;
-			}
-
-			internal Map map;
 		}
 	}
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using Verse;
 using Verse.AI.Group;
@@ -10,14 +9,10 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_MechanoidForces : GenStep
 	{
-		public GenStep_MechanoidForces()
+		public override void Generate(Map map)
 		{
-		}
-
-		public virtual void Generate(Map map)
-		{
-			IntVec3 root;
-			if (RCellFinder.TryFindRandomCellNearTheCenterOfTheMapWith((IntVec3 x) => x.Standable(map) && !x.Fogged(map) && x.GetRoom(map, RegionType.Set_Passable).CellCount >= 4, map, out root))
+			IntVec3 intVec;
+			if (RCellFinder.TryFindRandomCellNearTheCenterOfTheMapWith((IntVec3 x) => x.Standable(map) && !x.Fogged(map) && GridsUtility.GetRoom(x, map, 6).CellCount >= 4, map, out intVec))
 			{
 				float num = this.pointsRange.RandomInRange;
 				List<Pawn> list = new List<Pawn>();
@@ -36,47 +31,14 @@ namespace ReconAndDiscovery.Maps
 				IntVec3 point = default(IntVec3);
 				for (int j = 0; j < list.Count; j++)
 				{
-					IntVec3 intVec = CellFinder.RandomSpawnCellForPawnNear(root, map, 10);
-					point = intVec;
-					GenSpawn.Spawn(list[j], intVec, map, Rot4.Random, false);
+					IntVec3 intVec2 = CellFinder.RandomSpawnCellForPawnNear(intVec, map, 10);
+					point = intVec2;
+					GenSpawn.Spawn(list[j], intVec2, map, Rot4.Random, false);
 				}
 				LordMaker.MakeNewLord(Faction.OfMechanoids, new LordJob_DefendPoint(point), map, list);
 			}
 		}
 
-		[CompilerGenerated]
-		private static bool <Generate>m__0(PawnKindDef kind)
-		{
-			return kind.RaceProps.IsMechanoid;
-		}
-
-		[CompilerGenerated]
-		private static float <Generate>m__1(PawnKindDef kind)
-		{
-			return 1f / kind.combatPower;
-		}
-
 		public FloatRange pointsRange = new FloatRange(450f, 700f);
-
-		[CompilerGenerated]
-		private static Func<PawnKindDef, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private static Func<PawnKindDef, float> <>f__am$cache1;
-
-		[CompilerGenerated]
-		private sealed class <Generate>c__AnonStorey0
-		{
-			public <Generate>c__AnonStorey0()
-			{
-			}
-
-			internal bool <>m__0(IntVec3 x)
-			{
-				return x.Standable(this.map) && !x.Fogged(this.map) && x.GetRoom(this.map, RegionType.Set_Passable).CellCount >= 4;
-			}
-
-			internal Map map;
-		}
 	}
 }

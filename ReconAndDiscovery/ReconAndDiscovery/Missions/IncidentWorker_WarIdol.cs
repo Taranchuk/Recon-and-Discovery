@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -10,10 +9,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_WarIdol : IncidentWorker
 	{
-		public IncidentWorker_WarIdol()
-		{
-		}
-
 		protected override bool CanFireNowSub(IIncidentTarget target)
 		{
 			int num;
@@ -113,7 +108,7 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			IEnumerable<PowerNet> source = from net in map.powerNetManager.AllNetsListForReading
@@ -160,23 +155,5 @@ namespace ReconAndDiscovery.Missions
 			}
 			return result;
 		}
-
-		[CompilerGenerated]
-		private static bool <CanFindVisitor>m__0(Pawn p)
-		{
-			return p.RaceProps.Humanlike && p.Faction != Faction.OfPlayer && p.Faction.PlayerGoodwill > 0f;
-		}
-
-		[CompilerGenerated]
-		private static bool <TryExecute>m__1(PowerNet net)
-		{
-			return net.hasPowerSource;
-		}
-
-		[CompilerGenerated]
-		private static Func<Pawn, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private static Func<PowerNet, bool> <>f__am$cache1;
 	}
 }

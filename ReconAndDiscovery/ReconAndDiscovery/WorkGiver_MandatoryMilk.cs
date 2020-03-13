@@ -6,10 +6,6 @@ namespace ReconAndDiscovery
 {
 	public class WorkGiver_MandatoryMilk : WorkGiver_GatherAnimalBodyResources
 	{
-		public WorkGiver_MandatoryMilk()
-		{
-		}
-
 		protected override JobDef JobDef
 		{
 			get

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -8,10 +7,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_AbandonedColony : IncidentWorker
 	{
-		public IncidentWorker_AbandonedColony()
-		{
-		}
-
 		protected override bool CanFireNowSub(IIncidentTarget target)
 		{
 			return base.CanFireNowSub(target);
@@ -20,7 +15,7 @@ namespace ReconAndDiscovery.Missions
 		private Site MakeSite(Caravan c)
 		{
 			int tile;
-			TileFinder.TryFindPassableTileWithTraversalDistance(c.Tile, 1, 2, ref tile, (int t) => !Find.WorldObjects.AnyMapParentAt(t), false);
+			TileFinder.TryFindPassableTileWithTraversalDistance(c.Tile, 1, 2, out tile, (int t) => !Find.WorldObjects.AnyMapParentAt(t), false);
 			Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
 			site.Tile = tile;
 			site.SetFaction(Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer));
@@ -42,7 +37,7 @@ namespace ReconAndDiscovery.Missions
 			return site;
 		}
 
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			Caravan caravan = parms.target as Caravan;
 			bool result;
@@ -65,14 +60,5 @@ namespace ReconAndDiscovery.Missions
 			}
 			return result;
 		}
-
-		[CompilerGenerated]
-		private static bool <MakeSite>m__0(int t)
-		{
-			return !Find.WorldObjects.AnyMapParentAt(t);
-		}
-
-		[CompilerGenerated]
-		private static Predicate<int> <>f__am$cache0;
 	}
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using Verse;
 
@@ -10,10 +9,6 @@ namespace ReconAndDiscovery
 	[StaticConstructorOnStartup]
 	public class CompPsionicEmanator : ThingComp
 	{
-		public CompPsionicEmanator()
-		{
-		}
-
 		public void DoPsychicShockwave()
 		{
 			IEnumerable<Pawn> enumerable = from pawn in this.parent.Map.mapPawns.AllPawnsSpawned
@@ -61,12 +56,6 @@ namespace ReconAndDiscovery
 					}
 				}
 			}
-		}
-
-		[CompilerGenerated]
-		private bool <DoPsychicShockwave>m__0(Pawn pawn)
-		{
-			return pawn.HostileTo(this.parent.Faction);
 		}
 	}
 }

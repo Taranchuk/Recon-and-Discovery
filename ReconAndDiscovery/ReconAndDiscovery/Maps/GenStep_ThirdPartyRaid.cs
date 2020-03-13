@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.BaseGen;
 using Verse;
@@ -10,11 +9,7 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_ThirdPartyRaid : GenStep
 	{
-		public GenStep_ThirdPartyRaid()
-		{
-		}
-
-		public virtual void Generate(Map map)
+		public override void Generate(Map map)
 		{
 			if (!map.TileInfo.WaterCovered)
 			{
@@ -33,14 +28,5 @@ namespace ReconAndDiscovery.Maps
 			}
 			BaseGen.Generate();
 		}
-
-		[CompilerGenerated]
-		private static bool <SetAllStructuresToFaction>m__0(Thing thing)
-		{
-			return thing.def.IsDoor;
-		}
-
-		[CompilerGenerated]
-		private static Func<Thing, bool> <>f__am$cache0;
 	}
 }

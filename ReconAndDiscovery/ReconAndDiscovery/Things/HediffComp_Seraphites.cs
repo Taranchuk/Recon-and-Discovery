@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Things
 {
 	public class HediffComp_Seraphites : HediffComp
 	{
-		public HediffComp_Seraphites()
-		{
-		}
-
 		public HediffCompProperties_Seraphites Props
 		{
 			get
@@ -19,7 +15,7 @@ namespace ReconAndDiscovery.Things
 			}
 		}
 
-		public override void CompPostTick(ref float severityAdjustment)
+		public virtual void CompPostTick(ref float severityAdjustment)
 		{
 			if (this.parent.ageTicks % 100 == 0)
 			{

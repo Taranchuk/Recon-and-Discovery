@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -10,10 +9,6 @@ namespace ReconAndDiscovery
 {
 	public class WorkGiver_TakeToOsirisCasket : WorkGiver_Scanner
 	{
-		public WorkGiver_TakeToOsirisCasket()
-		{
-		}
-
 		public override PathEndMode PathEndMode
 		{
 			get
@@ -26,7 +21,7 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-				return ThingRequest.ForGroup(ThingRequestGroup.Blueprint);
+				return ThingRequest.ForGroup(ThingRequestGroup.Corpse);
 			}
 		}
 
@@ -37,8 +32,8 @@ namespace ReconAndDiscovery
 			select def;
 			foreach (ThingDef singleDef in enumerable)
 			{
-				Predicate<Thing> validator = (Thing x) => !((Building_CryptosleepCasket)x).HasAnyContents && p.CanReserve(x, 1, -1, null, false);
-				Building_CryptosleepCasket building_CryptosleepCasket = (Building_CryptosleepCasket)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.ByPawn, false), 9999f, validator, null, 0, -1, false, RegionType.Set_Passable, false);
+				Predicate<Thing> predicate = (Thing x) => !((Building_CryptosleepCasket)x).HasAnyContents && ReservationUtility.CanReserve(p, x, 1, -1, null, false);
+				Building_CryptosleepCasket building_CryptosleepCasket = (Building_CryptosleepCasket)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.PassAnything, false), 9999f, predicate, null, 0, -1, false, 6, false);
 				if (building_CryptosleepCasket != null)
 				{
 					return building_CryptosleepCasket;
@@ -49,8 +44,8 @@ namespace ReconAndDiscovery
 			select def;
 			foreach (ThingDef singleDef2 in enumerable)
 			{
-				Predicate<Thing> validator2 = (Thing x) => !((Building_CryptosleepCasket)x).HasAnyContents && p.CanReserve(x, 1, -1, null, false);
-				Building_CryptosleepCasket building_CryptosleepCasket2 = (Building_CryptosleepCasket)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef2), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.ByPawn, false), 9999f, validator2, null, 0, -1, false, RegionType.Set_Passable, false);
+				Predicate<Thing> predicate2 = (Thing x) => !((Building_CryptosleepCasket)x).HasAnyContents && ReservationUtility.CanReserve(p, x, 1, -1, null, false);
+				Building_CryptosleepCasket building_CryptosleepCasket2 = (Building_CryptosleepCasket)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef2), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.PassAnything, false), 9999f, predicate2, null, 0, -1, false, 6, false);
 				if (building_CryptosleepCasket2 != null)
 				{
 					return building_CryptosleepCasket2;
@@ -59,7 +54,7 @@ namespace ReconAndDiscovery
 			return null;
 		}
 
-		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
+		public virtual Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			Corpse corpse = t as Corpse;
 			Job result;
@@ -101,47 +96,9 @@ namespace ReconAndDiscovery
 			return result;
 		}
 
-		public virtual bool ShouldSkip(Pawn pawn)
+		public override bool ShouldSkip(Pawn pawn)
 		{
-			return pawn.Map.listerThings.ThingsInGroup(ThingRequestGroup.Blueprint).Count == 0;
-		}
-
-		[CompilerGenerated]
-		private static bool <FindCasket>m__0(ThingDef def)
-		{
-			return typeof(OsirisCasket).IsAssignableFrom(def.thingClass);
-		}
-
-		[CompilerGenerated]
-		private static bool <FindCasket>m__1(ThingDef def)
-		{
-			return typeof(Building_CryptosleepCasket).IsAssignableFrom(def.thingClass);
-		}
-
-		[CompilerGenerated]
-		private static Func<ThingDef, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private static Func<ThingDef, bool> <>f__am$cache1;
-
-		[CompilerGenerated]
-		private sealed class <FindCasket>c__AnonStorey0
-		{
-			public <FindCasket>c__AnonStorey0()
-			{
-			}
-
-			internal bool <>m__0(Thing x)
-			{
-				return !((Building_CryptosleepCasket)x).HasAnyContents && this.p.CanReserve(x, 1, -1, null, false);
-			}
-
-			internal bool <>m__1(Thing x)
-			{
-				return !((Building_CryptosleepCasket)x).HasAnyContents && this.p.CanReserve(x, 1, -1, null, false);
-			}
-
-			internal Pawn p;
+			return pawn.Map.listerThings.ThingsInGroup(ThingRequestGroup.Corpse).Count == 0;
 		}
 	}
 }

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Threading;
 using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
@@ -14,10 +10,6 @@ namespace ReconAndDiscovery
 	[StaticConstructorOnStartup]
 	public class CompTeleporter : ThingComp
 	{
-		public CompTeleporter()
-		{
-		}
-
 		public bool ReadyToTransport
 		{
 			get
@@ -91,7 +83,7 @@ namespace ReconAndDiscovery
 			}
 			else if (!target.IsValid)
 			{
-				Messages.Message(Translator.Translate("MessageTransportPodsDestinationIsInvalid"), 2);
+				Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageSound.RejectInput);
 				result = false;
 			}
 			else
@@ -130,7 +122,7 @@ namespace ReconAndDiscovery
 				}
 				else
 				{
-					Messages.Message("You cannot lock onto anything there.", 2);
+					Messages.Message("You cannot lock onto anything there.", MessageSound.RejectInput);
 					result = false;
 				}
 			}
@@ -158,7 +150,7 @@ namespace ReconAndDiscovery
 			IntVec3 position2 = pawn.Position;
 			if (map2.roofGrid.Roofed(position2) && map2.roofGrid.RoofAt(position2) == RoofDefOf.RoofRockThick)
 			{
-				Messages.Message("Teleporter cannot lock on through the thick rock overhead!", 2);
+				Messages.Message("Teleporter cannot lock on through the thick rock overhead!", MessageSound.RejectInput);
 			}
 			else
 			{
@@ -192,143 +184,10 @@ namespace ReconAndDiscovery
 			return "Charge: " + this.fCharge.ToStringPercent();
 		}
 
-		// Note: this type is marked as 'beforefieldinit'.
-		static CompTeleporter()
-		{
-		}
-
-		[CompilerGenerated]
-		private void <TeleportCommand>m__0()
-		{
-			this.StartChoosingTarget();
-		}
-
 		private float fCharge = 0f;
 
 		private static readonly Texture2D TargeterMouseAttachment = ContentFinder<Texture2D>.Get("UI/TeleportMouseAttachment", true);
 
 		private static readonly Texture2D teleSym = ContentFinder<Texture2D>.Get("UI/TeleportSymbol", true);
-
-		[CompilerGenerated]
-		private sealed class <CompGetGizmosExtra>c__Iterator0 : IEnumerable, IEnumerable<Gizmo>, IEnumerator, IDisposable, IEnumerator<Gizmo>
-		{
-			[DebuggerHidden]
-			public <CompGetGizmosExtra>c__Iterator0()
-			{
-			}
-
-			public bool MoveNext()
-			{
-				uint num = (uint)this.$PC;
-				this.$PC = -1;
-				switch (num)
-				{
-				case 0U:
-					if (base.ReadyToTransport)
-					{
-						this.$current = base.TeleportCommand();
-						if (!this.$disposing)
-						{
-							this.$PC = 1;
-						}
-						return true;
-					}
-					break;
-				case 1U:
-					break;
-				default:
-					return false;
-				}
-				this.$PC = -1;
-				return false;
-			}
-
-			Gizmo IEnumerator<Gizmo>.Current
-			{
-				[DebuggerHidden]
-				get
-				{
-					return this.$current;
-				}
-			}
-
-			object IEnumerator.Current
-			{
-				[DebuggerHidden]
-				get
-				{
-					return this.$current;
-				}
-			}
-
-			[DebuggerHidden]
-			public void Dispose()
-			{
-				this.$disposing = true;
-				this.$PC = -1;
-			}
-
-			[DebuggerHidden]
-			public void Reset()
-			{
-				throw new NotSupportedException();
-			}
-
-			[DebuggerHidden]
-			IEnumerator IEnumerable.GetEnumerator()
-			{
-				return this.System.Collections.Generic.IEnumerable<Verse.Gizmo>.GetEnumerator();
-			}
-
-			[DebuggerHidden]
-			IEnumerator<Gizmo> IEnumerable<Gizmo>.GetEnumerator()
-			{
-				if (Interlocked.CompareExchange(ref this.$PC, 0, -2) == -2)
-				{
-					return this;
-				}
-				CompTeleporter.<CompGetGizmosExtra>c__Iterator0 <CompGetGizmosExtra>c__Iterator = new CompTeleporter.<CompGetGizmosExtra>c__Iterator0();
-				<CompGetGizmosExtra>c__Iterator.$this = this;
-				return <CompGetGizmosExtra>c__Iterator;
-			}
-
-			internal CompTeleporter $this;
-
-			internal Gizmo $current;
-
-			internal bool $disposing;
-
-			internal int $PC;
-		}
-
-		[CompilerGenerated]
-		private sealed class <ChoseWorldTarget>c__AnonStorey1
-		{
-			public <ChoseWorldTarget>c__AnonStorey1()
-			{
-			}
-
-			internal void <>m__0()
-			{
-				if (Find.Maps.Contains(this.myMap))
-				{
-					Current.Game.VisibleMap = this.myMap;
-				}
-			}
-
-			internal void <>m__1(LocalTargetInfo x)
-			{
-				if (this.$this.ReadyToTransport)
-				{
-					this.$this.TryTransport(x.ToGlobalTargetInfo(this.map));
-				}
-			}
-
-			internal Map myMap;
-
-			internal Map map;
-
-			internal CompTeleporter $this;
-		}
 	}
 }

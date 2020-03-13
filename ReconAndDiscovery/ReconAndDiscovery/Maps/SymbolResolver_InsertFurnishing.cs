@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class SymbolResolver_InsertFurnishing : SymbolResolver
 	{
-		public SymbolResolver_InsertFurnishing()
-		{
-		}
-
 		public override bool CanResolve(ResolveParams rp)
 		{
 			return base.CanResolve(rp);

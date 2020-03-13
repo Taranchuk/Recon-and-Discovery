@@ -8,20 +8,16 @@ namespace ReconAndDiscovery.Maps
 {
 	public class SitePartWorker_RadioactiveDust : SitePartWorker
 	{
-		public SitePartWorker_RadioactiveDust()
-		{
-		}
-
 		public override void PostMapGenerate(Map map)
 		{
 			base.PostMapGenerate(map);
-			List<Thing> list = map.listerThings.ThingsInGroup(ThingRequestGroup.FoodSource).ToList<Thing>();
+			List<Thing> list = map.listerThings.ThingsInGroup(ThingRequestGroup.Plant).ToList<Thing>();
 			foreach (Thing thing in list)
 			{
 				thing.Destroy(DestroyMode.Vanish);
 			}
-			GameCondition cond = GameConditionMaker.MakeCondition(GameConditionDef.Named("Radiation"), 3000000, 100);
-			map.gameConditionManager.RegisterCondition(cond);
+			GameCondition gameCondition = GameConditionMaker.MakeCondition(GameConditionDef.Named("Radiation"), 3000000, 100);
+			map.gameConditionManager.RegisterCondition(gameCondition);
 		}
 	}
 }

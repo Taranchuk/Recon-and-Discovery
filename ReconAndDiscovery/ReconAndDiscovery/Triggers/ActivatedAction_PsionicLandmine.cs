@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Triggers
 {
 	public class ActivatedAction_PsionicLandmine : ActivatedAction
 	{
-		public ActivatedAction_PsionicLandmine()
-		{
-		}
-
 		protected override void DisplayDialog(Pawn activatedBy, Map map, Thing trigger)
 		{
 			this.bestPsychic = PawnTalentUtility.FindBestPsychic(base.GetEffectArea(activatedBy.Position), map);
@@ -28,7 +24,7 @@ namespace ReconAndDiscovery.Triggers
 					diaNode3.text += string.Format(" {0} was able to channel the attack, preventing harm to others, but is now in psychic shock!", this.bestPsychic.NameStringShort);
 				}
 			}
-			DiaOption diaOption = new DiaOption(Translator.Translate("OK"));
+			DiaOption diaOption = new DiaOption("OK".Translate());
 			diaOption.resolveTree = true;
 			diaNode.options.Add(diaOption);
 			Find.WindowStack.Add(new Dialog_NodeTree(diaNode, true, true, null));
@@ -81,8 +77,8 @@ namespace ReconAndDiscovery.Triggers
 			if (actionTrigger != null)
 			{
 				IEnumerable<IntVec3> cells = actionTrigger.Cells;
-				IntVec3 intVec = cells.RandomElement<IntVec3>();
-				GenExplosion.DoExplosion(intVec, map, 2f, DamageDefOf.Flame, null, null, null, null, ThingDefOf.ChunkSlagSteel, 0.4f, 1, true, null, 0f, 1);
+				IntVec3 center = cells.RandomElement<IntVec3>();
+				GenExplosion.DoExplosion(center, map, 2f, DamageDefOf.Flame, null, null, null, null, ThingDefOf.ChunkSlagSteel, 0.4f, 1, true, null, 0f, 1);
 			}
 		}
 

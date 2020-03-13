@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -10,10 +9,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_OsirisCasket : IncidentWorker
 	{
-		public IncidentWorker_OsirisCasket()
-		{
-		}
-
 		protected override bool CanFireNowSub(IIncidentTarget target)
 		{
 			int num;
@@ -97,7 +92,7 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			bool result;
@@ -131,29 +126,6 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		// Note: this type is marked as 'beforefieldinit'.
-		static IncidentWorker_OsirisCasket()
-		{
-		}
-
-		[CompilerGenerated]
-		private static bool <CanFindPsychic>m__0(Pawn p)
-		{
-			return p.RaceProps.Humanlike && p.story.traits.DegreeOfTrait(TraitDef.Named("PsychicSensitivity")) > 0;
-		}
-
-		[CompilerGenerated]
-		private static bool <MakeSite>m__1(PowerNet net)
-		{
-			return net.hasPowerSource;
-		}
-
 		private static readonly IntRange TimeoutDaysRange = new IntRange(15, 25);
-
-		[CompilerGenerated]
-		private static Func<Pawn, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private static Func<PowerNet, bool> <>f__am$cache1;
 	}
 }

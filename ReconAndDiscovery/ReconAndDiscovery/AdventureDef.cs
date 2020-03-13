@@ -7,10 +7,6 @@ namespace ReconAndDiscovery
 {
 	public class AdventureDef : IncidentDef
 	{
-		public AdventureDef()
-		{
-		}
-
 		public EventDistanceType eventDistance = EventDistanceType.PLANETWIDE;
 
 		public MapGeneratorDef mapGenerator = null;

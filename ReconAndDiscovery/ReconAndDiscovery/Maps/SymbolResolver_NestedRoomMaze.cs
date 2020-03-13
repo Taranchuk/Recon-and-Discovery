@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class SymbolResolver_NestedRoomMaze : SymbolResolver
 	{
-		public SymbolResolver_NestedRoomMaze()
-		{
-		}
-
 		public override bool CanResolve(ResolveParams rp)
 		{
 			return base.CanResolve(rp);

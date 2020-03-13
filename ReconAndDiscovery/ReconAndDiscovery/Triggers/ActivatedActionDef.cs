@@ -6,10 +6,6 @@ namespace ReconAndDiscovery.Triggers
 {
 	public class ActivatedActionDef : Def
 	{
-		public ActivatedActionDef()
-		{
-		}
-
 		public ActivatedAction ActivatedAction
 		{
 			get

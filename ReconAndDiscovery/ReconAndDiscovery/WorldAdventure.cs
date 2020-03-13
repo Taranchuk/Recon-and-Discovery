@@ -5,8 +5,5 @@ namespace ReconAndDiscovery
 {
 	public class WorldAdventure : MapParent
 	{
-		public WorldAdventure()
-		{
-		}
 	}
 }

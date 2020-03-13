@@ -6,10 +6,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class SymbolResolver_TriangularRoom : SymbolResolver
 	{
-		public SymbolResolver_TriangularRoom()
-		{
-		}
-
 		public override bool CanResolve(ResolveParams rp)
 		{
 			return base.CanResolve(rp);

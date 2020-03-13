@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading;
 using ReconAndDiscovery.Maps;
 using RimWorld;
 using RimWorld.Planet;
@@ -17,10 +13,6 @@ namespace ReconAndDiscovery
 	[StaticConstructorOnStartup]
 	public class CompStargate : ThingComp
 	{
-		public CompStargate()
-		{
-		}
-
 		public Thing LinkedGate
 		{
 			get
@@ -58,7 +50,7 @@ namespace ReconAndDiscovery
 		public override void PostDestroy(DestroyMode mode, Map previousMap)
 		{
 			base.PostDestroy(mode, previousMap);
-			if (mode == DestroyMode.KillFinalize)
+			if (mode == DestroyMode.Deconstruct)
 			{
 				GenSpawn.Spawn(ThingDef.Named("ExoticMatter"), this.parent.Position, previousMap);
 			}
@@ -76,7 +68,7 @@ namespace ReconAndDiscovery
 					{
 						Job job = new Job(JobDefOfReconAndDiscovery.TravelThroughStargate, this.parent);
 						job.playerForced = true;
-						selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+						selPawn.jobs.TryTakeOrderedJob(job, JobTag.NoTag);
 					}
 				});
 			}
@@ -116,7 +108,7 @@ namespace ReconAndDiscovery
 			bool result;
 			if (!target.IsValid)
 			{
-				Messages.Message(Translator.Translate("MessageTransportPodsDestinationIsInvalid"), 2);
+				Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageSound.RejectInput);
 				result = false;
 			}
 			else
@@ -136,7 +128,7 @@ namespace ReconAndDiscovery
 						}
 						else
 						{
-							Messages.Message("There is no evidence of a stargate there.", 2);
+							Messages.Message("There is no evidence of a stargate there.", MessageSound.RejectInput);
 							result = false;
 						}
 					}
@@ -150,14 +142,14 @@ namespace ReconAndDiscovery
 						}
 						else
 						{
-							Messages.Message("There is no evidence of a stargate there.", 2);
+							Messages.Message("There is no evidence of a stargate there.", MessageSound.RejectInput);
 							result = false;
 						}
 					}
 				}
 				else
 				{
-					Messages.Message("There is no evidence of a stargate there.", 2);
+					Messages.Message("There is no evidence of a stargate there.", MessageSound.RejectInput);
 					result = false;
 				}
 			}
@@ -169,7 +161,7 @@ namespace ReconAndDiscovery
 			this.link = null;
 			this.linkedSite = null;
 			this.link = stargate;
-			Messages.Message("Stargate linked to destination.", 3);
+			Messages.Message("Stargate linked to destination.", MessageSound.Benefit);
 		}
 
 		public void MakeLink(Site stargateSite)
@@ -177,7 +169,7 @@ namespace ReconAndDiscovery
 			this.link = null;
 			this.linkedSite = null;
 			this.linkedSite = stargateSite;
-			Messages.Message("Stargate linked to destination.", 3);
+			Messages.Message("Stargate linked to destination.", MessageSound.Benefit);
 		}
 
 		public override void PostExposeData()
@@ -196,7 +188,7 @@ namespace ReconAndDiscovery
 			{
 				if (this.LinkedSite == null)
 				{
-					Messages.Message("Stargate is not linked to a destination!", 2);
+					Messages.Message("Stargate is not linked to a destination!", MessageSound.RejectInput);
 					result = false;
 				}
 				else if (this.LinkedSite.HasMap)
@@ -204,7 +196,7 @@ namespace ReconAndDiscovery
 					IEnumerable<Thing> source = this.LinkedSite.Map.listerThings.ThingsOfDef(ThingDef.Named("Stargate"));
 					if (source.Count<Thing>() == 0)
 					{
-						Messages.Message("Stargate is not linked to a destination!", 2);
+						Messages.Message("Stargate is not linked to a destination!", MessageSound.RejectInput);
 						result = false;
 					}
 					else
@@ -243,7 +235,7 @@ namespace ReconAndDiscovery
 			{
 				if (this.LinkedGate == null || !this.LinkedGate.Spawned || this.LinkedGate.Destroyed)
 				{
-					Messages.Message("The other gate has been buried! We cannot transit!", 2);
+					Messages.Message("The other gate has been buried! We cannot transit!", MessageSound.RejectInput);
 				}
 				else
 				{
@@ -265,144 +257,10 @@ namespace ReconAndDiscovery
 			}
 		}
 
-		// Note: this type is marked as 'beforefieldinit'.
-		static CompStargate()
-		{
-		}
-
-		[CompilerGenerated]
-		private void <LinkCommand>m__0()
-		{
-			this.StartChoosingTarget();
-		}
-
 		private Thing link;
 
 		private Site linkedSite;
 
 		private static readonly Texture2D teleSym = ContentFinder<Texture2D>.Get("UI/StargateSymbol", true);
-
-		[CompilerGenerated]
-		private sealed class <CompFloatMenuOptions>c__AnonStorey1
-		{
-			public <CompFloatMenuOptions>c__AnonStorey1()
-			{
-			}
-
-			internal void <>m__0()
-			{
-				Job job = new Job(JobDefOfReconAndDiscovery.TravelThroughStargate, this.$this.parent);
-				job.playerForced = true;
-				this.selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-			}
-
-			internal Pawn selPawn;
-
-			internal CompStargate $this;
-		}
-
-		[CompilerGenerated]
-		private sealed class <CompGetGizmosExtra>c__Iterator0 : IEnumerable, IEnumerable<Gizmo>, IEnumerator, IDisposable, IEnumerator<Gizmo>
-		{
-			[DebuggerHidden]
-			public <CompGetGizmosExtra>c__Iterator0()
-			{
-			}
-
-			public bool MoveNext()
-			{
-				uint num = (uint)this.$PC;
-				this.$PC = -1;
-				switch (num)
-				{
-				case 0U:
-					this.$current = base.LinkCommand();
-					if (!this.$disposing)
-					{
-						this.$PC = 1;
-					}
-					return true;
-				case 1U:
-					this.$PC = -1;
-					break;
-				}
-				return false;
-			}
-
-			Gizmo IEnumerator<Gizmo>.Current
-			{
-				[DebuggerHidden]
-				get
-				{
-					return this.$current;
-				}
-			}
-
-			object IEnumerator.Current
-			{
-				[DebuggerHidden]
-				get
-				{
-					return this.$current;
-				}
-			}
-
-			[DebuggerHidden]
-			public void Dispose()
-			{
-				this.$disposing = true;
-				this.$PC = -1;
-			}
-
-			[DebuggerHidden]
-			public void Reset()
-			{
-				throw new NotSupportedException();
-			}
-
-			[DebuggerHidden]
-			IEnumerator IEnumerable.GetEnumerator()
-			{
-				return this.System.Collections.Generic.IEnumerable<Verse.Gizmo>.GetEnumerator();
-			}
-
-			[DebuggerHidden]
-			IEnumerator<Gizmo> IEnumerable<Gizmo>.GetEnumerator()
-			{
-				if (Interlocked.CompareExchange(ref this.$PC, 0, -2) == -2)
-				{
-					return this;
-				}
-				CompStargate.<CompGetGizmosExtra>c__Iterator0 <CompGetGizmosExtra>c__Iterator = new CompStargate.<CompGetGizmosExtra>c__Iterator0();
-				<CompGetGizmosExtra>c__Iterator.$this = this;
-				return <CompGetGizmosExtra>c__Iterator;
-			}
-
-			internal CompStargate $this;
-
-			internal Gizmo $current;
-
-			internal bool $disposing;
-
-			internal int $PC;
-		}
-
-		[CompilerGenerated]
-		private sealed class <CheckSetupGateAndMap>c__AnonStorey2
-		{
-			public <CheckSetupGateAndMap>c__AnonStorey2()
-			{
-			}
-
-			internal void <>m__0()
-			{
-				SitePartWorker_Stargate.tmpPawnsToSpawn.AddRange(this.pawns);
-				Map orGenerateMap = GetOrGenerateMapUtility.GetOrGenerateMap(this.$this.LinkedSite.Tile, SiteCoreWorker.MapSize, null);
-			}
-
-			internal List<Pawn> pawns;
-
-			internal CompStargate $this;
-		}
 	}
 }

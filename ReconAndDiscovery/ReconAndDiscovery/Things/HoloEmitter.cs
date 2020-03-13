@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Verse;
 
 namespace ReconAndDiscovery.Things
@@ -90,20 +89,11 @@ namespace ReconAndDiscovery.Things
 			return result;
 		}
 
-		[CompilerGenerated]
-		private static bool <TickRare>m__0(Thing t)
-		{
-			return t is Corpse;
-		}
-
 		IThingHolder IThingHolder.get_ParentHolder()
 		{
 			return base.ParentHolder;
 		}
 
 		private ThingOwner innerContainer;
-
-		[CompilerGenerated]
-		private static Func<Thing, bool> <>f__am$cache0;
 	}
 }

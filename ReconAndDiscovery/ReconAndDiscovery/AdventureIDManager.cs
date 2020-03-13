@@ -4,8 +4,5 @@ namespace ReconAndDiscovery
 {
 	public class AdventureIDManager
 	{
-		public AdventureIDManager()
-		{
-		}
 	}
 }

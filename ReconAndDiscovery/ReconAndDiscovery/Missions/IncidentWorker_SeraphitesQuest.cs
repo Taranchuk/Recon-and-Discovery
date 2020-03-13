@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using ReconAndDiscovery.Maps;
 using RimWorld;
 using RimWorld.Planet;
@@ -11,10 +10,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_SeraphitesQuest : IncidentWorker
 	{
-		public IncidentWorker_SeraphitesQuest()
-		{
-		}
-
 		protected override bool CanFireNowSub(IIncidentTarget target)
 		{
 			int num;
@@ -121,7 +116,7 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			bool result;
@@ -161,14 +156,5 @@ namespace ReconAndDiscovery.Missions
 			}
 			return result;
 		}
-
-		[CompilerGenerated]
-		private static bool <CanFindVisitor>m__0(Pawn p)
-		{
-			return p.RaceProps.Humanlike && p.Faction != Faction.OfPlayer && p.Faction.PlayerGoodwill > 0f;
-		}
-
-		[CompilerGenerated]
-		private static Func<Pawn, bool> <>f__am$cache0;
 	}
 }

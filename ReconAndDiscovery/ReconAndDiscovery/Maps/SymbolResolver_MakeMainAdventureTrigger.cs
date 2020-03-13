@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using ReconAndDiscovery.Triggers;
 using RimWorld;
 using RimWorld.BaseGen;
@@ -11,10 +10,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class SymbolResolver_MakeMainAdventureTrigger : SymbolResolver
 	{
-		public SymbolResolver_MakeMainAdventureTrigger()
-		{
-		}
-
 		public override bool CanResolve(ResolveParams rp)
 		{
 			return base.CanResolve(rp);
@@ -45,8 +40,8 @@ namespace ReconAndDiscovery.Maps
 						{
 							actionTrigger.Cells.Add(item);
 						}
-						IntVec3 intVec = actionTrigger.Cells.RandomElement<IntVec3>();
-						GenSpawn.Spawn(actionTrigger, intVec, map);
+						IntVec3 loc = actionTrigger.Cells.RandomElement<IntVec3>();
+						GenSpawn.Spawn(actionTrigger, loc, map);
 					}
 				}
 				else
@@ -59,23 +54,5 @@ namespace ReconAndDiscovery.Maps
 				}
 			}
 		}
-
-		[CompilerGenerated]
-		private static bool <Resolve>m__0(Thing t)
-		{
-			return t is ActionTrigger;
-		}
-
-		[CompilerGenerated]
-		private static float <Resolve>m__1(Room r)
-		{
-			return 1f / r.GetStat(RoomStatDefOf.Space);
-		}
-
-		[CompilerGenerated]
-		private static Func<Thing, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private static Func<Room, float> <>f__am$cache1;
 	}
 }

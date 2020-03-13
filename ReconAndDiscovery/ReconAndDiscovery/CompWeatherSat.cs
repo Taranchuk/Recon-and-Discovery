@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using Verse;
 
@@ -10,10 +9,6 @@ namespace ReconAndDiscovery
 	[StaticConstructorOnStartup]
 	public class CompWeatherSat : ThingComp
 	{
-		public CompWeatherSat()
-		{
-		}
-
 		public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
 		{
 			List<FloatMenuOption> list = new List<FloatMenuOption>();
@@ -80,8 +75,8 @@ namespace ReconAndDiscovery
 						this.mana -= 40f;
 						if (source.Count<Pawn>() > 0)
 						{
-							GameCondition_TargetedStorm cond = (GameCondition_TargetedStorm)GameConditionMaker.MakeCondition(GameConditionDef.Named("TargetedStorm"), 12000, 1000);
-							map.gameConditionManager.RegisterCondition(cond);
+							GameCondition_TargetedStorm gameCondition_TargetedStorm = (GameCondition_TargetedStorm)GameConditionMaker.MakeCondition(GameConditionDef.Named("TargetedStorm"), 12000, 1000);
+							map.gameConditionManager.RegisterCondition(gameCondition_TargetedStorm);
 						}
 					}
 				});
@@ -100,69 +95,5 @@ namespace ReconAndDiscovery
 		}
 
 		public float mana = 0f;
-
-		[CompilerGenerated]
-		private sealed class <CompFloatMenuOptions>c__AnonStorey0
-		{
-			public <CompFloatMenuOptions>c__AnonStorey0()
-			{
-			}
-
-			internal void <>m__0()
-			{
-				this.$this.mana -= 10f;
-				this.map.weatherManager.TransitionTo(WeatherDefOf.Clear);
-				if (this.manager.ConditionIsActive(GameConditionDefOf.ColdSnap))
-				{
-					this.manager.ActiveConditions.Remove(this.manager.GetActiveCondition(GameConditionDefOf.ColdSnap));
-				}
-				if (this.manager.ConditionIsActive(GameConditionDefOf.Flashstorm))
-				{
-					this.manager.ActiveConditions.Remove(this.manager.GetActiveCondition(GameConditionDefOf.Flashstorm));
-				}
-				if (this.manager.ConditionIsActive(GameConditionDefOf.HeatWave))
-				{
-					this.manager.ActiveConditions.Remove(this.manager.GetActiveCondition(GameConditionDefOf.HeatWave));
-				}
-			}
-
-			internal void <>m__1()
-			{
-				this.$this.mana -= 15f;
-				this.map.weatherManager.TransitionTo(WeatherDef.Named("Rain"));
-			}
-
-			internal void <>m__2()
-			{
-				this.$this.mana -= 18f;
-				this.map.weatherManager.TransitionTo(WeatherDef.Named("Fog"));
-			}
-
-			internal void <>m__3()
-			{
-				IEnumerable<Pawn> source = from p in this.map.mapPawns.AllPawnsSpawned
-				where p.HostileTo(Faction.OfPlayer)
-				select p;
-				this.$this.mana -= 40f;
-				if (source.Count<Pawn>() > 0)
-				{
-					GameCondition_TargetedStorm cond = (GameCondition_TargetedStorm)GameConditionMaker.MakeCondition(GameConditionDef.Named("TargetedStorm"), 12000, 1000);
-					this.map.gameConditionManager.RegisterCondition(cond);
-				}
-			}
-
-			private static bool <>m__4(Pawn p)
-			{
-				return p.HostileTo(Faction.OfPlayer);
-			}
-
-			internal Map map;
-
-			internal GameConditionManager manager;
-
-			internal CompWeatherSat $this;
-
-			private static Func<Pawn, bool> <>f__am$cache0;
-		}
 	}
 }

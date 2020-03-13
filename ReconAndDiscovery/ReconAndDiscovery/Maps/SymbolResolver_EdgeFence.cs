@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class SymbolResolver_EdgeFence : SymbolResolver
 	{
-		public SymbolResolver_EdgeFence()
-		{
-		}
-
 		public override bool CanResolve(ResolveParams rp)
 		{
 			return base.CanResolve(rp);
@@ -25,14 +21,14 @@ namespace ReconAndDiscovery.Maps
 				rp.wallStuff = BaseGenUtility.RandomCheapWallStuff(Faction.OfPlayer, false);
 			}
 			int num = -1;
-			foreach (IntVec3 intVec in rect.EdgeCells)
+			foreach (IntVec3 loc in rect.EdgeCells)
 			{
 				num++;
 				if (num % 3 == 0)
 				{
 					ThingDef wall = ThingDefOf.Wall;
-					Thing thing = ThingMaker.MakeThing(wall, rp.wallStuff);
-					GenSpawn.Spawn(thing, intVec, map);
+					Thing newThing = ThingMaker.MakeThing(wall, rp.wallStuff);
+					GenSpawn.Spawn(newThing, loc, map);
 				}
 			}
 		}

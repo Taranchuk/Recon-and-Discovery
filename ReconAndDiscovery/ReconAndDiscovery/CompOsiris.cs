@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using ReconAndDiscovery.Things;
 using RimWorld;
 using Verse;
@@ -12,10 +11,6 @@ namespace ReconAndDiscovery
 	[StaticConstructorOnStartup]
 	public class CompOsiris : ThingComp
 	{
-		public CompOsiris()
-		{
-		}
-
 		public Building_Casket Casket
 		{
 			get
@@ -35,7 +30,7 @@ namespace ReconAndDiscovery
 		public override void PostDestroy(DestroyMode mode, Map previousMap)
 		{
 			base.PostDestroy(mode, previousMap);
-			if (mode == DestroyMode.KillFinalize)
+			if (mode == DestroyMode.Deconstruct)
 			{
 				GenSpawn.Spawn(ThingDef.Named("OsirisAI"), this.parent.Position, previousMap);
 			}
@@ -187,32 +182,13 @@ namespace ReconAndDiscovery
 			{
 				Job job = new Job(JobDefOfReconAndDiscovery.ActivateOsirisCasket, this.parent);
 				job.playerForced = true;
-				selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+				selPawn.jobs.TryTakeOrderedJob(job, JobTag.NoTag);
 			};
 			if (this.ReadyToHeal)
 			{
 				list.Add(floatMenuOption);
 			}
 			return list;
-		}
-
-		[CompilerGenerated]
-		private sealed class <CompFloatMenuOptions>c__AnonStorey0
-		{
-			public <CompFloatMenuOptions>c__AnonStorey0()
-			{
-			}
-
-			internal void <>m__0()
-			{
-				Job job = new Job(JobDefOfReconAndDiscovery.ActivateOsirisCasket, this.$this.parent);
-				job.playerForced = true;
-				this.selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-			}
-
-			internal Pawn selPawn;
-
-			internal CompOsiris $this;
 		}
 	}
 }

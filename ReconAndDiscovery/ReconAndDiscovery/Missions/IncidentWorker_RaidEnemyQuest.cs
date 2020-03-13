@@ -6,11 +6,7 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_RaidEnemyQuest : IncidentWorker_RaidEnemy
 	{
-		public IncidentWorker_RaidEnemyQuest()
-		{
-		}
-
-		public virtual bool TryExecute(IncidentParms parms)
+		public override bool TryExecute(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			bool result;

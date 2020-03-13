@@ -8,10 +8,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class SymbolResolver_AbandonedLab : SymbolResolver
 	{
-		public SymbolResolver_AbandonedLab()
-		{
-		}
-
 		public override bool CanResolve(ResolveParams rp)
 		{
 			return base.CanResolve(rp);

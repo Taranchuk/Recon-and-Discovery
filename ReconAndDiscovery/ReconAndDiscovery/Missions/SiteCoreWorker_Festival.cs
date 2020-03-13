@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -11,10 +10,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class SiteCoreWorker_Festival : SiteCoreWorker
 	{
-		public SiteCoreWorker_Festival()
-		{
-		}
-
 		public List<Faction> Factions
 		{
 			get
@@ -51,17 +46,17 @@ namespace ReconAndDiscovery.Missions
 			Log.Message(string.Format("Spawning pawns for {0}", parms.faction.Name));
 			PawnGroupMakerParms defaultPawnGroupMakerParms = IncidentParmsUtility.GetDefaultPawnGroupMakerParms(parms);
 			List<Pawn> list = PawnGroupMakerUtility.GeneratePawns(PawnGroupKindDefOf.Trader, defaultPawnGroupMakerParms, false).ToList<Pawn>();
-			foreach (Pawn pawn in list)
+			foreach (Pawn newThing in list)
 			{
-				IntVec3 intVec = CellFinder.RandomClosewalkCellNear(parms.spawnCenter, map, 5, null);
-				GenSpawn.Spawn(pawn, intVec, map);
+				IntVec3 loc = CellFinder.RandomClosewalkCellNear(parms.spawnCenter, map, 5, null);
+				GenSpawn.Spawn(newThing, loc, map);
 			}
 			return list;
 		}
 
 		private void MakeTradeCaravan(Faction faction, IntVec3 spot, Map map)
 		{
-			IncidentParms incidentParms = Find.Storyteller.storytellerComps[0].GenerateParms(4, map);
+			IncidentParms incidentParms = Find.Storyteller.storytellerComps[0].GenerateParms(IncidentCategory.OrbitalVisitor, map);
 			incidentParms.points = Mathf.Min(800f, incidentParms.points);
 			incidentParms.spawnCenter = spot;
 			incidentParms.faction = faction;
@@ -123,38 +118,8 @@ namespace ReconAndDiscovery.Missions
 			this.IncrementAllGoodwills();
 		}
 
-		[CompilerGenerated]
-		private bool <get_Factions>m__0(Faction f)
-		{
-			return f != Faction.OfPlayer && f.GoodwillWith(this.hostFaction) > 10f;
-		}
-
-		[CompilerGenerated]
-		private static bool <MakePartyGroups>m__1(Thing t)
-		{
-			return t.def.IsTable;
-		}
-
 		public Faction hostFaction;
 
 		private List<Faction> factions;
-
-		[CompilerGenerated]
-		private static Func<Thing, bool> <>f__am$cache0;
-
-		[CompilerGenerated]
-		private sealed class <MakeTradeCaravans>c__AnonStorey0
-		{
-			public <MakeTradeCaravans>c__AnonStorey0()
-			{
-			}
-
-			internal bool <>m__0(IntVec3 c)
-			{
-				return c.Standable(this.map);
-			}
-
-			internal Map map;
-		}
 	}
 }

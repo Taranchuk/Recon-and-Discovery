@@ -6,10 +6,6 @@ namespace ReconAndDiscovery
 {
 	public class CompMandatoryMilkable : CompHasGatherableBodyResource
 	{
-		public CompMandatoryMilkable()
-		{
-		}
-
 		public bool Overfull
 		{
 			get
@@ -91,7 +87,7 @@ namespace ReconAndDiscovery
 			{
 				if (Rand.Chance(2.5E-05f))
 				{
-					DamageInfo value = new DamageInfo(DamageDefOf.Bomb, 100, -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+					DamageInfo value = new DamageInfo(DamageDefOf.Bomb, 100, -1f, null, null, null, 0);
 					this.parent.Kill(new DamageInfo?(value));
 				}
 			}
@@ -106,7 +102,7 @@ namespace ReconAndDiscovery
 			}
 			else
 			{
-				string text = Translator.Translate("MilkFullness") + ": " + base.Fullness.ToStringPercent();
+				string text = "MilkFullness".Translate() + ": " + base.Fullness.ToStringPercent();
 				if ((double)this.ticksOverFull > 0.33 * (double)this.Props.ticksUntilDanger)
 				{
 					text += "\nOverfull!";

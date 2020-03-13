@@ -8,10 +8,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class QuestComp_CountThings : WorldObjectComp
 	{
-		public QuestComp_CountThings()
-		{
-		}
-
 		public bool Active
 		{
 			get

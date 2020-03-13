@@ -6,10 +6,6 @@ namespace ReconAndDiscovery.Maps
 {
 	public class SymbolResolver_OldMilitaryBase : SymbolResolver
 	{
-		public SymbolResolver_OldMilitaryBase()
-		{
-		}
-
 		public override bool CanResolve(ResolveParams rp)
 		{
 			return base.CanResolve(rp);

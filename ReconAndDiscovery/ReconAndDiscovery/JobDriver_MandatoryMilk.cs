@@ -6,11 +6,7 @@ namespace ReconAndDiscovery
 {
 	public class JobDriver_MandatoryMilk : JobDriver_GatherAnimalBodyResources
 	{
-		public JobDriver_MandatoryMilk()
-		{
-		}
-
-		protected override float WorkTotal
+		protected virtual float WorkTotal
 		{
 			get
 			{

@@ -7,10 +7,6 @@ namespace ReconAndDiscovery
 {
 	public class WorkGiver_PsychicPrayer : WorkGiver_Scanner
 	{
-		public WorkGiver_PsychicPrayer()
-		{
-		}
-
 		public override ThingRequest PotentialWorkThingRequest
 		{
 			get
@@ -32,7 +28,7 @@ namespace ReconAndDiscovery
 			return 0f;
 		}
 
-		public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
+		public virtual bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			bool result;
 			if (!(t is Building))
@@ -46,12 +42,12 @@ namespace ReconAndDiscovery
 			}
 			else
 			{
-				result = pawn.CanReserveAndReach(t, PathEndMode.Touch, Danger.Some, 1, -1, null, forced);
+				result = ReservationUtility.CanReserveAndReach(pawn, t, PathEndMode.Touch, Danger.Some, 1, -1, null, forced);
 			}
 			return result;
 		}
 
-		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
+		public virtual Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			return new Job(JobDefOfReconAndDiscovery.PsychicPrayer, t);
 		}

@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class QuestComp_DestroyThing : WorldObjectComp
 	{
-		public QuestComp_DestroyThing()
-		{
-		}
-
 		public Thing ThingToDestroy
 		{
 			get

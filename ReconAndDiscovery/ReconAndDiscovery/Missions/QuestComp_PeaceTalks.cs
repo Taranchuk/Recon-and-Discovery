@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -9,10 +8,6 @@ namespace ReconAndDiscovery.Missions
 {
 	public class QuestComp_PeaceTalks : WorldObjectComp
 	{
-		public QuestComp_PeaceTalks()
-		{
-		}
-
 		public Pawn Negotiator
 		{
 			get
@@ -95,33 +90,33 @@ namespace ReconAndDiscovery.Missions
 					text = "The flailing diplomatic \"strategy\" of {0} seemed chiefly to involve wild swings between aggression and panic, peppered liberally with lewd insults involving the negotiator for {1}'s antecedents. Your already strained relations have, understandably, worsened ({2} to relations).";
 					num = -5;
 					break;
-				case QualityCategory.Poor:
+				case QualityCategory.Shoddy:
 					text = "The chief negotiation tactic employed by {0} seemed to be staring bored at the wall. This did little to diffuse tensions and engender a feeling of respect ({2} to relations))";
 					num = -1;
 					break;
-				case QualityCategory.Normal:
+				case QualityCategory.Poor:
 					text = "{0}'s negotiation was plodding and confused. Though it was clearly well enough intentioned, it did little to address any concerns raised by {1}  ({2} to relations)).";
 					num = 2;
 					break;
+				case QualityCategory.Normal:
 				case QualityCategory.Good:
-				case QualityCategory.Excellent:
 					text = "{0}'s negotiation adequately dealt with some minor disputes you have with {1}. Your relations have improved by {2}.";
 					num = 8;
 					break;
-				case QualityCategory.Masterwork:
-				case QualityCategory.Legendary:
+				case QualityCategory.Superior:
+				case QualityCategory.Excellent:
 					text = "{0}'s easy, but unyielding manner dealt well with a number of the negotiator for {1}'s concerns. Your relations have improved by {2}";
 					num = 16;
 					break;
-				case (QualityCategory)7:
-				case (QualityCategory)8:
+				case QualityCategory.Masterwork:
+				case QualityCategory.Legendary:
 					text = "{0} made diplomacy look as easy as breathing, with an almost magical ability to make {1}'s negotiator see your perspective. Your relations have undergone a substantial improvement of {2}.";
 					num = 32;
 					break;
 				}
 				text = string.Format(text, playerNegotiator.NameStringShort, this.requestingFaction.Name, num);
 				DiaNode diaNode = new DiaNode(text);
-				DiaOption diaOption = new DiaOption(Translator.Translate("OK"));
+				DiaOption diaOption = new DiaOption("OK".Translate());
 				diaOption.resolveTree = true;
 				diaNode.options.Add(diaOption);
 				Dialog_NodeTree window = new Dialog_NodeTree(diaNode, false, false, null);
@@ -137,7 +132,7 @@ namespace ReconAndDiscovery.Missions
 			else
 			{
 				DiaNode diaNode2 = new DiaNode("Thje negotiations are a trap!");
-				DiaOption diaOption2 = new DiaOption(Translator.Translate("OK"));
+				DiaOption diaOption2 = new DiaOption("OK".Translate());
 				diaOption2.resolveTree = true;
 				diaNode2.options.Add(diaOption2);
 				Dialog_NodeTree window2 = new Dialog_NodeTree(diaNode2, false, false, null);
@@ -166,12 +161,6 @@ namespace ReconAndDiscovery.Missions
 		{
 			this.StopQuest();
 			base.PostPostRemove();
-		}
-
-		[CompilerGenerated]
-		private bool <get_Negotiator>m__0(Pawn p)
-		{
-			return p.Faction == this.requestingFaction;
 		}
 
 		private bool active;

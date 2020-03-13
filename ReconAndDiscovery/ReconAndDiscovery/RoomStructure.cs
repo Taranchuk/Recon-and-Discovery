@@ -7,10 +7,6 @@ namespace ReconAndDiscovery
 {
 	public class RoomStructure
 	{
-		public RoomStructure()
-		{
-		}
-
 		public void damage()
 		{
 			float value = Rand.Value;

@@ -7,10 +7,6 @@ namespace ReconAndDiscovery.Triggers
 {
 	public class ActionTrigger : Thing
 	{
-		public ActionTrigger()
-		{
-		}
-
 		public virtual ICollection<IntVec3> Cells
 		{
 			get

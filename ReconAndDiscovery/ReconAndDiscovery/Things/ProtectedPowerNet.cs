@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Harmony;
 using RimWorld;
 using Verse;
@@ -112,24 +111,10 @@ namespace ReconAndDiscovery.Things
 			}
 		}
 
-		// Note: this type is marked as 'beforefieldinit'.
-		static ProtectedPowerNet()
-		{
-		}
-
-		[CompilerGenerated]
-		private static bool <PrePowerTick>m__0(Thing thing)
-		{
-			return (thing as Building).GetComp<CompPowerTrader>().PowerOn;
-		}
-
 		private static List<CompPowerTrader> PartsWantingPowerOn = new List<CompPowerTrader>();
 
 		private static List<CompPowerTrader> PotentialPartsToShutDown = new List<CompPowerTrader>();
 
 		private static List<Thing> deflectors = new List<Thing>();
-
-		[CompilerGenerated]
-		private static Func<Thing, bool> <>f__am$cache0;
 	}
 }

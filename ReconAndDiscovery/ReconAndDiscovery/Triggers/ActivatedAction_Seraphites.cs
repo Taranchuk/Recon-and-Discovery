@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using RimWorld;
 using Verse;
 
@@ -8,10 +7,6 @@ namespace ReconAndDiscovery.Triggers
 {
 	public class ActivatedAction_Seraphites : ActivatedAction
 	{
-		public ActivatedAction_Seraphites()
-		{
-		}
-
 		public override bool TryAction(Pawn activatedBy, Map map, Thing trigger)
 		{
 			return base.TryAction(activatedBy, map, trigger);
@@ -66,7 +61,7 @@ namespace ReconAndDiscovery.Triggers
 						list.AddRange(map.listerThings.ThingsOfDef(ThingDef.Named("QuestComputerTerminal")));
 						foreach (Thing thing2 in list)
 						{
-							thing2.Destroy(DestroyMode.KillFinalize);
+							thing2.Destroy(DestroyMode.Deconstruct);
 						}
 					};
 				}
@@ -93,7 +88,7 @@ namespace ReconAndDiscovery.Triggers
 						list.AddRange(map.listerThings.ThingsOfDef(ThingDef.Named("QuestComputerTerminal")));
 						foreach (Thing thing2 in list)
 						{
-							thing2.Destroy(DestroyMode.KillFinalize);
+							thing2.Destroy(DestroyMode.Deconstruct);
 						}
 					};
 					diaOption3.link = new DiaNode("The mechanites in the cure have corrupted their programming and escaped their packaging!")
@@ -107,58 +102,6 @@ namespace ReconAndDiscovery.Triggers
 				diaNode.options.Add(diaOption3);
 			}
 			Find.WindowStack.Add(new Dialog_NodeTree(diaNode, true, false, null));
-		}
-
-		[CompilerGenerated]
-		private sealed class <DisplayDialog>c__AnonStorey0
-		{
-			public <DisplayDialog>c__AnonStorey0()
-			{
-			}
-
-			internal void <>m__0()
-			{
-				Thing thing = ThingMaker.MakeThing(ThingDefOfReconAndDiscovery.Seraphites, null);
-				thing.stackCount = Rand.RangeInclusive(1, 3);
-				GenSpawn.Spawn(thing, this.activatedBy.Position, this.map);
-				List<Thing> list = new List<Thing>();
-				list.AddRange(this.map.listerThings.ThingsOfDef(ThingDef.Named("QuestComputerTerminal")));
-				foreach (Thing thing2 in list)
-				{
-					thing2.Destroy(DestroyMode.KillFinalize);
-				}
-			}
-
-			internal void <>m__1()
-			{
-				foreach (IntVec3 c in this.$this.GetEffectArea(this.activatedBy.Position))
-				{
-					foreach (Thing thing in c.GetThingList(this.map))
-					{
-						if (Rand.Chance(0.9f) && thing.def.category == ThingCategory.Pawn && (thing as Pawn).RaceProps.Humanlike)
-						{
-							Pawn pawn = thing as Pawn;
-							if (pawn != null)
-							{
-								Hediff hediff = HediffMaker.MakeHediff(HediffDef.Named("FibrousMechanites"), pawn, null);
-								pawn.health.AddHediff(hediff, null, null);
-							}
-						}
-					}
-				}
-				List<Thing> list = new List<Thing>();
-				list.AddRange(this.map.listerThings.ThingsOfDef(ThingDef.Named("QuestComputerTerminal")));
-				foreach (Thing thing2 in list)
-				{
-					thing2.Destroy(DestroyMode.KillFinalize);
-				}
-			}
-
-			internal Pawn activatedBy;
-
-			internal Map map;
-
-			internal ActivatedAction_Seraphites $this;
 		}
 	}
 }
