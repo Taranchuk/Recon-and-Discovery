@@ -16,7 +16,7 @@ namespace ReconAndDiscovery
 			}
 			else
 			{
-				result = new Job(JobDefOf.WaitDowned);
+				result = new Job(JobDefOf.Wait_Downed);
 			}
 			return result;
 		}

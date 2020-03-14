@@ -78,7 +78,8 @@ namespace ReconAndDiscovery.Triggers
 			{
 				IEnumerable<IntVec3> cells = actionTrigger.Cells;
 				IntVec3 center = cells.RandomElement<IntVec3>();
-				GenExplosion.DoExplosion(center, map, 2f, DamageDefOf.Flame, null, null, null, null, ThingDefOf.ChunkSlagSteel, 0.4f, 1, true, null, 0f, 1);
+                //TODO: check if it works
+                GenExplosion.DoExplosion(center, map, 2f, DamageDefOf.Flame, null, -1, -1f, null, null, null, null, ThingDefOf.ChunkSlagSteel, 0.4f, 1, true, null, 0f, 1);
 			}
 		}
 

@@ -81,7 +81,7 @@ namespace ReconAndDiscovery.Missions
 		{
 			if (Rand.Chance(0.95f))
 			{
-				QualityCategory qualityCategory = QualityUtility.RandomCreationQuality(playerNegotiator.skills.GetSkill(SkillDefOf.Social).Level);
+                QualityCategory qualityCategory = QualityUtility.GenerateQualityCreatedByPawn(playerNegotiator.skills.GetSkill(SkillDefOf.Social).Level, false);
 				int num = 0;
 				string text = "";
 				switch (qualityCategory)
@@ -90,20 +90,15 @@ namespace ReconAndDiscovery.Missions
 					text = "The flailing diplomatic \"strategy\" of {0} seemed chiefly to involve wild swings between aggression and panic, peppered liberally with lewd insults involving the negotiator for {1}'s antecedents. Your already strained relations have, understandably, worsened ({2} to relations).";
 					num = -5;
 					break;
-				case QualityCategory.Shoddy:
+				case QualityCategory.Poor:
 					text = "The chief negotiation tactic employed by {0} seemed to be staring bored at the wall. This did little to diffuse tensions and engender a feeling of respect ({2} to relations))";
 					num = -1;
-					break;
-				case QualityCategory.Poor:
-					text = "{0}'s negotiation was plodding and confused. Though it was clearly well enough intentioned, it did little to address any concerns raised by {1}  ({2} to relations)).";
-					num = 2;
 					break;
 				case QualityCategory.Normal:
 				case QualityCategory.Good:
 					text = "{0}'s negotiation adequately dealt with some minor disputes you have with {1}. Your relations have improved by {2}.";
 					num = 8;
 					break;
-				case QualityCategory.Superior:
 				case QualityCategory.Excellent:
 					text = "{0}'s easy, but unyielding manner dealt well with a number of the negotiator for {1}'s concerns. Your relations have improved by {2}";
 					num = 16;

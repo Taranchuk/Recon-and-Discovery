@@ -51,7 +51,10 @@ namespace ReconAndDiscovery
 				Building firstBuilding = base.GetActor().Position.GetFirstBuilding(base.GetActor().Map);
 				if (firstBuilding is Building_Bed)
 				{
-					base.GetActor().jobs.curDriver.layingDown = 2;
+                    //TODO: check if it works
+                    JobMaker.MakeJob(JobDefOf.LayDown, firstBuilding);
+
+					//base.GetActor().jobs.curDriver.layingDown = 2;
 				}
 			};
 			toil.tickAction = delegate()

@@ -53,7 +53,8 @@ namespace ReconAndDiscovery
 				defaultCompleteMode = ToilCompleteMode.Instant,
 				initAction = delegate()
 				{
-					GenExplosion.DoExplosion(this.Casket.Position, this.Casket.Map, 50f, DamageDefOf.EMP, this.Casket, SoundDefOf.EnergyShieldBroken, null, null, null, 0f, 1, false, null, 0f, 1);
+                    GenExplosion.DoExplosion(this.Casket.Position, this.Casket.Map, 50f, DamageDefOf.EMP, this.Casket,
+                        -1, -1f, SoundDefOf.EnergyShield_Broken, null, null, null, null, 0f, 1, false, null, 0f, 1);
 					this.Casket.GetComp<CompOsiris>().HealContained();
 					this.Casket.Map.weatherManager.TransitionTo(WeatherDef.Named("Rain"));
 					IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(Find.Storyteller.def, IncidentCategory.AllyArrival, this.Casket.Map);

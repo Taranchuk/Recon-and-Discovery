@@ -75,7 +75,7 @@ namespace ReconAndDiscovery.Missions
 		{
 			int tile;
 			Site result;
-			if (!TileFinder.TryFindNewSiteTile(ref tile))
+			if (!TileFinder.TryFindNewSiteTile(out tile))
 			{
 				result = null;
 			}
@@ -84,7 +84,7 @@ namespace ReconAndDiscovery.Missions
 				Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
 				site.Tile = tile;
 				site.SetFaction(Faction.OfInsects);
-				site.core = SiteDefOfReconAndDiscovery.PsiMachine;
+				site.def = SiteDefOfReconAndDiscovery.PsiMachine;
 				site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_WarIdol);
 				if (Rand.Value < 0.15f)
 				{

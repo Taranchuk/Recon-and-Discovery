@@ -22,7 +22,7 @@ namespace ReconAndDiscovery
 			List<Trait> list = new List<Trait>();
 			foreach (Trait trait in pawn.story.traits.allTraits)
 			{
-				if (trait.def == TraitDefOf.Psychopath || trait.def == TraitDefOf.Cannibal || trait.def == TraitDefOf.Pyromaniac || trait.def == TraitDefOf.Prosthophobe)
+				if (trait.def == TraitDefOf.Psychopath || trait.def == TraitDefOf.Cannibal || trait.def == TraitDefOf.Pyromaniac)
 				{
 					list.Add(trait);
 				}

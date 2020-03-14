@@ -244,7 +244,7 @@ namespace ReconAndDiscovery.Maps
 				CompQuality compQuality = thing.TryGetComp<CompQuality>();
 				if (compQuality != null)
 				{
-					compQuality.SetQuality(QualityUtility.RandomCreationQuality(12), ArtGenerationContext.Outsider);
+					compQuality.SetQuality(QualityUtility.GenerateQualityCreatedByPawn(12, false), ArtGenerationContext.Outsider);
 				}
 				IntVec3 loc2;
 				if (thing != null && CellFinder.TryFindRandomCellInsideWith(within, (IntVec3 loc) => loc.Standable(map), out loc2))

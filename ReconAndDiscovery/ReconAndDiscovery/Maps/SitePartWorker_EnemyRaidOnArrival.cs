@@ -12,7 +12,7 @@ namespace ReconAndDiscovery.Maps
 			IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(Find.Storyteller.def, IncidentCategory.AllyArrival, map);
 			incidentParms.forced = true;
 			IntVec3 spawnCenter;
-			if (RCellFinder.TryFindRandomPawnEntryCell(ref spawnCenter, map, 0f, (IntVec3 v) => v.Standable(map)))
+			if (RCellFinder.TryFindRandomPawnEntryCell(out spawnCenter, map, 0f, (IntVec3 v) => v.Standable(map)))
 			{
 				incidentParms.spawnCenter = spawnCenter;
 			}

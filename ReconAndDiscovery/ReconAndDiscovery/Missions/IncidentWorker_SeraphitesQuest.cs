@@ -76,7 +76,7 @@ namespace ReconAndDiscovery.Missions
 		{
 			int tile;
 			Site result;
-			if (!TileFinder.TryFindNewSiteTile(ref tile))
+			if (!TileFinder.TryFindNewSiteTile(out tile))
 			{
 				result = null;
 			}
@@ -85,7 +85,7 @@ namespace ReconAndDiscovery.Missions
 				Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
 				site.Tile = tile;
 				site.SetFaction(Faction.OfInsects);
-				site.core = SiteDefOfReconAndDiscovery.SeraphitesQuest;
+				site.def = SiteDefOfReconAndDiscovery.SeraphitesQuest;
 				site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_Computer);
 				foreach (SitePartDef sitePartDef in site.parts)
 				{

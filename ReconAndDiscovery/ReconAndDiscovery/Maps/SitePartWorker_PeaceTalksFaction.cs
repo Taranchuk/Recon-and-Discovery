@@ -16,17 +16,18 @@ namespace ReconAndDiscovery.Maps
 			base.PostMapGenerate(map);
 			MapParent mapParent = Find.World.worldObjects.MapParentAt(map.Tile);
 			Faction faction = mapParent.Faction;
-			IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(Find.Storyteller.def, IncidentCategory.AllyArrival, map);
+            //TODO: check if it works
+			IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.FactionArrival, map);
 			incidentParms.points = Mathf.Max(incidentParms.points, 250f);
 			incidentParms.points *= 2f;
-			PawnGroupKindDef factionBase = PawnGroupKindDefOf.FactionBase;
 			PawnGroupMakerParms pawnGroupMakerParms = new PawnGroupMakerParms();
+			pawnGroupMakerParms.groupKind = PawnGroupKindDefOf.Settlement;
 			pawnGroupMakerParms.tile = map.Tile;
 			pawnGroupMakerParms.faction = faction;
 			pawnGroupMakerParms.points = incidentParms.points;
 			pawnGroupMakerParms.inhabitants = true;
 			List<Pawn> list = new List<Pawn>();
-			foreach (Pawn pawn in PawnGroupMakerUtility.GeneratePawns(factionBase, pawnGroupMakerParms, true))
+			foreach (Pawn pawn in PawnGroupMakerUtility.GeneratePawns(pawnGroupMakerParms, true))
 			{
 				IntVec3 loc;
 				CellFinder.TryFindRandomCellInsideWith(new CellRect(40, 40, map.Size.x - 80, map.Size.z - 80), (IntVec3 c) => c.Standable(map), out loc);

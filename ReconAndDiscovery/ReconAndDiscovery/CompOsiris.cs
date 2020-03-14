@@ -138,7 +138,7 @@ namespace ReconAndDiscovery
 
 		private static void FixPawnRelationships(Pawn p)
 		{
-			foreach (Pawn pawn in PawnsFinder.AllMapsCaravansAndTravelingTransportPods)
+            foreach (Pawn pawn in PawnsFinder.AllCaravansAndTravelingTransportPods_Alive)
 			{
 				if (pawn != p)
 				{

@@ -245,7 +245,7 @@ namespace ReconAndDiscovery.Missions
 				this.rewards.TryAdd(ThingMaker.MakeThing(thingDef, stuff), true);
 				text2 = "The survivors of the crash are amazed by your rapid and professional emergency medical response, thanks to which no-one died. In gratitude, they have included a special system removed form the wreck.";
 			}
-			Find.LetterStack.ReceiveLetter(text, text2, LetterDefOf.Good, null);
+			Find.LetterStack.ReceiveLetter(text, text2, LetterDefOf.PositiveEvent, null);
 			Map map = Find.AnyPlayerHomeMap ?? ((MapParent)this.parent).Map;
 			QuestComp_MedicalEmergency.tmpRewards.AddRange(this.rewards);
 			this.rewards.Clear();
