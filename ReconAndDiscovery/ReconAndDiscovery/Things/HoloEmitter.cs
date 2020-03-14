@@ -89,11 +89,6 @@ namespace ReconAndDiscovery.Things
 			return result;
 		}
 
-		IThingHolder IThingHolder.get_ParentHolder()
-		{
-			return base.ParentHolder;
-		}
-
 		private ThingOwner innerContainer;
 	}
 }

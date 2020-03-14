@@ -169,8 +169,8 @@ namespace ReconAndDiscovery.Missions
 							}
 						}
 					}
-					Messages.Message("MessageYouHaveToReformCaravanNow".Translate(), new GlobalTargetInfo(mapParent.Tile), MessageSound.Standard);
-					Current.Game.VisibleMap = mapParent.Map;
+					Messages.Message("MessageYouHaveToReformCaravanNow".Translate(), new GlobalTargetInfo(mapParent.Tile), MessageTypeDefOf.NeutralEvent);
+					Current.Game.CurrentMap = mapParent.Map;
 					Dialog_FormCaravan window = new Dialog_FormCaravan(mapParent.Map, true, delegate()
 					{
 						if (mapParent.HasMap)
@@ -184,11 +184,11 @@ namespace ReconAndDiscovery.Missions
 						Pawn pawn2 = list[i];
 						if (!pawn2.HostileTo(Faction.OfPlayer) && (pawn2.Faction == Faction.OfPlayer || pawn2.IsPrisonerOfColony))
 						{
-							Log.Message(pawn2.NameStringShort + " Meets criteria in CaravanUtility.");
+							Log.Message(pawn2.Label + " Meets criteria in CaravanUtility.");
 						}
 						else
 						{
-							Log.Message(pawn2.NameStringShort + " NOT ALLOWED by in CaravanUtility.");
+							Log.Message(pawn2.Label + " NOT ALLOWED by in CaravanUtility.");
 						}
 					}
 					Find.WindowStack.Add(window);
@@ -203,8 +203,11 @@ namespace ReconAndDiscovery.Missions
 					{
 						if (list2.Any((Pawn x) => CaravanUtility.IsOwner(x, Faction.OfPlayer)))
 						{
-							Caravan o = CaravanExitMapUtility.ExitMapAndCreateCaravan(list2, Faction.OfPlayer, mapParent.Tile);
-							Messages.Message("MessageAutomaticallyReformedCaravan".Translate(), o, MessageSound.Benefit);
+                            //TODO: check if it works
+                            CaravanExitMapUtility.ExitMapAndCreateCaravan(list2, Faction.OfPlayer,
+                                mapParent.Tile, mapParent.Tile, mapParent.Tile, false);
+							Messages.Message("MessageAutomaticallyReformedCaravan".Translate(),
+                                MessageTypeDefOf.PositiveEvent);
 						}
 						else
 						{
@@ -213,10 +216,11 @@ namespace ReconAndDiscovery.Missions
 							{
 								stringBuilder.AppendLine("    " + list2[j].LabelCap);
 							}
-							Find.LetterStack.ReceiveLetter("LetterLabelPawnsLostDueToMapCountdown".Translate(), "LetterPawnsLostDueToMapCountdown".Translate(new object[]
+                            Find.LetterStack.ReceiveLetter("LetterLabelPawnsLostDueToMapCountdown".Translate(), 
+                                "LetterPawnsLostDueToMapCountdown".Translate(new object[]
 							{
 								stringBuilder.ToString().TrimEndNewlines()
-							}), LetterDefOf.BadNonUrgent, new GlobalTargetInfo(mapParent.Tile), null);
+							}), LetterDefOf.ThreatSmall, new GlobalTargetInfo(mapParent.Tile), null);
 						}
 						list2.Clear();
 					}
@@ -313,10 +317,6 @@ namespace ReconAndDiscovery.Missions
 			this.rewards.ClearAndDestroyContents(DestroyMode.Vanish);
 		}
 
-		IThingHolder IThingHolder.get_ParentHolder()
-		{
-			return base.ParentHolder;
-		}
 
 		private static List<Thing> tmpRewards = new List<Thing>();
 

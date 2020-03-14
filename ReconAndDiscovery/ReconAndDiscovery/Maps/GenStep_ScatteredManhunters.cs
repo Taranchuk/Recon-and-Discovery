@@ -7,7 +7,14 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_ScatteredManhunters : GenStep
 	{
-		public override void Generate(Map map)
+        public override int SeedPart
+        {
+            get
+            {
+                return 349640110;
+            }
+        }
+        public override void Generate(Map map, GenStepParams parms)
 		{
 			float num = this.pointsRange.RandomInRange;
 			List<Pawn> list = new List<Pawn>();

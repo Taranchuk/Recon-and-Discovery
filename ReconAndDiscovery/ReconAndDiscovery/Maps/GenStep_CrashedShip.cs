@@ -7,9 +7,9 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_CrashedShip : GenStep_AdventureGenerator
 	{
-		public override void Generate(Map map)
+		public override void Generate(Map map, GenStepParams parms)
 		{
-			base.Generate(map);
+			base.Generate(map, parms);
 			CellRect rect = new CellRect(Rand.RangeInclusive(this.adventureRegion.minX, this.adventureRegion.maxX - 60), Rand.RangeInclusive(this.adventureRegion.minZ + 15, this.adventureRegion.maxZ - 15), 20, 20);
 			rect.ClipInsideMap(map);
 			ResolveParams baseResolveParams = this.baseResolveParams;

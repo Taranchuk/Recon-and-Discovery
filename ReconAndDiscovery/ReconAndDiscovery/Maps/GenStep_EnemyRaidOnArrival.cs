@@ -5,7 +5,14 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_EnemyRaidOnArrival : GenStep
 	{
-		public override void Generate(Map map)
+        public override int SeedPart
+        {
+            get
+            {
+                return 159641510;
+            }
+        }
+        public override void Generate(Map map, GenStepParams parms)
 		{
 		}
 	}

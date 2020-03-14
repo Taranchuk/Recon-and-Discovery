@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace ReconAndDiscovery.Missions
 {
-	public class SiteCoreWorker_MuffaloHerd : SiteCoreWorker
+	public class SiteCoreWorker_MuffaloHerd : Site
 	{
 		public void QueueFactionArrival(Faction faction, Map map)
 		{
-			IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(Find.Storyteller.def, IncidentCategory.AllyArrival, map);
+            //TODO: check if it works
+			IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.FactionArrival, map);
 			incidentParms.forced = true;
 			IntVec3 spawnCenter;
-			if (RCellFinder.TryFindRandomPawnEntryCell(ref spawnCenter, map, 0f, (IntVec3 v) => v.Standable(map)))
+			if (RCellFinder.TryFindRandomPawnEntryCell(out spawnCenter, map, 0f, false, (IntVec3 v) => v.Standable(map)))
 			{
 				incidentParms.spawnCenter = spawnCenter;
 			}
@@ -61,14 +63,15 @@ namespace ReconAndDiscovery.Missions
 			}
 		}
 
-		public override void PostMapGenerate(Map map)
+		public override void PostMapGenerate()
 		{
-			base.PostMapGenerate(map);
-			this.MakeMuffalo(map);
-			this.QueueArrivals(map);
+			base.PostMapGenerate();
+            
+			this.MakeMuffalo(this.Map);
+			this.QueueArrivals(this.Map);
 			if (Rand.Chance(0.05f))
 			{
-				IEnumerable<Pawn> source = from p in map.mapPawns.FreeColonistsSpawned
+				IEnumerable<Pawn> source = from p in this.Map.mapPawns.FreeColonistsSpawned
 				where p.story.traits.DegreeOfTrait(TraitDef.Named("PsychicSensitivity")) > 0
 				select p;
 				if (source.Count<Pawn>() > 0)
@@ -76,7 +79,8 @@ namespace ReconAndDiscovery.Missions
 					Pawn pawn = source.RandomElement<Pawn>();
 					Find.LetterStack.ReceiveLetter("Manhunter danger", string.Format("{0} believes that a malevolent psychic energy is massing, and that this peaceful herd of muffalo are on the brink of a mass insanity.", pawn.NameStringShort), LetterDefOf.BadNonUrgent, null);
 				}
-				IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(Find.Storyteller.def, IncidentCategory.AllyArrival, map);
+                //TODO: check if it works
+                IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.FactionArrival, this.Map);
 				incidentParms.forced = true;
 				incidentParms.points = 100f;
 				QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("MuffaloMassInsanity"), null, incidentParms), Find.TickManager.TicksGame + Rand.RangeInclusive(10000, 45000));

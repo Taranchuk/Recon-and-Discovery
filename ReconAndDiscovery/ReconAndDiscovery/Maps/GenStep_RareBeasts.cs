@@ -6,7 +6,14 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_RareBeasts : GenStep
 	{
-		public override void Generate(Map map)
+        public override int SeedPart
+        {
+            get
+            {
+                return 349231510;
+            }
+        }
+        public override void Generate(Map map, GenStepParams parms)
 		{
 			PawnKindDef pawnKindDef = ThingDefOfReconAndDiscovery.Devillo;
 			if (Rand.Chance(0.4f))

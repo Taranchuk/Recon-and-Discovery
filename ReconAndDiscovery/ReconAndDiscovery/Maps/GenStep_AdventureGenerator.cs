@@ -7,7 +7,15 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_AdventureGenerator : GenStep
 	{
-		public override void Generate(Map map)
+
+        public override int SeedPart
+        {
+            get
+            {
+                return 149641510;
+            }
+        }
+        public override void Generate(Map map, GenStepParams parms)
 		{
 			int minX = map.Size.x / 5;
 			int width = 3 * map.Size.x / 5;

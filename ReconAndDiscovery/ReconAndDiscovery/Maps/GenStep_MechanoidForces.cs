@@ -9,7 +9,14 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_MechanoidForces : GenStep
 	{
-		public override void Generate(Map map)
+        public override int SeedPart
+        {
+            get
+            {
+                return 339641510;
+            }
+        }
+        public override void Generate(Map map, GenStepParams parms)
 		{
 			IntVec3 intVec;
 			if (RCellFinder.TryFindRandomCellNearTheCenterOfTheMapWith((IntVec3 x) => x.Standable(map) && !x.Fogged(map) && GridsUtility.GetRoom(x, map, 6).CellCount >= 4, map, out intVec))

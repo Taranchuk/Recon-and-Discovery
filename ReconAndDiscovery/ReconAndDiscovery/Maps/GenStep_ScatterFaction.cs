@@ -9,7 +9,14 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_ScatterFaction : GenStep
 	{
-		public override void Generate(Map map)
+        public override int SeedPart
+        {
+            get
+            {
+                return 349640510;
+            }
+        }
+        public override void Generate(Map map, GenStepParams parms)
 		{
 		}
 

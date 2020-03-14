@@ -7,11 +7,11 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_OldCastle : GenStep_AdventureGenerator
 	{
-		public override void Generate(Map map)
+		public override void Generate(Map map, GenStepParams parms)
 		{
 			if (!map.TileInfo.WaterCovered)
 			{
-				base.Generate(map);
+				base.Generate(map, parms);
 				int num = Rand.RangeInclusive(55, 80);
 				int num2 = Rand.RangeInclusive(55, 80);
 				CellRect rect = new CellRect(Rand.RangeInclusive(this.adventureRegion.minX, this.adventureRegion.maxX - num), Rand.RangeInclusive(this.adventureRegion.minZ, this.adventureRegion.maxZ - num2), num, num2);

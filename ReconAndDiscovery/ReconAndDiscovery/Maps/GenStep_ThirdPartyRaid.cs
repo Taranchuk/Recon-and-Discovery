@@ -9,7 +9,14 @@ namespace ReconAndDiscovery.Maps
 {
 	public class GenStep_ThirdPartyRaid : GenStep
 	{
-		public override void Generate(Map map)
+        public override int SeedPart
+        {
+            get
+            {
+                return 341541510;
+            }
+        }
+        public override void Generate(Map map, GenStepParams parms)
 		{
 			if (!map.TileInfo.WaterCovered)
 			{
