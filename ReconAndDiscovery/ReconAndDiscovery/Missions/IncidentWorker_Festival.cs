@@ -18,11 +18,13 @@ namespace ReconAndDiscovery.Missions
 		private Site MakeSite()
 		{
 			int tile;
-			TileFinder.TryFindNewSiteTile(ref tile);
+			TileFinder.TryFindNewSiteTile(out tile);
 			Site site = (Site)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Site);
 			site.Tile = tile;
-			site.core = SiteDefOfReconAndDiscovery.Festival;
-			site.parts.Add(SitePartDefOf.Outpost);
+			site.def = SiteDefOfReconAndDiscovery.Festival;
+            // TODO: check if this works correctly
+            SitePart outpost = new SitePart(site, SitePartDefOf.Outpost, null);
+			site.parts.Add(outpost);
 			Find.WorldObjects.Add(site);
 			return site;
 		}
@@ -76,7 +78,7 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			bool result;
 			Faction faction;
@@ -102,8 +104,8 @@ namespace ReconAndDiscovery.Missions
 					site.SetFaction(faction);
 					int num = 8;
 					site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
-					base.SendStandardLetter(site, new string[]
-					{
+					base.SendStandardLetter(parms, site, , new NamedArgument[]
+                    {
 						faction.Name
 					});
 					result = true;

@@ -59,8 +59,11 @@ namespace ReconAndDiscovery.Missions
                 else
                 {
                 	site.def = WorldObjectDefOf.Site;
-                	//site.parts.Add(SitePartDefOf.Outpost);
-                	//site.parts.Add(SitePartDefOf.Turrets);
+                    // TODO: check if this works correctly
+                    SitePart outpost = new SitePart(site, SitePartDefOf.Outpost, null);
+                    site.parts.Add(outpost);
+                    SitePart turrets = new SitePart(site, SitePartDefOf.Turrets, null);
+                    site.parts.Add(outpost);
                 }
 
                 site.parts.Add(SiteDefOfReconAndDiscovery.Stargate);

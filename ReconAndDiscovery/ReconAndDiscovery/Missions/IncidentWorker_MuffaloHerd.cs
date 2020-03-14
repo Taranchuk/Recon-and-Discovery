@@ -15,7 +15,7 @@ namespace ReconAndDiscovery.Missions
 			return base.CanFireNowSub(parms) && TileFinder.TryFindNewSiteTile(out num);
 		}
 
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			int num = IncidentWorker_MuffaloHerd.TimeoutDaysRange.RandomInRange;
@@ -31,7 +31,7 @@ namespace ReconAndDiscovery.Missions
 				{
 					return false;
 				}
-				if (!TileFinder.TryFindNewSiteTile(ref num2))
+				if (!TileFinder.TryFindNewSiteTile(out num2))
 				{
 					return false;
 				}
@@ -70,12 +70,12 @@ namespace ReconAndDiscovery.Missions
 			{
 				site.Tile = num2;
 				site.SetFaction(Find.FactionManager.FirstFactionOfDef(FactionDefOf.Insect));
-				site.core = SiteDefOfReconAndDiscovery.MuffaloMigration;
+				site.def = SiteDefOfReconAndDiscovery.MuffaloMigration;
 				if (Rand.Value < 0.5f)
 				{
 					site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
 				}
-				Find.LetterStack.ReceiveLetter("Muffalo migration", text, LetterDefOf.Good, site, null);
+				Find.LetterStack.ReceiveLetter("Muffalo migration", text, LetterDefOf.PositiveEvent, site, null);
 				site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
 				Find.WorldObjects.Add(site);
 				result = true;
