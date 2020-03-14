@@ -17,7 +17,7 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-				return (Building)base.CurJob.GetTarget(TargetIndex.A).Thing;
+				return (Building)this.pawn.CurJob.GetTarget(TargetIndex.A).Thing;
 			}
 		}
 
@@ -28,8 +28,11 @@ namespace ReconAndDiscovery
 			QueuedIncident qi = new QueuedIncident(new FiringIncident(ThingDefOfReconAndDiscovery.DiscoveredStargate, null, incidentParms), Find.TickManager.TicksGame + 100);
 			Find.Storyteller.incidentQueue.Add(qi);
 		}
-
-		protected override IEnumerable<Toil> MakeNewToils()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
+        {
+            return this.pawn.Reserve(this.job.targetA, this.job, 1, -1, null, errorOnFailed);
+        }
+        protected override IEnumerable<Toil> MakeNewToils()
 		{
 			yield return Toils_Reserve.Reserve(TargetIndex.A, 1, -1, null);
 			yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);

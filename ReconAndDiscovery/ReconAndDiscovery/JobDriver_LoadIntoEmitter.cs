@@ -48,7 +48,7 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-				return base.CurJob.GetTarget(TargetIndex.A).Thing;
+				return this.pawn.CurJob.GetTarget(TargetIndex.A).Thing;
 			}
 		}
 
@@ -56,11 +56,15 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-				return (HoloEmitter)base.CurJob.GetTarget(TargetIndex.B).Thing;
+				return (HoloEmitter)this.pawn.CurJob.GetTarget(TargetIndex.B).Thing;
 			}
 		}
 
-		protected override IEnumerable<Toil> MakeNewToils()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
+        {
+            return this.pawn.Reserve(this.job.targetA, this.job, 1, -1, null, errorOnFailed);
+        }
+        protected override IEnumerable<Toil> MakeNewToils()
 		{
 			yield return Toils_Reserve.Reserve(TargetIndex.A, 1, -1, null);
 			yield return Toils_Reserve.Reserve(TargetIndex.B, 1, -1, null);

@@ -17,7 +17,7 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-				return (Pawn)base.CurJob.GetTarget(TargetIndex.A).Thing;
+				return (Pawn)this.pawn.CurJob.GetTarget(TargetIndex.A).Thing;
 			}
 		}
 
@@ -25,11 +25,15 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-				return (Building)base.CurJob.GetTarget(TargetIndex.B).Thing;
+				return (Building)this.pawn.CurJob.GetTarget(TargetIndex.B).Thing;
 			}
 		}
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
+        {
+            return this.pawn.Reserve(this.job.targetA, this.job, 1, -1, null, errorOnFailed);
+        }
 
-		protected override IEnumerable<Toil> MakeNewToils()
+        protected override IEnumerable<Toil> MakeNewToils()
 		{
 			yield return Toils_Reserve.Reserve(TargetIndex.A, 1, 1, null);
 			yield return Toils_Reserve.Reserve(TargetIndex.B, 1, 1, null);
