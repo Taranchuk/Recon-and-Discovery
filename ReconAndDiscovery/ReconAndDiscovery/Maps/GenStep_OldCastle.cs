@@ -26,7 +26,7 @@ namespace ReconAndDiscovery.Maps
 				}, map);
 				BaseGen.Generate();
 				MapGenUtility.ScatterWeaponsWhere(baseResolveParams.rect, Rand.RangeInclusive(7, 11), map, (ThingDef thing) => thing.weaponTags != null && thing.equipmentType == EquipmentType.Primary && !thing.destroyOnDrop && !thing.weaponTags.Contains("Gun"));
-				MapGenUtility.ResolveCustomGenSteps(map);
+				MapGenUtility.ResolveCustomGenSteps(map, parms);
 			}
 		}
 	}

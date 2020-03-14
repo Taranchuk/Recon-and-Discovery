@@ -14,11 +14,11 @@ namespace ReconAndDiscovery.Maps
 			MapGenUtility.customGenSteps.Add(step);
 		}
 
-		public static void ResolveCustomGenSteps(Map map)
+		public static void ResolveCustomGenSteps(Map map, GenStepParams parms)
 		{
 			foreach (GenStepDef genStepDef in MapGenUtility.customGenSteps)
 			{
-				genStepDef.genStep.Generate(map);
+				genStepDef.genStep.Generate(map, parms);
 			}
 			MapGenUtility.customGenSteps.Clear();
 		}

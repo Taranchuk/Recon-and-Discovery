@@ -57,7 +57,7 @@ namespace ReconAndDiscovery
                         -1, -1f, SoundDefOf.EnergyShield_Broken, null, null, null, null, 0f, 1, false, null, 0f, 1);
 					this.Casket.GetComp<CompOsiris>().HealContained();
 					this.Casket.Map.weatherManager.TransitionTo(WeatherDef.Named("Rain"));
-					IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(Find.Storyteller.def, IncidentCategory.AllyArrival, this.Casket.Map);
+					IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.FactionArrival, this.Casket.Map);
 					incidentParms.forced = true;
 					incidentParms.target = this.Casket.Map;
 					QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("ShortCircuit"), null, incidentParms), Find.TickManager.TicksGame + 1);

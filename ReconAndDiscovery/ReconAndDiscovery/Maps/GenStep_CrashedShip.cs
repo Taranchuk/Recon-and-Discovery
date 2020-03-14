@@ -20,7 +20,7 @@ namespace ReconAndDiscovery.Maps
 			{
 				wallStuff = ThingDefOf.Plasteel
 			}, map);
-			MapGenUtility.ResolveCustomGenSteps(map);
+			MapGenUtility.ResolveCustomGenSteps(map, parms);
 		}
 	}
 }

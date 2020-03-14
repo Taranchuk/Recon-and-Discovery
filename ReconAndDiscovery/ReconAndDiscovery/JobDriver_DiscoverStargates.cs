@@ -23,7 +23,7 @@ namespace ReconAndDiscovery
 
 		private void TriggerFindStargate()
 		{
-			IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(Find.Storyteller.def, IncidentCategory.ThreatBig, Find.World);
+			IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, Find.World);
 			incidentParms.forced = true;
 			QueuedIncident qi = new QueuedIncident(new FiringIncident(ThingDefOfReconAndDiscovery.DiscoveredStargate, null, incidentParms), Find.TickManager.TicksGame + 100);
 			Find.Storyteller.incidentQueue.Add(qi);

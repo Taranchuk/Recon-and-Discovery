@@ -59,7 +59,7 @@ namespace ReconAndDiscovery.Missions
 
 		private void MakeTradeCaravan(Faction faction, IntVec3 spot, Map map)
 		{
-			IncidentParms incidentParms = Find.Storyteller.storytellerComps[0].GenerateParms(IncidentCategory.OrbitalVisitor, map);
+			IncidentParms incidentParms = Find.Storyteller.storytellerComps[0].GenerateParms(IncidentCategoryDefOf.OrbitalVisitor, map);
 			incidentParms.points = Mathf.Min(800f, incidentParms.points);
 			incidentParms.spawnCenter = spot;
 			incidentParms.faction = faction;

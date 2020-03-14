@@ -9,10 +9,10 @@ namespace ReconAndDiscovery.Maps
 	{
 		public override void PostMapGenerate(Map map)
 		{
-			IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(Find.Storyteller.def, IncidentCategory.AllyArrival, map);
+			IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.FactionArrival, map);
 			incidentParms.forced = true;
 			IntVec3 spawnCenter;
-			if (RCellFinder.TryFindRandomPawnEntryCell(out spawnCenter, map, 0f, (IntVec3 v) => v.Standable(map)))
+			if (RCellFinder.TryFindRandomPawnEntryCell(out spawnCenter, map, 0f, false, (IntVec3 v) => v.Standable(map)))
 			{
 				incidentParms.spawnCenter = spawnCenter;
 			}
