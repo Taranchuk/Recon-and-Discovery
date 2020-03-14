@@ -84,7 +84,7 @@ namespace ReconAndDiscovery
 			return result;
 		}
 
-		public override bool ShouldSkip(Pawn pawn)
+        public override bool ShouldSkip(Pawn pawn, bool forced = false)
 		{
 			return pawn.Map.listerThings.ThingsInGroup(ThingRequestGroup.Corpse).Count == 0;
 		}

@@ -160,7 +160,7 @@ namespace ReconAndDiscovery
 
                 foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
                 {
-                    if (!this.IsProtectedAt(pawn.Position))
+                    if (!this.IsProtectedAt(map, pawn.Position))
                     {
                         float chance = 0.14f * pawn.GetStatValue(StatDefOf.ToxicSensitivity, true) / 60000f;
                         float chance2 = 0.04f * pawn.GetStatValue(StatDefOf.ToxicSensitivity, true) / 60000f;

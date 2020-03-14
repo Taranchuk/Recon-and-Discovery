@@ -29,16 +29,17 @@ namespace ReconAndDiscovery
 				}
 				else
 				{
-					this.ResolveRaidStrategy(parms);
+
+                    this.ResolveRaidStrategy(parms, PawnGroupKindDefOf.Combat);
 					this.ResolveRaidArriveMode(parms);
-					if (!this.ResolveRaidSpawnCenter(parms))
+                    if (!parms.raidArrivalMode.Worker.TryResolveRaidSpawnCenter(parms))
 					{
 						result = false;
 					}
 					else
 					{
-						PawnGroupMakerParms defaultPawnGroupMakerParms = IncidentParmsUtility.GetDefaultPawnGroupMakerParms(parms);
-						List<Pawn> list = PawnGroupMakerUtility.GeneratePawns(PawnGroupKindDefOf.Normal, defaultPawnGroupMakerParms, true).ToList<Pawn>();
+                        PawnGroupMakerParms defaultPawnGroupMakerParms = IncidentParmsUtility.GetDefaultPawnGroupMakerParms(PawnGroupKindDefOf.Combat, parms, true);
+						List<Pawn> list = PawnGroupMakerUtility.GeneratePawns(defaultPawnGroupMakerParms, true).ToList<Pawn>();
 						if (list.Count == 0)
 						{
 							Log.Error("Got no pawns spawning raid from parms " + parms);
@@ -50,11 +51,14 @@ namespace ReconAndDiscovery
 							foreach (Pawn pawn in list)
 							{
 								IntVec3 position = building.Position;
-								GenSpawn.Spawn(pawn, position, map, parms.spawnRotation, false);
+								GenSpawn.Spawn(pawn, position, map, parms.spawnRotation, WipeMode.Vanish, false);
 								target = pawn;
 							}
-							Lord lord = LordMaker.MakeNewLord(parms.faction, parms.raidStrategy.Worker.MakeLordJob(parms, map), map, list);
-							AvoidGridMaker.RegenerateAvoidGridsFor(parms.faction, map);
+                            // TODO: Check if these parameters are correct in this raid
+                            Lord lord = LordMaker.MakeNewLord(parms.faction, new LordJob_AssaultColony(parms.faction, true, true, false, false, true), map, list);
+                            
+                            // not sure what to write here instead
+                            AvoidGridMaker.RegenerateAvoidGridsFor(parms.faction, map);
 							LessonAutoActivator.TeachOpportunity(ConceptDefOf.EquippingWeapons, OpportunityType.Critical);
 							if (!PlayerKnowledgeDatabase.IsComplete(ConceptDefOf.ShieldBelts))
 							{
@@ -68,7 +72,7 @@ namespace ReconAndDiscovery
 									}
 								}
 							}
-							base.SendStandardLetter(target, new string[]
+							base.SendStandardLetter(parms, target, new NamedArgument[]
 							{
 								parms.faction.Name
 							});
