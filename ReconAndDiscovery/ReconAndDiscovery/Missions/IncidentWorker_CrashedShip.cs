@@ -17,15 +17,14 @@ namespace ReconAndDiscovery.Missions
 
 		public List<Thing> GenerateRewards()
 		{
-			ItemCollectionGeneratorParams itemCollectionGeneratorParams = default(ItemCollectionGeneratorParams);
-			itemCollectionGeneratorParams.count = 1;
-			itemCollectionGeneratorParams.totalMarketValue = Rand.Range(500f, 3000f);
-			itemCollectionGeneratorParams.techLevel = TechLevel.Spacer;
-			ItemCollectionGenerator itemCollectionGenerator = new ItemCollectionGenerator_RandomGeneralGoods();
-			return itemCollectionGenerator.Generate(itemCollectionGeneratorParams);
+            ThingSetMakerParams value = default(ThingSetMakerParams);
+            value.techLevel = TechLevel.Spacer;
+            value.countRange = new IntRange?(new IntRange(1, 1));
+            value.totalMarketValueRange = new FloatRange?(new FloatRange(500f, 3000f));
+            return ThingSetMakerDefOf.Reward_ItemsStandard.root.Generate(value);
 		}
 
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			bool result;
@@ -34,7 +33,7 @@ namespace ReconAndDiscovery.Missions
 			{
 				result = false;
 			}
-			else if (!TileFinder.TryFindNewSiteTile(ref tile))
+			else if (!TileFinder.TryFindNewSiteTile(out tile))
 			{
 				result = false;
 			}
@@ -76,8 +75,9 @@ namespace ReconAndDiscovery.Missions
 						site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
 					}
 					site.Tile = tile;
-					site.SetFaction(Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer));
-					site.core = SiteDefOfReconAndDiscovery.CrashedShip;
+                    Faction faction = Find.FactionManager.RandomEnemyFaction(true, false, true, TechLevel.Spacer);
+                    site.SetFaction(faction);
+					site.def = SiteDefOfReconAndDiscovery.CrashedShip;
 					if (flag3)
 					{
 						site.parts.Add(SiteDefOfReconAndDiscovery.MedicalEmergency);
@@ -113,11 +113,11 @@ namespace ReconAndDiscovery.Missions
 					Find.WorldObjects.Add(site);
 					if (flag2)
 					{
-						base.SendStandardLetter(site, new string[0]);
+						base.SendStandardLetter(parms, site);
 					}
 					else
 					{
-						Find.LetterStack.ReceiveLetter("Shooting star", string.Format("{0} just saw something fall from the sky near here!", pawn.NameStringShort), LetterDefOf.Good, site, null);
+						Find.LetterStack.ReceiveLetter("Shooting star", string.Format("{0} just saw something fall from the sky near here!", pawn.Label), LetterDefOf.PositiveEvent, site, null);
 					}
 					result = true;
 				}

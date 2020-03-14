@@ -1,5 +1,6 @@
 ﻿using System;
 using RimWorld;
+using RimWorld.Planet;
 
 namespace ReconAndDiscovery
 {
@@ -26,35 +27,35 @@ namespace ReconAndDiscovery
 
 		public static SiteCoreDef MuffaloMigration;
 
-		public static SitePartDef ScatteredTreasure;
+		public static SitePart ScatteredTreasure;
 
-		public static SitePartDef ScatteredManhunters;
+		public static SitePart ScatteredManhunters;
 
-		public static SitePartDef MechanoidForces;
+		public static SitePart MechanoidForces;
 
-		public static SitePartDef EnemyRaidOnArrival;
+		public static SitePart EnemyRaidOnArrival;
 
-		public static SitePartDef MedicalEmergency;
+		public static SitePart MedicalEmergency;
 
-		public static SitePartDef RareBeasts;
+		public static SitePart RareBeasts;
 
-		public static SitePartDef SitePart_Computer;
+		public static SitePart SitePart_Computer;
 
-		public static SitePartDef OsirisCasket;
+		public static SitePart OsirisCasket;
 
-		public static SitePartDef HoloDisk;
+		public static SitePart HoloDisk;
 
-		public static SitePartDef PeaceTalksFaction;
+		public static SitePart PeaceTalksFaction;
 
-		public static SitePartDef Stargate;
+		public static SitePart Stargate;
 
-		public static SitePartDef WeatherSat;
+		public static SitePart WeatherSat;
 
-		public static SitePartDef SitePart_WarIdol;
+		public static SitePart SitePart_WarIdol;
 
-		public static SitePartDef SitePart_FaultyGenerator;
+		public static SitePart SitePart_FaultyGenerator;
 
-		public static SitePartDef SitePart_RadioactiveDust;
+		public static SitePart SitePart_RadioactiveDust;
 
 		public static WorldObjectDef Adventure;
 

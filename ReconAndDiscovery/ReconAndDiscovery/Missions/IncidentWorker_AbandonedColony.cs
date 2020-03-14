@@ -18,15 +18,9 @@ namespace ReconAndDiscovery.Missions
 			TileFinder.TryFindPassableTileWithTraversalDistance(c.Tile, 1, 2, out tile, (int t) => !Find.WorldObjects.AnyMapParentAt(t), false);
 			Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
 			site.Tile = tile;
-            foreach (var faction in Find.FactionManager.AllFactions)
-            {
-                if (faction.def.techLevel == TechLevel.Spacer)
-                {
-			        site.SetFaction(faction);
-                    break;
-                }
-            }
-			site.core = SiteDefOfReconAndDiscovery.AbandonedColony;
+            Faction faction = Find.FactionManager.RandomEnemyFaction(true, false, true, TechLevel.Spacer);
+            site.SetFaction(faction);
+            site.def = SiteDefOfReconAndDiscovery.AbandonedColony;
 			site.parts.Add(SiteDefOfReconAndDiscovery.HoloDisk);
 			if (Rand.Value < 0.3f)
 			{
@@ -44,7 +38,7 @@ namespace ReconAndDiscovery.Missions
 			return site;
 		}
 
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Caravan caravan = parms.target as Caravan;
 			bool result;
@@ -61,7 +55,7 @@ namespace ReconAndDiscovery.Missions
 				}
 				else
 				{
-					base.SendStandardLetter(site, new string[0]);
+					base.SendStandardLetter(parms, caravan);
 					result = true;
 				}
 			}
