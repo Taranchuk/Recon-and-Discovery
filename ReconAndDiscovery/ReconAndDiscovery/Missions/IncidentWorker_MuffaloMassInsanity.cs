@@ -18,7 +18,7 @@ namespace ReconAndDiscovery.Missions
 			return base.CanFireNow(parms);
 		}
 
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			bool result;
@@ -48,8 +48,8 @@ namespace ReconAndDiscovery.Missions
 					{
 						animalDef.label
 					});
-					Find.LetterStack.ReceiveLetter(text, text2, LetterDefOf.BadUrgent, null);
-					if (map == Find.VisibleMap)
+					Find.LetterStack.ReceiveLetter(text, text2, LetterDefOf.NegativeEvent, null);
+					if (map == Find.CurrentMap)
 					{
 						Find.CameraDriver.shaker.DoShake(1f);
 					}

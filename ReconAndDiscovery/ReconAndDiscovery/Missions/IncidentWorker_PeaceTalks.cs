@@ -21,7 +21,7 @@ namespace ReconAndDiscovery.Missions
 			TileFinder.TryFindNewSiteTile(out tile);
 			Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventurePeaceTalks);
 			site.Tile = tile;
-			site.core = SiteDefOfReconAndDiscovery.PeaceTalks;
+			site.def = SiteDefOfReconAndDiscovery.PeaceTalks;
 			Find.WorldObjects.Add(site);
 			return site;
 		}
@@ -50,7 +50,7 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			bool result;
 			Faction faction;
@@ -78,9 +78,9 @@ namespace ReconAndDiscovery.Missions
 					site.GetComponent<QuestComp_PeaceTalks>().StartQuest(faction);
 					int num = 5;
 					site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
-					base.SendStandardLetter(site, new string[]
+					base.SendStandardLetter(parms, site, new NamedArgument[]
 					{
-						faction.leader.NameStringShort,
+						faction.leader.Label,
 						faction.Name,
 						num.ToString()
 					});

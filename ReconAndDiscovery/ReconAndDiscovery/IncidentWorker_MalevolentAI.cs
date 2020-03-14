@@ -8,7 +8,7 @@ namespace ReconAndDiscovery
 {
 	public class IncidentWorker_MalevolentAI : IncidentWorker
 	{
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = (Map)parms.target;
 			bool result;
@@ -18,9 +18,11 @@ namespace ReconAndDiscovery
 			}
 			else
 			{
-				IEnumerable<Pawn> source = from p in map.mapPawns.AllPawnsSpawned
-				where p.Faction.HostileTo(Faction.OfPlayer) && GenHostility.IsActiveThreat(p)
-				select p;
+                IEnumerable<Pawn> source = from p in map.mapPawns.AllPawnsSpawned
+				where p.Faction.HostileTo(Faction.OfPlayer) 
+                && GenHostility.IsActiveThreatTo(p, Faction.OfPlayer)
+                select p;
+
 				if (source.Count<Pawn>() == 0)
 				{
 					result = false;
@@ -41,7 +43,7 @@ namespace ReconAndDiscovery
 						{
 							building.SetFaction(pawn.Faction, null);
 						}
-						base.SendStandardLetter(list.FirstOrDefault<Building>(), new string[]
+						base.SendStandardLetter(parms, list.FirstOrDefault<Building>(), new NamedArgument[]
 						{
 							pawn.Faction.Name
 						});

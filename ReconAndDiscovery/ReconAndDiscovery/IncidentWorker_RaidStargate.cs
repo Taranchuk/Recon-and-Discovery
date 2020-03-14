@@ -10,7 +10,7 @@ namespace ReconAndDiscovery
 {
 	public class IncidentWorker_RaidStargate : IncidentWorker_RaidEnemy
 	{
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = (Map)parms.target;
 			IEnumerable<Building> source = map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("Stargate"));

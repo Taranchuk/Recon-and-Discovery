@@ -44,7 +44,7 @@ namespace ReconAndDiscovery.Missions
 		{
 			int tile;
 			Site result;
-			if (!TileFinder.TryFindNewSiteTile(ref tile))
+			if (!TileFinder.TryFindNewSiteTile(out tile))
 			{
 				result = null;
 			}
@@ -53,7 +53,7 @@ namespace ReconAndDiscovery.Missions
 				Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
 				site.Tile = tile;
 				site.SetFaction(Faction.OfInsects);
-				site.core = SiteDefOfReconAndDiscovery.AbandonedCastle;
+				site.def = SiteDefOfReconAndDiscovery.AbandonedCastle;
 				IEnumerable<PowerNet> source = from net in map.powerNetManager.AllNetsListForReading
 				where net.hasPowerSource
 				select net;
@@ -92,7 +92,7 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			bool result;
@@ -114,7 +114,7 @@ namespace ReconAndDiscovery.Missions
 					{
 						QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("PsychicDrone"), null, parms), Find.TickManager.TicksGame + 1);
 						Find.Storyteller.incidentQueue.Add(qi);
-						Find.LetterStack.ReceiveLetter("Psychic message", string.Format("{0} has received visions accompanying the drone, showing a battle and crying out for help. Others must have noticed, so the site will probably be dangerous.", pawn.NameStringShort), LetterDefOf.Good, null);
+						Find.LetterStack.ReceiveLetter("Psychic message", string.Format("{0} has received visions accompanying the drone, showing a battle and crying out for help. Others must have noticed, so the site will probably be dangerous.", pawn.Label), LetterDefOf.PositiveEvent, null);
 						result = true;
 					}
 				}

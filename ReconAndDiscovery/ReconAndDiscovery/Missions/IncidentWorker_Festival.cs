@@ -104,7 +104,7 @@ namespace ReconAndDiscovery.Missions
 					site.SetFaction(faction);
 					int num = 8;
 					site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
-					base.SendStandardLetter(parms, site, , new NamedArgument[]
+					base.SendStandardLetter(parms, site, new NamedArgument[]
                     {
 						faction.Name
 					});

@@ -20,7 +20,7 @@ namespace ReconAndDiscovery.Missions
 			TileFinder.TryFindNewSiteTile(out tile);
 			Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventureThingCounter);
 			site.Tile = tile;
-			site.core = SiteDefOfReconAndDiscovery.SiteRadiationQuest;
+			site.def = SiteDefOfReconAndDiscovery.SiteRadiationQuest;
 			site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_RadioactiveDust);
 			QuestComp_CountThings component = site.GetComponent<QuestComp_CountThings>();
 			component.targetNumber = 200;
@@ -49,7 +49,7 @@ namespace ReconAndDiscovery.Missions
 			return site;
 		}
 
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			bool result;
@@ -58,7 +58,7 @@ namespace ReconAndDiscovery.Missions
 				result = false;
 			}
 			else if ((from wo in Find.WorldObjects.AllWorldObjects
-			where wo is Site && (wo as Site).core == SiteDefOfReconAndDiscovery.QuakesQuest
+			where wo is Site && (wo as Site).def == SiteDefOfReconAndDiscovery.QuakesQuest
 			select wo).Count<WorldObject>() > 0)
 			{
 				result = false;
@@ -77,10 +77,10 @@ namespace ReconAndDiscovery.Missions
 				else
 				{
 					int num = 30;
-					GameCondition gameCondition = GameConditionMaker.MakeCondition(GameConditionDef.Named("Radiation"), 60000 * num, 100);
+					GameCondition gameCondition = GameConditionMaker.MakeCondition(GameConditionDef.Named("Radiation"), 60000 * num);
 					map.gameConditionManager.RegisterCondition(gameCondition);
 					site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
-					base.SendStandardLetter(site, new string[0]);
+					base.SendStandardLetter(parms, site);
 					result = true;
 				}
 			}
