@@ -38,27 +38,32 @@ namespace ReconAndDiscovery.Missions
 				float value = Rand.Value;
 				if ((double)value < 0.2)
 				{
-					site.core = SiteDefOfReconAndDiscovery.AbandonedCastle;
+					site.def = SiteDefOfReconAndDiscovery.AbandonedCastle;
 				}
 				else if ((double)value < 0.4)
 				{
-					site.core = SiteDefOfReconAndDiscovery.AbandonedColony;
+					site.def = SiteDefOfReconAndDiscovery.AbandonedColony;
 				}
-				else if ((double)value < 0.6)
-				{
-					site.core = SiteCoreDefOf.PreciousLump;
-				}
-				else if ((double)value < 0.8)
-				{
-					site.core = SiteCoreDefOf.ItemStash;
-				}
-				else
-				{
-					site.core = SiteCoreDefOf.Nothing;
-					site.parts.Add(SitePartDefOf.Outpost);
-					site.parts.Add(SitePartDefOf.Turrets);
-				}
-				site.parts.Add(SiteDefOfReconAndDiscovery.Stargate);
+
+                // TODO: figure out how to convert this to 1.1 code
+
+                //else if ((double)value < 0.6)
+                //{
+                //	site.def = WorldObjectDefOf.PreciousLump;
+                //}
+                //else if ((double)value < 0.8)
+                //{
+                //	site.def = WorldObjectDefOf.ItemStash;
+                //}
+
+                else
+                {
+                	site.def = WorldObjectDefOf.Site;
+                	//site.parts.Add(SitePartDefOf.Outpost);
+                	//site.parts.Add(SitePartDefOf.Turrets);
+                }
+
+                site.parts.Add(SiteDefOfReconAndDiscovery.Stargate);
 				if (Rand.Value < 0.2f)
 				{
 					site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
@@ -74,7 +79,7 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Site site = this.MakeSite(10);
 			bool result;
@@ -84,7 +89,7 @@ namespace ReconAndDiscovery.Missions
 			}
 			else
 			{
-				base.SendStandardLetter(site, new string[0]);
+				base.SendStandardLetter(parms, site);
 				result = true;
 			}
 			return result;

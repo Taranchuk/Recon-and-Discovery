@@ -7,25 +7,6 @@ namespace ReconAndDiscovery
 	[DefOf]
 	public static class SiteDefOfReconAndDiscovery
 	{
-		public static SiteCoreDef CrashedShip;
-
-		public static SiteCoreDef SeraphitesQuest;
-
-		public static SiteCoreDef AbandonedCastle;
-
-		public static SiteCoreDef AbandonedColony;
-
-		public static SiteCoreDef PeaceTalks;
-
-		public static SiteCoreDef PsiMachine;
-
-		public static SiteCoreDef QuakesQuest;
-
-		public static SiteCoreDef SiteRadiationQuest;
-
-		public static SiteCoreDef Festival;
-
-		public static SiteCoreDef MuffaloMigration;
 
 		public static SitePart ScatteredTreasure;
 
@@ -66,5 +47,26 @@ namespace ReconAndDiscovery
 		public static WorldObjectDef AdventureDestroyThing;
 
 		public static WorldObjectDef AdventureThingCounter;
-	}
+
+
+        public static WorldObjectDef CrashedShip;
+
+        public static WorldObjectDef SeraphitesQuest;
+
+        public static WorldObjectDef AbandonedCastle;
+
+        public static WorldObjectDef AbandonedColony;
+
+        public static WorldObjectDef PeaceTalks;
+
+        public static WorldObjectDef PsiMachine;
+
+        public static WorldObjectDef QuakesQuest;
+
+        public static WorldObjectDef SiteRadiationQuest;
+
+        public static WorldObjectDef Festival;
+
+        public static WorldObjectDef MuffaloMigration;
+    }
 }
