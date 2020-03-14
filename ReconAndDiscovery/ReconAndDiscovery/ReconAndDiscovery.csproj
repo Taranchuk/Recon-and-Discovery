@@ -40,7 +40,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="HugsLib">
-      <HintPath>D:\GAMES\RimWorld1-1-2559Win64\Mods\HugsLib\v1.1\Assemblies\HugsLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\GAMES\RimWorld\Mods\HugsLib\v1.1\Assemblies\HugsLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />

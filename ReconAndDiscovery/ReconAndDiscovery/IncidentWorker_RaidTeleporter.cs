@@ -9,7 +9,7 @@ namespace ReconAndDiscovery
 {
 	public class IncidentWorker_RaidTeleporter : IncidentWorker_RaidEnemy
 	{
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = (Map)parms.target;
 			IEnumerable<Pawn> source = from p in map.mapPawns.AllPawnsSpawned
@@ -41,7 +41,7 @@ namespace ReconAndDiscovery
 						list.Add(pawn);
 						p2.GetLord().AddPawn(pawn);
 					}
-					base.SendStandardLetter(list.FirstOrDefault<Pawn>(), new string[0]);
+					base.SendStandardLetter(parms, list.FirstOrDefault<Pawn>());
 					Find.TickManager.slower.SignalForceNormalSpeedShort();
 					Find.StoryWatcher.statsRecord.numRaidsEnemy++;
 					result = true;

@@ -11,12 +11,9 @@ namespace ReconAndDiscovery
 	{
 		public GameCondition_Radiation()
 		{
-			Color sky;
-			sky..ctor(0.8f, 0.8f, 0.3f);
-			Color shadow;
-			shadow..ctor(0.9f, 0.9f, 1f);
-			Color overlay;
-			overlay..ctor(0.7f, 0.7f, 0.5f);
+			Color sky = new Color(0.8f, 0.8f, 0.3f);
+			Color shadow = new Color(0.9f, 0.9f, 1f);
+			Color overlay = new Color(0.7f, 0.7f, 0.5f);
 			this.SkyColours = new SkyColorSet(sky, shadow, overlay, 9f);
 		}
 
@@ -34,7 +31,8 @@ namespace ReconAndDiscovery
 		{
 			if (p.Faction == Faction.OfPlayer)
 			{
-				Messages.Message(string.Format("{0} has developed radiation sickness", p.NameStringShort), p, MessageSound.Negative);
+                Messages.Message(string.Format("{0} has developed radiation sickness".Translate()
+                    , p.Label), MessageTypeDefOf.NegativeEvent, false);
 				p.health.AddHediff(HediffDef.Named("RadiationSickness"), null, null);
 			}
 		}
@@ -50,11 +48,11 @@ namespace ReconAndDiscovery
 					float value = Rand.Value;
 					if (value < 0.1f)
 					{
-						partDef = BodyPartDefOf.LeftLung;
+						partDef = DefDatabase<BodyPartDef>.GetNamed("Lung", true);
 					}
 					else if (value < 0.2f)
 					{
-						partDef = BodyPartDefOf.RightLung;
+						partDef = DefDatabase<BodyPartDef>.GetNamed("Lung", true);
 					}
 					else if (value < 0.4f)
 					{
@@ -80,7 +78,8 @@ namespace ReconAndDiscovery
 						if (!p.health.hediffSet.PartIsMissing(bodyPartRecord))
 						{
 							p.health.AddHediff(HediffDef.Named("Carcinoma"), bodyPartRecord, null);
-							Log.Message(string.Format("Added carcinoma to {0}, part {1}", p.NameStringShort, bodyPartRecord.def.label));
+							Log.Message(string.Format("Added carcinoma to {0}, part {1}",
+                                p.Label, bodyPartRecord.def.label));
 						}
 					}
 				}
@@ -93,85 +92,94 @@ namespace ReconAndDiscovery
 			{
 				if (pawn.Faction == Faction.OfPlayer)
 				{
-					Messages.Message(string.Format("{0} has miscarried due to radiation poisoning.", pawn.LabelIndefinite()), pawn, MessageSound.Negative);
+					Messages.Message(string.Format("{0} has miscarried due to radiation poisoning.",
+                        pawn.LabelIndefinite()), pawn, MessageTypeDefOf.NegativeEvent);
 				}
 			}
 		}
 
-		private bool IsProtectedAt(IntVec3 c)
+		private bool IsProtectedAt(Map map, IntVec3 c)
 		{
-			Room room = GridsUtility.GetRoom(c, base.Map, 6);
-			bool result;
-			if (room == null)
-			{
-				result = false;
-			}
-			else if (room.PsychologicallyOutdoors)
-			{
-				result = false;
-			}
-			else
-			{
-				foreach (IntVec3 c2 in room.Cells)
-				{
-					if (!c2.Roofed(base.Map))
-					{
-						return false;
-					}
-					if (c2.GetRoof(base.Map) != RoofDefOf.RoofRockThick)
-					{
-						return false;
-					}
-				}
-				result = true;
-			}
-			return result;
+            List<Map> affectedMaps = base.AffectedMaps;
+            bool result;
+            Room room = GridsUtility.GetRoom(c, map, RegionType.Set_Passable);
+            if (room == null)
+            {
+                result = false;
+            }
+            else if (room.PsychologicallyOutdoors)
+            {
+                result = false;
+            }
+            else
+            {
+                foreach (IntVec3 c2 in room.Cells)
+                {
+                    if (!c2.Roofed(map))
+                    {
+                        return false;
+                    }
+                    if (c2.GetRoof(map) != RoofDefOf.RoofRockThick)
+                    {
+                        return false;
+                    }
+                }
+                result = true;
+            }
+            return result;
 		}
 
 		public override void GameConditionTick()
 		{
-			if (Rand.Chance(0.006666667f))
-			{
-				List<Thing> list = base.Map.listerThings.ThingsInGroup(ThingRequestGroup.Plant);
-				if (list.Count != 0)
-				{
-					Plant plant = list.RandomElement<Thing>() as Plant;
-					if (plant != null)
-					{
-						if (!this.IsProtectedAt(plant.Position))
-						{
-							if (plant.def != ThingDef.Named("PlantPsychoid"))
-							{
-								plant.CropBlighted();
-								if (plant.sown)
-								{
-									Messages.Message("A plant has died due to radiation damage", MessageSound.Negative);
-								}
-							}
-						}
-					}
-				}
-			}
-			foreach (Pawn pawn in base.Map.mapPawns.AllPawnsSpawned)
-			{
-				if (!this.IsProtectedAt(pawn.Position))
-				{
-					float chance = 0.14f * pawn.GetStatValue(StatDefOf.ToxicSensitivity, true) / 60000f;
-					float chance2 = 0.04f * pawn.GetStatValue(StatDefOf.ToxicSensitivity, true) / 60000f;
-					if (Rand.Chance(chance))
-					{
-						this.AssignRadiationSickness(pawn);
-					}
-					if (Rand.Chance(chance2))
-					{
-						this.GiveCarcinoma(pawn);
-					}
-					if (Rand.Chance(chance) && pawn.health.hediffSet.HasHediff(HediffDefOf.Pregnant))
-					{
-						this.Miscarry(pawn);
-					}
-				}
-			}
+            List<Map> affectedMaps = base.AffectedMaps;
+            foreach (Map map in affectedMaps)
+            {
+                if (Rand.Chance(0.006666667f))
+                {
+                    List<Thing> list = map.listerThings.ThingsInGroup(ThingRequestGroup.Plant);
+                    if (list.Count != 0)
+                    {
+                        Plant plant = list.RandomElement<Thing>() as Plant;
+                        if (plant != null)
+                        {
+                            if (!this.IsProtectedAt(map, plant.Position))
+                            {
+                                if (plant.def != ThingDef.Named("PlantPsychoid"))
+                                {
+                                    plant.CropBlighted();
+                                    if (plant.sown)
+                                    {
+                                        Messages.Message("A plant has died due to radiation damage"
+                                            , MessageTypeDefOf.NegativeEvent);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
+                {
+                    if (!this.IsProtectedAt(pawn.Position))
+                    {
+                        float chance = 0.14f * pawn.GetStatValue(StatDefOf.ToxicSensitivity, true) / 60000f;
+                        float chance2 = 0.04f * pawn.GetStatValue(StatDefOf.ToxicSensitivity, true) / 60000f;
+                        if (Rand.Chance(chance))
+                        {
+                            this.AssignRadiationSickness(pawn);
+                        }
+                        if (Rand.Chance(chance2))
+                        {
+                            this.GiveCarcinoma(pawn);
+                        }
+                        if (Rand.Chance(chance) && pawn.health.hediffSet.HasHediff(HediffDefOf.Pregnant))
+                        {
+                            this.Miscarry(pawn);
+                        }
+                    }
+                }
+            }
+
 		}
 
 		public override void Init()
@@ -179,12 +187,12 @@ namespace ReconAndDiscovery
 			base.Init();
 		}
 
-		public override SkyTarget? SkyTarget()
+		public override SkyTarget? SkyTarget(Map map)
 		{
 			return new SkyTarget?(new SkyTarget(0.1f, this.SkyColours, 1f, 1f));
 		}
 
-		public override float SkyTargetLerpFactor()
+		public override float SkyTargetLerpFactor(Map map)
 		{
 			return GameConditionUtility.LerpInOutValue((float)base.TicksPassed, (float)base.TicksLeft, 2500f, 0.25f);
 		}

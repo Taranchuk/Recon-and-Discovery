@@ -13,7 +13,7 @@ namespace ReconAndDiscovery
 			this.defaultPriority = AlertPriority.High;
 		}
 
-		public override string GetExplanation()
+		public override TaggedString GetExplanation()
 		{
 			string result;
 			if (this.OverfullNitralope() == null)

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 using Verse.AI.Group;
 
 namespace ReconAndDiscovery.Missions
 {
-	public class SiteCoreWorker_Festival : SiteCoreWorker
+	public class SiteCoreWorker_Festival : Site
 	{
 		public List<Faction> Factions
 		{
@@ -35,7 +36,7 @@ namespace ReconAndDiscovery.Missions
 			{
 				if (faction.PlayerGoodwill > 0f)
 				{
-					faction.AffectGoodwillWith(Faction.OfPlayer, 5f);
+                    faction.TryAffectGoodwillWith(Faction.OfPlayer, 5f);
 				}
 			}
 		}
@@ -44,8 +45,10 @@ namespace ReconAndDiscovery.Missions
 		{
 			Map map = parms.target as Map;
 			Log.Message(string.Format("Spawning pawns for {0}", parms.faction.Name));
-			PawnGroupMakerParms defaultPawnGroupMakerParms = IncidentParmsUtility.GetDefaultPawnGroupMakerParms(parms);
-			List<Pawn> list = PawnGroupMakerUtility.GeneratePawns(PawnGroupKindDefOf.Trader, defaultPawnGroupMakerParms, false).ToList<Pawn>();
+            PawnGroupMakerParms defaultPawnGroupMakerParms = IncidentParmsUtility.GetDefaultPawnGroupMakerParms(PawnGroupKindDefOf.Trader, parms, false);
+            List<Pawn> list = PawnGroupMakerUtility
+                .GeneratePawns(defaultPawnGroupMakerParms, false).ToList<Pawn>();
+
 			foreach (Pawn newThing in list)
 			{
 				IntVec3 loc = CellFinder.RandomClosewalkCellNear(parms.spawnCenter, map, 5, null);
@@ -109,12 +112,12 @@ namespace ReconAndDiscovery.Missions
 			}
 		}
 
-		public override void PostMapGenerate(Map map)
+		public override void PostMapGenerate()
 		{
-			base.PostMapGenerate(map);
-			this.hostFaction = Find.WorldObjects.MapParentAt(map.Tile).Faction;
-			this.MakeTradeCaravans(map);
-			this.MakePartyGroups(map);
+			base.PostMapGenerate();
+            this.hostFaction = Find.WorldObjects.MapParentAt(this.Map.Tile).Faction;
+			this.MakeTradeCaravans(this.Map);
+			this.MakePartyGroups(this.Map);
 			this.IncrementAllGoodwills();
 		}
 

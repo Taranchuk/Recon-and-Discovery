@@ -116,7 +116,7 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		public override bool TryExecute(IncidentParms parms)
+		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
 			bool result;
@@ -141,10 +141,10 @@ namespace ReconAndDiscovery.Missions
 					}
 					else
 					{
-						base.SendStandardLetter(site, new string[]
+						base.SendStandardLetter(parms, site, new NamedArgument[]
 						{
-							pawn.NameStringShort,
-							pawn2.NameStringShort
+							pawn.Label,
+							pawn2.Label
 						});
 						result = true;
 					}
