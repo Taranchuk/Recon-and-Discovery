@@ -8,16 +8,16 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_QuestRadiation : IncidentWorker
 	{
-		protected override bool CanFireNowSub(IIncidentTarget target)
+		protected override bool CanFireNowSub(IncidentParms parms)
 		{
 			int num;
-			return base.CanFireNowSub(target) && TileFinder.TryFindNewSiteTile(ref num);
+			return base.CanFireNowSub(parms) && TileFinder.TryFindNewSiteTile(out num);
 		}
 
 		private Site MakeSite(Map map)
 		{
 			int tile;
-			TileFinder.TryFindNewSiteTile(ref tile);
+			TileFinder.TryFindNewSiteTile(out tile);
 			Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventureThingCounter);
 			site.Tile = tile;
 			site.core = SiteDefOfReconAndDiscovery.SiteRadiationQuest;

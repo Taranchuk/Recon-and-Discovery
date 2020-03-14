@@ -7,9 +7,9 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_AbandonedColony : IncidentWorker
 	{
-		protected override bool CanFireNowSub(IIncidentTarget target)
+		protected override bool CanFireNowSub(IncidentParms parms)
 		{
-			return base.CanFireNowSub(target);
+            return base.CanFireNowSub(parms);
 		}
 
 		private Site MakeSite(Caravan c)
@@ -18,7 +18,14 @@ namespace ReconAndDiscovery.Missions
 			TileFinder.TryFindPassableTileWithTraversalDistance(c.Tile, 1, 2, out tile, (int t) => !Find.WorldObjects.AnyMapParentAt(t), false);
 			Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
 			site.Tile = tile;
-			site.SetFaction(Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer));
+            foreach (var faction in Find.FactionManager.AllFactions)
+            {
+                if (faction.def.techLevel == TechLevel.Spacer)
+                {
+			        site.SetFaction(faction);
+                    break;
+                }
+            }
 			site.core = SiteDefOfReconAndDiscovery.AbandonedColony;
 			site.parts.Add(SiteDefOfReconAndDiscovery.HoloDisk);
 			if (Rand.Value < 0.3f)

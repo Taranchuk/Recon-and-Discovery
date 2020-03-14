@@ -8,10 +8,10 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_FaultyGenerator : IncidentWorker
 	{
-		protected override bool CanFireNowSub(IIncidentTarget target)
+		protected override bool CanFireNowSub(IncidentParms parms)
 		{
 			int num;
-			return base.CanFireNowSub(target) && TileFinder.TryFindNewSiteTile(ref num);
+			return base.CanFireNowSub(parms) && TileFinder.TryFindNewSiteTile(out num);
 		}
 
 		private Site MakeSite(Map map)

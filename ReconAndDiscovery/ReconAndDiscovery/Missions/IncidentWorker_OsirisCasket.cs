@@ -9,10 +9,10 @@ namespace ReconAndDiscovery.Missions
 {
 	public class IncidentWorker_OsirisCasket : IncidentWorker
 	{
-		protected override bool CanFireNowSub(IIncidentTarget target)
+		protected override bool CanFireNowSub(IncidentParms parms)
 		{
 			int num;
-			return base.CanFireNowSub(target) && TileFinder.TryFindNewSiteTile(ref num);
+			return base.CanFireNowSub(parms) && TileFinder.TryFindNewSiteTile(out num);
 		}
 
 		private bool CanFindPsychic(Map map, out Pawn pawn)

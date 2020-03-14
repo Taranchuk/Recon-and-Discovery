@@ -13,9 +13,9 @@ namespace ReconAndDiscovery.Missions
 			p.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Manhunter, null, true, false, null);
 		}
 
-		protected override bool CanFireNowSub(IIncidentTarget target)
+		protected override bool CanFireNowSub(IncidentParms parms)
 		{
-			return base.CanFireNow(target);
+			return base.CanFireNow(parms);
 		}
 
 		public override bool TryExecute(IncidentParms parms)
