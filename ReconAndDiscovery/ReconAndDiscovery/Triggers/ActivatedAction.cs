@@ -65,7 +65,7 @@ namespace ReconAndDiscovery.Triggers
 				{
                     faction = Find.FactionManager.RandomNonHostileFaction(false, false, true, TechLevel.Spacer);
 				}
-				PawnGenerationRequest request = new PawnGenerationRequest(pawnKindDef, faction, PawnGenerationContext.NonPlayer, -1, false, false, false, false, true, false, 1f, false, true, true, false, false, null, null, null, null, null, null);
+				PawnGenerationRequest request = new PawnGenerationRequest(pawnKindDef, faction, PawnGenerationContext.NonPlayer, -1, false, false, false, false, true, false, 1f, false, true, true, false, false);
 				Pawn pawn = PawnGenerator.GeneratePawn(request);
 				if (!pawn.RaceProps.Humanlike)
 				{

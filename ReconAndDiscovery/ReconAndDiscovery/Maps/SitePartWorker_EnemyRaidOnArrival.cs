@@ -22,7 +22,7 @@ namespace ReconAndDiscovery.Maps
 			select f).TryRandomElement(out faction))
 			{
 				IntVec3 spawnCenter2;
-				if (CellFinder.TryFindRandomEdgeCellWith((IntVec3 c) => map.reachability.CanReachColony(c), map, CellFinder.EdgeRoadChance_Neutral, ref spawnCenter2))
+				if (CellFinder.TryFindRandomEdgeCellWith((IntVec3 c) => map.reachability.CanReachColony(c), map, CellFinder.EdgeRoadChance_Neutral, out spawnCenter2))
 				{
 					incidentParms.faction = faction;
 					incidentParms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;

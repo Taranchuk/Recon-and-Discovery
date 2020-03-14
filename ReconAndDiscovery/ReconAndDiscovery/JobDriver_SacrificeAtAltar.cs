@@ -46,7 +46,7 @@ namespace ReconAndDiscovery
 				defaultCompleteMode = ToilCompleteMode.Instant,
 				initAction = delegate()
 				{
-					DamageInfo value = new DamageInfo(DamageDefOf.ExecutionCut, 500, -1f, base.GetActor(), null, null, 0);
+					DamageInfo value = new DamageInfo(DamageDefOf.ExecutionCut, 500, -1f, -1f, base.GetActor(), null, null, 0);
 					this.Animal.Kill(new DamageInfo?(value));
 					this.Altar.GetComp<CompPsionicEmanator>().DoPsychicShockwave();
 				}

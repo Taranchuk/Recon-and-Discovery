@@ -19,7 +19,7 @@ namespace ReconAndDiscovery.Maps
         public override void Generate(Map map, GenStepParams parms)
 		{
 			IntVec3 intVec;
-			if (RCellFinder.TryFindRandomCellNearTheCenterOfTheMapWith((IntVec3 x) => x.Standable(map) && !x.Fogged(map) && GridsUtility.GetRoom(x, map, 6).CellCount >= 4, map, out intVec))
+			if (RCellFinder.TryFindRandomCellNearTheCenterOfTheMapWith((IntVec3 x) => x.Standable(map) && !x.Fogged(map) && GridsUtility.GetRoom(x, map, RegionType.Set_Passable).CellCount >= 4, map, out intVec))
 			{
 				float num = this.pointsRange.RandomInRange;
 				List<Pawn> list = new List<Pawn>();
@@ -40,7 +40,7 @@ namespace ReconAndDiscovery.Maps
 				{
 					IntVec3 intVec2 = CellFinder.RandomSpawnCellForPawnNear(intVec, map, 10);
 					point = intVec2;
-					GenSpawn.Spawn(list[j], intVec2, map, Rot4.Random, false);
+					GenSpawn.Spawn(list[j], intVec2, map, Rot4.Random, WipeMode.Vanish, false);
 				}
 				LordMaker.MakeNewLord(Faction.OfMechanoids, new LordJob_DefendPoint(point), map, list);
 			}

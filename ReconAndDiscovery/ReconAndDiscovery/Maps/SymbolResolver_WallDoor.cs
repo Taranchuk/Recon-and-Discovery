@@ -34,7 +34,7 @@ namespace ReconAndDiscovery.Maps
 		private bool IsOutdoorsAt(IntVec3 c)
 		{
 			Map map = BaseGen.globalSettings.map;
-			return GridsUtility.GetRegion(c, map, 6) != null && GridsUtility.GetRegion(c, map, 6).Room.PsychologicallyOutdoors;
+			return GridsUtility.GetRegion(c, map, RegionType.Set_Passable) != null && GridsUtility.GetRegion(c, map, RegionType.Set_Passable).Room.PsychologicallyOutdoors;
 		}
 	}
 }

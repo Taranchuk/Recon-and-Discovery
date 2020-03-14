@@ -159,7 +159,7 @@ namespace ReconAndDiscovery
 				pawn.DeSpawn();
 				Fire fire = (Fire)GenSpawn.Spawn(ThingDefOf.Fire, position2, map2);
 				fire.fireSize = 1f;
-				GenSpawn.Spawn(pawn, position, map, this.parent.Rotation, false);
+				GenSpawn.Spawn(pawn, position, map, this.parent.Rotation, WipeMode.Vanish, false);
 				CompTeleporter.AddAnaphylaxisIfAppropriate(pawn);
 				this.fCharge = 0f;
 			}

@@ -22,23 +22,23 @@ namespace ReconAndDiscovery.Maps
 				if (rp.singleThingDef.MadeFromStuff)
 				{
 					Thing thing = ThingMaker.MakeThing(rp.singleThingDef, stuff);
-					GenSpawn.Spawn(thing, rp.rect.RandomCell, BaseGen.globalSettings.map, rot, false);
+					GenSpawn.Spawn(thing, rp.rect.RandomCell, BaseGen.globalSettings.map, rot, WipeMode.Vanish, false);
 				}
 				else
 				{
 					Thing thing2 = ThingMaker.MakeThing(rp.singleThingDef, null);
-					GenSpawn.Spawn(thing2, rp.rect.RandomCell, BaseGen.globalSettings.map, rot, false);
+					GenSpawn.Spawn(thing2, rp.rect.RandomCell, BaseGen.globalSettings.map, rot, WipeMode.Vanish, false);
 				}
 			}
 			else if (rp.singleThingDef.MadeFromStuff)
 			{
 				Thing thing3 = ThingMaker.MakeThing(rp.singleThingDef, stuff);
-				GenSpawn.Spawn(thing3, rp.rect.RandomCell, BaseGen.globalSettings.map, rot, false);
+				GenSpawn.Spawn(thing3, rp.rect.RandomCell, BaseGen.globalSettings.map, rot, WipeMode.Vanish, false);
 			}
 			else
 			{
 				Thing thing4 = ThingMaker.MakeThing(rp.singleThingDef, null);
-				GenSpawn.Spawn(thing4, rp.rect.RandomCell, BaseGen.globalSettings.map, rot, false);
+				GenSpawn.Spawn(thing4, rp.rect.RandomCell, BaseGen.globalSettings.map, rot, WipeMode.Vanish, false);
 			}
 		}
 	}

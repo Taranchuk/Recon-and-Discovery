@@ -17,7 +17,9 @@ namespace ReconAndDiscovery
 
 		private Pawn MakeGeniusPawn()
 		{
-			PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, Faction.OfPlayer, PawnGenerationContext.PlayerStarter, -1, true, false, false, false, false, false, 0f, true, true, true, false, false, null, null, null, null, null, null);
+            PawnGenerationRequest request = new PawnGenerationRequest(PawnKindDefOf.SpaceRefugee, Faction.OfPlayer, 
+                PawnGenerationContext.PlayerStarter, -1, true, false, false, false, false, false, 0f, 
+                true, true, true, false, false);
 			Pawn pawn = PawnGenerator.GeneratePawn(request);
 			List<Trait> list = new List<Trait>();
 			foreach (Trait trait in pawn.story.traits.allTraits)

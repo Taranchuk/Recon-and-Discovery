@@ -36,7 +36,7 @@ namespace ReconAndDiscovery.Missions
 			{
 				if (faction.PlayerGoodwill > 0f)
 				{
-                    faction.TryAffectGoodwillWith(Faction.OfPlayer, 5f);
+                    faction.TryAffectGoodwillWith(Faction.OfPlayer, 5);
 				}
 			}
 		}

@@ -126,7 +126,7 @@ namespace ReconAndDiscovery.Maps
 				{
 					foreach (Thing thing in map.thingGrid.ThingsAt(new IntVec3(num, 1, j)))
 					{
-						thing.TakeDamage(new DamageInfo(DamageDefOf.Blunt, 10000, -1f, null, null, null, 0));
+                        thing.TakeDamage(new DamageInfo(DamageDefOf.Blunt, 10000, -1f, -1f, null, null, null, 0));
 					}
 					MapGenUtility.TryToSetFloorTile(new IntVec3(num, 1, j), map, rp.floorDef);
 					if (j == rp.rect.minZ + num2 || j == rp.rect.minZ + num3 || j == rp.rect.minZ + rp.rect.Width - (num2 + 1) || j == rp.rect.minZ + rp.rect.Width - (num3 + 1))

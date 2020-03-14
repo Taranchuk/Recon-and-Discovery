@@ -26,7 +26,7 @@ namespace ReconAndDiscovery.Maps
 			BaseGen.globalSettings.map = map;
 			this.randomRoomEvents.Clear();
 			IntVec3 playerStartSpot;
-			CellFinder.TryFindRandomEdgeCellWith((IntVec3 v) => v.Standable(map), map, 0f, ref playerStartSpot);
+			CellFinder.TryFindRandomEdgeCellWith((IntVec3 v) => v.Standable(map), map, 0f, out playerStartSpot);
 			MapGenerator.PlayerStartSpot = playerStartSpot;
 			this.baseResolveParams = default(ResolveParams);
 			foreach (string text in this.randomRoomEvents.Keys)
