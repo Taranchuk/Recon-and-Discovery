@@ -20,7 +20,7 @@ namespace ReconAndDiscovery.Missions
 				incidentParms.spawnCenter = spawnCenter;
 			}
 			IntVec3 spawnCenter2;
-			if (CellFinder.TryFindRandomEdgeCellWith((IntVec3 c) => map.reachability.CanReachColony(c), map, CellFinder.EdgeRoadChance_Neutral, ref spawnCenter2))
+			if (CellFinder.TryFindRandomEdgeCellWith((IntVec3 c) => map.reachability.CanReachColony(c), map, CellFinder.EdgeRoadChance_Neutral, out spawnCenter2))
 			{
 				incidentParms.faction = faction;
 				incidentParms.spawnCenter = spawnCenter2;
@@ -77,7 +77,7 @@ namespace ReconAndDiscovery.Missions
 				if (source.Count<Pawn>() > 0)
 				{
 					Pawn pawn = source.RandomElement<Pawn>();
-					Find.LetterStack.ReceiveLetter("Manhunter danger", string.Format("{0} believes that a malevolent psychic energy is massing, and that this peaceful herd of muffalo are on the brink of a mass insanity.", pawn.NameStringShort), LetterDefOf.BadNonUrgent, null);
+					Find.LetterStack.ReceiveLetter("Manhunter danger", string.Format("{0} believes that a malevolent psychic energy is massing, and that this peaceful herd of muffalo are on the brink of a mass insanity.", pawn.Label), LetterDefOf.ThreatSmall, null);
 				}
                 //TODO: check if it works
                 IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.FactionArrival, this.Map);

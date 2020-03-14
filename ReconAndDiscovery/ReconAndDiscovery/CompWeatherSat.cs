@@ -16,10 +16,7 @@ namespace ReconAndDiscovery
 			GameConditionManager manager = map.gameConditionManager;
 			if (this.mana > 10f)
 			{
-				list.Add(new FloatMenuOption(MenuOptionPriority.Default)
-				{
-					Label = "End extreme weather (10 mana).",
-					action = delegate()
+				list.Add(new FloatMenuOption("EndExtremeWeather(10mana).", delegate()
 					{
 						this.mana -= 10f;
 						map.weatherManager.TransitionTo(WeatherDefOf.Clear);
@@ -36,38 +33,29 @@ namespace ReconAndDiscovery
 							manager.ActiveConditions.Remove(manager.GetActiveCondition(GameConditionDefOf.HeatWave));
 						}
 					}
-				});
+				));
 			}
 			if (this.mana > 15f)
 			{
-				list.Add(new FloatMenuOption(MenuOptionPriority.Default)
-				{
-					Label = "Bring rain (15 mana)",
-					action = delegate()
+				list.Add(new FloatMenuOption("BringRain(15mana)".Translate(), delegate()
 					{
 						this.mana -= 15f;
 						map.weatherManager.TransitionTo(WeatherDef.Named("Rain"));
 					}
-				});
+				));
 			}
 			if (this.mana > 18f)
 			{
-				list.Add(new FloatMenuOption(MenuOptionPriority.Default)
-				{
-					Label = "Bring fog (18 mana)",
-					action = delegate()
+				list.Add(new FloatMenuOption("BringFog(18mana)", delegate()
 					{
 						this.mana -= 18f;
 						map.weatherManager.TransitionTo(WeatherDef.Named("Fog"));
 					}
-				});
+				));
 			}
 			if (this.mana > 40f)
 			{
-				list.Add(new FloatMenuOption(MenuOptionPriority.Default)
-				{
-					Label = "Strike our enemies (40 mana)",
-					action = delegate()
+				list.Add(new FloatMenuOption("StrikeOurEnemies(40mana)".Translate(), delegate()
 					{
 						IEnumerable<Pawn> source = from p in map.mapPawns.AllPawnsSpawned
 						where p.HostileTo(Faction.OfPlayer)
@@ -75,11 +63,11 @@ namespace ReconAndDiscovery
 						this.mana -= 40f;
 						if (source.Count<Pawn>() > 0)
 						{
-							GameCondition_TargetedStorm gameCondition_TargetedStorm = (GameCondition_TargetedStorm)GameConditionMaker.MakeCondition(GameConditionDef.Named("TargetedStorm"), 12000, 1000);
+							GameCondition_TargetedStorm gameCondition_TargetedStorm = (GameCondition_TargetedStorm)GameConditionMaker.MakeCondition(GameConditionDef.Named("TargetedStorm"), 12000);
 							map.gameConditionManager.RegisterCondition(gameCondition_TargetedStorm);
 						}
 					}
-				});
+				));
 			}
 			return list;
 		}

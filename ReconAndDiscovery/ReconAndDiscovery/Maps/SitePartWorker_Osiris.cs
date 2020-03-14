@@ -16,7 +16,8 @@ namespace ReconAndDiscovery.Maps
 				Thing thing = ThingMaker.MakeThing(ThingDef.Named("OsirisCasket"), null);
 				GenSpawn.Spawn(thing, loc, map);
 				OsirisCasket osirisCasket = thing as OsirisCasket;
-				Pawn thing2 = PawnGenerator.GeneratePawn(PawnKindDefOf.SpaceSoldier, Find.FactionManager.FirstFactionOfDef(FactionDefOf.SpacerHostile));
+                Faction faction = Find.FactionManager.RandomEnemyFaction(false, false, true, TechLevel.Spacer);
+                Pawn thing2 = PawnGenerator.GeneratePawn(PawnKindDefOf.AncientSoldier, Find.FactionManager.RandomNonHostileFaction(false, false, true, TechLevel.Spacer));
 				osirisCasket.TryAcceptThing(thing2, true);
 			}
 		}

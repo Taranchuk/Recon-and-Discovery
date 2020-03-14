@@ -17,14 +17,14 @@ namespace ReconAndDiscovery.Triggers
 			bool flag = Rand.Value > 0.4f;
 			int level = activatedBy.skills.GetSkill(SkillDefOf.Intellectual).Level;
 			DiaNode diaNode = new DiaNode("");
-			DiaOption diaOption = new DiaOption(string.Format("Log off {0}", activatedBy.NameStringShort));
+			DiaOption diaOption = new DiaOption(string.Format("Log off {0}", activatedBy.Label));
 			diaOption.resolveTree = true;
-			DiaOption diaOption2 = new DiaOption(string.Format("OK", activatedBy.NameStringShort));
+			DiaOption diaOption2 = new DiaOption(string.Format("OK", activatedBy.Label));
 			diaOption2.resolveTree = true;
 			diaNode.options.Add(diaOption);
 			if (level < 5)
 			{
-				diaNode.text = string.Format("There seem to be files pertanent to a luciferium cure, but {0} lacks the intellectual skills to access them.", activatedBy.NameStringShort);
+				diaNode.text = string.Format("There seem to be files pertanent to a luciferium cure, but {0} lacks the intellectual skills to access them.", activatedBy.Label);
 			}
 			else
 			{
@@ -34,12 +34,12 @@ namespace ReconAndDiscovery.Triggers
 					if (flag)
 					{
 						DiaNode diaNode2 = diaNode;
-						diaNode2.text += string.Format("\n{0} thinks that the science underlying the project is sound, and though the process has been lost, any remaining samples of the cure probably work.", activatedBy.NameStringShort);
+						diaNode2.text += string.Format("\n{0} thinks that the science underlying the project is sound, and though the process has been lost, any remaining samples of the cure probably work.", activatedBy.Label);
 					}
 					else
 					{
 						DiaNode diaNode3 = diaNode;
-						diaNode3.text += string.Format("\n{0} thinks that the research is dubious, and is concerned that any remaining samples will be dangerous.", activatedBy.NameStringShort);
+						diaNode3.text += string.Format("\n{0} thinks that the research is dubious, and is concerned that any remaining samples will be dangerous.", activatedBy.Label);
 					}
 				}
 				DiaOption diaOption3 = new DiaOption("Dispense the trial cure");

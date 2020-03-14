@@ -83,7 +83,7 @@ namespace ReconAndDiscovery
 			}
 			else if (!target.IsValid)
 			{
-				Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageSound.RejectInput);
+				Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageTypeDefOf.RejectInput);
 				result = false;
 			}
 			else
@@ -93,13 +93,13 @@ namespace ReconAndDiscovery
 				{
 					Map myMap = this.parent.Map;
 					Map map = mapParent.Map;
-					Current.Game.VisibleMap = map;
+					Current.Game.CurrentMap = map;
 					Targeter targeter = Find.Targeter;
 					Action actionWhenFinished = delegate()
 					{
 						if (Find.Maps.Contains(myMap))
 						{
-							Current.Game.VisibleMap = myMap;
+							Current.Game.CurrentMap = myMap;
 						}
 					};
 					TargetingParameters targetParams = new TargetingParameters
@@ -122,7 +122,7 @@ namespace ReconAndDiscovery
 				}
 				else
 				{
-					Messages.Message("You cannot lock onto anything there.", MessageSound.RejectInput);
+					Messages.Message("You cannot lock onto anything there.", MessageTypeDefOf.RejectInput);
 					result = false;
 				}
 			}
@@ -150,7 +150,7 @@ namespace ReconAndDiscovery
 			IntVec3 position2 = pawn.Position;
 			if (map2.roofGrid.Roofed(position2) && map2.roofGrid.RoofAt(position2) == RoofDefOf.RoofRockThick)
 			{
-				Messages.Message("Teleporter cannot lock on through the thick rock overhead!", MessageSound.RejectInput);
+				Messages.Message("Teleporter cannot lock on through the thick rock overhead!", MessageTypeDefOf.RejectInput);
 			}
 			else
 			{

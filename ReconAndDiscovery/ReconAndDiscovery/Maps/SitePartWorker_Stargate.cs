@@ -12,8 +12,8 @@ namespace ReconAndDiscovery.Maps
 		{
 			base.PostMapGenerate(map);
 			IEnumerable<Pawn> enumerable = from p in map.mapPawns.AllPawnsSpawned
-			where p.Faction == Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer)
-			select p;
+            where p.Faction == Find.FactionManager.RandomNonHostileFaction(true, false, true, TechLevel.Spacer)
+            select p;
 			foreach (Pawn pawn in enumerable)
 			{
 				pawn.Destroy(DestroyMode.Vanish);

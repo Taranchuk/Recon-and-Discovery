@@ -61,16 +61,13 @@ namespace ReconAndDiscovery
 			List<FloatMenuOption> list = new List<FloatMenuOption>();
 			if ((this.link != null && !this.link.Destroyed && this.link.Spawned) || this.linkedSite != null)
 			{
-				list.Add(new FloatMenuOption(MenuOptionPriority.Default)
-				{
-					Label = "Travel to target gate",
-					action = delegate()
+				list.Add(new FloatMenuOption("TravelToTargetGate".Translate(), delegate()
 					{
 						Job job = new Job(JobDefOfReconAndDiscovery.TravelThroughStargate, this.parent);
 						job.playerForced = true;
-						selPawn.jobs.TryTakeOrderedJob(job, JobTag.NoTag);
+						selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
 					}
-				});
+				));
 			}
 			return list;
 		}
@@ -108,7 +105,7 @@ namespace ReconAndDiscovery
 			bool result;
 			if (!target.IsValid)
 			{
-				Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageSound.RejectInput);
+				Messages.Message("MessageTransportPodsDestinationIsInvalid".Translate(), MessageTypeDefOf.RejectInput);
 				result = false;
 			}
 			else
@@ -120,7 +117,7 @@ namespace ReconAndDiscovery
 					{
 						Map map = this.parent.Map;
 						Map map2 = mapParent.Map;
-						Current.Game.VisibleMap = map2;
+						Current.Game.CurrentMap = map2;
 						if (map2.listerThings.ThingsOfDef(ThingDef.Named("Stargate")).Count<Thing>() > 0)
 						{
 							this.MakeLink(map2.listerThings.ThingsOfDef(ThingDef.Named("Stargate")).FirstOrDefault<Thing>());
@@ -128,7 +125,7 @@ namespace ReconAndDiscovery
 						}
 						else
 						{
-							Messages.Message("There is no evidence of a stargate there.", MessageSound.RejectInput);
+							Messages.Message("There is no evidence of a stargate there.", MessageTypeDefOf.RejectInput);
 							result = false;
 						}
 					}
@@ -142,14 +139,14 @@ namespace ReconAndDiscovery
 						}
 						else
 						{
-							Messages.Message("There is no evidence of a stargate there.", MessageSound.RejectInput);
+							Messages.Message("There is no evidence of a stargate there.", MessageTypeDefOf.RejectInput);
 							result = false;
 						}
 					}
 				}
 				else
 				{
-					Messages.Message("There is no evidence of a stargate there.", MessageSound.RejectInput);
+					Messages.Message("There is no evidence of a stargate there.", MessageTypeDefOf.RejectInput);
 					result = false;
 				}
 			}
@@ -161,7 +158,7 @@ namespace ReconAndDiscovery
 			this.link = null;
 			this.linkedSite = null;
 			this.link = stargate;
-			Messages.Message("Stargate linked to destination.", MessageSound.Benefit);
+			Messages.Message("Stargate linked to destination.", MessageTypeDefOf.PositiveEvent);
 		}
 
 		public void MakeLink(Site stargateSite)
@@ -169,7 +166,7 @@ namespace ReconAndDiscovery
 			this.link = null;
 			this.linkedSite = null;
 			this.linkedSite = stargateSite;
-			Messages.Message("Stargate linked to destination.", MessageSound.Benefit);
+			Messages.Message("Stargate linked to destination.", MessageTypeDefOf.PositiveEvent);
 		}
 
 		public override void PostExposeData()
@@ -188,7 +185,7 @@ namespace ReconAndDiscovery
 			{
 				if (this.LinkedSite == null)
 				{
-					Messages.Message("Stargate is not linked to a destination!", MessageSound.RejectInput);
+					Messages.Message("Stargate is not linked to a destination!", MessageTypeDefOf.RejectInput);
 					result = false;
 				}
 				else if (this.LinkedSite.HasMap)
@@ -196,7 +193,7 @@ namespace ReconAndDiscovery
 					IEnumerable<Thing> source = this.LinkedSite.Map.listerThings.ThingsOfDef(ThingDef.Named("Stargate"));
 					if (source.Count<Thing>() == 0)
 					{
-						Messages.Message("Stargate is not linked to a destination!", MessageSound.RejectInput);
+						Messages.Message("Stargate is not linked to a destination!", MessageTypeDefOf.RejectInput);
 						result = false;
 					}
 					else
@@ -230,12 +227,12 @@ namespace ReconAndDiscovery
 		{
 			bool drafted = p.Drafted;
 			bool flag = Find.Selector.IsSelected(p);
-			Log.Message(string.Format("Attempting to send {0} through gate", p.NameStringShort));
+			Log.Message(string.Format("Attempting to send {0} through gate", p.Label));
 			if (this.CheckSetupGateAndMap(p))
 			{
 				if (this.LinkedGate == null || !this.LinkedGate.Spawned || this.LinkedGate.Destroyed)
 				{
-					Messages.Message("The other gate has been buried! We cannot transit!", MessageSound.RejectInput);
+					Messages.Message("The other gate has been buried! We cannot transit!", MessageTypeDefOf.RejectInput);
 				}
 				else
 				{
@@ -250,8 +247,8 @@ namespace ReconAndDiscovery
 					}
 					if (flag)
 					{
-						Current.Game.VisibleMap = p.Map;
-						Find.CameraDriver.JumpToVisibleMapLoc(this.LinkedGate.Position);
+						Current.Game.CurrentMap = p.Map;
+						Find.CameraDriver.JumpToCurrentMapLoc(this.LinkedGate.Position);
 					}
 				}
 			}

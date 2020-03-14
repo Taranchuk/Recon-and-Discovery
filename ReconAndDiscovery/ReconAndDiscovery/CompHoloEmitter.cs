@@ -27,7 +27,7 @@ namespace ReconAndDiscovery
 			base.PostDestroy(mode, previousMap);
 			if (this.pawn != null)
 			{
-				DamageInfo value = new DamageInfo(DamageDefOf.Blunt, 1000, -1f, null, null, null, 0);
+                DamageInfo value = new DamageInfo(DamageDefOf.Blunt, 1000, -1f, -1f, null, null, null, 0);
 				this.SimPawn.Kill(new DamageInfo?(value));
 				this.SimPawn.Corpse.Destroy(DestroyMode.Vanish);
 			}
@@ -55,15 +55,13 @@ namespace ReconAndDiscovery
 			List<FloatMenuOption> list = new List<FloatMenuOption>();
 			if (this.pawn != null)
 			{
-				FloatMenuOption floatMenuOption = new FloatMenuOption(MenuOptionPriority.Default);
-				floatMenuOption.Label = "Format Occupant";
-				floatMenuOption.action = delegate()
+                FloatMenuOption floatMenuOption = new FloatMenuOption("FormatOccupant".Translate(), delegate()
 				{
-					DamageInfo value = new DamageInfo(DamageDefOf.ExecutionCut, 1000, -1f, selPawn, null, null, 0);
+					DamageInfo value = new DamageInfo(DamageDefOf.ExecutionCut, 1000, -1f, -1f, selPawn, null, null, 0);
 					this.pawn.Kill(new DamageInfo?(value));
 					this.pawn.Corpse.Destroy(DestroyMode.Vanish);
 					this.pawn = null;
-				};
+				});
 				if (selPawn != this.pawn)
 				{
 					list.Add(floatMenuOption);
@@ -71,9 +69,7 @@ namespace ReconAndDiscovery
 			}
 			else if (selPawn.story.traits.HasTrait(TraitDef.Named("Holographic")))
 			{
-				FloatMenuOption floatMenuOption2 = new FloatMenuOption(MenuOptionPriority.Default);
-				floatMenuOption2.Label = "Transfer to this emitter";
-				floatMenuOption2.action = delegate()
+				FloatMenuOption floatMenuOption2 = new FloatMenuOption("TransferToThisEmitter".Translate(), delegate()
 				{
 					foreach (Thing thing in this.parent.Map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("HolographicEmitter")))
 					{
@@ -91,7 +87,7 @@ namespace ReconAndDiscovery
 							break;
 						}
 					}
-				};
+				});
 				if (this.pawn == null)
 				{
 					list.Add(floatMenuOption2);
@@ -123,7 +119,7 @@ namespace ReconAndDiscovery
 			{
 				if (this.pawn.Dead)
 				{
-					Log.Message(string.Format("{0} is dead.", this.pawn.NameStringShort));
+					Log.Message(string.Format("{0} is dead.", this.pawn.Label));
 					if (this.pawn.Corpse.holdingOwner != this.Emitter.GetDirectlyHeldThings())
 					{
 						if (this.Emitter.TryAcceptThing(this.pawn.Corpse, true))
@@ -168,12 +164,12 @@ namespace ReconAndDiscovery
 			where cell.InHorDistOf(this.parent.Position, 12f) && GenSight.LineOfSight(this.parent.Position, cell, this.parent.Map, true, null, 0, 0)
 			select cell;
 			Area_Allowed area_Allowed;
-			this.parent.Map.areaManager.TryMakeNewAllowed(AllowedAreaMode.Humanlike, out area_Allowed);
+			this.parent.Map.areaManager.TryMakeNewAllowed(out area_Allowed);
 			foreach (IntVec3 c in enumerable)
 			{
 				area_Allowed[this.parent.Map.cellIndices.CellToIndex(c)] = true;
 			}
-			area_Allowed.SetLabel(string.Format("HoloEmitter area for {0}.", this.pawn.NameStringShort));
+			area_Allowed.SetLabel(string.Format("HoloEmitter area for {0}.", this.pawn.Label));
 			this.pawn.playerSettings.AreaRestriction = area_Allowed;
 		}
 

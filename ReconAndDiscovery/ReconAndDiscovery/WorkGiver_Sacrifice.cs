@@ -42,7 +42,7 @@ namespace ReconAndDiscovery
 			{
 				result = false;
 			}
-			else if (pawn.story != null && pawn.story.WorkTagIsDisabled(WorkTags.Social))
+			else if (pawn.story != null && pawn.WorkTagIsDisabled(WorkTags.Social))
 			{
 				JobFailReason.Is("IsIncapableOfViolenceShort".Translate());
 				result = false;
@@ -50,7 +50,11 @@ namespace ReconAndDiscovery
 			else
 			{
 				IEnumerable<Building> source = pawn.Map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("PsionicEmanator"));
-				result = (source.Count<Building>() != 0 && !source.All((Building b) => !ReservationUtility.CanReserve(pawn, b, 1, -1, null, false)) && GenHostility.AnyHostileActiveThreat(pawn.Map) && pawn2 != null && ReservationUtility.CanReserve(pawn, t, 1, -1, null, forced));
+				result = (source.Count<Building>() != 0 && !source.All((Building b) => !ReservationUtility.CanReserve(pawn, b, 1, -1, null, false)) 
+                    &&
+                    // TODO: check if it works
+                    GenHostility.IsActiveThreatTo(pawn, Faction.OfPlayer)
+                    && pawn2 != null && ReservationUtility.CanReserve(pawn, t, 1, -1, null, forced));
 			}
 			return result;
 		}

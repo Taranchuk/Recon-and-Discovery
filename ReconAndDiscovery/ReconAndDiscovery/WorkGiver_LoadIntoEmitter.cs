@@ -34,7 +34,7 @@ namespace ReconAndDiscovery
 			foreach (ThingDef singleDef in enumerable)
 			{
 				Predicate<Thing> predicate = (Thing x) => ((HoloEmitter)x).GetComp<CompHoloEmitter>().SimPawn == null && ReservationUtility.CanReserve(p, x, 1, -1, null, false);
-				HoloEmitter holoEmitter = (HoloEmitter)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.PassAnything, false), 9999f, predicate, null, 0, -1, false, 6, false);
+				HoloEmitter holoEmitter = (HoloEmitter)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.PassAllDestroyableThings, false), 9999f, predicate, null, 0, -1, false, RegionType.Set_Passable, false);
 				if (holoEmitter != null)
 				{
 					return holoEmitter;

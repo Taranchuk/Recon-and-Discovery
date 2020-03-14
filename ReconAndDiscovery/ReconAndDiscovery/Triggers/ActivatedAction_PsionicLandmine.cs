@@ -16,12 +16,12 @@ namespace ReconAndDiscovery.Triggers
 				if (this.bestPsychic.story.traits.DegreeOfTrait(TraitDef.Named("PsychicSensitivity")) == 2)
 				{
 					DiaNode diaNode2 = diaNode;
-					diaNode2.text += string.Format(" Fortunately, {0} was able to dissipate the attack with their psychic capabilities.", this.bestPsychic.NameStringShort);
+					diaNode2.text += string.Format(" Fortunately, {0} was able to dissipate the attack with their psychic capabilities.", this.bestPsychic.Label);
 				}
 				else
 				{
 					DiaNode diaNode3 = diaNode;
-					diaNode3.text += string.Format(" {0} was able to channel the attack, preventing harm to others, but is now in psychic shock!", this.bestPsychic.NameStringShort);
+					diaNode3.text += string.Format(" {0} was able to channel the attack, preventing harm to others, but is now in psychic shock!", this.bestPsychic.Label);
 				}
 			}
 			DiaOption diaOption = new DiaOption("OK".Translate());

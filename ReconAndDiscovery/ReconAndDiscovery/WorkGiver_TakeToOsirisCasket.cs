@@ -33,7 +33,7 @@ namespace ReconAndDiscovery
 			foreach (ThingDef singleDef in enumerable)
 			{
 				Predicate<Thing> predicate = (Thing x) => !((Building_CryptosleepCasket)x).HasAnyContents && ReservationUtility.CanReserve(p, x, 1, -1, null, false);
-				Building_CryptosleepCasket building_CryptosleepCasket = (Building_CryptosleepCasket)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.PassAnything, false), 9999f, predicate, null, 0, -1, false, 6, false);
+				Building_CryptosleepCasket building_CryptosleepCasket = (Building_CryptosleepCasket)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.PassAllDestroyableThings, false), 9999f, predicate, null, 0, -1, false, RegionType.Set_Passable, false);
 				if (building_CryptosleepCasket != null)
 				{
 					return building_CryptosleepCasket;
@@ -45,7 +45,7 @@ namespace ReconAndDiscovery
 			foreach (ThingDef singleDef2 in enumerable)
 			{
 				Predicate<Thing> predicate2 = (Thing x) => !((Building_CryptosleepCasket)x).HasAnyContents && ReservationUtility.CanReserve(p, x, 1, -1, null, false);
-				Building_CryptosleepCasket building_CryptosleepCasket2 = (Building_CryptosleepCasket)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef2), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.PassAnything, false), 9999f, predicate2, null, 0, -1, false, 6, false);
+				Building_CryptosleepCasket building_CryptosleepCasket2 = (Building_CryptosleepCasket)GenClosest.ClosestThingReachable(p.Position, p.Map, ThingRequest.ForDef(singleDef2), PathEndMode.InteractionCell, TraverseParms.For(p, Danger.Deadly, TraverseMode.PassAllDestroyableThings, false), 9999f, predicate2, null, 0, -1, false, RegionType.Set_Passable, false);
 				if (building_CryptosleepCasket2 != null)
 				{
 					return building_CryptosleepCasket2;

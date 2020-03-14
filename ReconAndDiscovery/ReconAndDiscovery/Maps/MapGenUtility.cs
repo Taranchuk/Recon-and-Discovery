@@ -46,7 +46,8 @@ namespace ReconAndDiscovery.Maps
 		{
 			if (rs.wallMaterial == null)
 			{
-				rs.wallMaterial = BaseGenUtility.RandomCheapWallStuff(Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer), false);
+                Faction faction = Find.FactionManager.RandomNonHostileFaction(false, false, true, TechLevel.Spacer);
+                rs.wallMaterial = BaseGenUtility.RandomCheapWallStuff(faction, false);
 			}
 			if (rs.floorMaterial == null)
 			{
@@ -101,7 +102,9 @@ namespace ReconAndDiscovery.Maps
 		{
 			if (rp.wallStuff == null)
 			{
-				rp.wallStuff = BaseGenUtility.RandomCheapWallStuff(Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer), false);
+                Faction faction = Find.FactionManager.RandomNonHostileFaction(false, false, true, TechLevel.Spacer);
+
+                rp.wallStuff = BaseGenUtility.RandomCheapWallStuff(faction, false);
 			}
 			if (rp.floorDef == null)
 			{
@@ -209,7 +212,7 @@ namespace ReconAndDiscovery.Maps
 		{
 			if (material == null)
 			{
-				material = BaseGenUtility.RandomCheapWallStuff(Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer), false);
+				material = BaseGenUtility.RandomCheapWallStuff(Find.FactionManager.RandomNonHostileFaction(false, false, true, TechLevel.Spacer), false);
 			}
 			int num = Rand.RangeInclusive(0, extent);
 			if (horizontal)
@@ -331,7 +334,7 @@ namespace ReconAndDiscovery.Maps
 		{
 			if (doorStuff == null)
 			{
-				doorStuff = BaseGenUtility.RandomCheapWallStuff(Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer), false);
+				doorStuff = BaseGenUtility.RandomCheapWallStuff(Find.FactionManager.RandomNonHostileFaction(false, false, true, TechLevel.Spacer), false);
 			}
 			List<Thing> thingList = c.GetThingList(map);
 			for (int i = 0; i < thingList.Count; i++)
@@ -418,7 +421,8 @@ namespace ReconAndDiscovery.Maps
 				}
 				else
 				{
-					thing.SetFaction(Find.FactionManager.FirstFactionOfDef(FactionDefOf.SpacerHostile), null);
+                    Faction faction = Find.FactionManager.RandomEnemyFaction(true, false, true, TechLevel.Spacer);
+                    thing.SetFaction(faction, null);
 				}
 				GenSpawn.Spawn(thing, intVec, map);
 			}

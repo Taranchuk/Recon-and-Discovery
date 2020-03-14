@@ -114,7 +114,7 @@ namespace ReconAndDiscovery.Missions
 					num = 32;
 					break;
 				}
-				text = string.Format(text, playerNegotiator.NameStringShort, this.requestingFaction.Name, num);
+				text = string.Format(text, playerNegotiator.Label, this.requestingFaction.Name, num);
 				DiaNode diaNode = new DiaNode(text);
 				DiaOption diaOption = new DiaOption("OK".Translate());
 				diaOption.resolveTree = true;
@@ -137,7 +137,7 @@ namespace ReconAndDiscovery.Missions
 				diaNode2.options.Add(diaOption2);
 				Dialog_NodeTree window2 = new Dialog_NodeTree(diaNode2, false, false, null);
 				Find.WindowStack.Add(window2);
-				this.requestingFaction.AffectGoodwillWith(Faction.OfPlayer, -101f);
+				this.requestingFaction.TryAffectGoodwillWith(Faction.OfPlayer, -101);
 			}
 		}
 
@@ -146,14 +146,14 @@ namespace ReconAndDiscovery.Missions
 			this.active = true;
 			this.requestingFaction = faction;
 			this.facOriginalRelationship = (int)faction.PlayerGoodwill;
-			this.requestingFaction.AffectGoodwillWith(Faction.OfPlayer, 1f - faction.PlayerGoodwill);
+			this.requestingFaction.TryAffectGoodwillWith(Faction.OfPlayer, 1 - faction.PlayerGoodwill);
 		}
 
 		public void StopQuest()
 		{
 			this.active = false;
 			float num = this.requestingFaction.PlayerGoodwill - (float)this.facOriginalRelationship;
-			this.requestingFaction.AffectGoodwillWith(Faction.OfPlayer, (float)this.facOriginalRelationship);
+			this.requestingFaction.TryAffectGoodwillWith(Faction.OfPlayer, this.facOriginalRelationship);
 			this.requestingFaction = null;
 		}
 

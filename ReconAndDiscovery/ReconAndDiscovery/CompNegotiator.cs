@@ -18,7 +18,7 @@ namespace ReconAndDiscovery
 				Job job = new Job(JobDefOfReconAndDiscovery.Negotiate);
 				job.targetA = this.parent;
 				job.playerForced = true;
-				selPawn.jobs.TryTakeOrderedJob(job, JobTag.NoTag);
+				selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
 			}, MenuOptionPriority.Default, null, null, 0f, null, null);
 			list.Add(item);
 			return list;

@@ -256,14 +256,15 @@ namespace ReconAndDiscovery.Missions
 			{
 				int tile = this.parent.Tile;
 				this.CloseMapImmediate();
-				Faction faction = FactionGenerator.NewGeneratedFaction(FactionDefOf.Outlander);
-				map.pawnDestinationManager.RegisterFaction(faction);
+
+				Faction faction = FactionGenerator.NewGeneratedFaction(FactionDefOf.Ancients);
+                map.pawnDestinationReservationManager.GetPawnDestinationSetFor(faction);
 				Find.FactionManager.Add(faction);
-				FactionBase factionBase = (FactionBase)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.FactionBase);
-				factionBase.SetFaction(faction);
-				factionBase.Tile = tile;
-				factionBase.Name = FactionBaseNameGenerator.GenerateFactionBaseName(factionBase);
-				Find.WorldObjects.Add(factionBase);
+				Settlement settlement = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
+                settlement.SetFaction(faction);
+                settlement.Tile = tile;
+                settlement.Name = SettlementNameGenerator.GenerateSettlementName(settlement, null);
+				Find.WorldObjects.Add(settlement);
 				faction.leader = null;
 				foreach (Pawn pawn in this.injured)
 				{
@@ -276,10 +277,10 @@ namespace ReconAndDiscovery.Missions
 						}
 					}
 				}
-				faction.AffectGoodwillWith(Faction.OfPlayer, 100f);
+				faction.TryAffectGoodwillWith(Faction.OfPlayer, 100);
 				string text3 = "New Faction!";
 				string text4 = string.Format("The survivors of the crash have decided to make a life for themselves here, and have founded a new faction, {0} lead by {1}.", faction.Name, faction.leader.Name);
-				Find.LetterStack.ReceiveLetter(text3, text4, LetterDefOf.Good, null);
+				Find.LetterStack.ReceiveLetter(text3, text4, LetterDefOf.PositiveEvent, null);
 			}
 		}
 
@@ -307,7 +308,7 @@ namespace ReconAndDiscovery.Missions
 		{
 			this.active = true;
 			this.rewards.ClearAndDestroyContents(DestroyMode.Vanish);
-			this.rewards.TryAddRange(rewards, true);
+			this.rewards.TryAddRangeOrTransfer(rewards, true);
 		}
 
 		public void StopQuest()
@@ -320,7 +321,7 @@ namespace ReconAndDiscovery.Missions
 
 		private static List<Thing> tmpRewards = new List<Thing>();
 
-		private static Faction fac = Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer);
+		private static Faction fac = Find.FactionManager.RandomNonHostileFaction(false, false, true, TechLevel.Spacer);
 
 		private List<Pawn> injured = new List<Pawn>();
 

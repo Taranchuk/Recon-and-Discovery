@@ -176,14 +176,12 @@ namespace ReconAndDiscovery
 		public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
 		{
 			List<FloatMenuOption> list = new List<FloatMenuOption>();
-			FloatMenuOption floatMenuOption = new FloatMenuOption(MenuOptionPriority.Default);
-			floatMenuOption.Label = "Resurrect contained";
-			floatMenuOption.action = delegate()
-			{
-				Job job = new Job(JobDefOfReconAndDiscovery.ActivateOsirisCasket, this.parent);
-				job.playerForced = true;
-				selPawn.jobs.TryTakeOrderedJob(job, JobTag.NoTag);
-			};
+            FloatMenuOption floatMenuOption = new FloatMenuOption("ResurrectContained".Translate(), delegate ()
+            {
+                Job job = new Job(JobDefOfReconAndDiscovery.ActivateOsirisCasket, this.parent);
+                job.playerForced = true;
+                selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+            }); ;
 			if (this.ReadyToHeal)
 			{
 				list.Add(floatMenuOption);

@@ -57,7 +57,7 @@ namespace ReconAndDiscovery
 
 		public int doorW = 0;
 
-		public ThingDef wallMaterial = BaseGenUtility.RandomCheapWallStuff(Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer), false);
+        public ThingDef wallMaterial = BaseGenUtility.RandomCheapWallStuff(Find.FactionManager.RandomNonHostileFaction(false, false, true, TechLevel.Spacer), false);
 
 		public TerrainDef floorMaterial = BaseGenUtility.RandomBasicFloorDef(Faction.OfMechanoids, false);
 	}

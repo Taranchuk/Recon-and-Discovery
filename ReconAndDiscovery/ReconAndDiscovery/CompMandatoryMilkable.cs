@@ -87,7 +87,7 @@ namespace ReconAndDiscovery
 			{
 				if (Rand.Chance(2.5E-05f))
 				{
-					DamageInfo value = new DamageInfo(DamageDefOf.Bomb, 100, -1f, null, null, null, 0);
+					DamageInfo value = new DamageInfo(DamageDefOf.Bomb, 100, -1f, -1f, null, null, null, 0);
 					this.parent.Kill(new DamageInfo?(value));
 				}
 			}

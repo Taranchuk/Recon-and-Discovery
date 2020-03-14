@@ -18,25 +18,29 @@ namespace ReconAndDiscovery
 
 		private void CollapseRandomRoof()
 		{
-			IntVec3 intVec;
-			if (CellFinderLoose.TryGetRandomCellWith((IntVec3 c) => c.Standable(base.Map) && base.Map.roofGrid.Roofed(c), base.Map, 500, out intVec))
-			{
-				base.Map.roofCollapseBuffer.MarkToCollapse(intVec);
-				IntVec3[] array = new IntVec3[]
-				{
-					intVec + IntVec3.West,
-					intVec + IntVec3.East,
-					intVec + IntVec3.South,
-					intVec + IntVec3.North
-				};
-				foreach (IntVec3 c2 in array)
-				{
-					if (c2.Standable(base.Map) && base.Map.roofGrid.Roofed(c2))
-					{
-						base.Map.roofCollapseBuffer.MarkToCollapse(c2);
-					}
-				}
-			}
+            foreach (Map map in AffectedMaps)
+            {
+                IntVec3 intVec;
+                if (CellFinderLoose.TryGetRandomCellWith((IntVec3 c) => c.Standable(map) && map.roofGrid.Roofed(c), map, 500, out intVec))
+                {
+                    map.roofCollapseBuffer.MarkToCollapse(intVec);
+                    IntVec3[] array = new IntVec3[]
+                    {
+                    intVec + IntVec3.West,
+                    intVec + IntVec3.East,
+                    intVec + IntVec3.South,
+                    intVec + IntVec3.North
+                    };
+                    foreach (IntVec3 c2 in array)
+                    {
+                        if (c2.Standable(map) && map.roofGrid.Roofed(c2))
+                        {
+                            map.roofCollapseBuffer.MarkToCollapse(c2);
+                        }
+                    }
+                }
+            }
+
 		}
 
 		public override void GameConditionTick()

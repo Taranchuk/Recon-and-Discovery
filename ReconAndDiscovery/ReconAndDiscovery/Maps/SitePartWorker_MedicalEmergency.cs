@@ -12,8 +12,8 @@ namespace ReconAndDiscovery.Maps
 		public override void PostMapGenerate(Map map)
 		{
 			base.PostMapGenerate(map);
-			Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer);
-			int maxPawns = Find.World.worldObjects.MapParentAt(map.Tile).GetComponent<QuestComp_MedicalEmergency>().maxPawns;
+            Faction faction = Find.FactionManager.RandomNonHostileFaction(false, false, true, TechLevel.Spacer);
+            int maxPawns = Find.World.worldObjects.MapParentAt(map.Tile).GetComponent<QuestComp_MedicalEmergency>().maxPawns;
 			List<Pawn> list = new List<Pawn>();
 			IntVec3 baseCenter;
 			if (RCellFinder.TryFindRandomCellNearTheCenterOfTheMapWith((IntVec3 x) => x.Standable(map) && x.Fogged(map) && GridsUtility.GetRoom(x, map, 6).CellCount >= 2, map, out baseCenter))
