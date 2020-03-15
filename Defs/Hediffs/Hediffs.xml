@@ -18,7 +18,7 @@
         <statOffsets>
           <MeleeHitChance>0.2</MeleeHitChance>
           <MeleeDodgeChance>0.2</MeleeDodgeChance>
-          <ShootingAccuracy>0.2</ShootingAccuracy>
+          <ShootingAccuracyPawn>0.2</ShootingAccuracyPawn>
           <AimingDelayFactor>-0.2</AimingDelayFactor>
         </statOffsets>
       </li>
@@ -82,7 +82,7 @@
          <statOffsets>
           <MeleeHitChance>-0.15</MeleeHitChance>
           <MeleeDodgeChance>-0.15</MeleeDodgeChance>
-          <ShootingAccuracy>-0.15</ShootingAccuracy>
+          <ShootingAccuracyPawn>-0.15</ShootingAccuracyPawn>
           <AimingDelayFactor>0.15</AimingDelayFactor>
         </statOffsets>
       </li>

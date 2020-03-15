@@ -10,12 +10,12 @@
     <statBases>
       <MarketValue>6.5</MarketValue>
       <Mass>0.05</Mass>
+      <Nutrition>0.16</Nutrition>
+
 			<MaxHitPoints>60</MaxHitPoints>
     </statBases>
     <comps>
-			<li Class="CompProperties_FoodPoisoningChance">
-				<humanlikeOnly>true</humanlikeOnly>
-			</li>
+			<li Class="CompProperties_FoodPoisonable"></li>
       <li Class="CompProperties_Rottable">
         <daysToRotStart>28</daysToRotStart>
 				<rotDestroys>true</rotDestroys>
@@ -24,7 +24,6 @@
     <ingestible>
       <preferability>RawTasty</preferability>
       <foodType>AnimalProduct, Fluid</foodType>
-      <nutrition>0.16</nutrition>
     </ingestible>
     <thingCategories>
       <li>AnimalProductRaw</li>

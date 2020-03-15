@@ -3,7 +3,7 @@
    
    <TraitDef>
     <defName>Holographic</defName>
-    <commonality>0.0</commonality>
+    <commonality>0.01</commonality>
     <degreeDatas>
       <li>
         <label>holographic</label>

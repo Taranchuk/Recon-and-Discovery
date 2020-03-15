@@ -5,7 +5,7 @@
     <label>gattling laser</label>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData>
-      <texPath>Things/Building/Security/TurretImprovised</texPath>
+      <texPath>Things/Building/Security/TurretSniper_Top</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3,3)</drawSize>
       <damageData>
@@ -13,6 +13,9 @@
       </damageData>
     </graphicData>
     <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+	</thingCategories>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
@@ -88,7 +91,7 @@
     </graphicData>
     <menuHidden>true</menuHidden>
     <description>Jury-rigged gun attached to a turret.</description>
-    <soundInteract>InteractRifle</soundInteract>
+    <soundInteract>Interact_Rifle</soundInteract>
     <canBeSpawningInventory>false</canBeSpawningInventory>
     <tradeability>Never</tradeability>
     <destroyOnDrop>true</destroyOnDrop>
@@ -146,12 +149,17 @@
 		</costList>
 		<altitudeLayer>Building</altitudeLayer>
 		 <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSpecial</li>
+	</thingCategories>
+
 		<tickerType>Normal</tickerType>
 		<fillPercent>0.5</fillPercent>
 		<tradeability>Never</tradeability>
 		<useHitPoints>True</useHitPoints>
 		<statBases>
 			<WorkToBuild>6500</WorkToBuild>
+			<Mass>100</Mass>
 			<MaxHitPoints>220</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 		</statBases>
@@ -188,6 +196,10 @@
 		<label>deflector</label>
 		<thingClass>Building_WorkTable_HeatPush</thingClass>
 		<minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsTemperature</li>
+	</thingCategories>
+
 		<description>An EM deflector for protecting a region against solar flares.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Deflector</texPath>
@@ -210,6 +222,7 @@
 		<useHitPoints>True</useHitPoints>
 		<statBases>
 			<WorkToBuild>6500</WorkToBuild>
+			<Mass>50</Mass>
 			<MaxHitPoints>220</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 		</statBases>
@@ -257,11 +270,16 @@
 		</costList>
 		<altitudeLayer>Building</altitudeLayer>
 		 <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSpecial</li>
+	</thingCategories>
+
 		<tickerType>Rare</tickerType>
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>True</useHitPoints>
 		<statBases>
 			<WorkToBuild>6500</WorkToBuild>
+			<Mass>5</Mass>
 			<MaxHitPoints>100</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 		</statBases>
@@ -301,6 +319,9 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsPower</li>
+	</thingCategories>
     <soundInteract>Standard_Drop</soundInteract>
     <soundDrop>Standard_Drop</soundDrop>
     <statBases>
@@ -313,6 +334,7 @@
     <blockWind>false</blockWind>
     <fillPercent>1.0</fillPercent>
     <castEdgeShadows>false</castEdgeShadows>
+    <tickerType>Normal</tickerType>
     <rotatable>false</rotatable>
     <canOverlapZones>false</canOverlapZones>
      <size>(1,1)</size>
@@ -531,6 +553,9 @@
     <altitudeLayer>Building</altitudeLayer>
     <passability>Impassable</passability>
     <minifiedDef>MinifiedThing</minifiedDef>
+	<thingCategories>
+      <li>BuildingsTemperature</li>
+    </thingCategories>
     <tradeability>Never</tradeability>
     <pathCost>0</pathCost>
     <blockWind>true</blockWind>
@@ -539,6 +564,7 @@
     <canOverlapZones>false</canOverlapZones>
     <statBases>
       <WorkToBuild>3200</WorkToBuild>
+	<Mass>10</Mass>
       <MaxHitPoints>250</MaxHitPoints>
       <Flammability>1.0</Flammability>
     </statBases>
@@ -574,12 +600,17 @@
     <tradeability>Never</tradeability>
     <passability>Impassable</passability>
     <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSpecial</li>
+	</thingCategories>
+
     <pathCost>0</pathCost>
     <blockWind>true</blockWind>
     <castEdgeShadows>false</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
     <canOverlapZones>false</canOverlapZones>
     <statBases>
+	<Mass>10</Mass>
       <WorkToBuild>3200</WorkToBuild>
       <MaxHitPoints>250</MaxHitPoints>
       <Flammability>1.0</Flammability>

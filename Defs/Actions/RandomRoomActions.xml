@@ -24,7 +24,7 @@
 		</spawnedThings>
 		<numPawnsToSpawn>-2~1</numPawnsToSpawn>
 		<pawnKinds>
-			<li>SpaceSoldier</li>
+			<li>AncientSoldier</li>
 		</pawnKinds>
 		<effectRadius>3</effectRadius>
 		<hasDialog>true</hasDialog>
@@ -70,15 +70,15 @@
 		<numPawnsToSpawn>1~3</numPawnsToSpawn>
 		<pawnKinds>
 			<li>Megascarab</li>
-			<li>GrizzlyBear</li>	
+			<li>Bear_Grizzly</li>	
 			<li>Cougar</li>	
 			<li>Lynx</li>	
 			<li>Spelopede</li>	
 			<li>Megaspider</li>	
 			<li>Cobra</li>	
 			<li>Boomalope</li>	
-			<li>WolfTimber</li>	
-			<li>FoxRed</li>	
+			<li>Wolf_Timber</li>	
+			<li>Fox_Red</li>	
 			<li>Warg</li>	
 			<li>Elephant</li>		
 		</pawnKinds>

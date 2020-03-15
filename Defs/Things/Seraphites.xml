@@ -39,11 +39,12 @@
     <defName>Seraphites</defName>
     <hediffClass>HediffWithComps</hediffClass>
     <label>seraphites</label>
+    <description>seraphites</description>
     <defaultLabelColor>(0.5,0.5,0.9)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>1.0</maxSeverity>
 		<comps>
-			<li Class="HediffCompProperties_HealOldWounds" />
+			<li Class="HediffCompProperties_HealPermanentWounds" />
 			<li Class="ReconAndDiscovery.Things.HediffCompProperties_Seraphites" />
 		</comps>
     <stages>
