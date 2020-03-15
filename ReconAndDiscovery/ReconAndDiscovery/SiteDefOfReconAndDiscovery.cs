@@ -8,35 +8,36 @@ namespace ReconAndDiscovery
 	public static class SiteDefOfReconAndDiscovery
 	{
 
-		public static SitePart ScatteredTreasure;
+		public static SitePartDef ScatteredTreasure;
 
-		public static SitePart ScatteredManhunters;
+        public static SitePartDef ScatteredManhunters;
 
-		public static SitePart MechanoidForces;
+        public static SitePartDef MechanoidForces;
 
-		public static SitePart EnemyRaidOnArrival;
+        public static SitePartDef EnemyRaidOnArrival;
 
-		public static SitePart MedicalEmergency;
+        public static SitePartDef MedicalEmergency;
 
-		public static SitePart RareBeasts;
+        public static SitePartDef RareBeasts;
 
-		public static SitePart SitePart_Computer;
+        public static SitePartDef SitePart_Computer;
 
-		public static SitePart OsirisCasket;
+        public static SitePartDef OsirisCasket;
 
-		public static SitePart HoloDisk;
+        public static SitePartDef HoloDisk;
 
-		public static SitePart PeaceTalksFaction;
+        public static SitePartDef PeaceTalksFaction;
 
-		public static SitePart Stargate;
+        public static SitePartDef Stargate;
 
-		public static SitePart WeatherSat;
+        public static SitePartDef WeatherSat;
 
-		public static SitePart SitePart_WarIdol;
+        public static SitePartDef SitePart_WarIdol;
 
-		public static SitePart SitePart_FaultyGenerator;
+        public static SitePartDef SitePart_FaultyGenerator;
 
-		public static SitePart SitePart_RadioactiveDust;
+        public static SitePartDef SitePart_RadioactiveDust;
+
 
 		public static WorldObjectDef Adventure;
 

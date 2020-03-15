@@ -65,32 +65,39 @@ namespace ReconAndDiscovery.Missions
                                                        select net;
                         if (source.Count<PowerNet>() > 0)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.OsirisCasket);
+                            SitePart osirisCasket = new SitePart(site, SiteDefOfReconAndDiscovery.OsirisCasket, null);
+                            site.parts.Add(osirisCasket);
                         }
                         else
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.WeatherSat);
+                            SitePart weatherSat = new SitePart(site, SiteDefOfReconAndDiscovery.WeatherSat, null);
+                            site.parts.Add(weatherSat);
                         }
                         site.GetComponent<TimeoutComp>().StartTimeout(randomInRange * 60000);
                         if (Rand.Value < 0.25f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
+                            SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                            site.parts.Add(scatteredManhunters);
                         }
                         if (Rand.Value < 0.1f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
+                            SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+                            site.parts.Add(scatteredTreasure);
                         }
                         if (Rand.Value < 1f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, null);
+                            site.parts.Add(enemyRaidOnArrival);
                         }
                         if (Rand.Value < 0.9f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, null);
+                            site.parts.Add(enemyRaidOnArrival);
                         }
                         if (Rand.Value < 0.6f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, null);
+                            site.parts.Add(enemyRaidOnArrival);
                         }
                         Find.WorldObjects.Add(site);
                         QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("PsychicDrone"), null, parms), Find.TickManager.TicksGame + 1);

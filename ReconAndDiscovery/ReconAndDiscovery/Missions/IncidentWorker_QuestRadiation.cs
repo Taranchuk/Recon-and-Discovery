@@ -21,7 +21,8 @@ namespace ReconAndDiscovery.Missions
 			Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventureThingCounter);
 			site.Tile = tile;
 			site.def = SiteDefOfReconAndDiscovery.SiteRadiationQuest;
-			site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_RadioactiveDust);
+            SitePart radioactiveDust = new SitePart(site, SiteDefOfReconAndDiscovery.SitePart_RadioactiveDust, null);
+            site.parts.Add(radioactiveDust);
 			QuestComp_CountThings component = site.GetComponent<QuestComp_CountThings>();
 			component.targetNumber = 200;
 			component.ticksTarget = 60000;
@@ -31,19 +32,23 @@ namespace ReconAndDiscovery.Missions
 			component.StartQuest(ThingDef.Named("PlantPsychoid"));
 			if (Rand.Value < 0.1f)
 			{
-				site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
+                SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+                site.parts.Add(scatteredTreasure);
 			}
 			if (Rand.Value < 0.05f)
 			{
-				site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
+                SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                site.parts.Add(scatteredManhunters);
 			}
 			if (Rand.Value < 0.05f)
 			{
-				site.parts.Add(SiteDefOfReconAndDiscovery.MechanoidForces);
+                SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, null);
+                site.parts.Add(mechanoidForces);
 			}
 			if (Rand.Value < 0.05f)
 			{
-				site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, null);
+                site.parts.Add(enemyRaidOnArrival);
 			}
 			Find.WorldObjects.Add(site);
 			return site;

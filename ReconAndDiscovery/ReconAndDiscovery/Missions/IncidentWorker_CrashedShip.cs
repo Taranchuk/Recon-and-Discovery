@@ -78,7 +78,8 @@ namespace ReconAndDiscovery.Missions
                     //}
 					if (flag3)
 					{
-						site.parts.Add(SiteDefOfReconAndDiscovery.MedicalEmergency);
+                        SitePart medicalEmergency = new SitePart(site, SiteDefOfReconAndDiscovery.MedicalEmergency, null);
+                        site.parts.Add(medicalEmergency);
 						QuestComp_MedicalEmergency component = site.GetComponent<QuestComp_MedicalEmergency>();
 						component.parent = site;
 						component.Initialize(new WorldObjectCompProperties_MedicalEmergency());
@@ -88,23 +89,30 @@ namespace ReconAndDiscovery.Missions
 					}
 					else if (!Rand.Chance(0.75f))
 					{
-						site.parts.Add(SiteDefOfReconAndDiscovery.RareBeasts);
+                        SitePart rareBeasts = new SitePart(site, SiteDefOfReconAndDiscovery.RareBeasts, null);
+
+                        site.parts.Add(rareBeasts);
 					}
 					if (Rand.Value < 0.85f)
 					{
-						site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
+                        SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+
+                        site.parts.Add(scatteredTreasure);
 					}
 					if (Rand.Value < 0.1f)
 					{
-						site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
+                        SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                        site.parts.Add(scatteredManhunters);
 					}
 					if (Rand.Value < 0.1f)
 					{
-						site.parts.Add(SiteDefOfReconAndDiscovery.MechanoidForces);
+                        SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, null);
+                        site.parts.Add(mechanoidForces);
 					}
 					if (Rand.Value < 0.5f)
 					{
-						site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                        SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, null);
+                        site.parts.Add(enemyRaidOnArrival);
 					}
 					int randomInRange = IncidentWorker_CrashedShip.TimeoutDaysRange.RandomInRange;
 					site.GetComponent<TimeoutComp>().StartTimeout(randomInRange * 60000);

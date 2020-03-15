@@ -94,7 +94,8 @@ namespace ReconAndDiscovery.Missions
                     if (!TileFinder.TryFindNewSiteTile(out tile))
                     {
                         Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.SeraphitesQuest, tile, Faction.OfInsects);
-                        site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_Computer);
+                        SitePart sitePart_Computer = new SitePart(site, SiteDefOfReconAndDiscovery.SitePart_Computer, null);
+                        site.parts.Add(sitePart_Computer);
                         foreach (SitePartDef sitePartDef in site.parts.Select(x => x.def))
                         {
                             if (sitePartDef.Worker is SitePartWorker_Computer)
@@ -104,19 +105,23 @@ namespace ReconAndDiscovery.Missions
                         }
                         if (Rand.Value < 0.15f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
+                            SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                            site.parts.Add(scatteredManhunters);
                         }
                         if (Rand.Value < 0.3f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
+                            SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+                            site.parts.Add(scatteredTreasure);
                         }
                         if (Rand.Value < 0.1f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, null);
+                            site.parts.Add(enemyRaidOnArrival);
                         }
                         if (Rand.Value < 0.1f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.MechanoidForces);
+                            SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, null);
+                            site.parts.Add(mechanoidForces);
                         }
                         base.SendStandardLetter(parms, site, new NamedArgument[]
                         {

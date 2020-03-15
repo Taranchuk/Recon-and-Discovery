@@ -57,14 +57,19 @@ namespace ReconAndDiscovery.Missions
                     SitePart turrets = new SitePart(site, SitePartDefOf.Turrets, null);
                     site.parts.Add(outpost);
                 }
-                site.parts.Add(SiteDefOfReconAndDiscovery.Stargate);
+                SitePart starGate = new SitePart(site, SiteDefOfReconAndDiscovery.Stargate, null);
+                site.parts.Add(starGate);
                 if (Rand.Value < 0.2f)
                 {
-                    site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
+                    SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+
+                    site.parts.Add(scatteredManhunters);
                 }
                 if (Rand.Value < 0.85f)
                 {
-                    site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
+                    SitePart ыcatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+
+                    site.parts.Add(ыcatteredTreasure);
                 }
                 site.GetComponent<TimeoutComp>().StartTimeout(10 * 60000);
                 base.SendStandardLetter(parms, site);

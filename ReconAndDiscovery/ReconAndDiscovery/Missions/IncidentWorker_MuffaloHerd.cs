@@ -73,7 +73,8 @@ namespace ReconAndDiscovery.Missions
 				site.def = SiteDefOfReconAndDiscovery.MuffaloMigration;
 				if (Rand.Value < 0.5f)
 				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
+                    SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+                    site.parts.Add(scatteredTreasure);
 				}
 				Find.LetterStack.ReceiveLetter("Muffalo migration", text, LetterDefOf.PositiveEvent, site, null);
 				site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);

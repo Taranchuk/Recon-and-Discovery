@@ -21,25 +21,30 @@ namespace ReconAndDiscovery.Missions
 			Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventureDestroyThing);
 			site.Tile = tile;
 			site.def = SiteDefOfReconAndDiscovery.QuakesQuest;
-			site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_FaultyGenerator);
+            SitePart faultyGenerator = new SitePart(site, SiteDefOfReconAndDiscovery.SitePart_FaultyGenerator, null);
+            site.parts.Add(faultyGenerator);
 			site.GetComponent<QuestComp_DestroyThing>().StartQuest(ThingDefOf.GeothermalGenerator);
 			site.GetComponent<QuestComp_DestroyThing>().gameConditionCaused = GameConditionDef.Named("Tremors");
 			site.GetComponent<QuestComp_DestroyThing>().worldTileAffected = map.Tile;
 			if (Rand.Value < 0.05f)
 			{
-				site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
+                SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+                site.parts.Add(scatteredTreasure);
 			}
 			if (Rand.Value < 0.1f)
 			{
-				site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
+                SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                site.parts.Add(scatteredManhunters);
 			}
 			if (Rand.Value < 0.1f)
 			{
-				site.parts.Add(SiteDefOfReconAndDiscovery.MechanoidForces);
+                SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, null);
+                site.parts.Add(mechanoidForces);
 			}
 			if (Rand.Value < 0.05f)
 			{
-				site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, null);
+                site.parts.Add(enemyRaidOnArrival);
 			}
 			Find.WorldObjects.Add(site);
 			return site;

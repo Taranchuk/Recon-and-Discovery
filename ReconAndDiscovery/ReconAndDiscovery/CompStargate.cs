@@ -132,7 +132,7 @@ namespace ReconAndDiscovery
 					else
 					{
 						Site site = mapParent as Site;
-						if (site != null && site.parts.Contains(SiteDefOfReconAndDiscovery.Stargate))
+						if (site != null && site.parts.Select(x => x.def).Contains(SiteDefOfReconAndDiscovery.Stargate))
 						{
 							this.MakeLink(site);
 							result = true;

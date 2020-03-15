@@ -25,20 +25,25 @@ namespace ReconAndDiscovery.Missions
                 int tile;
                 TileFinder.TryFindPassableTileWithTraversalDistance(caravan.Tile, 1, 2, out tile, (int t) => !Find.WorldObjects.AnyMapParentAt(t), false);
                 Faction faction = Find.FactionManager.RandomEnemyFaction(true, false, true, TechLevel.Spacer);
-                Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.AbandonedColony,
-                    tile, faction);
-                site.parts.Add(SiteDefOfReconAndDiscovery.HoloDisk);
+                Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.AbandonedColony, tile, faction);
+
+                SitePart holoDisk = new SitePart(site, SiteDefOfReconAndDiscovery.HoloDisk, null);
+                site.parts.Add(holoDisk);
                 if (Rand.Value < 0.3f)
                 {
-                    site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
+                    SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                    site.parts.Add(scatteredManhunters);
                 }
                 if (Rand.Value < 0.1f)
                 {
-                    site.parts.Add(SiteDefOfReconAndDiscovery.MechanoidForces);
+                    SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, null);
+                    site.parts.Add(mechanoidForces);
                 }
                 if (Rand.Value < 0.05f)
                 {
-                    site.parts.Add(SiteDefOfReconAndDiscovery.Stargate);
+                    SitePart stargate = new SitePart(site, SiteDefOfReconAndDiscovery.Stargate, null);
+
+                    site.parts.Add(stargate);
                 }
                 Find.WorldObjects.Add(site);
                 if (site == null)

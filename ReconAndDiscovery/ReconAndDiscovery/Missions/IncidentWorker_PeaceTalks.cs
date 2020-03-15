@@ -59,8 +59,8 @@ namespace ReconAndDiscovery.Missions
                 if (TileFinder.TryFindNewSiteTile(out tile))
                 {
                     Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.PeaceTalks, tile, faction);
-                    site.parts.Add(SiteDefOfReconAndDiscovery.PeaceTalksFaction);
-                    site.SetFaction(faction);
+                    SitePart peaceTalksFaction = new SitePart(site, SiteDefOfReconAndDiscovery.PeaceTalksFaction, null);
+                    site.parts.Add(peaceTalksFaction);
                     site.GetComponent<QuestComp_PeaceTalks>().StartQuest(faction);
                     int num = 5;
                     site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);

@@ -101,22 +101,27 @@ namespace ReconAndDiscovery.Missions
 					if (TileFinder.TryFindNewSiteTile(out tile))
 					{
                         Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.PsiMachine, tile, Faction.OfInsects);
-                        site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_WarIdol);
+                        SitePart warIdol = new SitePart(site, SiteDefOfReconAndDiscovery.SitePart_WarIdol, null);
+                        site.parts.Add(warIdol);
                         if (Rand.Value < 0.15f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
+                            SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                            site.parts.Add(scatteredManhunters);
                         }
                         if (Rand.Value < 0.3f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
+                            SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+                            site.parts.Add(scatteredTreasure);
                         }
                         if (Rand.Value < 0.3f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, null);
+                            site.parts.Add(enemyRaidOnArrival);
                         }
                         if (Rand.Value < 0.1f)
                         {
-                            site.parts.Add(SiteDefOfReconAndDiscovery.MechanoidForces);
+                            SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, null);
+                            site.parts.Add(mechanoidForces);
                         }
                         Find.WorldObjects.Add(site);
                         if (site == null)
