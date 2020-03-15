@@ -26,7 +26,7 @@ namespace ReconAndDiscovery.Maps
 				{
 					incidentParms.faction = faction;
 					incidentParms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
-					incidentParms.raidArrivalMode = PawnsArriveMode.EdgeWalkIn;
+					incidentParms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
 					incidentParms.spawnCenter = spawnCenter2;
 					incidentParms.points *= 20f;
 					incidentParms.points = Math.Max(incidentParms.points, 250f);

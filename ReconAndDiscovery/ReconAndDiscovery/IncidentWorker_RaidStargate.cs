@@ -57,8 +57,9 @@ namespace ReconAndDiscovery
                             // TODO: Check if these parameters are correct in this raid
                             Lord lord = LordMaker.MakeNewLord(parms.faction, new LordJob_AssaultColony(parms.faction, true, true, false, false, true), map, list);
                             
-                            // not sure what to write here instead
-                            AvoidGridMaker.RegenerateAvoidGridsFor(parms.faction, map);
+                            // not sure what to write here instead, while commented out
+                            //AvoidGridMaker.RegenerateAvoidGridsFor(parms.faction, map);
+
 							LessonAutoActivator.TeachOpportunity(ConceptDefOf.EquippingWeapons, OpportunityType.Critical);
 							if (!PlayerKnowledgeDatabase.IsComplete(ConceptDefOf.ShieldBelts))
 							{

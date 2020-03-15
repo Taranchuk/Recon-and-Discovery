@@ -87,7 +87,7 @@ namespace ReconAndDiscovery.Missions
 				site.SetFaction(Faction.OfInsects);
 				site.def = SiteDefOfReconAndDiscovery.SeraphitesQuest;
 				site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_Computer);
-				foreach (SitePartDef sitePartDef in site.parts)
+				foreach (SitePartDef sitePartDef in site.parts.Select(x => x.def))
 				{
 					if (sitePartDef.Worker is SitePartWorker_Computer)
 					{

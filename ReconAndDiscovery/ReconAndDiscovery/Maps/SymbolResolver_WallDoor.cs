@@ -27,7 +27,6 @@ namespace ReconAndDiscovery.Maps
 
 		private void TryPlaceDoor(IntVec3 loc, ThingDef doorStuff, Faction faction = null)
 		{
-			default(ResolveParams).wallStuff = doorStuff;
 			MapGenUtility.PushDoor(loc);
 		}
 

@@ -210,7 +210,7 @@ namespace ReconAndDiscovery
 					LongEventHandler.QueueLongEvent(delegate()
 					{
 						SitePartWorker_Stargate.tmpPawnsToSpawn.AddRange(pawns);
-						Map orGenerateMap = GetOrGenerateMapUtility.GetOrGenerateMap(this.LinkedSite.Tile, SiteCoreWorker.MapSize, null);
+						Map orGenerateMap = GetOrGenerateMapUtility.GetOrGenerateMap(this.LinkedSite.Tile, this.LinkedSite.Map.Size, null);
 					}, "GeneratingMapForNewEncounter", false, null);
 					result = false;
 				}
