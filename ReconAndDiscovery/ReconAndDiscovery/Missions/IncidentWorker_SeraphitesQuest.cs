@@ -72,50 +72,6 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		private Site MakeSite()
-		{
-			int tile;
-			Site result;
-			if (!TileFinder.TryFindNewSiteTile(out tile))
-			{
-				result = null;
-			}
-			else
-			{
-				Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
-				site.Tile = tile;
-				site.SetFaction(Faction.OfInsects);
-				site.def = SiteDefOfReconAndDiscovery.SeraphitesQuest;
-				site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_Computer);
-				foreach (SitePartDef sitePartDef in site.parts.Select(x => x.def))
-				{
-					if (sitePartDef.Worker is SitePartWorker_Computer)
-					{
-						(sitePartDef.Worker as SitePartWorker_Computer).action = ActionDefOfReconAndDiscovery.ActionSeraphites;
-					}
-				}
-				if (Rand.Value < 0.15f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
-				}
-				if (Rand.Value < 0.3f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
-				}
-				if (Rand.Value < 0.1f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
-				}
-				if (Rand.Value < 0.1f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.MechanoidForces);
-				}
-				Find.WorldObjects.Add(site);
-				result = site;
-			}
-			return result;
-		}
-
 		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
@@ -134,19 +90,45 @@ namespace ReconAndDiscovery.Missions
 				}
 				else
 				{
-					Site site = this.MakeSite();
-					if (site == null)
-					{
-						result = false;
-					}
+                    int tile;
+                    if (!TileFinder.TryFindNewSiteTile(out tile))
+                    {
+                        Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.SeraphitesQuest, tile, Faction.OfInsects);
+                        site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_Computer);
+                        foreach (SitePartDef sitePartDef in site.parts.Select(x => x.def))
+                        {
+                            if (sitePartDef.Worker is SitePartWorker_Computer)
+                            {
+                                (sitePartDef.Worker as SitePartWorker_Computer).action = ActionDefOfReconAndDiscovery.ActionSeraphites;
+                            }
+                        }
+                        if (Rand.Value < 0.15f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
+                        }
+                        if (Rand.Value < 0.3f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
+                        }
+                        if (Rand.Value < 0.1f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                        }
+                        if (Rand.Value < 0.1f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.MechanoidForces);
+                        }
+                        base.SendStandardLetter(parms, site, new NamedArgument[]
+                        {
+                            pawn.Label,
+                            pawn2.Label
+                        });
+                        Find.WorldObjects.Add(site);
+                        result = true;
+                    }
 					else
 					{
-						base.SendStandardLetter(parms, site, new NamedArgument[]
-						{
-							pawn.Label,
-							pawn2.Label
-						});
-						result = true;
+						result = false;
 					}
 				}
 			}

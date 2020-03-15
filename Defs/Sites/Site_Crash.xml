@@ -22,13 +22,13 @@
 		</chanceFactorByPopulationCurve>
   </IncidentDef>
  
-  <WorldObjectDef>
+  <SitePartDef>
     <defName>CrashedShip</defName>
     <label>crashed ship</label>
 		<description>The approximate place a ship came down.</description>
     <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
     <expandingIconTexture>World/WorldObjects/AdventureSymbol</expandingIconTexture>
-  </WorldObjectDef>
+  </SitePartDef>
   
   <GenStepDef>
     <defName>CrashedShipGen</defName>

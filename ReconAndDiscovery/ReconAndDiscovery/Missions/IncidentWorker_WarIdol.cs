@@ -71,42 +71,6 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-		private Site MakeSite()
-		{
-			int tile;
-			Site result;
-			if (!TileFinder.TryFindNewSiteTile(out tile))
-			{
-				result = null;
-			}
-			else
-			{
-				Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
-				site.Tile = tile;
-				site.SetFaction(Faction.OfInsects);
-				site.def = SiteDefOfReconAndDiscovery.PsiMachine;
-				site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_WarIdol);
-				if (Rand.Value < 0.15f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
-				}
-				if (Rand.Value < 0.3f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
-				}
-				if (Rand.Value < 0.3f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
-				}
-				if (Rand.Value < 0.1f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.MechanoidForces);
-				}
-				Find.WorldObjects.Add(site);
-				result = site;
-			}
-			return result;
-		}
 
 		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
@@ -133,20 +97,43 @@ namespace ReconAndDiscovery.Missions
 				}
 				else
 				{
-					Site site = this.MakeSite();
-					if (site == null)
+                    int tile;
+					if (TileFinder.TryFindNewSiteTile(out tile))
 					{
-						result = false;
-					}
-					else
-					{
-						base.SendStandardLetter(parms, site, new NamedArgument[]
+                        Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.PsiMachine, tile, Faction.OfInsects);
+                        site.parts.Add(SiteDefOfReconAndDiscovery.SitePart_WarIdol);
+                        if (Rand.Value < 0.15f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
+                        }
+                        if (Rand.Value < 0.3f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
+                        }
+                        if (Rand.Value < 0.3f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                        }
+                        if (Rand.Value < 0.1f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.MechanoidForces);
+                        }
+                        Find.WorldObjects.Add(site);
+                        if (site == null)
+                        {
+                            result = false;
+                        }
+                        base.SendStandardLetter(parms, site, new NamedArgument[]
 						{
 							pawn.Label,
 							pawn2.Label
 						});
 						result = true;
 					}
+                    else
+                    {
+                        result = false;
+                    }
 				}
 			}
 			else

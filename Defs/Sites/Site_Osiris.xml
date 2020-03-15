@@ -2,13 +2,13 @@
 
 <Defs>  
 
-  <WorldObjectDef>
+  <SitePartDef>
     <defName>AbandonedCastle</defName>
     <label>abandoned castle</label>
 		<description>A long-disused medieval castle.</description>
     <siteTexture>World/WorldObjects/Psi</siteTexture>
     <expandingIconTexture>World/WorldObjects/Psi</expandingIconTexture>
-  </WorldObjectDef>
+  </SitePartDef>
   
   <GenStepDef>
     <defName>AbandonedCastle</defName>

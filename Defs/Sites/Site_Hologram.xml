@@ -2,13 +2,13 @@
 
 <Defs>  
 
-  <WorldObjectDef>
+  <SitePartDef>
     <defName>AbandonedColony</defName>
     <label>abandoned colony</label>
 		<description>An abandoned colony.</description>
     <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
     <expandingIconTexture>World/WorldObjects/AdventureSymbol</expandingIconTexture>
-  </WorldObjectDef>
+  </SitePartDef>
   
   <GenStepDef>
     <defName>AbandonedColony</defName>

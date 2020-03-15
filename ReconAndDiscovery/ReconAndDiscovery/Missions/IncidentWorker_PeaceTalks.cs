@@ -15,17 +15,6 @@ namespace ReconAndDiscovery.Missions
 			return base.CanFireNowSub(parms) && TileFinder.TryFindNewSiteTile(out num);
 		}
 
-		private Site MakeSite()
-		{
-			int tile;
-			TileFinder.TryFindNewSiteTile(out tile);
-			Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventurePeaceTalks);
-			site.Tile = tile;
-			site.def = SiteDefOfReconAndDiscovery.PeaceTalks;
-			Find.WorldObjects.Add(site);
-			return site;
-		}
-
 		public bool TryFindFaction(out Faction faction, Predicate<Faction> validator)
 		{
 			faction = null;
@@ -66,25 +55,27 @@ namespace ReconAndDiscovery.Missions
 			}
 			else
 			{
-				Site site = this.MakeSite();
-				if (site == null)
-				{
-					result = false;
-				}
+                int tile;
+                if (TileFinder.TryFindNewSiteTile(out tile))
+                {
+                    Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.PeaceTalks, tile, faction);
+                    site.parts.Add(SiteDefOfReconAndDiscovery.PeaceTalksFaction);
+                    site.SetFaction(faction);
+                    site.GetComponent<QuestComp_PeaceTalks>().StartQuest(faction);
+                    int num = 5;
+                    site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
+                    base.SendStandardLetter(parms, site, new NamedArgument[]
+                    {
+                        faction.leader.Label,
+                        faction.Name,
+                        num.ToString()
+                    });
+                    Find.WorldObjects.Add(site);
+                    result = true;
+                }
 				else
 				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.PeaceTalksFaction);
-					site.SetFaction(faction);
-					site.GetComponent<QuestComp_PeaceTalks>().StartQuest(faction);
-					int num = 5;
-					site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
-					base.SendStandardLetter(parms, site, new NamedArgument[]
-					{
-						faction.leader.Label,
-						faction.Name,
-						num.ToString()
-					});
-					result = true;
+					result = false;
 				}
 			}
 			return result;

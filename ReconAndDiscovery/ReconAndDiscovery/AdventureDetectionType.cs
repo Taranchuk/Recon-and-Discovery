@@ -5,7 +5,7 @@ namespace ReconAndDiscovery
 	public enum AdventureDetectionType
 	{
 		PSYCHIC,
-		COMMS,
+		COMMS, 
 		RESEARCH,
 		NONE
 	}

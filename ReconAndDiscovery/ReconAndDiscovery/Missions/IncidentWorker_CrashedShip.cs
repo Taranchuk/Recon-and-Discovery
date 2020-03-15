@@ -65,19 +65,17 @@ namespace ReconAndDiscovery.Missions
 				else
 				{
 					bool flag3 = Rand.Value < 0.4f;
-					Site site;
-					if (flag3)
-					{
-						site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventureMedical);
-					}
-					else
-					{
-						site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
-					}
-					site.Tile = tile;
-                    Faction faction = Find.FactionManager.RandomEnemyFaction(true, false, true, TechLevel.Spacer);
-                    site.SetFaction(faction);
-					site.def = SiteDefOfReconAndDiscovery.CrashedShip;
+					Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.CrashedShip, tile, 
+                        Find.FactionManager.RandomEnemyFaction(true, false, true, TechLevel.Spacer));
+                    // not sure what to do with all these
+                    //if (flag3)
+                    //{
+                    //	site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventureMedical);
+                    //}
+                    //else
+                    //{
+                    //	site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
+                    //}
 					if (flag3)
 					{
 						site.parts.Add(SiteDefOfReconAndDiscovery.MedicalEmergency);

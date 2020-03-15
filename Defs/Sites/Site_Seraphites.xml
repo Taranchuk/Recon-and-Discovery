@@ -21,13 +21,13 @@
 		</chanceFactorByPopulationCurve>
   </IncidentDef>
   
-  <WorldObjectDef>
+  <SitePartDef>
     <defName>SeraphitesQuest</defName>
     <label>Abandoned lab</label>
 		<description>The rumoured location of the luciferium cure.</description>
     <siteTexture>World/WorldObjects/Science</siteTexture>
     <expandingIconTexture>World/WorldObjects/Science</expandingIconTexture>
-  </WorldObjectDef>
+  </SitePartDef>
   
   <GenStepDef>
     <defName>AbandonedLabNanites</defName>

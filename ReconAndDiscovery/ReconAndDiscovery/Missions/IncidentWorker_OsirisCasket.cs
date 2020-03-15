@@ -40,58 +40,6 @@ namespace ReconAndDiscovery.Missions
 			return map != null && this.CanFindPsychic(map, out pawn);
 		}
 
-		private Site MakeSite(int days, Map map)
-		{
-			int tile;
-			Site result;
-			if (!TileFinder.TryFindNewSiteTile(out tile))
-			{
-				result = null;
-			}
-			else
-			{
-				Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
-				site.Tile = tile;
-				site.SetFaction(Faction.OfInsects);
-				site.def = SiteDefOfReconAndDiscovery.AbandonedCastle;
-				IEnumerable<PowerNet> source = from net in map.powerNetManager.AllNetsListForReading
-				where net.hasPowerSource
-				select net;
-				if (source.Count<PowerNet>() > 0)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.OsirisCasket);
-				}
-				else
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.WeatherSat);
-				}
-				site.GetComponent<TimeoutComp>().StartTimeout(days * 60000);
-				if (Rand.Value < 0.25f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
-				}
-				if (Rand.Value < 0.1f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
-				}
-				if (Rand.Value < 1f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
-				}
-				if (Rand.Value < 0.9f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
-				}
-				if (Rand.Value < 0.6f)
-				{
-					site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
-				}
-				Find.WorldObjects.Add(site);
-				result = site;
-			}
-			return result;
-		}
-
 		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
@@ -106,18 +54,55 @@ namespace ReconAndDiscovery.Missions
 				else
 				{
 					int randomInRange = IncidentWorker_OsirisCasket.TimeoutDaysRange.RandomInRange;
-					if (this.MakeSite(randomInRange, map) == null)
-					{
-						result = false;
-					}
-					else
-					{
-						QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("PsychicDrone"), null, parms), Find.TickManager.TicksGame + 1);
-						Find.Storyteller.incidentQueue.Add(qi);
-						Find.LetterStack.ReceiveLetter("Psychic message", string.Format("{0} has received visions accompanying the drone, showing a battle and crying out for help. Others must have noticed, so the site will probably be dangerous.", pawn.Label), LetterDefOf.PositiveEvent, null);
-						result = true;
-					}
-				}
+
+                    int tile;
+                    if (TileFinder.TryFindNewSiteTile(out tile))
+                    {
+
+                        Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.AbandonedCastle, tile, Faction.OfInsects);
+                        IEnumerable<PowerNet> source = from net in map.powerNetManager.AllNetsListForReading
+                                                       where net.hasPowerSource
+                                                       select net;
+                        if (source.Count<PowerNet>() > 0)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.OsirisCasket);
+                        }
+                        else
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.WeatherSat);
+                        }
+                        site.GetComponent<TimeoutComp>().StartTimeout(randomInRange * 60000);
+                        if (Rand.Value < 0.25f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredManhunters);
+                        }
+                        if (Rand.Value < 0.1f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.ScatteredTreasure);
+                        }
+                        if (Rand.Value < 1f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                        }
+                        if (Rand.Value < 0.9f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                        }
+                        if (Rand.Value < 0.6f)
+                        {
+                            site.parts.Add(SiteDefOfReconAndDiscovery.EnemyRaidOnArrival);
+                        }
+                        Find.WorldObjects.Add(site);
+                        QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("PsychicDrone"), null, parms), Find.TickManager.TicksGame + 1);
+                        Find.Storyteller.incidentQueue.Add(qi);
+                        Find.LetterStack.ReceiveLetter("Psychic message", string.Format("{0} has received visions accompanying the drone, showing a battle and crying out for help. Others must have noticed, so the site will probably be dangerous.", pawn.Label), LetterDefOf.PositiveEvent, null);
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+                }
 			}
 			else
 			{

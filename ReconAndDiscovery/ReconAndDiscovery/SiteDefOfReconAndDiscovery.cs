@@ -48,18 +48,19 @@ namespace ReconAndDiscovery
 
 		public static WorldObjectDef AdventureThingCounter;
 
+        public static SitePartDef AbandonedCastle;
 
-        public static WorldObjectDef CrashedShip;
+        public static SitePartDef AbandonedColony;
 
-        public static WorldObjectDef SeraphitesQuest;
+        public static SitePartDef CrashedShip;
 
-        public static WorldObjectDef AbandonedCastle;
+        public static SitePartDef Nanites;
 
-        public static WorldObjectDef AbandonedColony;
+        public static SitePartDef PeaceTalks;
 
-        public static WorldObjectDef PeaceTalks;
+        public static SitePartDef PsiMachine;
 
-        public static WorldObjectDef PsiMachine;
+        public static SitePartDef SeraphitesQuest;
 
         public static WorldObjectDef QuakesQuest;
 
