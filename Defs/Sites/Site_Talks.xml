@@ -5,11 +5,12 @@
 		<defName>PeaceTalks</defName>
 		<label>peace talks</label>
 		<category>Misc</category>
-		<targetType>World</targetType>
-		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_PeaceTalks</workerClass>
+    <targetTags>
+      <li>World</li>
+    </targetTags>		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_PeaceTalks</workerClass>
 		<letterLabel>Peace Talks</letterLabel>
 		<letterText>{0}, the leader of {1}, has invited you to peace talks at an abandoned castle near here. You have {2} days to respond.</letterText>
-		<letterDef>Good</letterDef>
+		<letterDef>PositiveEvent</letterDef>
 		<baseChance>1.5</baseChance>
 		<minRefireDays>10</minRefireDays>
 		<chanceFactorByPopulationCurve>
@@ -20,13 +21,13 @@
 		</chanceFactorByPopulationCurve>
   </IncidentDef>
 
-  <SiteCoreDef>
+  <WorldObjectDef>
     <defName>PeaceTalks</defName>
     <label>peace talks</label>
 		<description>A venue for talks with another faction.</description>
     <siteTexture>World/WorldObjects/Diplomacy</siteTexture>
     <expandingIconTexture>World/WorldObjects/Diplomacy</expandingIconTexture>
-  </SiteCoreDef>
+  </WorldObjectDef>
   
   <GenStepDef>
     <defName>OldCastle_Talks</defName>

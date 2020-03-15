@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ThingDefinitions>
+<Defs>
   <ThingDef ParentName="BuildingBase">
     <defName>GattlingLaser</defName>
     <label>gattling laser</label>
@@ -79,7 +79,7 @@
     </projectile>
   </ThingDef>
 
-  <ThingDef ParentName="BaseHumanGun">
+  <ThingDef ParentName="BaseWeapon">
     <defName>Gun_GattlingLaser</defName>
     <label>Gattling Laser</label>
     <graphicData>
@@ -125,10 +125,10 @@
   
   
   <ThingDef ParentName="BuildingBase">
-		<DefName>Teleporter</DefName>
+		<defName>Teleporter</defName>
 		<label>teleporter</label>
-		<ThingClass>Building_WorkTable_HeatPush</ThingClass>
-		<Description>A glittertech teleportation panel. It can beam people and animals in from anywhere on the planet, but due to crash damage cannot send.</Description>
+		<thingClass>Building_WorkTable_HeatPush</thingClass>
+		<description>A glittertech teleportation panel. It can beam people and animals in from anywhere on the planet, but due to crash damage cannot send.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Teleporter</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -140,11 +140,11 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
-		<CostList>
+		<costList>
 			<Steel>120</Steel>
 			<Component>4</Component>
-		</CostList>
-		<AltitudeLayer>Building</AltitudeLayer>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
 		 <minifiedDef>MinifiedFurniture</minifiedDef>
 		<tickerType>Normal</tickerType>
 		<fillPercent>0.5</fillPercent>
@@ -155,8 +155,8 @@
 			<MaxHitPoints>220</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<Size>(1,1)</Size>
-		<Passability>Standable</Passability>
+		<size>(1,1)</size>
+		<passability>Standable</passability>
 		<pathCost>60</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,0)</interactionCellOffset>
@@ -184,11 +184,11 @@
 	
   
    <ThingDef ParentName="BuildingBase">
-		<DefName>DeflectorArray</DefName>
+		<defName>DeflectorArray</defName>
 		<label>deflector</label>
-		<ThingClass>Building_WorkTable_HeatPush</ThingClass>
+		<thingClass>Building_WorkTable_HeatPush</thingClass>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
-		<Description>An EM deflector for protecting a region against solar flares.</Description>
+		<description>An EM deflector for protecting a region against solar flares.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Deflector</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -200,11 +200,11 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
-		<CostList>
+		<costList>
 			<Steel>120</Steel>
 			<Component>4</Component>
-		</CostList>
-		<AltitudeLayer>Building</AltitudeLayer>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
 		<tickerType>Normal</tickerType>
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>True</useHitPoints>
@@ -213,8 +213,8 @@
 			<MaxHitPoints>220</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<Size>(2,1)</Size>
-		<Passability>Standable</Passability>
+		<size>(2,1)</size>
+		<passability>Standable</passability>
 		<pathCost>60</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,0)</interactionCellOffset>
@@ -236,7 +236,7 @@
 	
 	
 	<ThingDef ParentName="BuildingBase">
-		<DefName>HolographicEmitter</DefName>
+		<defName>HolographicEmitter</defName>
 		<label>holo-emitter</label>
     <description>A holo-Emitter. Used on light, fast ships to simulate useful crew members if they are recovered just after death. The body is destroyed on scanning.</description>
     <thingClass>ReconAndDiscovery.Things.HoloEmitter</thingClass>
@@ -251,11 +251,11 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
-		<CostList>
+		<costList>
 			<Gold>120</Gold>
 			<Component>4</Component>
-		</CostList>
-		<AltitudeLayer>Building</AltitudeLayer>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
 		 <minifiedDef>MinifiedFurniture</minifiedDef>
 		<tickerType>Rare</tickerType>
 		<fillPercent>0.5</fillPercent>
@@ -265,8 +265,8 @@
 			<MaxHitPoints>100</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<Size>(1,1)</Size>
-		<Passability>Standable</Passability>
+		<size>(1,1)</size>
+		<passability>Standable</passability>
 		<pathCost>60</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,0)</interactionCellOffset>
@@ -368,7 +368,7 @@
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
-    <Size>(1,1)</Size>
+    <size>(1,1)</size>
     <statBases>
       <MaxHitPoints>1000</MaxHitPoints>
       <Flammability>0.7</Flammability>
@@ -496,7 +496,7 @@
       <Flammability>1.0</Flammability>
     </statBases>
     <tickerType>Normal</tickerType>
-    <description>A gateway allowing for instant travel to another such device via the folding of spacetime around a contained core of exotic matter. A skiled engineer can collect the exotic matter when deconstructing such a device. Links are one way by nature, and for two gates to be linked, each much redirect to the other in accordance with the physical law of narrative control, described by most leaders in the field as "nonsense". </description>
+    <description>A gateway allowing for instant travel to another such device via the folding of spacetime around a contained core of exotic matter. A skiled engineer can collect the exotic matter when deconstructing such a device. Links are one way by nature, and for two gates to be linked, each much redirect to the other in accordance with the physical law of narrative control, described by most leaders in the field as "nonsense".</description>
     <size>(4,2)</size>
 	<building>
 		<ai_chillDestination>false</ai_chillDestination>
@@ -604,4 +604,4 @@
   
   
   
-</ThingDefinitions>
+</Defs>

@@ -2,13 +2,13 @@
 
 <Defs>  
 
-  <SiteCoreDef>
+  <WorldObjectDef>
     <defName>AbandonedCastle</defName>
     <label>abandoned castle</label>
 		<description>A long-disused medieval castle.</description>
     <siteTexture>World/WorldObjects/Psi</siteTexture>
     <expandingIconTexture>World/WorldObjects/Psi</expandingIconTexture>
-  </SiteCoreDef>
+  </WorldObjectDef>
   
   <GenStepDef>
     <defName>AbandonedCastle</defName>
@@ -22,7 +22,9 @@
 		<defName>QuestOsiris</defName>
 		<label>osirisquest</label>
 		<category>Misc</category>
-		<targetType>MapPlayerHome</targetType>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
 		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_OsirisCasket</workerClass>
 		<baseChance>0.3</baseChance>
 		<minRefireDays>90</minRefireDays>

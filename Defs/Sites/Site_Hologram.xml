@@ -2,13 +2,13 @@
 
 <Defs>  
 
-  <SiteCoreDef>
+  <WorldObjectDef>
     <defName>AbandonedColony</defName>
     <label>abandoned colony</label>
 		<description>An abandoned colony.</description>
     <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
     <expandingIconTexture>World/WorldObjects/AdventureSymbol</expandingIconTexture>
-  </SiteCoreDef>
+  </WorldObjectDef>
   
   <GenStepDef>
     <defName>AbandonedColony</defName>
@@ -22,12 +22,14 @@
 		<defName>AbandonedColonyAdventure</defName>
 		<label>abandoned colony</label>
 		<category>Misc</category>
-		<targetType>Caravan</targetType>
+    <targetTags>
+      <li>Caravan</li>
+    </targetTags>
 		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_AbandonedColony</workerClass>
 		<baseChance>1.5</baseChance>
 		<letterLabel>Ghost town</letterLabel>
 		<letterText>Your caravan has come across an abandoned colony.</letterText>
-		<letterDef>Good</letterDef>
+		<letterDef>PositiveEvent</letterDef>
 		<minRefireDays>90</minRefireDays>
   </IncidentDef>
   

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <Defs>   
-  <SiteCoreDef>
+  <WorldObjectDef>
     <defName>PsiMachine</defName>
     <label>Abandoned military facility</label>
 		<description>The rumoured location of the psychic warriors' base.</description>
     <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
     <expandingIconTexture>World/WorldObjects/AdventureSymbol</expandingIconTexture>
-  </SiteCoreDef>
+  </WorldObjectDef>
   
   <GenStepDef>
     <defName>MilitaryBasePsiUpgrade</defName>
@@ -34,11 +34,13 @@
 		<defName>WarIdol</defName>
 		<label>war idol</label>
 		<category>Misc</category>
-		<targetType>MapPlayerHome</targetType>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
 		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_WarIdol</workerClass>
 		<letterLabel>Rumour</letterLabel>
 		<letterText>{0} tells us that a group of hi-tech warriors who used psychics as weapons used to live near here. Given {1}'s abilities, {0} wonders if we might find something useful in their old base.</letterText>
-		<letterDef>Good</letterDef>
+		<letterDef>PositiveEvent</letterDef>
 		<baseChance>10</baseChance>
 		<minRefireDays>15</minRefireDays>
 		<chanceFactorByPopulationCurve>

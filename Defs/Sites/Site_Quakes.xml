@@ -5,11 +5,12 @@
 		<defName>QuestQuakes</defName>
 		<label>faultygenerator</label>
 		<category>Misc</category>
-		<targetType>MapPlayerHome</targetType>
-		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_FaultyGenerator</workerClass>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_FaultyGenerator</workerClass>
 		<letterLabel>Faulty generator</letterLabel>
 		<letterText>A fault with an unmaintained generator is causing local tremors. The tremors will eventually pass, but in order to speed this up you will have to deconstruct, or otherwise destroy, the generator.</letterText>
-		<letterDef>BadNonUrgent</letterDef>
+		<letterDef>NegativeEvent</letterDef>
 		<baseChance>0.8</baseChance>
 		<minRefireDays>20</minRefireDays>
 		<chanceFactorByPopulationCurve>
@@ -20,13 +21,13 @@
 		</chanceFactorByPopulationCurve>
   </IncidentDef>
   
-  <SiteCoreDef>
+  <WorldObjectDef>
     <defName>QuakesQuest</defName>
     <label>Faulty generator</label>
 		<description>The source of the tremors.</description>
     <siteTexture>World/WorldObjects/Science</siteTexture>
     <expandingIconTexture>World/WorldObjects/Science</expandingIconTexture>
-  </SiteCoreDef>
+  </WorldObjectDef>
   
     <SitePartDef>
     <defName>SitePart_FaultyGenerator</defName>

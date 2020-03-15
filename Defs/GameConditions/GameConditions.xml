@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<GameConditionDefs>
+<Defs>
 
   <GameConditionDef>
     <defName>TargetedStorm</defName>
@@ -29,4 +29,4 @@
     <canBePermanent>true</canBePermanent>
   </GameConditionDef>
   
-</GameConditionDefs>
+</Defs>

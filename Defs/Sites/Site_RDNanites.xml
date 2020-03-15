@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <Defs>   
-  <SiteCoreDef>
+  <WorldObjectDef>
     <defName>Nanites</defName>
     <label>Abandoned lab</label>
 		<description>The source of the mystery nanites.</description>
     <siteTexture>World/WorldObjects/Science</siteTexture>
     <expandingIconTexture>World/WorldObjects/Science</expandingIconTexture>
-  </SiteCoreDef>
+  </WorldObjectDef>
   
   <GenStepDef>
     <defName>AbandonedLabNanites</defName>

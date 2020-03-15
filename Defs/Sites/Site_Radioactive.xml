@@ -5,11 +5,12 @@
 		<defName>QuestRadiation</defName>
 		<label>questradiation</label>
 		<category>Misc</category>
-		<targetType>MapPlayerHome</targetType>
-		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_QuestRadiation</workerClass>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_QuestRadiation</workerClass>
 		<letterLabel>Nuclear waste release</letterLabel>
 		<letterText>Nuclear waste has been uncovered nearby. Radioactive dust will continue to blow over the region until the problem is fixed. Fortunately, Psychoid is not only resistant to radiation, it is also able to sequester harmful radioisotopes when grown. A large crop of about 250 psychoid plants, grown at the site and given a day to root properly, should fix the issue.</letterText>
-		<letterDef>BadNonUrgent</letterDef>
+		<letterDef>NegativeEvent</letterDef>
 		<baseChance>0.15</baseChance>
 		<minRefireDays>50</minRefireDays>
 		<earliestDay>45</earliestDay>
@@ -21,14 +22,14 @@
 		</chanceFactorByPopulationCurve>
   </IncidentDef>
   
-  <SiteCoreDef>
+  <WorldObjectDef>
     <defName>SiteRadiationQuest</defName>
     <label>Source of radioactive dust</label>
 		<description>The source of the radioactive dust.</description>
     <siteTexture>World/WorldObjects/Science</siteTexture>
     <expandingIconTexture>World/WorldObjects/Science</expandingIconTexture>
     <forceExitAndRemoveMapCountdownDurationDays>15</forceExitAndRemoveMapCountdownDurationDays>
-  </SiteCoreDef>
+  </WorldObjectDef>
   
   <SitePartDef>
     <defName>SitePart_RadioactiveDust</defName>

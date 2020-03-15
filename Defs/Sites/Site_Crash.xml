@@ -5,11 +5,13 @@
 		<defName>CrashedShip</defName>
 		<label>Crashed Ship</label>
 		<category>Misc</category>
-		<targetType>MapPlayerHome</targetType>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
 		<workerClass>ReconAndDiscovery.Missions.IncidentWorker_CrashedShip</workerClass>
 		<letterLabel>Starship down</letterLabel>
 		<letterText>Our comms console detected a distress call from a ship shortly before it crashed! Other factions may try to loot the wreck, so you will only have a few days to visit the site!</letterText>
-		<letterDef>Good</letterDef>
+		<letterDef>PositiveEvent</letterDef>
 		<baseChance>6</baseChance>
 		<minRefireDays>8</minRefireDays>
 		<chanceFactorByPopulationCurve>
@@ -20,13 +22,13 @@
 		</chanceFactorByPopulationCurve>
   </IncidentDef>
  
-  <SiteCoreDef>
+  <WorldObjectDef>
     <defName>CrashedShip</defName>
     <label>crashed ship</label>
 		<description>The approximate place a ship came down.</description>
     <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
     <expandingIconTexture>World/WorldObjects/AdventureSymbol</expandingIconTexture>
-  </SiteCoreDef>
+  </WorldObjectDef>
   
   <GenStepDef>
     <defName>CrashedShipGen</defName>
