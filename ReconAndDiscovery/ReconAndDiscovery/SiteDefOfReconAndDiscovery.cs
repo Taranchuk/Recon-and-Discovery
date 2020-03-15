@@ -63,7 +63,7 @@ namespace ReconAndDiscovery
 
         public static SitePartDef SeraphitesQuest;
 
-        public static WorldObjectDef QuakesQuest;
+        public static SitePartDef QuakesQuest;
 
         public static SitePartDef SiteRadiationQuest;
 

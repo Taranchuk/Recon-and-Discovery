@@ -34,7 +34,7 @@
      <tendable>true</tendable>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
-        <tendDuration>60000</tendDuration>
+	<baseTendDurationHours>24</baseTendDurationHours>
         <disappearsAtTotalTendQuality>3</disappearsAtTotalTendQuality>
       </li>
     </comps>

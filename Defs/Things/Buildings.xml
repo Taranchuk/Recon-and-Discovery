@@ -58,10 +58,9 @@
     </costList>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <building>
-			<ai_combatDangerous>true</ai_combatDangerous>
+	<ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Gun_GattlingLaser</turretGunDef>
       <turretBurstCooldownTime>24.00</turretBurstCooldownTime>
-      <turretTopgraphicPath>Things/Weapons/GattlingLaser</turretTopgraphicPath>
     </building>
 </ThingDef>
   
@@ -108,7 +107,7 @@
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
-        <projectileDef>Bullet_GattlingLaser</projectileDef>
+        <defaultProjectile>Bullet_GattlingLaser</defaultProjectile>
         <warmupTime>24.0</warmupTime>
         <targetParams>
 			<canTargetLocations>true</canTargetLocations>
@@ -171,7 +170,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<startElectricalFires>true</startElectricalFires>
+				<shortCircuitInRain>true</shortCircuitInRain>
 				<basePowerConsumption>3000</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_Flickable"/>
@@ -234,7 +233,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<startElectricalFires>false</startElectricalFires>
+				<shortCircuitInRain>false</shortCircuitInRain>
 				<basePowerConsumption>400</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_Flickable"/>
@@ -298,7 +297,7 @@
       		</li>
       		<li Class="CompProperties_Power">
         	<compClass>CompPowerTrader</compClass>
-        	<startElectricalFires>true</startElectricalFires>
+        	<shortCircuitInRain>true</shortCircuitInRain>
         	<basePowerConsumption>800</basePowerConsumption>
       		</li>
 		</comps>

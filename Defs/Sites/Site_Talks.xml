@@ -46,7 +46,7 @@
     <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
     <applyFactionColorToSiteTexture>true</applyFactionColorToSiteTexture>
     <showFactionInInspectString>true</showFactionInInspectString>
-    <knownDanger>false</knownDanger>
+    <badEvenIfNoMap>false</badEvenIfNoMap>
     <requiresFaction>true</requiresFaction>
   </SitePartDef>
 </Defs>

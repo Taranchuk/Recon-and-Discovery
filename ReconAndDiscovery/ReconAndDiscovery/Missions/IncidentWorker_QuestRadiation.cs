@@ -13,7 +13,7 @@ namespace ReconAndDiscovery.Missions
 			int num;
 			return base.CanFireNowSub(parms) && TileFinder.TryFindNewSiteTile(out num);
 		}
-
+         
 		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
@@ -23,7 +23,7 @@ namespace ReconAndDiscovery.Missions
 				result = false;
 			}
 			else if ((from wo in Find.WorldObjects.AllWorldObjects
-			where wo is Site && (wo as Site).def == SiteDefOfReconAndDiscovery.QuakesQuest
+			where wo is Site && (wo as Site).parts.Select(x => x.def) == SiteDefOfReconAndDiscovery.QuakesQuest
 			select wo).Count<WorldObject>() > 0)
 			{
 				result = false;

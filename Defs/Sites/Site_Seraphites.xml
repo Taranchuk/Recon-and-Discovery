@@ -25,7 +25,7 @@
     <defName>SeraphitesQuest</defName>
     <label>Abandoned lab</label>
 		<description>The rumoured location of the luciferium cure.</description>
-    <siteTexture>World/WorldObjects/Science</siteTexture>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
     <expandingIconTexture>World/WorldObjects/Science</expandingIconTexture>
   </SitePartDef>
   
@@ -46,7 +46,7 @@
     <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
     <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
     <showFactionInInspectString>false</showFactionInInspectString>
-    <knownDanger>true</knownDanger>
+    <badEvenIfNoMap>true</badEvenIfNoMap>
     <requiresFaction>false</requiresFaction>
   </SitePartDef>
 

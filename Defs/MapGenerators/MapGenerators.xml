@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <MapGeneratorDef>
+  <MapGeneratorDef ParentName="MapCommonBase">
     <defName>CrashedShipMapGenerator</defName>
-    <parent>BasicMap</parent>
-    <selectionWeight>0</selectionWeight>
   </MapGeneratorDef>
   
-  <MapGeneratorDef>
+  <MapGeneratorDef ParentName="MapCommonBase">
     <defName>OldCastleMapGenerator</defName>
-    <parent>BasicMap</parent>
-    <selectionWeight>0</selectionWeight>
   </MapGeneratorDef>
   
-  <MapGeneratorDef>
+  <MapGeneratorDef ParentName="MapCommonBase">
     <defName>AbandonedLabMapGenerator</defName>
-    <parent>BasicMap</parent>
-    <selectionWeight>0</selectionWeight>
   </MapGeneratorDef>
   
-  <MapGeneratorDef>
+  <MapGeneratorDef ParentName="MapCommonBase">
     <defName>AbandonedMilitaryBaseGenerator</defName>
-    <parent>BasicMap</parent>
-    <selectionWeight>0</selectionWeight>
   </MapGeneratorDef>
   
   

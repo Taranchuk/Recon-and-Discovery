@@ -26,8 +26,8 @@
     <defName>SiteRadiationQuest</defName>
     <label>Source of radioactive dust</label>
 		<description>The source of the radioactive dust.</description>
-    <siteTexture>World/WorldObjects/Science</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Science</expandingIconTexture>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Sites/GenericSite</expandingIconTexture>
     <forceExitAndRemoveMapCountdownDurationDays>15</forceExitAndRemoveMapCountdownDurationDays>
   </SitePartDef>
   
@@ -40,7 +40,7 @@
     <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
     <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
     <showFactionInInspectString>false</showFactionInInspectString>
-    <knownDanger>true</knownDanger>
+    <badEvenIfNoMap>true</badEvenIfNoMap>
     <requiresFaction>false</requiresFaction>
   </SitePartDef>
 

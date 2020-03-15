@@ -21,13 +21,13 @@
 		</chanceFactorByPopulationCurve>
   </IncidentDef>
   
-  <WorldObjectDef>
+  <SitePartDef>
     <defName>QuakesQuest</defName>
     <label>Faulty generator</label>
 		<description>The source of the tremors.</description>
-    <siteTexture>World/WorldObjects/Science</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Science</expandingIconTexture>
-  </WorldObjectDef>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Sites/GenericSite</expandingIconTexture>
+  </SitePartDef>
   
     <SitePartDef>
     <defName>SitePart_FaultyGenerator</defName>
@@ -38,7 +38,7 @@
     <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
     <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
     <showFactionInInspectString>false</showFactionInInspectString>
-    <knownDanger>true</knownDanger>
+    <badEvenIfNoMap>true</badEvenIfNoMap>
     <requiresFaction>false</requiresFaction>
   </SitePartDef>
 

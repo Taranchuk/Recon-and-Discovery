@@ -5,12 +5,12 @@
     <defName>Nanites</defName>
     <label>Abandoned lab</label>
 		<description>The source of the mystery nanites.</description>
-    <siteTexture>World/WorldObjects/Science</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Science</expandingIconTexture>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Sites/GenericSite</expandingIconTexture>
   </SitePartDef>
   
   <GenStepDef>
-    <defName>AbandonedLabNanites</defName>
+    <defName>AbandonedLabNanites2</defName>
      <linkWithSite>Nanites</linkWithSite>
     <order>2000</order>
     <genStep Class="ReconAndDiscovery.Maps.GenStep_AbandonedLab">
