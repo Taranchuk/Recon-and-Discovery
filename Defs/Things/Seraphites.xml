@@ -13,8 +13,7 @@
       <Mass>0.01</Mass>
     </statBases>
     <techLevel>Spacer</techLevel>
-    <tradeability>Never</tradeability>
-    <canBeSpawningInventory>false</canBeSpawningInventory>
+    <tradeability>None</tradeability>
     <ingestible>
       <drugCategory>Medical</drugCategory>
       <outcomeDoers>

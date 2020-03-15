@@ -22,14 +22,14 @@
 		</chanceFactorByPopulationCurve>
   </IncidentDef>
   
-  <WorldObjectDef>
+  <SitePartDef>
     <defName>SiteRadiationQuest</defName>
     <label>Source of radioactive dust</label>
 		<description>The source of the radioactive dust.</description>
     <siteTexture>World/WorldObjects/Science</siteTexture>
     <expandingIconTexture>World/WorldObjects/Science</expandingIconTexture>
     <forceExitAndRemoveMapCountdownDurationDays>15</forceExitAndRemoveMapCountdownDurationDays>
-  </WorldObjectDef>
+  </SitePartDef>
   
   <SitePartDef>
     <defName>SitePart_RadioactiveDust</defName>

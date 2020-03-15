@@ -2,7 +2,7 @@
 
 <Defs>  
 
-  <WorldObjectDef>
+  <SitePartDef>
     <defName>MuffaloMigration</defName>
     <label>muffalo migration</label>
 		<description>A large herd of muffalo are migrating through this region.</description>
@@ -10,7 +10,7 @@
     <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
     <expandingIconTexture>World/WorldObjects/AdventureSymbol</expandingIconTexture>
     <forceExitAndRemoveMapCountdownDurationDays>2</forceExitAndRemoveMapCountdownDurationDays>
-  </WorldObjectDef>
+  </SitePartDef>
   
    <IncidentDef>
 		<defName>MuffaloMassInsanity</defName>

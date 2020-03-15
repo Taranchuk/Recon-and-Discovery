@@ -20,7 +20,6 @@ namespace ReconAndDiscovery.Missions
 			Map map = parms.target as Map;
 			int num = IncidentWorker_MuffaloHerd.TimeoutDaysRange.RandomInRange;
 			int num2 = -1;
-			Site site;
 			string text;
 			if (map != null)
 			{
@@ -35,7 +34,6 @@ namespace ReconAndDiscovery.Missions
 				{
 					return false;
 				}
-				site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
 				text = "A large muffalo migration is due to pass near here in {0} days!";
 			}
 			else
@@ -54,7 +52,6 @@ namespace ReconAndDiscovery.Missions
 				{
 					return false;
 				}
-				site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
 				text = "Your caravan has spotted a huge muffalo migration!";
 			}
 			bool result;
@@ -62,15 +59,10 @@ namespace ReconAndDiscovery.Missions
 			{
 				result = false;
 			}
-			else if (site == null)
-			{
-				result = false;
-			}
 			else
 			{
-				site.Tile = num2;
-				site.SetFaction(Find.FactionManager.FirstFactionOfDef(FactionDefOf.Insect));
-				site.def = SiteDefOfReconAndDiscovery.MuffaloMigration;
+                Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.MuffaloMigration, num2, 
+                    Find.FactionManager.FirstFactionOfDef(FactionDefOf.Insect));
 				if (Rand.Value < 0.5f)
 				{
                     SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);

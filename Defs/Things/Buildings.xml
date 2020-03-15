@@ -92,8 +92,7 @@
     <menuHidden>true</menuHidden>
     <description>Jury-rigged gun attached to a turret.</description>
     <soundInteract>Interact_Rifle</soundInteract>
-    <canBeSpawningInventory>false</canBeSpawningInventory>
-    <tradeability>Never</tradeability>
+    <tradeability>None</tradeability>
     <destroyOnDrop>true</destroyOnDrop>
     <statBases>
       <AccuracyTouch>0.95</AccuracyTouch>
@@ -155,7 +154,7 @@
 
 		<tickerType>Normal</tickerType>
 		<fillPercent>0.5</fillPercent>
-		<tradeability>Never</tradeability>
+		<tradeability>None</tradeability>
 		<useHitPoints>True</useHitPoints>
 		<statBases>
 			<WorkToBuild>6500</WorkToBuild>
@@ -288,7 +287,7 @@
 		<pathCost>60</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,0)</interactionCellOffset>
-		<tradeability>Never</tradeability>
+		<tradeability>None</tradeability>
 		<surfaceType>None</surfaceType>
 		<comps>
 			 <li Class="ReconAndDiscovery.CompProperties_HoloEmitter"/>
@@ -338,9 +337,6 @@
     <rotatable>false</rotatable>
     <canOverlapZones>false</canOverlapZones>
      <size>(1,1)</size>
-    <building>
-      <ignoreNeedsPower>true</ignoreNeedsPower>
-    </building>
     <designationCategory>Power</designationCategory>
     <costList>
       <Steel>200</Steel>
@@ -408,7 +404,7 @@
     </comps>
     <description>A computer terminal. Who knows what secrets lie within its sprawling file system?</description>
     <passability>PassThroughOnly</passability>
-    <tradeability>Never</tradeability>
+    <tradeability>None</tradeability>
     <pathCost>50</pathCost>
     <fillPercent>0.4</fillPercent>
     <castEdgeShadows>true</castEdgeShadows>
@@ -449,7 +445,7 @@
       <MaxHitPoints>250</MaxHitPoints>
       <Flammability>1.0</Flammability>
     </statBases>
-     <tradeability>Never</tradeability>
+     <tradeability>None</tradeability>
     <tickerType>Normal</tickerType>
     <description>An advanced GlitterWorld cryptosleep casket that instructs an army of Luciferium nanites to heal wounds, cure illnesses, reverse ageing and even revive the dead. Though heavy, the AI, which separates it from other caskets, is light and recoverable.</description>
     <size>(2,3)</size>
@@ -556,7 +552,7 @@
 	<thingCategories>
       <li>BuildingsTemperature</li>
     </thingCategories>
-    <tradeability>Never</tradeability>
+    <tradeability>None</tradeability>
     <pathCost>0</pathCost>
     <blockWind>true</blockWind>
     <castEdgeShadows>false</castEdgeShadows>
@@ -597,7 +593,7 @@
       <drawSize>(1, 1)</drawSize>
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
-    <tradeability>Never</tradeability>
+    <tradeability>None</tradeability>
     <passability>Impassable</passability>
     <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>

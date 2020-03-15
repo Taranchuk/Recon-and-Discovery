@@ -65,10 +65,10 @@ namespace ReconAndDiscovery
 
         public static WorldObjectDef QuakesQuest;
 
-        public static WorldObjectDef SiteRadiationQuest;
+        public static SitePartDef SiteRadiationQuest;
 
-        public static WorldObjectDef Festival;
+        public static SitePartDef Festival;
 
-        public static WorldObjectDef MuffaloMigration;
+        public static SitePartDef MuffaloMigration;
     }
 }

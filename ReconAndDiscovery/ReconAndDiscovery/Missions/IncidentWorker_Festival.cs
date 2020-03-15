@@ -15,20 +15,6 @@ namespace ReconAndDiscovery.Missions
 			return base.CanFireNowSub(parms) && TileFinder.TryFindNewSiteTile(out num);
 		}
 
-		private Site MakeSite()
-		{
-			int tile;
-			TileFinder.TryFindNewSiteTile(out tile);
-			Site site = (Site)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Site);
-			site.Tile = tile;
-			site.def = SiteDefOfReconAndDiscovery.Festival;
-            // TODO: check if this works correctly
-            SitePart outpost = new SitePart(site, SitePartDefOf.Outpost, null);
-			site.parts.Add(outpost);
-			Find.WorldObjects.Add(site);
-			return site;
-		}
-
 		public List<Faction> GetAllNonPlayerFriends(Faction faction)
 		{
 			List<Faction> list = Find.FactionManager.AllFactionsVisible.ToList<Faction>();
@@ -94,21 +80,25 @@ namespace ReconAndDiscovery.Missions
 			}
 			else
 			{
-				Site site = this.MakeSite();
-				if (site == null)
-				{
-					result = false;
-				}
+                int tile;
+                if (TileFinder.TryFindNewSiteTile(out tile))
+                {
+                     Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.Festival, tile, faction);
+                    // TODO: check if this works correctly
+                    SitePart outpost = new SitePart(site, SitePartDefOf.Outpost, null);
+                    site.parts.Add(outpost);
+                    int num = 8;
+                    site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
+                    base.SendStandardLetter(parms, site, new NamedArgument[]
+                    {
+                        faction.Name
+                    });
+                    Find.WorldObjects.Add(site);
+                    result = true;
+                }
 				else
 				{
-					site.SetFaction(faction);
-					int num = 8;
-					site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
-					base.SendStandardLetter(parms, site, new NamedArgument[]
-                    {
-						faction.Name
-					});
-					result = true;
+					result = false;
 				}
 			}
 			return result;

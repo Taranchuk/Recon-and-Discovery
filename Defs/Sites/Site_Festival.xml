@@ -2,7 +2,7 @@
 
 <Defs>  
 
-  <WorldObjectDef>
+  <SitePartDef>
     <defName>Festival</defName>
     <label>trade fair</label>
 		<description>The site of a trade fair.</description>
@@ -10,7 +10,7 @@
     <siteTexture>World/WorldObjects/Diplomacy</siteTexture>
     <expandingIconTexture>World/WorldObjects/Diplomacy</expandingIconTexture>
     <forceExitAndRemoveMapCountdownDurationDays>1</forceExitAndRemoveMapCountdownDurationDays>
-  </WorldObjectDef>
+  </SitePartDef>
   
    <IncidentDef>
 		<defName>TradeFair</defName>

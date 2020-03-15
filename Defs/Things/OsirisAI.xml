@@ -30,7 +30,7 @@
   <ThingDef ParentName="ResourceBase">
     <defName>OsirisAI</defName>
     <label>osiris AI</label>
-     <tradeability>Never</tradeability>
+     <tradeability>None</tradeability>
     <description>A special AI construct that directs GilterWorld Osiris caskets as they bring back the dead.</description>
     <graphicData>
       <texPath>Things/Items/OsirisCore</texPath>
@@ -55,7 +55,7 @@
   <ThingDef ParentName="ResourceBase">
     <defName>ExoticMatter</defName>
     <label>exotic matter</label>
-     <tradeability>Never</tradeability>
+     <tradeability>None</tradeability>
     <description>The negative mass of this material allows for faster than light travel via the Alcubierre warp method, and is also used to control artificial wormholes Packed in a handy, slightly heavier, container allowing storage on the floor!</description>
     <graphicData>
       <texPath>Things/Items/ExoticMatter</texPath>
