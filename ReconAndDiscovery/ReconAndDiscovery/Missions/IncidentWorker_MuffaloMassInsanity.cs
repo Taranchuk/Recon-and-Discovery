@@ -44,10 +44,11 @@ namespace ReconAndDiscovery.Missions
 						IncidentWorker_MuffaloMassInsanity.DriveInsane(p2);
 					}
 					string text = "LetterLabelAnimalInsanityMultiple".Translate() + ": " + animalDef.LabelCap;
-					string text2 = "AnimalInsanityMultiple".Translate(new object[]
-					{
-						animalDef.label
-					});
+                    string text2 = TranslatorFormattedStringExtensions.Translate("AnimalInsanityMultiple",
+                    new NamedArgument[]
+                    {
+                        animalDef.label
+                    });
 					Find.LetterStack.ReceiveLetter(text, text2, LetterDefOf.NegativeEvent, null);
 					if (map == Find.CurrentMap)
 					{

@@ -28,7 +28,7 @@ namespace ReconAndDiscovery
 			return 0f;
 		}
 
-		public virtual bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
+		public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			bool result;
 			if (!(t is Building))
@@ -47,7 +47,7 @@ namespace ReconAndDiscovery
 			return result;
 		}
 
-		public virtual Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
+		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			return new Job(JobDefOfReconAndDiscovery.PsychicPrayer, t);
 		}

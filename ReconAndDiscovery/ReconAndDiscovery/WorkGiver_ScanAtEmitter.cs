@@ -43,7 +43,7 @@ namespace ReconAndDiscovery
 			return null;
 		}
 
-		public virtual Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
+		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			Corpse corpse = t as Corpse;
 			Job result;

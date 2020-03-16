@@ -216,11 +216,12 @@ namespace ReconAndDiscovery.Missions
 							{
 								stringBuilder.AppendLine("    " + list2[j].LabelCap);
 							}
-                            Find.LetterStack.ReceiveLetter("LetterLabelPawnsLostDueToMapCountdown".Translate(), 
-                                "LetterPawnsLostDueToMapCountdown".Translate(new object[]
-							{
-								stringBuilder.ToString().TrimEndNewlines()
-							}), LetterDefOf.ThreatSmall, new GlobalTargetInfo(mapParent.Tile), null);
+                            Find.LetterStack.ReceiveLetter("LetterLabelPawnsLostDueToMapCountdown".Translate(),
+                            TranslatorFormattedStringExtensions.Translate("LetterPawnsLostDueToMapCountdown", 
+                            new NamedArgument[]
+                            {
+                                stringBuilder.ToString().TrimEndNewlines()
+                            }), LetterDefOf.ThreatSmall, new GlobalTargetInfo(mapParent.Tile), null);
 						}
 						list2.Clear();
 					}

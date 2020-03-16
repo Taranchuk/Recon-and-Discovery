@@ -55,7 +55,7 @@ namespace ReconAndDiscovery.Missions
 					}
 				}
 			}
-			catch (NullReferenceException ex)
+			catch
 			{
 				this.StopQuest();
 			}
@@ -97,7 +97,7 @@ namespace ReconAndDiscovery.Missions
 
 		public override void PostPostRemove()
 		{
-			this.StopQuest();
+			this.StopQuest(); 
 			base.PostPostRemove();
 		}
 

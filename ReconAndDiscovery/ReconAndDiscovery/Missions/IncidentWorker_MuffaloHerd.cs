@@ -61,11 +61,15 @@ namespace ReconAndDiscovery.Missions
 			}
 			else
 			{
-                Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.MuffaloMigration, num2, 
-                    Find.FactionManager.FirstFactionOfDef(FactionDefOf.Insect));
+                Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
+                site.Tile = num2;
+                Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDefOf.Insect);
+                site.SetFaction(faction);
+                site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.MuffaloMigration,
+SiteDefOfReconAndDiscovery.MuffaloMigration.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), num2, faction)));
 				if (Rand.Value < 0.5f)
 				{
-                    SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+                    SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), num2, faction));
                     site.parts.Add(scatteredTreasure);
 				}
 				Find.LetterStack.ReceiveLetter("Muffalo migration", text, LetterDefOf.PositiveEvent, site, null);

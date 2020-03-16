@@ -15,33 +15,44 @@ namespace ReconAndDiscovery.Missions
 
 		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
-            int num = -1;
-			bool result;
+            int tile = -1;
+            bool result;
+            Faction faction = Find.FactionManager.RandomEnemyFaction(false, false, true);
             for (int i = 0; i < 20; i++)
             {
-                num = TileFinder.RandomStartingTile();
-                if (TileFinder.IsValidTileForNewSettlement(num, null))
+                tile = TileFinder.RandomSettlementTileFor(faction, false, null);
+                if (TileFinder.IsValidTileForNewSettlement(tile, null))
                 {
                     break;
                 }
-                num = -1;
+                else
+                {
+                    tile = -1;
+                }
             }
-            if (num != -1)
+            if (tile != -1)
             {
-                Site site;
-                Faction faction = Find.FactionManager.RandomEnemyFaction(false, false, true);
+                Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
+                site.Tile = tile;
+                site.SetFaction(faction);
                 float value = Rand.Value;
                 if ((double)value < 0.2)
                 {
-                    site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.AbandonedCastle, num, faction);
+                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.AbandonedCastle,
+    SiteDefOfReconAndDiscovery.AbandonedCastle.Worker.GenerateDefaultParams
+    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
                 }
                 else if ((double)value < 0.4)
                 {
-                    site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.AbandonedColony, num, faction);
+                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.AbandonedColony,
+SiteDefOfReconAndDiscovery.AbandonedColony.Worker.GenerateDefaultParams
+(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
                 }
                 else if ((double)value < 0.6)
                 {
-                    site = SiteMaker.MakeSite(SitePartDefOf.PreciousLump, num, faction);
+                    site.AddPart(new SitePart(site, SitePartDefOf.PreciousLump,
+SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
+(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
                 }
                 // TODO: figure out how to convert this to 1.1 code
                 //else if ((double)value < 0.8)
@@ -51,25 +62,33 @@ namespace ReconAndDiscovery.Missions
                 else
                 {
                     site = (Site)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Site);
+                    site.Tile = tile;
+                    site.SetFaction(faction);
                     // TODO: check if this works correctly
-                    SitePart outpost = new SitePart(site, SitePartDefOf.Outpost, null);
+                    SitePart outpost = new SitePart(site, SitePartDefOf.Outpost, SitePartDefOf.Outpost.Worker.GenerateDefaultParams
+(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                     site.parts.Add(outpost);
-                    SitePart turrets = new SitePart(site, SitePartDefOf.Turrets, null);
-                    site.parts.Add(outpost);
+                    SitePart turrets = new SitePart(site, SitePartDefOf.Turrets, SitePartDefOf.Turrets.Worker.GenerateDefaultParams
+(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    site.parts.Add(turrets);
                 }
-                SitePart starGate = new SitePart(site, SiteDefOfReconAndDiscovery.Stargate, null);
+                SitePart starGate = new SitePart(site, SiteDefOfReconAndDiscovery.Stargate, SiteDefOfReconAndDiscovery.Stargate.Worker.GenerateDefaultParams
+(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                 site.parts.Add(starGate);
                 if (Rand.Value < 0.2f)
                 {
-                    SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                    SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams
+(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
 
                     site.parts.Add(scatteredManhunters);
                 }
                 if (Rand.Value < 0.85f)
                 {
-                    SitePart ыcatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+                    SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure,
+                    SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams
+                    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
 
-                    site.parts.Add(ыcatteredTreasure);
+                    site.parts.Add(scatteredTreasure);
                 }
                 site.GetComponent<TimeoutComp>().StartTimeout(10 * 60000);
                 base.SendStandardLetter(parms, site);
@@ -78,9 +97,11 @@ namespace ReconAndDiscovery.Missions
             }
             else
             {
+
                 result = false;
             }
-			return result;
+
+            return result;
 		}
 	}
 }

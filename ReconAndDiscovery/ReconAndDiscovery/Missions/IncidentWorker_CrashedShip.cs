@@ -65,20 +65,25 @@ namespace ReconAndDiscovery.Missions
 				else
 				{
 					bool flag3 = Rand.Value < 0.4f;
-					Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.CrashedShip, tile, 
-                        Find.FactionManager.RandomEnemyFaction(true, false, true, TechLevel.Spacer));
-                    // not sure what to do with all these
-                    //if (flag3)
-                    //{
-                    //	site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventureMedical);
-                    //}
-                    //else
-                    //{
-                    //	site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
-                    //}
-					if (flag3)
+                    Site site;
+                    if (flag3)
+                    {
+                    	site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventureMedical);
+                    }
+                    else
+                    {
+                    	site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
+                    }
+                    site.Tile = tile;
+                    Faction faction = Find.FactionManager.RandomEnemyFaction(true, false, true, TechLevel.Spacer);
+                    site.SetFaction(faction);
+                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.CrashedShip,
+    SiteDefOfReconAndDiscovery.CrashedShip.Worker.GenerateDefaultParams
+    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
+                    if (flag3)
 					{
-                        SitePart medicalEmergency = new SitePart(site, SiteDefOfReconAndDiscovery.MedicalEmergency, null);
+                        SitePart medicalEmergency = new SitePart(site, SiteDefOfReconAndDiscovery.MedicalEmergency,     SiteDefOfReconAndDiscovery.MedicalEmergency.Worker.GenerateDefaultParams
+    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                         site.parts.Add(medicalEmergency);
 						QuestComp_MedicalEmergency component = site.GetComponent<QuestComp_MedicalEmergency>();
 						component.parent = site;
@@ -89,29 +94,34 @@ namespace ReconAndDiscovery.Missions
 					}
 					else if (!Rand.Chance(0.75f))
 					{
-                        SitePart rareBeasts = new SitePart(site, SiteDefOfReconAndDiscovery.RareBeasts, null);
+                        SitePart rareBeasts = new SitePart(site, SiteDefOfReconAndDiscovery.RareBeasts, SiteDefOfReconAndDiscovery.RareBeasts.Worker.GenerateDefaultParams
+    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
 
                         site.parts.Add(rareBeasts);
 					}
 					if (Rand.Value < 0.85f)
 					{
-                        SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+                        SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams
+    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
 
                         site.parts.Add(scatteredTreasure);
 					}
 					if (Rand.Value < 0.1f)
 					{
-                        SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                        SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams
+    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                         site.parts.Add(scatteredManhunters);
 					}
 					if (Rand.Value < 0.1f)
 					{
-                        SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, null);
+                        SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, SiteDefOfReconAndDiscovery.MechanoidForces.Worker.GenerateDefaultParams
+    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                         site.parts.Add(mechanoidForces);
 					}
 					if (Rand.Value < 0.5f)
 					{
-                        SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, null);
+                        SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival.Worker.GenerateDefaultParams
+    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                         site.parts.Add(enemyRaidOnArrival);
 					}
 					int randomInRange = IncidentWorker_CrashedShip.TimeoutDaysRange.RandomInRange;

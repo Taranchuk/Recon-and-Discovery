@@ -58,8 +58,13 @@ namespace ReconAndDiscovery.Missions
                 int tile;
                 if (TileFinder.TryFindNewSiteTile(out tile))
                 {
-                    Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.PeaceTalks, tile, faction);
-                    SitePart peaceTalksFaction = new SitePart(site, SiteDefOfReconAndDiscovery.PeaceTalksFaction, null);
+                    Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventurePeaceTalks);
+                    site.Tile = tile;
+                    site.SetFaction(faction);
+                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.PeaceTalks,
+SiteDefOfReconAndDiscovery.PeaceTalks.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
+
+                    SitePart peaceTalksFaction = new SitePart(site, SiteDefOfReconAndDiscovery.PeaceTalksFaction, SiteDefOfReconAndDiscovery.PeaceTalksFaction.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                     site.parts.Add(peaceTalksFaction);
                     site.GetComponent<QuestComp_PeaceTalks>().StartQuest(faction);
                     int num = 5;

@@ -144,7 +144,7 @@ namespace ReconAndDiscovery
                         {
                             if (!this.IsProtectedAt(map, plant.Position))
                             {
-                                if (plant.def != ThingDef.Named("PlantPsychoid"))
+                                if (plant.def != ThingDef.Named("Plant_Psychoid"))
                                 {
                                     plant.CropBlighted();
                                     if (plant.sown)

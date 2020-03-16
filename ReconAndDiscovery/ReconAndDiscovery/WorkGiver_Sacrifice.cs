@@ -30,7 +30,7 @@ namespace ReconAndDiscovery
 			return 0f;
 		}
 
-		public virtual bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
+		public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			Pawn pawn2 = t as Pawn;
 			bool result;
@@ -59,7 +59,7 @@ namespace ReconAndDiscovery
 			return result;
 		}
 
-		public virtual Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
+		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			IEnumerable<Building> source = from a in pawn.Map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("PsionicEmanator"))
 			where ReservationUtility.CanReserveAndReach(pawn, a, PathEndMode.ClosestTouch, Danger.Some, 1, -1, null, false)

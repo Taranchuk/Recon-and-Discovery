@@ -23,25 +23,32 @@ namespace ReconAndDiscovery.Missions
 			else
 			{
                 int tile;
+                Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
                 TileFinder.TryFindPassableTileWithTraversalDistance(caravan.Tile, 1, 2, out tile, (int t) => !Find.WorldObjects.AnyMapParentAt(t), false);
+                site.Tile = tile;
                 Faction faction = Find.FactionManager.RandomEnemyFaction(true, false, true, TechLevel.Spacer);
-                Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.AbandonedColony, tile, faction);
+                site.SetFaction(faction);
 
-                SitePart holoDisk = new SitePart(site, SiteDefOfReconAndDiscovery.HoloDisk, null);
+                site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.AbandonedColony, SiteDefOfReconAndDiscovery.AbandonedColony.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
+
+                SitePart holoDisk = new SitePart(site, SiteDefOfReconAndDiscovery.HoloDisk, SiteDefOfReconAndDiscovery.HoloDisk.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                 site.parts.Add(holoDisk);
                 if (Rand.Value < 0.3f)
                 {
-                    SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                    SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams
+                    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                     site.parts.Add(scatteredManhunters);
                 }
                 if (Rand.Value < 0.1f)
                 {
-                    SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, null);
+                    SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, SiteDefOfReconAndDiscovery.MechanoidForces.Worker.GenerateDefaultParams
+                    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                     site.parts.Add(mechanoidForces);
                 }
                 if (Rand.Value < 0.05f)
                 {
-                    SitePart stargate = new SitePart(site, SiteDefOfReconAndDiscovery.Stargate, null);
+                    SitePart stargate = new SitePart(site, SiteDefOfReconAndDiscovery.Stargate, SiteDefOfReconAndDiscovery.Stargate.Worker.GenerateDefaultParams
+                    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
 
                     site.parts.Add(stargate);
                 }

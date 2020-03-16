@@ -15,7 +15,7 @@ namespace ReconAndDiscovery.Things
 			}
 		}
 
-		public virtual void CompPostTick(ref float severityAdjustment)
+		public override void CompPostTick(ref float severityAdjustment)
 		{
 			if (this.parent.ageTicks % 100 == 0)
 			{

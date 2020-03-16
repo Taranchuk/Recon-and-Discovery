@@ -61,7 +61,7 @@ namespace ReconAndDiscovery.Missions
 					}
 				}
 			}
-			catch (NullReferenceException ex)
+			catch
 			{
 				this.StopQuest();
 			}

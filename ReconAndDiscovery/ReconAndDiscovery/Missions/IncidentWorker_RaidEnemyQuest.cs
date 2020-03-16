@@ -28,7 +28,7 @@ namespace ReconAndDiscovery.Missions
 				{
 					result = base.TryExecute(parms);
 				}
-				catch (NullReferenceException ex)
+				catch
 				{
 					result = false;
 				}

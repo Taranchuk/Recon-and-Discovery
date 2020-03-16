@@ -33,8 +33,11 @@ namespace ReconAndDiscovery.Missions
                 int tile;
                 if (TileFinder.TryFindNewSiteTile(out tile))
                 {
-                    Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.SiteRadiationQuest, tile, null);
-                    SitePart radioactiveDust = new SitePart(site, SiteDefOfReconAndDiscovery.SitePart_RadioactiveDust, null);
+                    Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventureThingCounter);
+                    site.Tile = tile;
+                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.SiteRadiationQuest,
+SiteDefOfReconAndDiscovery.SiteRadiationQuest.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null)));
+                    SitePart radioactiveDust = new SitePart(site, SiteDefOfReconAndDiscovery.SitePart_RadioactiveDust, SiteDefOfReconAndDiscovery.SitePart_RadioactiveDust.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
                     site.parts.Add(radioactiveDust);
                     QuestComp_CountThings component = site.GetComponent<QuestComp_CountThings>();
                     component.targetNumber = 200;
@@ -42,25 +45,25 @@ namespace ReconAndDiscovery.Missions
                     component.ticksHeld = 0;
                     component.worldTileAffected = map.Tile;
                     component.gameConditionCaused = GameConditionDef.Named("Radiation");
-                    component.StartQuest(ThingDef.Named("PlantPsychoid"));
+                    component.StartQuest(ThingDef.Named("Plant_Psychoid"));
                     if (Rand.Value < 0.1f)
                     {
-                        SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+                        SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
                         site.parts.Add(scatteredTreasure);
                     }
                     if (Rand.Value < 0.05f)
                     {
-                        SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                        SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
                         site.parts.Add(scatteredManhunters);
                     }
                     if (Rand.Value < 0.05f)
                     {
-                        SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, null);
+                        SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, SiteDefOfReconAndDiscovery.MechanoidForces.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
                         site.parts.Add(mechanoidForces);
                     }
                     if (Rand.Value < 0.05f)
                     {
-                        SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, null);
+                        SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
                         site.parts.Add(enemyRaidOnArrival);
                     }
 

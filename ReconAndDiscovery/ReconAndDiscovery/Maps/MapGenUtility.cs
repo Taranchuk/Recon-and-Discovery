@@ -163,8 +163,8 @@ namespace ReconAndDiscovery.Maps
 				{
 					IntVec3 c = new IntVec3(i, 1, j);
 					MapGenUtility.DestroyAllAtLocation(c, map);
-					rect.GetIterator().MoveNext();
-					c = rect.GetIterator().Current;
+					//rect.GetIterator().MoveNext();
+					//c = rect.GetIterator().Current;
 				}
 			}
 		}
@@ -183,8 +183,8 @@ namespace ReconAndDiscovery.Maps
 					if (Rand.Value <= floorIntegrity)
 					{
 						MapGenUtility.TryToSetFloorTile(c, map, floorMaterial);
-						rect.GetIterator().MoveNext();
-						c = rect.GetIterator().Current;
+						//rect.GetIterator().MoveNext();
+						//c = rect.GetIterator().Current;
 					}
 				}
 			}

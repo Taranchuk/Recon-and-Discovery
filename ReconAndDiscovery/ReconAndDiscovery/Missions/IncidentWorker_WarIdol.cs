@@ -100,27 +100,32 @@ namespace ReconAndDiscovery.Missions
                     int tile;
 					if (TileFinder.TryFindNewSiteTile(out tile))
 					{
-                        Site site = SiteMaker.MakeSite(SiteDefOfReconAndDiscovery.PsiMachine, tile, Faction.OfInsects);
-                        SitePart warIdol = new SitePart(site, SiteDefOfReconAndDiscovery.SitePart_WarIdol, null);
+                        Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
+                        site.Tile = tile;
+                        Faction faction = Faction.OfInsects;
+                        site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.PsiMachine,
+SiteDefOfReconAndDiscovery.PsiMachine.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
+
+                        SitePart warIdol = new SitePart(site, SiteDefOfReconAndDiscovery.SitePart_WarIdol, SiteDefOfReconAndDiscovery.SitePart_WarIdol.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                         site.parts.Add(warIdol);
                         if (Rand.Value < 0.15f)
                         {
-                            SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, null);
+                            SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             site.parts.Add(scatteredManhunters);
                         }
                         if (Rand.Value < 0.3f)
                         {
-                            SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, null);
+                            SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             site.parts.Add(scatteredTreasure);
                         }
                         if (Rand.Value < 0.3f)
                         {
-                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, null);
+                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             site.parts.Add(enemyRaidOnArrival);
                         }
                         if (Rand.Value < 0.1f)
                         {
-                            SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, null);
+                            SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, SiteDefOfReconAndDiscovery.MechanoidForces.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             site.parts.Add(mechanoidForces);
                         }
                         Find.WorldObjects.Add(site);
