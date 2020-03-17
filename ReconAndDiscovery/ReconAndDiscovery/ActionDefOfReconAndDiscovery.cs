@@ -22,3 +22,10 @@ namespace ReconAndDiscovery
 		public static ActivatedActionDef ActionSeraphites;
 	}
 }
+
+
+
+
+
+
+

@@ -7,8 +7,8 @@
     <label>trade fair</label>
 		<description>The site of a trade fair.</description>
 		<workerClass>ReconAndDiscovery.Missions.SiteCoreWorker_Festival</workerClass>
-    <siteTexture>World/WorldObjects/Diplomacy</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Diplomacy</expandingIconTexture>
+    <siteTexture>World/WorldObjects/Expanding/Sites/ItemStash</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
     <forceExitAndRemoveMapCountdownDurationDays>1</forceExitAndRemoveMapCountdownDurationDays>
   </SitePartDef>
   

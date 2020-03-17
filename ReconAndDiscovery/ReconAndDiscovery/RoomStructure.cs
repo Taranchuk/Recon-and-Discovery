@@ -62,3 +62,10 @@ namespace ReconAndDiscovery
 		public TerrainDef floorMaterial = BaseGenUtility.RandomBasicFloorDef(Faction.OfMechanoids, false);
 	}
 }
+
+
+
+
+
+
+

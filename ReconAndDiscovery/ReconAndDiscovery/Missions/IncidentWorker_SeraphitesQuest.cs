@@ -20,7 +20,7 @@ namespace ReconAndDiscovery.Missions
 		{
 			pawn = null;
 			IEnumerable<Pawn> source = from p in map.mapPawns.AllPawnsSpawned
-			where p.RaceProps.Humanlike && p.Faction != Faction.OfPlayer && p.Faction.PlayerGoodwill > 0f
+			where p.RaceProps.Humanlike && p.Faction != Faction.OfPlayer
 			select p;
 			bool result;
 			if (source.Count<Pawn>() == 0)
@@ -91,7 +91,7 @@ namespace ReconAndDiscovery.Missions
 				else
 				{
                     int tile;
-                    if (!TileFinder.TryFindNewSiteTile(out tile))
+                    if (TileFinder.TryFindNewSiteTile(out tile))
                     {
                         Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
                         Faction faction = Faction.OfInsects;
@@ -148,3 +148,10 @@ SiteDefOfReconAndDiscovery.SeraphitesQuest.Worker.GenerateDefaultParams(Storytel
 		}
 	}
 }
+
+
+
+
+
+
+

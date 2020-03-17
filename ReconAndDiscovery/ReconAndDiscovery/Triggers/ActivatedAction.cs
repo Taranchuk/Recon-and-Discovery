@@ -81,3 +81,10 @@ namespace ReconAndDiscovery.Triggers
 		public ActivatedActionDef def;
 	}
 }
+
+
+
+
+
+
+

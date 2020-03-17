@@ -66,3 +66,10 @@ namespace ReconAndDiscovery.Triggers
 		private ICollection<IntVec3> cells = new List<IntVec3>();
 	}
 }
+
+
+
+
+
+
+

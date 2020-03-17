@@ -6,8 +6,8 @@
     <defName>AbandonedColony</defName>
     <label>abandoned colony</label>
 		<description>An abandoned colony.</description>
-    <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
-    <expandingIconTexture>World/WorldObjects/AdventureSymbol</expandingIconTexture>
+    <siteTexture>World/WorldObjects/Expanding/DestroyedSettlement</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/DestroyedSettlement</expandingIconTexture>
   </SitePartDef>
   
   <GenStepDef>

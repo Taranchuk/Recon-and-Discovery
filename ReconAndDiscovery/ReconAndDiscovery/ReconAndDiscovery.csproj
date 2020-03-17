@@ -419,11 +419,9 @@
     <Compile Include="RoomStructure.cs" />
     <Compile Include="SiteDefOfReconAndDiscovery.cs" />
     <Compile Include="ThingDefOfReconAndDiscovery.cs" />
-    <Compile Include="Things\Deflector.cs" />
     <Compile Include="Things\HediffCompProperties_Seraphites.cs" />
     <Compile Include="Things\HediffComp_Seraphites.cs" />
     <Compile Include="Things\HoloEmitter.cs" />
-    <Compile Include="Things\ProtectedPowerNet.cs" />
     <Compile Include="Things\Teleporter.cs" />
     <Compile Include="Triggers\ActionTrigger.cs" />
     <Compile Include="Triggers\ActivatedAction.cs" />

@@ -105,3 +105,10 @@ SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
 		}
 	}
 }
+
+
+
+
+
+
+

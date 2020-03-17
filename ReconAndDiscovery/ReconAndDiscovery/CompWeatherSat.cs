@@ -85,3 +85,10 @@ namespace ReconAndDiscovery
 		public float mana = 0f;
 	}
 }
+
+
+
+
+
+
+

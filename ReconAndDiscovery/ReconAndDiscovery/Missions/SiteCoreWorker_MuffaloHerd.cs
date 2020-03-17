@@ -72,7 +72,7 @@ namespace ReconAndDiscovery.Missions
 			if (Rand.Chance(0.05f))
 			{
 				IEnumerable<Pawn> source = from p in this.Map.mapPawns.FreeColonistsSpawned
-				where p.story.traits.DegreeOfTrait(TraitDef.Named("PsychicSensitivity")) > 0
+				where p.story.traits.HasTrait(TraitDef.Named("PsychicSensitivity"))
 				select p;
 				if (source.Count<Pawn>() > 0)
 				{
@@ -89,3 +89,10 @@ namespace ReconAndDiscovery.Missions
 		}
 	}
 }
+
+
+
+
+
+
+

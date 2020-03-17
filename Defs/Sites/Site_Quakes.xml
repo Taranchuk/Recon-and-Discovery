@@ -26,7 +26,7 @@
     <label>Faulty generator</label>
 		<description>The source of the tremors.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Sites/GenericSite</expandingIconTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/ConditionCauser</expandingIconTexture>
   </SitePartDef>
   
     <SitePartDef>
@@ -35,7 +35,7 @@
     <description>A generator!</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_Generator</workerClass>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/ConditionCauser</expandingIconTexture>
     <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
     <showFactionInInspectString>false</showFactionInInspectString>
     <badEvenIfNoMap>true</badEvenIfNoMap>

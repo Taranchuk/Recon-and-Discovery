@@ -16,9 +16,9 @@ namespace ReconAndDiscovery
 			select pawn;
 			foreach (Pawn pawn2 in enumerable)
 			{
-				if (pawn2.story.traits.DegreeOfTrait(TraitDef.Named("PsychicSensitivity")) > -2)
+				if (pawn2.story.traits.HasTrait(TraitDef.Named("PsychicSensitivity")))
 				{
-					if (pawn2.story.traits.DegreeOfTrait(TraitDef.Named("PsychicSensitivity")) >= 2)
+					if (pawn2.story.traits.HasTrait(TraitDef.Named("PsychicSensitivity")))
 					{
 						if (!pawn2.health.hediffSet.HasHediff(HediffDefOf.PsychicShock))
 						{
@@ -43,7 +43,7 @@ namespace ReconAndDiscovery
 			IEnumerable<Pawn> freeColonistsSpawned = this.parent.Map.mapPawns.FreeColonistsSpawned;
 			foreach (Pawn pawn in freeColonistsSpawned)
 			{
-				if (pawn.story.traits.DegreeOfTrait(TraitDef.Named("PsychicSensitivity")) > -2)
+				if (pawn.story.traits.HasTrait(TraitDef.Named("PsychicSensitivity")))
 				{
 					if (pawn.health.hediffSet.HasHediff(HediffDef.Named("BattlePrayer")))
 					{
@@ -59,3 +59,10 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
+
+
+
+
+

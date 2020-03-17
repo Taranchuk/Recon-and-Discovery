@@ -187,65 +187,6 @@
 	</ThingDef>
 	
 	
-	
-  
-   <ThingDef ParentName="BuildingBase">
-		<defName>DeflectorArray</defName>
-		<label>deflector</label>
-		<thingClass>Building_WorkTable_HeatPush</thingClass>
-		<minifiedDef>MinifiedThing</minifiedDef>
-    <thingCategories>
-      <li>BuildingsTemperature</li>
-	</thingCategories>
-
-		<description>An EM deflector for protecting a region against solar flares.</description>
-		<graphicData>
-			<texPath>Things/Buildings/Deflector</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(2,1)</drawSize>
-			<damageData>
-				<cornerTL>Damage/Corner</cornerTL>
-				<cornerTR>Damage/Corner</cornerTR>
-				<cornerBL>Damage/Corner</cornerBL>
-				<cornerBR>Damage/Corner</cornerBR>
-			</damageData>
-		</graphicData>
-		<costList>
-			<Steel>120</Steel>
-			<ComponentIndustrial>4</ComponentIndustrial>
-		</costList>
-		<altitudeLayer>Building</altitudeLayer>
-		<tickerType>Normal</tickerType>
-		<fillPercent>0.5</fillPercent>
-		<useHitPoints>True</useHitPoints>
-		<statBases>
-			<WorkToBuild>6500</WorkToBuild>
-			<Mass>50</Mass>
-			<MaxHitPoints>220</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-		</statBases>
-		<size>(2,1)</size>
-		<passability>Standable</passability>
-		<pathCost>60</pathCost>
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,0)</interactionCellOffset>
-		<surfaceType>None</surfaceType>
-		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>CompPowerTrader</compClass>
-				<shortCircuitInRain>false</shortCircuitInRain>
-				<basePowerConsumption>400</basePowerConsumption>
-			</li>
-			<li Class="CompProperties_Flickable"/>
-		</comps>
-		 <specialDisplayRadius>12.8</specialDisplayRadius>
-		<building>
-			<heatPerTickWhileWorking>0.25</heatPerTickWhileWorking>
-		</building>
-		<constructEffect>ConstructMetal</constructEffect>
-	</ThingDef>
-	
-	
 	<ThingDef ParentName="BuildingBase">
 		<defName>HolographicEmitter</defName>
 		<label>holo-emitter</label>

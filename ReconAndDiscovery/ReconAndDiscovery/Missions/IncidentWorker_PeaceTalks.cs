@@ -87,3 +87,10 @@ SiteDefOfReconAndDiscovery.PeaceTalks.Worker.GenerateDefaultParams(StorytellerUt
 		}
 	}
 }
+
+
+
+
+
+
+

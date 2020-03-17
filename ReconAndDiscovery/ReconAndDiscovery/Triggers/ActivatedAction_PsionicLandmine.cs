@@ -86,3 +86,10 @@ namespace ReconAndDiscovery.Triggers
 		private Pawn bestPsychic = null;
 	}
 }
+
+
+
+
+
+
+

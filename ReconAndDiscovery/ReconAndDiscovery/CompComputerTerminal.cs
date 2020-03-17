@@ -37,3 +37,10 @@ namespace ReconAndDiscovery
 		public ActivatedActionDef actionDef;
 	}
 }
+
+
+
+
+
+
+

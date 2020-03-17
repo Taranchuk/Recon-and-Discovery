@@ -38,3 +38,10 @@ namespace ReconAndDiscovery.Maps
 		public static List<Pawn> tmpPawnsToSpawn = new List<Pawn>();
 	}
 }
+
+
+
+
+
+
+

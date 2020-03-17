@@ -13,7 +13,7 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-				return ThingRequest.ForGroup(ThingRequestGroup.Pawn);
+                return ThingRequest.ForDef(ThingDef.Named("PsionicEmanator"));
 			}
 		}
 
@@ -32,49 +32,49 @@ namespace ReconAndDiscovery
 
 		public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
-			Pawn pawn2 = t as Pawn;
+            Building building_PsionicEmanator = t as Building;
 			bool result;
-			if (pawn2 == null)
+            if (building_PsionicEmanator == null)
 			{
 				result = false;
 			}
-			else if (pawn.Map.designationManager.DesignationOn(pawn2, DesignationDefOf.Slaughter) == null)
+            else if (pawn.Map.designationManager.SpawnedDesignationsOfDef(DesignationDefOf.Slaughter).Count() == 0)
 			{
 				result = false;
 			}
-			else if (pawn.story != null && pawn.WorkTagIsDisabled(WorkTags.Social))
+            else if (pawn.story != null && pawn.WorkTagIsDisabled(WorkTags.Social))
 			{
 				JobFailReason.Is("IsIncapableOfViolenceShort".Translate());
 				result = false;
 			}
 			else
 			{
-				IEnumerable<Building> source = pawn.Map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("PsionicEmanator"));
-				result = (source.Count<Building>() != 0 && !source.All((Building b) => !ReservationUtility.CanReserve(pawn, b, 1, -1, null, false)) 
-                    &&
-                    // TODO: check if it works
-                    GenHostility.IsActiveThreatTo(pawn, Faction.OfPlayer)
-                    && pawn2 != null && ReservationUtility.CanReserve(pawn, t, 1, -1, null, forced));
+				result = ReservationUtility.CanReserve(pawn, building_PsionicEmanator, 1, -1, null, forced);
 			}
 			return result;
 		}
 
 		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
-			IEnumerable<Building> source = from a in pawn.Map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("PsionicEmanator"))
-			where ReservationUtility.CanReserveAndReach(pawn, a, PathEndMode.ClosestTouch, Danger.Some, 1, -1, null, false)
-			select a;
+            Building building_PsionicEmanator = t as Building;
 			Job result;
-			if (source.Count<Building>() == 0)
+			if (ReservationUtility.CanReserveAndReach(pawn, building_PsionicEmanator, PathEndMode.ClosestTouch, Danger.Some, 1, -1, null, false))
 			{
-				result = null;
+                var victim = (Thing)pawn.Map.designationManager.SpawnedDesignationsOfDef(DesignationDefOf.Slaughter).RandomElement().target;
+                result = new Job(JobDefOfReconAndDiscovery.SacrificeAtAltar, victim, building_PsionicEmanator);
 			}
 			else
 			{
-				Building t2 = source.FirstOrDefault<Building>();
-				result = new Job(JobDefOfReconAndDiscovery.SacrificeAtAltar, t, t2);
+				result = null;
 			}
 			return result;
 		}
 	}
 }
+
+
+
+
+
+
+

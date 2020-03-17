@@ -24,3 +24,10 @@ namespace ReconAndDiscovery
 		public static IncidentDef RaidEnemyQuest;
 	}
 }
+
+
+
+
+
+
+

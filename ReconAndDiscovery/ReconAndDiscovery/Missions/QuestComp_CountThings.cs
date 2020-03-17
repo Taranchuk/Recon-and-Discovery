@@ -116,3 +116,10 @@ namespace ReconAndDiscovery.Missions
 		private ThingDef targetDef;
 	}
 }
+
+
+
+
+
+
+

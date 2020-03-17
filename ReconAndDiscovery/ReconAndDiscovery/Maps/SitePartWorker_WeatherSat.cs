@@ -21,3 +21,10 @@ namespace ReconAndDiscovery.Maps
 		public ActivatedActionDef action;
 	}
 }
+
+
+
+
+
+
+

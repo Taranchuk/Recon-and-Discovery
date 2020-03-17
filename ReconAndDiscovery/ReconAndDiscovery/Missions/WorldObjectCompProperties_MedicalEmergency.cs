@@ -1,5 +1,6 @@
 ﻿using System;
 using RimWorld;
+using Verse;
 
 namespace ReconAndDiscovery.Missions
 {
@@ -11,3 +12,10 @@ namespace ReconAndDiscovery.Missions
 		}
 	}
 }
+
+
+
+
+
+
+

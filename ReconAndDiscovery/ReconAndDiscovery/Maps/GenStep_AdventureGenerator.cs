@@ -44,3 +44,10 @@ namespace ReconAndDiscovery.Maps
 		protected ResolveParams baseResolveParams;
 	}
 }
+
+
+
+
+
+
+

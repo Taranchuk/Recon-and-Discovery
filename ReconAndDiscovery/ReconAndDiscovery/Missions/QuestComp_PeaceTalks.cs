@@ -169,3 +169,10 @@ namespace ReconAndDiscovery.Missions
 		private Pawn negotiator;
 	}
 }
+
+
+
+
+
+
+

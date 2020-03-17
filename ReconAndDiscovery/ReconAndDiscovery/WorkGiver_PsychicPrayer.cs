@@ -35,7 +35,7 @@ namespace ReconAndDiscovery
 			{
 				result = false;
 			}
-			else if (pawn.story.traits.DegreeOfTrait(TraitDef.Named("PsychicSensitivity")) <= 0)
+			else if (!pawn.story.traits.HasTrait(TraitDef.Named("PsychicSensitivity")))
 			{
 				JobFailReason.Is("Only psychic pawns can broadcast a battle prayer");
 				result = false;
@@ -53,3 +53,10 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
+
+
+
+
+

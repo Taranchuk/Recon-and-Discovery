@@ -43,3 +43,10 @@ namespace ReconAndDiscovery
 		private const TargetIndex StargateIndex = TargetIndex.A;
 	}
 }
+
+
+
+
+
+
+

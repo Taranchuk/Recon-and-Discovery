@@ -26,7 +26,7 @@
     <label>peace talks</label>
 		<description>A venue for talks with another faction.</description>
     <siteTexture>World/WorldObjects/Diplomacy</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Diplomacy</expandingIconTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/PeaceTalks</expandingIconTexture>
   </SitePartDef>
   
   <GenStepDef>
@@ -43,7 +43,7 @@
     <description>A faction has invited you for peace talks.</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_PeaceTalksFaction</workerClass>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/PeaceTalks</expandingIconTexture>
     <applyFactionColorToSiteTexture>true</applyFactionColorToSiteTexture>
     <showFactionInInspectString>true</showFactionInInspectString>
     <badEvenIfNoMap>false</badEvenIfNoMap>

@@ -47,3 +47,10 @@ namespace ReconAndDiscovery.Maps
 		public FloatRange pointsRange = new FloatRange(250f, 700f);
 	}
 }
+
+
+
+
+
+
+

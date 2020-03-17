@@ -1,6 +1,7 @@
 ﻿using System;
 using RimWorld;
 using RimWorld.BaseGen;
+using Verse;
 
 namespace ReconAndDiscovery.Maps
 {
@@ -26,3 +27,10 @@ namespace ReconAndDiscovery.Maps
 		}
 	}
 }
+
+
+
+
+
+
+

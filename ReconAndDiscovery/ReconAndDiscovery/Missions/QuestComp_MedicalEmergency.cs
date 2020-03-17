@@ -131,15 +131,11 @@ namespace ReconAndDiscovery.Missions
 			{
 				result = ThingDef.Named("HolographicEmitter");
 			}
-			else if (value <= 0.5f)
-			{
-				result = ThingDef.Named("DeflectorArray");
-			}
-			else if (value <= 0.75f)
+			else if (value <= 0.50f)
 			{
 				result = ThingDef.Named("Teleporter");
 			}
-			else if (value <= 1f)
+			else if (value <= 0.75f) 
 			{
 				result = ThingDef.Named("GattlingLaser");
 			}
@@ -337,3 +333,10 @@ namespace ReconAndDiscovery.Missions
 		public Faction requestingFaction;
 	}
 }
+
+
+
+
+
+
+

@@ -44,7 +44,7 @@
     <label>treasure</label>
     <description>Some scattered valuables.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
     <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
     <showFactionInInspectString>false</showFactionInInspectString>
     <badEvenIfNoMap>false</badEvenIfNoMap>
@@ -104,7 +104,7 @@
     <description>An enemy faction will arrive here imminently.</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_EnemyRaidOnArrival</workerClass>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Ambush</expandingIconTexture>
     <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
     <showFactionInInspectString>false</showFactionInInspectString>
     <badEvenIfNoMap>true</badEvenIfNoMap>
@@ -125,7 +125,7 @@
     <description>There is an urgent need for medical assistance here.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_MedicalEmergency</workerClass>
-    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/Sites/DownedRefugee</expandingIconTexture>
     <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
     <showFactionInInspectString>false</showFactionInInspectString>
     <badEvenIfNoMap>true</badEvenIfNoMap>

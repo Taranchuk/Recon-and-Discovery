@@ -18,9 +18,9 @@ namespace ReconAndDiscovery.Missions
 		private bool CanFindVisitor(Map map, out Pawn pawn)
 		{
 			pawn = null;
-			IEnumerable<Pawn> source = from p in map.mapPawns.AllPawnsSpawned
-			where p.RaceProps.Humanlike && p.Faction != Faction.OfPlayer && p.Faction.PlayerGoodwill > 0f
-			select p;
+            IEnumerable<Pawn> source = from p in map.mapPawns.AllPawnsSpawned
+                                       where p.RaceProps.Humanlike && p.Faction != Faction.OfPlayer
+                                       select p;
 			bool result;
 			if (source.Count<Pawn>() == 0)
 			{
@@ -28,6 +28,7 @@ namespace ReconAndDiscovery.Missions
 			}
 			else
 			{
+
 				pawn = source.RandomElement<Pawn>();
 				result = true;
 			}
@@ -39,7 +40,7 @@ namespace ReconAndDiscovery.Missions
 			pawn = null;
 			foreach (Pawn pawn2 in map.mapPawns.FreeColonists)
 			{
-				if (pawn2.story.traits.DegreeOfTrait(TraitDef.Named("PsychicSensitivity")) > 0)
+                if (pawn2.story.traits.HasTrait(TraitDef.Named("PsychicSensitivity")))
 				{
 					pawn = pawn2;
 					return true;
@@ -75,20 +76,14 @@ namespace ReconAndDiscovery.Missions
 		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
-			IEnumerable<PowerNet> source = from net in map.powerNetManager.AllNetsListForReading
-			where net.hasPowerSource
-			select net;
 			bool result;
-			if (source.Count<PowerNet>() > 0)
-			{
-				result = false;
-			}
-			else if (this.GetHasGoodStoryConditions(map))
+            if (this.GetHasGoodStoryConditions(map))
 			{
 				Pawn pawn;
 				Pawn pawn2;
 				if (!this.CanFindVisitor(map, out pawn))
 				{
+
 					result = false;
 				}
 				else if (!this.CanFindPsychic(map, out pawn2))
@@ -101,12 +96,15 @@ namespace ReconAndDiscovery.Missions
 					if (TileFinder.TryFindNewSiteTile(out tile))
 					{
                         Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
+
                         site.Tile = tile;
+
                         Faction faction = Faction.OfInsects;
                         site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.PsiMachine,
 SiteDefOfReconAndDiscovery.PsiMachine.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
 
                         SitePart warIdol = new SitePart(site, SiteDefOfReconAndDiscovery.SitePart_WarIdol, SiteDefOfReconAndDiscovery.SitePart_WarIdol.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+
                         site.parts.Add(warIdol);
                         if (Rand.Value < 0.15f)
                         {
@@ -154,3 +152,10 @@ SiteDefOfReconAndDiscovery.PsiMachine.Worker.GenerateDefaultParams(StorytellerUt
 		}
 	}
 }
+
+
+
+
+
+
+

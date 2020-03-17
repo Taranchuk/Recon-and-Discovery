@@ -12,7 +12,7 @@ namespace ReconAndDiscovery
 			get
 			{
 				return ThingRequest.ForDef(ThingDef.Named("WeatherSat"));
-			}
+			} 
 		}
 
 		public override bool Prioritized
@@ -40,3 +40,10 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
+
+
+
+
+

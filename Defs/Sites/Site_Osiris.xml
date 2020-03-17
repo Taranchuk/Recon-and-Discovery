@@ -6,8 +6,8 @@
     <defName>AbandonedCastle</defName>
     <label>abandoned castle</label>
 		<description>A long-disused medieval castle.</description>
-    <siteTexture>World/WorldObjects/Psi</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Psi</expandingIconTexture>
+    <siteTexture>World/WorldObjects/Expanding/DestroyedSettlement</siteTexture>
+    <expandingIconTexture>World/WorldObjects/Expanding/DestroyedSettlement</expandingIconTexture>
   </SitePartDef>
   
   <GenStepDef>

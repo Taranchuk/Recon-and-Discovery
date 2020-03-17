@@ -19,7 +19,7 @@ namespace ReconAndDiscovery.Missions
 		{
 			pawn = null;
 			IEnumerable<Pawn> source = from p in map.mapPawns.FreeColonistsSpawned
-			where p.RaceProps.Humanlike && p.story.traits.DegreeOfTrait(TraitDef.Named("PsychicSensitivity")) > 0
+			where p.RaceProps.Humanlike && p.story.traits.HasTrait(TraitDef.Named("PsychicSensitivity"))
 			select p;
 			bool result;
 			if (source.Count<Pawn>() == 0)
@@ -126,3 +126,10 @@ SiteDefOfReconAndDiscovery.AbandonedCastle.Worker.GenerateDefaultParams(Storytel
 		private static readonly IntRange TimeoutDaysRange = new IntRange(15, 25);
 	}
 }
+
+
+
+
+
+
+

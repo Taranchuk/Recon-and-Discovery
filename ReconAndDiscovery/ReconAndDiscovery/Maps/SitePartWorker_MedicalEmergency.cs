@@ -39,3 +39,10 @@ namespace ReconAndDiscovery.Maps
 		public FloatRange casualtiesRange = new FloatRange(400f, 1000f);
 	}
 }
+
+
+
+
+
+
+

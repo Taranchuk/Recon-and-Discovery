@@ -91,3 +91,10 @@ SiteDefOfReconAndDiscovery.SiteRadiationQuest.Worker.GenerateDefaultParams(Story
 		}
 	}
 }
+
+
+
+
+
+
+
