@@ -9,7 +9,7 @@ namespace ReconAndDiscovery
 	{
 		public Alert_OverfullNitrolope()
 		{
-			this.defaultLabel = "Explosive risk!";
+			this.defaultLabel = "ExplosiveRisk".Translate(); // Explosive risk!
 			this.defaultPriority = AlertPriority.High;
 		}
 
@@ -22,7 +22,7 @@ namespace ReconAndDiscovery
 			}
 			else
 			{
-				result = "A nitralope has become dangerously bloated. You must relieve the pressure by milking it, or it may explode!";
+				result = "AlertExplanation".Translate(); //A nitralope has become dangerously bloated. You must relieve the pressure by milking it, or it may explode!
 			}
 			return result;
 		}
@@ -53,6 +53,9 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
+
 
 
 

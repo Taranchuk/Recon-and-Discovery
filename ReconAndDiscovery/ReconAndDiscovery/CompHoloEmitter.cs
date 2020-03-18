@@ -169,7 +169,7 @@ namespace ReconAndDiscovery
 			{
 				area_Allowed[this.parent.Map.cellIndices.CellToIndex(c)] = true;
 			}
-			area_Allowed.SetLabel(string.Format("HoloEmitter area for {0}.", this.pawn.Label));
+			area_Allowed.SetLabel(TranslatorFormattedStringExtensions.Translate("HoloEmitterAreaFor", this.pawn.Label)); //"HoloEmitter area for {0}."
 			this.pawn.playerSettings.AreaRestriction = area_Allowed;
 		}
 
@@ -203,6 +203,9 @@ namespace ReconAndDiscovery
 		private Pawn pawn;
 	}
 }
+
+
+
 
 
 

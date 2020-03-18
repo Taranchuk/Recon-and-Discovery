@@ -19,7 +19,7 @@ namespace ReconAndDiscovery.Missions
 		{
 			pawn = null;
 			IEnumerable<Pawn> source = from p in map.mapPawns.FreeColonistsSpawned
-			where p.RaceProps.Humanlike && p.story.traits.HasTrait(TraitDef.Named("PsychicSensitivity"))
+			where p.RaceProps.Humanlike && !p.Faction.HostileTo(Faction.OfPlayer) && p.story.traits.HasTrait(TraitDef.Named("PsychicSensitivity"))
 			select p;
 			bool result;
 			if (source.Count<Pawn>() == 0)
@@ -73,7 +73,7 @@ SiteDefOfReconAndDiscovery.AbandonedCastle.Worker.GenerateDefaultParams(Storytel
                             SitePart osirisCasket = new SitePart(site, SiteDefOfReconAndDiscovery.OsirisCasket, SiteDefOfReconAndDiscovery.OsirisCasket.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             site.parts.Add(osirisCasket);
                         }
-                        else
+                        if (Rand.Value < 0.15f)
                         {
                             SitePart weatherSat = new SitePart(site, SiteDefOfReconAndDiscovery.WeatherSat, SiteDefOfReconAndDiscovery.WeatherSat.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             site.parts.Add(weatherSat);
@@ -107,7 +107,8 @@ SiteDefOfReconAndDiscovery.AbandonedCastle.Worker.GenerateDefaultParams(Storytel
                         Find.WorldObjects.Add(site);
                         QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("PsychicDrone"), null, parms), Find.TickManager.TicksGame + 1);
                         Find.Storyteller.incidentQueue.Add(qi);
-                        Find.LetterStack.ReceiveLetter("Psychic message", string.Format("{0} has received visions accompanying the drone, showing a battle and crying out for help. Others must have noticed, so the site will probably be dangerous.", pawn.Label), LetterDefOf.PositiveEvent, null);
+                        Find.LetterStack.ReceiveLetter("PsychicMessage".Translate(), pawn.Label + "ReceivedVisionBattle".Translate() //has received visions accompanying the drone, showing a battle and crying out for help. Others must have noticed, so the site will probably be dangerous.
+, LetterDefOf.PositiveEvent, null);
                         result = true;
                     }
                     else
@@ -126,6 +127,9 @@ SiteDefOfReconAndDiscovery.AbandonedCastle.Worker.GenerateDefaultParams(Storytel
 		private static readonly IntRange TimeoutDaysRange = new IntRange(15, 25);
 	}
 }
+
+
+
 
 
 

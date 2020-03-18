@@ -31,8 +31,8 @@ namespace ReconAndDiscovery
 		{
 			if (p.Faction == Faction.OfPlayer)
 			{
-                Messages.Message(string.Format("{0} has developed radiation sickness".Translate()
-                    , p.Label), MessageTypeDefOf.NegativeEvent, false);
+				Messages.Message(TranslatorFormattedStringExtensions.Translate("DevelopedRadiationSickness" //"{0} has developed radiation sickness"
+, p.Label), MessageTypeDefOf.NegativeEvent, false);
 				p.health.AddHediff(HediffDef.Named("RadiationSickness"), null, null);
 			}
 		}
@@ -92,7 +92,9 @@ namespace ReconAndDiscovery
 			{
 				if (pawn.Faction == Faction.OfPlayer)
 				{
-					Messages.Message(string.Format("{0} has miscarried due to radiation poisoning.",
+					
+					Messages.Message("MiscarriedRadiation".Translate() //has miscarried due to radiation poisoning.
++ string.Format("{0} ",
                         pawn.LabelIndefinite()), pawn, MessageTypeDefOf.NegativeEvent);
 				}
 			}
@@ -149,7 +151,8 @@ namespace ReconAndDiscovery
                                     plant.CropBlighted();
                                     if (plant.sown)
                                     {
-                                        Messages.Message("A plant has died due to radiation damage"
+	
+                                        Messages.Message("PlantDiedRatiation".Translate() //A plant has died due to radiation damage"
                                             , MessageTypeDefOf.NegativeEvent);
                                     }
                                 }
@@ -200,6 +203,9 @@ namespace ReconAndDiscovery
 		private SkyColorSet SkyColours;
 	}
 }
+
+
+
 
 
 

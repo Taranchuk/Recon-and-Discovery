@@ -35,7 +35,7 @@ namespace ReconAndDiscovery
 
 		public override string CompInspectStringExtra()
 		{
-			return "Awaiting prayers and sacrifices.";
+			return "AwaitingPrayersSacrifices".Translate(); //"Awaiting prayers and sacrifices."
 		}
 
 		public void DoBattlePrayer()
@@ -59,6 +59,9 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
+
 
 
 

@@ -28,14 +28,17 @@ namespace ReconAndDiscovery.Maps
 				if (num % 3 == 0)
 				{
 					def = ThingDefOf.Sandbags;
-					newThing = ThingMaker.MakeThing(def, null);
+					newThing = ThingMaker.MakeThing(def, GenStuff.DefaultStuffFor(def));
 				}
 				num++;
 				GenSpawn.Spawn(newThing, loc, map);
-			}
+            }
 		}
 	}
 }
+
+
+
 
 
 

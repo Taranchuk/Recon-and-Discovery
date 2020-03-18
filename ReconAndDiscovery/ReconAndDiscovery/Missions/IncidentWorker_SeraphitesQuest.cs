@@ -20,7 +20,7 @@ namespace ReconAndDiscovery.Missions
 		{
 			pawn = null;
 			IEnumerable<Pawn> source = from p in map.mapPawns.AllPawnsSpawned
-			where p.RaceProps.Humanlike && p.Faction != Faction.OfPlayer
+			where p.RaceProps.Humanlike && !p.Faction.HostileTo(Faction.OfPlayer) && p.Faction != Faction.OfPlayer
 			select p;
 			bool result;
 			if (source.Count<Pawn>() == 0)
@@ -49,7 +49,7 @@ namespace ReconAndDiscovery.Missions
 			return false;
 		}
 
-		private bool GetHasGoodStoryConditions(Map map)
+		private bool GetHasGoodStoryConditions(Map map) 
 		{
 			bool result;
 			if (map == null)
@@ -148,6 +148,9 @@ SiteDefOfReconAndDiscovery.SeraphitesQuest.Worker.GenerateDefaultParams(Storytel
 		}
 	}
 }
+
+
+
 
 
 

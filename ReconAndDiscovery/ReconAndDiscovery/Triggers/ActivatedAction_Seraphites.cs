@@ -17,14 +17,14 @@ namespace ReconAndDiscovery.Triggers
 			bool flag = Rand.Value > 0.4f;
 			int level = activatedBy.skills.GetSkill(SkillDefOf.Intellectual).Level;
 			DiaNode diaNode = new DiaNode("");
-			DiaOption diaOption = new DiaOption(string.Format("Log off {0}", activatedBy.Label));
+            DiaOption diaOption = new DiaOption(TranslatorFormattedStringExtensions.Translate("LogOff", activatedBy.Label));
 			diaOption.resolveTree = true;
-			DiaOption diaOption2 = new DiaOption(string.Format("OK", activatedBy.Label));
+			DiaOption diaOption2 = new DiaOption(string.Format("OK".Translate(), activatedBy.Label));
 			diaOption2.resolveTree = true;
 			diaNode.options.Add(diaOption);
 			if (level < 5)
 			{
-				diaNode.text = string.Format("There seem to be files pertanent to a luciferium cure, but {0} lacks the intellectual skills to access them.", activatedBy.Label);
+				diaNode.text = TranslatorFormattedStringExtensions.Translate("FilesPertanentLuciferiumCure", activatedBy.Label); //"There seem to be files pertanent to a luciferium cure, but {0} lacks the intellectual skills to access them."
 			}
 			else
 			{
@@ -34,18 +34,20 @@ namespace ReconAndDiscovery.Triggers
 					if (flag)
 					{
 						DiaNode diaNode2 = diaNode;
-						diaNode2.text += string.Format("\n{0} thinks that the science underlying the project is sound, and though the process has been lost, any remaining samples of the cure probably work.", activatedBy.Label);
+						diaNode2.text += TranslatorFormattedStringExtensions.Translate("ThinksScienceUnderlying", activatedBy.Label); //"\n{0} thinks that the science underlying the project is sound, and though the process has been lost, any remaining samples of the cure probably work."
+
 					}
 					else
 					{
 						DiaNode diaNode3 = diaNode;
-						diaNode3.text += string.Format("\n{0} thinks that the research is dubious, and is concerned that any remaining samples will be dangerous.", activatedBy.Label);
+						diaNode3.text += TranslatorFormattedStringExtensions.Translate("ThinksResearchDubious", activatedBy.Label); //"\n{0} thinks that the research is dubious, and is concerned that any remaining samples will be dangerous.
 					}
 				}
-				DiaOption diaOption3 = new DiaOption("Dispense the trial cure");
+				DiaOption diaOption3 = new DiaOption("DispenseTrialCure".Translate()); //Dispense the trial cure
 				if (flag)
 				{
-					diaOption3.link = new DiaNode("A small, golden foil packet drops out of a nearby hatch!")
+					diaOption3.link = new DiaNode("GoldenFoilPacket".Translate() //"A small, golden foil packet drops out of a nearby hatch!"
+)
 					{
 						options = 
 						{
@@ -91,7 +93,8 @@ namespace ReconAndDiscovery.Triggers
 							thing2.Destroy(DestroyMode.Deconstruct);
 						}
 					};
-					diaOption3.link = new DiaNode("The mechanites in the cure have corrupted their programming and escaped their packaging!")
+					diaOption3.link = new DiaNode("MechanitesCureCorrupted".Translate() //"The mechanites in the cure have corrupted their programming and escaped their packaging!"
+)
 					{
 						options = 
 						{
@@ -105,6 +108,9 @@ namespace ReconAndDiscovery.Triggers
 		}
 	}
 }
+
+
+
 
 
 

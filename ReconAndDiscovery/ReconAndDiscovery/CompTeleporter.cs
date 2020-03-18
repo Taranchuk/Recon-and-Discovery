@@ -36,8 +36,8 @@ namespace ReconAndDiscovery
 		{
 			return new Command_Action
 			{
-				defaultLabel = "Teleport.",
-				defaultDesc = "Teleport a person or animal.",
+				defaultLabel = "Teleport".Translate(), //Teleport."
+				defaultDesc = "TeleportDesc".Translate(), //"Teleport a person or animal."
 				icon = CompTeleporter.teleSym,
 				action = delegate()
 				{
@@ -122,7 +122,8 @@ namespace ReconAndDiscovery
 				}
 				else
 				{
-					Messages.Message("You cannot lock onto anything there.", MessageTypeDefOf.RejectInput);
+					
+					Messages.Message("YouCannotLock".Translate(), MessageTypeDefOf.RejectInput); //"You cannot lock onto anything there."
 					result = false;
 				}
 			}
@@ -150,7 +151,8 @@ namespace ReconAndDiscovery
 			IntVec3 position2 = pawn.Position;
 			if (map2.roofGrid.Roofed(position2) && map2.roofGrid.RoofAt(position2) == RoofDefOf.RoofRockThick)
 			{
-				Messages.Message("Teleporter cannot lock on through the thick rock overhead!", MessageTypeDefOf.RejectInput);
+				
+				Messages.Message("TeleporterLannotLockThickRock".Translate(), MessageTypeDefOf.RejectInput); //Teleporter cannot lock on through the thick rock overhead!
 			}
 			else
 			{
@@ -181,7 +183,7 @@ namespace ReconAndDiscovery
 
 		public override string CompInspectStringExtra()
 		{
-			return "Charge: " + this.fCharge.ToStringPercent();
+			return "Charge".Translate() + this.fCharge.ToStringPercent(); //"Charge: "
 		}
 
 		private float fCharge = 0f;
@@ -191,6 +193,9 @@ namespace ReconAndDiscovery
 		private static readonly Texture2D teleSym = ContentFinder<Texture2D>.Get("UI/TeleportSymbol", true);
 	}
 }
+
+
+
 
 
 

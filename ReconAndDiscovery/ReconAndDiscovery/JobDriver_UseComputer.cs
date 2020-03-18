@@ -9,7 +9,7 @@ namespace ReconAndDiscovery
 	{
 		public override string GetReport()
 		{
-			return "Using computer";
+			return "UsingComputer".Translate();
 		}
 
 		public Building Computer
@@ -39,6 +39,9 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
+
 
 
 

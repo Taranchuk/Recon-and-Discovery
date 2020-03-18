@@ -18,7 +18,7 @@ namespace ReconAndDiscovery
 			}
 			else if (base.GetActor().RaceProps.IsMechanoid)
 			{
-				result = "Entering Repair Cycle";
+				result = "EnteringRepairCycle".Translate(); //"Entering Repair Cycle"
 			}
 			else
 			{
@@ -87,6 +87,9 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
+
 
 
 

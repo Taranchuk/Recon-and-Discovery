@@ -133,7 +133,8 @@ namespace ReconAndDiscovery.Missions
 					}
 					else
 					{
-						Find.LetterStack.ReceiveLetter("Shooting star", string.Format("{0} just saw something fall from the sky near here!", pawn.Label), LetterDefOf.PositiveEvent, site, null);
+						Find.LetterStack.ReceiveLetter("ShootingStar".Translate(), pawn.Label + "SawFallFromSky".Translate() //just saw something fall from the sky near here!
+, LetterDefOf.PositiveEvent, site, null);
 					}
 					result = true;
 				}
@@ -144,6 +145,9 @@ namespace ReconAndDiscovery.Missions
 		private static readonly IntRange TimeoutDaysRange = new IntRange(6, 10);
 	}
 }
+
+
+
 
 
 

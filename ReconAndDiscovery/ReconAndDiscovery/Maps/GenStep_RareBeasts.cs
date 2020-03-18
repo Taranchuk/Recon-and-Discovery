@@ -21,26 +21,6 @@ namespace ReconAndDiscovery.Maps
 				pawnKindDef = ThingDefOfReconAndDiscovery.Nitralope;
 			}
 
-            //public PawnGenerationRequest(PawnKindDef kind, Faction faction = null,
-            //    PawnGenerationContext context = PawnGenerationContext.NonPlayer, int tile = -1, 
-            //    bool forceGenerateNewPawn = false, bool newborn = false, bool allowDead = false,
-            //    bool allowDowned = false, bool canGeneratePawnRelations = true, bool mustBeCapableOfViolence = false,
-            //
-            //
-            //    float colonistRelationChanceFactor = 1, bool forceAddFreeWarmLayerIfNeeded = false,
-            //    bool allowGay = true, 
-            //    
-            //    bool allowFood = true, bool allowAddictions = true, bool inhabitant = false,
-            //
-            //    bool certainlyBeenInCryptosleep = false, bool forceRedressWorldPawnIfFormerColonist = false,
-            //    bool worldPawnFactionDoesntMatter = false, float biocodeWeaponChance = 0,
-            //    Pawn extraPawnForExtraRelationChance = null, float relationWithExtraPawnChanceFactor = 1,
-            //    Predicate<Pawn> validatorPreGear = null, Predicate<Pawn> validatorPostGear = null,
-            //    IEnumerable<TraitDef> forcedTraits = null, IEnumerable<TraitDef> prohibitedTraits = null,
-            //    float? minChanceToRedressWorldPawn = null, float? fixedBiologicalAge = null,
-            //    float? fixedChronologicalAge = null, Gender? fixedGender = null, float? fixedMelanin = null,
-            //    string fixedLastName = null, string fixedBirthName = null, RoyalTitleDef fixedTitle = null);
-
             PawnGenerationRequest request = new PawnGenerationRequest(pawnKindDef, null, 
                 PawnGenerationContext.NonPlayer, -1, true, true, false, false, false, false, 
                 1f, false, false,
@@ -67,6 +47,9 @@ namespace ReconAndDiscovery.Maps
 		}
 	}
 }
+
+
+
 
 
 

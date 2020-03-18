@@ -34,7 +34,11 @@ namespace ReconAndDiscovery.Missions
 				{
 					return false;
 				}
-				text = "A large muffalo migration is due to pass near here in {0} days!";
+				text = "LargeMuffaloMigration".Translate()
+
+//A large muffalo migration is due to pass near here in
+
++ " {0} " + "Days".Translate(); //days!
 			}
 			else
 			{
@@ -52,7 +56,7 @@ namespace ReconAndDiscovery.Missions
 				{
 					return false;
 				}
-				text = "Your caravan has spotted a huge muffalo migration!";
+				text = "YourCaravanSpottedMuffaloMigration".Translate(); //"Your caravan has spotted a huge muffalo migration!";
 			}
 			bool result;
 			if (num2 == 0 || num2 == -1)
@@ -72,7 +76,7 @@ SiteDefOfReconAndDiscovery.MuffaloMigration.Worker.GenerateDefaultParams(Storyte
                     SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), num2, faction));
                     site.parts.Add(scatteredTreasure);
 				}
-				Find.LetterStack.ReceiveLetter("Muffalo migration", text, LetterDefOf.PositiveEvent, site, null);
+				Find.LetterStack.ReceiveLetter("MuffaloMigration".Translate(), text, LetterDefOf.PositiveEvent, site, null);
 				site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
 				Find.WorldObjects.Add(site);
 				result = true;
@@ -83,6 +87,9 @@ SiteDefOfReconAndDiscovery.MuffaloMigration.Worker.GenerateDefaultParams(Storyte
 		private static readonly IntRange TimeoutDaysRange = new IntRange(7, 12);
 	}
 }
+
+
+
 
 
 

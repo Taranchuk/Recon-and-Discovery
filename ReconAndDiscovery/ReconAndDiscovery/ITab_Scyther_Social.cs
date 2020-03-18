@@ -10,8 +10,8 @@ namespace ReconAndDiscovery
 		public ITab_Scyther_Social()
 		{
 			this.size = new Vector2(540f, 510f);
-			this.labelKey = "TabSocial";
-			this.tutorTag = "Social";
+			this.labelKey = "TabSocial".Translate();
+			this.tutorTag = "Social".Translate();
 		}
 
 		public override bool IsVisible
@@ -52,6 +52,9 @@ namespace ReconAndDiscovery
 		public const float Width = 540f;
 	}
 }
+
+
+
 
 
 

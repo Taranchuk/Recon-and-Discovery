@@ -80,7 +80,7 @@ namespace ReconAndDiscovery.Missions
 			}
 			else
 			{
-                int tile;
+                int tile; 
                 if (TileFinder.TryFindNewSiteTile(out tile))
                 {
                     Site site = (Site)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Site);
@@ -88,7 +88,7 @@ namespace ReconAndDiscovery.Missions
                     site.SetFaction(faction);
                     site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.Festival,
     SiteDefOfReconAndDiscovery.Festival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
-
+                     
                     // TODO: check if this works correctly
                     SitePart outpost = new SitePart(site, SitePartDefOf.Outpost, SitePartDefOf.Outpost.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                     site.parts.Add(outpost);
@@ -110,6 +110,9 @@ namespace ReconAndDiscovery.Missions
 		}
 	}
 }
+
+
+
 
 
 

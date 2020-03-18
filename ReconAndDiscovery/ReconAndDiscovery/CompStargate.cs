@@ -82,8 +82,8 @@ namespace ReconAndDiscovery
 		{
 			return new Command_Action
 			{
-				defaultLabel = "Link a gate.",
-				defaultDesc = "Link this gate to another.",
+				defaultLabel = "LinkGate".Translate(), //"Link a gate."
+				defaultDesc = "LinkGateDesc".Translate(), //"Link this gate to another."
 				icon = CompStargate.teleSym,
 				action = delegate()
 				{
@@ -125,7 +125,7 @@ namespace ReconAndDiscovery
 						}
 						else
 						{
-							Messages.Message("There is no evidence of a stargate there.", MessageTypeDefOf.RejectInput);
+							Messages.Message("StargateNoEvidence".Translate(), MessageTypeDefOf.RejectInput); // "There is no evidence of a stargate there."
 							result = false;
 						}
 					}
@@ -139,14 +139,14 @@ namespace ReconAndDiscovery
 						}
 						else
 						{
-							Messages.Message("There is no evidence of a stargate there.", MessageTypeDefOf.RejectInput);
+							Messages.Message("StargateNoEvidence".Translate(), MessageTypeDefOf.RejectInput);
 							result = false;
 						}
 					}
 				}
 				else
 				{
-					Messages.Message("There is no evidence of a stargate there.", MessageTypeDefOf.RejectInput);
+					Messages.Message("StargateNoEvidence".Translate(), MessageTypeDefOf.RejectInput);
 					result = false;
 				}
 			}
@@ -158,7 +158,7 @@ namespace ReconAndDiscovery
 			this.link = null;
 			this.linkedSite = null;
 			this.link = stargate;
-			Messages.Message("Stargate linked to destination.", MessageTypeDefOf.PositiveEvent);
+			Messages.Message("StargateLinked".Translate(), MessageTypeDefOf.PositiveEvent); // "Stargate linked to destination."
 		}
 
 		public void MakeLink(Site stargateSite)
@@ -166,7 +166,7 @@ namespace ReconAndDiscovery
 			this.link = null;
 			this.linkedSite = null;
 			this.linkedSite = stargateSite;
-			Messages.Message("Stargate linked to destination.", MessageTypeDefOf.PositiveEvent);
+			Messages.Message("StargateLinked".Translate(), MessageTypeDefOf.PositiveEvent);
 		}
 
 		public override void PostExposeData()
@@ -185,7 +185,7 @@ namespace ReconAndDiscovery
 			{
 				if (this.LinkedSite == null)
 				{
-					Messages.Message("Stargate is not linked to a destination!", MessageTypeDefOf.RejectInput);
+					Messages.Message("StargateNotLinked".Translate(), MessageTypeDefOf.RejectInput); //"Stargate is not linked to a destination!"
 					result = false;
 				}
 				else if (this.LinkedSite.HasMap)
@@ -193,7 +193,7 @@ namespace ReconAndDiscovery
 					IEnumerable<Thing> source = this.LinkedSite.Map.listerThings.ThingsOfDef(ThingDef.Named("Stargate"));
 					if (source.Count<Thing>() == 0)
 					{
-						Messages.Message("Stargate is not linked to a destination!", MessageTypeDefOf.RejectInput);
+						Messages.Message("StargateNotLinked".Translate(), MessageTypeDefOf.RejectInput);
 						result = false;
 					}
 					else
@@ -232,7 +232,7 @@ namespace ReconAndDiscovery
 			{
 				if (this.LinkedGate == null || !this.LinkedGate.Spawned || this.LinkedGate.Destroyed)
 				{
-					Messages.Message("The other gate has been buried! We cannot transit!", MessageTypeDefOf.RejectInput);
+					Messages.Message("OtherGateBuried".Translate(), MessageTypeDefOf.RejectInput); //"The other gate has been buried! We cannot transit!"
 				}
 				else
 				{
@@ -261,6 +261,9 @@ namespace ReconAndDiscovery
 		private static readonly Texture2D teleSym = ContentFinder<Texture2D>.Get("UI/StargateSymbol", true);
 	}
 }
+
+
+
 
 
 
