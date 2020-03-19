@@ -67,18 +67,23 @@ SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
                     // TODO: check if this works correctly
                     SitePart outpost = new SitePart(site, SitePartDefOf.Outpost, SitePartDefOf.Outpost.Worker.GenerateDefaultParams
 (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    outpost.hidden = true;
                     site.parts.Add(outpost);
                     SitePart turrets = new SitePart(site, SitePartDefOf.Turrets, SitePartDefOf.Turrets.Worker.GenerateDefaultParams
 (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    turrets.hidden = true;
                     site.parts.Add(turrets);
                 }
                 SitePart starGate = new SitePart(site, SiteDefOfReconAndDiscovery.Stargate, SiteDefOfReconAndDiscovery.Stargate.Worker.GenerateDefaultParams
 (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                starGate.hidden = true;
                 site.parts.Add(starGate);
                 if (Rand.Value < 0.2f)
                 {
                     SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams
 (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+
+                    scatteredManhunters.hidden = true;
 
                     site.parts.Add(scatteredManhunters);
                 }
@@ -87,6 +92,8 @@ SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
                     SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure,
                     SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams
                     (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+
+                    scatteredTreasure.hidden = true;
 
                     site.parts.Add(scatteredTreasure);
                 }

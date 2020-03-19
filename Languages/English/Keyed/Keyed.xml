@@ -17,8 +17,8 @@
 	<EnteringRepairCycle>Entering Repair Cycle</EnteringRepairCycle>
 	<ExplosiveRisk>Explosive risk!</ExplosiveRisk>
 	<FilesPertanentLuciferiumCure>There seem to be files pertanent to a luciferium cure, but {0} lacks the intellectual skills to access them.</FilesPertanentLuciferiumCure>
-	<FortunatelyDissipateAttack> Fortunately, {0} was able to dissipate the attack with their psychic capabilities.</FortunatelyDissipateAttack>
-	<FortunatelyDissipateAttackShock> {0} was able to channel the attack, preventing harm to others, but is now in psychic shock!</FortunatelyDissipateAttackShock>
+	<FortunatelyDissipateAttack>Fortunately, {0} was able to dissipate the attack with their psychic capabilities.</FortunatelyDissipateAttack>
+	<FortunatelyDissipateAttackShock>{0} was able to channel the attack, preventing harm to others, but is now in psychic shock!</FortunatelyDissipateAttackShock>
 	<GoldenFoilPacket>A small, golden foil packet drops out of a nearby hatch!</GoldenFoilPacket>
 	<GratefulSurvivorsAmazedDesc>The survivors of the crash are amazed by your rapid and professional emergency medical response, thanks to which no-one died. In gratitude, they have included a special system removed form the wreck.</GratefulSurvivorsAmazedDesc>
 	<GratefulSurvivorsDesc>The survivors of the crash are very thankful for your help, and have send some supplies as a gesture of gratitude.</GratefulSurvivorsDesc>
@@ -37,7 +37,8 @@
 	<Overfull>Overfull!</Overfull>
 	<PlantDiedRatiation>A plant has died due to radiation damage</PlantDiedRatiation>
 	<PsionicLandmine>A psionic landmine in the room generates a short-range psychic shock!</PsionicLandmine>
-	<PsychicMessage>has received visions accompanying the drone, showing a battle and crying out for help. Others must have noticed, so the site will probably be dangerous.</PsychicMessage>
+	<PsychicMessage>Psychic vision</PsychicMessage>
+	<ReceivedVisionBattle>{PAWN_nameDef} has received visions accompanying the drone, showing a battle and crying out for help. Others must have noticed, so the site will probably be dangerous.</ReceivedVisionBattle>
 	<ShootingStar>just saw something fall from the sky near here!</ShootingStar>
 	<StargateLinked>Stargate linked to destination.</StargateLinked>
 	<StargateNoEvidence>There is no evidence of a stargate there.</StargateNoEvidence>

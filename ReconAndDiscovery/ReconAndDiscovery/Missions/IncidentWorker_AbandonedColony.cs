@@ -32,23 +32,28 @@ namespace ReconAndDiscovery.Missions
                 site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.AbandonedColony, SiteDefOfReconAndDiscovery.AbandonedColony.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
 
                 SitePart holoDisk = new SitePart(site, SiteDefOfReconAndDiscovery.HoloDisk, SiteDefOfReconAndDiscovery.HoloDisk.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                holoDisk.hidden = true;
                 site.parts.Add(holoDisk);
                 if (Rand.Value < 0.3f)
                 {
                     SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams
                     (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    scatteredManhunters.hidden = true;
                     site.parts.Add(scatteredManhunters);
                 }
                 if (Rand.Value < 0.1f)
                 {
                     SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, SiteDefOfReconAndDiscovery.MechanoidForces.Worker.GenerateDefaultParams
                     (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    mechanoidForces.hidden = true;
                     site.parts.Add(mechanoidForces);
                 }
                 if (Rand.Value < 0.05f)
                 {
                     SitePart stargate = new SitePart(site, SiteDefOfReconAndDiscovery.Stargate, SiteDefOfReconAndDiscovery.Stargate.Worker.GenerateDefaultParams
                     (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+
+                    stargate.hidden = true;
 
                     site.parts.Add(stargate);
                 }

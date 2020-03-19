@@ -66,6 +66,7 @@ namespace ReconAndDiscovery.Missions
 SiteDefOfReconAndDiscovery.PeaceTalks.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
 
                     SitePart peaceTalksFaction = new SitePart(site, SiteDefOfReconAndDiscovery.PeaceTalksFaction, SiteDefOfReconAndDiscovery.PeaceTalksFaction.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    peaceTalksFaction.hidden = true;
                     site.parts.Add(peaceTalksFaction);
                     site.GetComponent<QuestComp_PeaceTalks>().StartQuest(faction);
                     int num = 5;

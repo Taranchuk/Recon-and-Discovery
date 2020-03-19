@@ -91,6 +91,7 @@ namespace ReconAndDiscovery.Missions
                      
                     // TODO: check if this works correctly
                     SitePart outpost = new SitePart(site, SitePartDefOf.Outpost, SitePartDefOf.Outpost.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    outpost.hidden = true;
                     site.parts.Add(outpost);
                     int num = 8;
                     site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);

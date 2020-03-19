@@ -74,6 +74,7 @@ SiteDefOfReconAndDiscovery.MuffaloMigration.Worker.GenerateDefaultParams(Storyte
 				if (Rand.Value < 0.5f)
 				{
                     SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), num2, faction));
+                    scatteredTreasure.hidden = true;
                     site.parts.Add(scatteredTreasure);
 				}
 				Find.LetterStack.ReceiveLetter("MuffaloMigration".Translate(), text, LetterDefOf.PositiveEvent, site, null);

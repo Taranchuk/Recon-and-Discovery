@@ -71,43 +71,54 @@ SiteDefOfReconAndDiscovery.AbandonedCastle.Worker.GenerateDefaultParams(Storytel
                         if (source.Count<PowerNet>() > 0)
                         {
                             SitePart osirisCasket = new SitePart(site, SiteDefOfReconAndDiscovery.OsirisCasket, SiteDefOfReconAndDiscovery.OsirisCasket.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            osirisCasket.hidden = true;
                             site.parts.Add(osirisCasket);
                         }
                         if (Rand.Value < 0.15f)
                         {
                             SitePart weatherSat = new SitePart(site, SiteDefOfReconAndDiscovery.WeatherSat, SiteDefOfReconAndDiscovery.WeatherSat.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            weatherSat.hidden = true;
                             site.parts.Add(weatherSat);
                         }
                         site.GetComponent<TimeoutComp>().StartTimeout(randomInRange * 60000);
                         if (Rand.Value < 0.25f)
                         {
                             SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            scatteredManhunters.hidden = true;
                             site.parts.Add(scatteredManhunters);
                         }
                         if (Rand.Value < 0.1f)
                         {
                             SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            scatteredTreasure.hidden = true;
                             site.parts.Add(scatteredTreasure);
                         }
                         if (Rand.Value < 1f)
                         {
                             SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            enemyRaidOnArrival.hidden = true;
                             site.parts.Add(enemyRaidOnArrival);
                         }
                         if (Rand.Value < 0.9f)
                         {
                             SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            enemyRaidOnArrival.hidden = true;
                             site.parts.Add(enemyRaidOnArrival);
                         }
                         if (Rand.Value < 0.6f)
                         {
                             SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            enemyRaidOnArrival.hidden = true;
                             site.parts.Add(enemyRaidOnArrival);
                         }
                         Find.WorldObjects.Add(site);
                         QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("PsychicDrone"), null, parms), Find.TickManager.TicksGame + 1);
                         Find.Storyteller.incidentQueue.Add(qi);
-                        Find.LetterStack.ReceiveLetter("PsychicMessage".Translate(), pawn.Label + "ReceivedVisionBattle".Translate() //has received visions accompanying the drone, showing a battle and crying out for help. Others must have noticed, so the site will probably be dangerous.
+                        Find.LetterStack.ReceiveLetter("PsychicMessage".Translate(), 
+GrammarResolverSimpleStringExtensions.Formatted(Translator
+                    .Translate("ReceivedVisionBattle"), NamedArgumentUtility.Named(pawn, "PAWN"))
+                    .AdjustedFor(pawn, "PAWN", true)
+ //has received visions accompanying the drone, showing a battle and crying out for help. Others must have noticed, so the site will probably be dangerous.
 , LetterDefOf.PositiveEvent, null);
                         result = true;
                     }

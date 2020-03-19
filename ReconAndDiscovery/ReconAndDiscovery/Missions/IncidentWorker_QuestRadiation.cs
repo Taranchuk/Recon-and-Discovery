@@ -38,6 +38,7 @@ namespace ReconAndDiscovery.Missions
                     site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.SiteRadiationQuest,
 SiteDefOfReconAndDiscovery.SiteRadiationQuest.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null)));
                     SitePart radioactiveDust = new SitePart(site, SiteDefOfReconAndDiscovery.SitePart_RadioactiveDust, SiteDefOfReconAndDiscovery.SitePart_RadioactiveDust.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
+                    radioactiveDust.hidden = true;
                     site.parts.Add(radioactiveDust);
                     QuestComp_CountThings component = site.GetComponent<QuestComp_CountThings>();
                     component.targetNumber = 200;
@@ -49,21 +50,25 @@ SiteDefOfReconAndDiscovery.SiteRadiationQuest.Worker.GenerateDefaultParams(Story
                     if (Rand.Value < 0.1f)
                     {
                         SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
+                        scatteredTreasure.hidden = true;
                         site.parts.Add(scatteredTreasure);
                     }
                     if (Rand.Value < 0.05f)
                     {
                         SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
+                        scatteredManhunters.hidden = true;
                         site.parts.Add(scatteredManhunters);
                     }
                     if (Rand.Value < 0.05f)
                     {
                         SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, SiteDefOfReconAndDiscovery.MechanoidForces.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
+                        mechanoidForces.hidden = true;
                         site.parts.Add(mechanoidForces);
                     }
                     if (Rand.Value < 0.05f)
                     {
                         SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
+                        enemyRaidOnArrival.hidden = true;
                         site.parts.Add(enemyRaidOnArrival);
                     }
 

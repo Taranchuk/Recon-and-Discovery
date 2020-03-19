@@ -3,6 +3,10 @@
   <name>Recon And Discovery</name>
   <author>SeveralPuffins</author>
   <targetVersion>0.17.1557</targetVersion>
+  	<supportedVersions>
+    <li>1.1</li>
+  </supportedVersions>
+  <packageId>SeveralPuffins.ReconAndDiscovery</packageId>
   <description>
 	Big risk, big reward! Recon and discovery adds new sites for your colonists to find.
 	

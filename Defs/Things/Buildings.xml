@@ -404,7 +404,7 @@
     <comps>
      <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>120000</basePowerConsumption>
+        <basePowerConsumption>12000</basePowerConsumption>
       </li>
       <li Class="ReconAndDiscovery.CompProperties_Osiris"/>
       <li Class="CompProperties_Flickable" />
