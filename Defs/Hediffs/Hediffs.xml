@@ -2,7 +2,7 @@
 <Defs>
     
   <HediffDef ParentName="DiseaseBase">
-    <defName>BattlePrayer</defName>
+    <defName>RD_BattlePrayer</defName>
     <label>Battle prayer</label>
     <description>Battle prayer</description>
     <comps>
@@ -26,7 +26,7 @@
   </HediffDef>
   
   <HediffDef ParentName="DiseaseBase">
-    <defName>RadiationSickness</defName>
+    <defName>RD_RadiationSickness</defName>
     <label>radiation sickness</label>
     <description>radiation sickness</description>
     <makesSickThought>true</makesSickThought>
@@ -60,7 +60,7 @@
   </HediffDef>
   
   <HediffDef ParentName="DiseaseBase">
-    <defName>PsychicAttack</defName>
+    <defName>RD_PsychicAttack</defName>
     <label>psychic interference</label>
     <description>psychic interference</description>
     <comps>
@@ -91,7 +91,7 @@
   
   
   <HediffDef>
-    <defName>Anaphylaxis</defName>
+    <defName>RD_Anaphylaxis</defName>
     <hediffClass>Hediff_HeartAttack</hediffClass>
     <defaultLabelColor>(1, 0.2, 0.2)</defaultLabelColor>
     <label>teleport anaphylaxis</label>
@@ -131,7 +131,7 @@
   </HediffDef>
   
    <HediffDef ParentName="DiseaseBase">
-    <defName>Neuro-optimised</defName>
+    <defName>RD_Neuro-optimised</defName>
     <hediffClass>HediffWithComps</hediffClass>
     <label>neuro-optimised</label>
     <description>neuro-optimised</description>

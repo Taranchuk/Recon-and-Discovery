@@ -24,7 +24,7 @@ namespace ReconAndDiscovery.Missions
             }
 
             else if ((from wo in Find.WorldObjects.Sites
-                      where wo is Site && wo.parts.Select(x => x.def) == SiteDefOfReconAndDiscovery.QuakesQuest
+                      where wo is Site && wo.parts.Select(x => x.def) == SiteDefOfReconAndDiscovery.RD_QuakesQuest
                       select wo).Count<WorldObject>() > 0)
             {
                 result = false;
@@ -34,43 +34,43 @@ namespace ReconAndDiscovery.Missions
                 int tile;
                 if (TileFinder.TryFindNewSiteTile(out tile))
                 {
-                    Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventureDestroyThing);
+                    Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.RD_AdventureDestroyThing);
                     site.Tile = tile;
-                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.QuakesQuest, 
-                        SiteDefOfReconAndDiscovery.QuakesQuest.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null)));
-                    SitePart faultyGenerator = new SitePart(site, SiteDefOfReconAndDiscovery.SitePart_FaultyGenerator, 
-                        SiteDefOfReconAndDiscovery.SitePart_FaultyGenerator.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
+                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.RD_QuakesQuest, 
+                        SiteDefOfReconAndDiscovery.RD_QuakesQuest.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null)));
+                    SitePart faultyGenerator = new SitePart(site, SiteDefOfReconAndDiscovery.RD_SitePart_FaultyGenerator, 
+                        SiteDefOfReconAndDiscovery.RD_SitePart_FaultyGenerator.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
                     faultyGenerator.hidden = true;
                     site.parts.Add(faultyGenerator);
                     site.GetComponent<QuestComp_DestroyThing>().StartQuest(ThingDefOf.GeothermalGenerator);
-                    site.GetComponent<QuestComp_DestroyThing>().gameConditionCaused = GameConditionDef.Named("Tremors");
+                    site.GetComponent<QuestComp_DestroyThing>().gameConditionCaused = GameConditionDef.Named("RD_Tremors");
                     site.GetComponent<QuestComp_DestroyThing>().worldTileAffected = map.Tile;
                     if (Rand.Value < 0.05f)
                     {
-                        SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
+                        SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.RD_ScatteredTreasure, SiteDefOfReconAndDiscovery.RD_ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
                         scatteredTreasure.hidden = true;
                         site.parts.Add(scatteredTreasure);
                     }
                     if (Rand.Value < 0.1f)
                     {
-                        SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
+                        SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.RD_ScatteredManhunters, SiteDefOfReconAndDiscovery.RD_ScatteredManhunters.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
                         scatteredManhunters.hidden = true;
                         site.parts.Add(scatteredManhunters);
                     }
                     if (Rand.Value < 0.1f)
                     {
-                        SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.MechanoidForces, SiteDefOfReconAndDiscovery.MechanoidForces.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
+                        SitePart mechanoidForces = new SitePart(site, SiteDefOfReconAndDiscovery.RD_MechanoidForces, SiteDefOfReconAndDiscovery.RD_MechanoidForces.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
                         mechanoidForces.hidden = true;
                         site.parts.Add(mechanoidForces);
                     }
                     if (Rand.Value < 0.05f)
                     {
-                        SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
+                        SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.RD_EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.RD_EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, null));
                         enemyRaidOnArrival.hidden = true;
                         site.parts.Add(enemyRaidOnArrival);
                     }
                     int num = 30;
-                    GameCondition gameCondition = GameConditionMaker.MakeCondition(GameConditionDef.Named("Tremors"), 60000 * num);
+                    GameCondition gameCondition = GameConditionMaker.MakeCondition(GameConditionDef.Named("RD_Tremors"), 60000 * num);
                     map.gameConditionManager.RegisterCondition(gameCondition);
                     site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
                     base.SendStandardLetter(parms, site);
@@ -86,6 +86,8 @@ namespace ReconAndDiscovery.Missions
         }
     }
 }
+
+
 
 
 

@@ -1,7 +1,7 @@
 <Defs>
 
   <ThingDef ParentName="ResourceBase">
-    <defName>AIPersonaCore</defName>
+    <defName>RD_AIPersonaCore</defName>
     <label>AI persona core</label>
     <description>A hyper-advanced computer core that houses a superhumanlike artificial intelligence. In its isolated state, the core is dormant. Installed in a proper support structure, however, it can become a mind of frightening power.</description>
     <graphicData>
@@ -28,7 +28,7 @@
   </ThingDef>
 
   <ThingDef ParentName="ResourceBase">
-    <defName>OsirisAI</defName>
+    <defName>RD_OsirisAI</defName>
     <label>osiris AI</label>
      <tradeability>None</tradeability>
     <description>A special AI construct that directs GilterWorld Osiris caskets as they bring back the dead.</description>
@@ -53,7 +53,7 @@
   </ThingDef>
   
   <ThingDef ParentName="ResourceBase">
-    <defName>ExoticMatter</defName>
+    <defName>RD_ExoticMatter</defName>
     <label>exotic matter</label>
      <tradeability>None</tradeability>
     <description>The negative mass of this material allows for faster than light travel via the Alcubierre warp method, and is also used to control artificial wormholes Packed in a handy, slightly heavier, container allowing storage on the floor!</description>

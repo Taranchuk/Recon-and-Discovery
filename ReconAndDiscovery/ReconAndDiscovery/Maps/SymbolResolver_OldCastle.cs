@@ -27,7 +27,7 @@ namespace ReconAndDiscovery.Maps
 				int minZ = Rand.RangeInclusive(rp.rect.minZ, rp.rect.maxZ - 1);
 				ResolveParams resolveParams = rp;
 				resolveParams.rect = new CellRect(minX, minZ, Rand.RangeInclusive(1, 3), Rand.RangeInclusive(1, 3));
-				BaseGen.symbolStack.Push("pathOfDestruction", resolveParams);
+				BaseGen.symbolStack.Push("pathOfDestruction", resolveParams, null);
 			}
 			for (int j = 0; j < Rand.RangeInclusive(2, 5); j++)
 			{
@@ -35,7 +35,7 @@ namespace ReconAndDiscovery.Maps
 				int minZ2 = Rand.RangeInclusive(rp.rect.minZ + 4, rp.rect.maxZ - 10);
 				ResolveParams resolveParams2 = rp;
 				resolveParams2.rect = new CellRect(minX2, minZ2, Rand.RangeInclusive(5, 8), Rand.RangeInclusive(5, 8));
-				BaseGen.symbolStack.Push("emptyRoom", resolveParams2);
+				BaseGen.symbolStack.Push("emptyRoom", resolveParams2, null);
 			}
 			ResolveParams resolveParams3 = rp;
 			resolveParams3.rect = resolveParams3.rect.ContractedBy(21);
@@ -44,14 +44,14 @@ namespace ReconAndDiscovery.Maps
 			resolveParams4.rect.Height = resolveParams4.rect.Width;
 			for (int k = 0; k < 4; k++)
 			{
-				BaseGen.symbolStack.Push("roomWithDoor", resolveParams4);
+				BaseGen.symbolStack.Push("roomWithDoor", resolveParams4, null);
 				resolveParams4.rect = new CellRect(resolveParams4.rect.minX, resolveParams4.rect.maxZ, resolveParams4.rect.Width, resolveParams4.rect.Height);
 			}
 			resolveParams3.SetCustom<char[]>("hasDoor", new char[]
 			{
 				'N'
 			}, false);
-			BaseGen.symbolStack.Push("roomWithDoor", resolveParams3);
+			BaseGen.symbolStack.Push("roomWithDoor", resolveParams3, null);
 			ResolveParams resolveParams5 = rp;
 			resolveParams5.rect = rp.rect.ContractedBy(5);
 			ResolveParams resolveParams6 = resolveParams5;
@@ -75,7 +75,7 @@ namespace ReconAndDiscovery.Maps
 					{
 						c
 					}, false);
-					BaseGen.symbolStack.Push("roomWithDoor", resolveParams6);
+					BaseGen.symbolStack.Push("roomWithDoor", resolveParams6, null);
 					resolveParams6.rect.minX = resolveParams6.rect.maxX;
 				}
 			}
@@ -100,7 +100,7 @@ namespace ReconAndDiscovery.Maps
 					{
 						c2
 					}, false);
-					BaseGen.symbolStack.Push("roomWithDoor", resolveParams6);
+					BaseGen.symbolStack.Push("roomWithDoor", resolveParams6, null);
 					resolveParams6.rect.minX = resolveParams6.rect.maxX;
 				}
 			}
@@ -126,7 +126,7 @@ namespace ReconAndDiscovery.Maps
 					{
 						c3
 					}, false);
-					BaseGen.symbolStack.Push("roomWithDoor", resolveParams6);
+					BaseGen.symbolStack.Push("roomWithDoor", resolveParams6, null);
 					resolveParams6.rect.minZ = resolveParams6.rect.maxZ;
 				}
 			}
@@ -152,7 +152,7 @@ namespace ReconAndDiscovery.Maps
 					{
 						c4
 					}, false);
-					BaseGen.symbolStack.Push("roomWithDoor", resolveParams6);
+					BaseGen.symbolStack.Push("roomWithDoor", resolveParams6, null);
 					resolveParams6.rect.minZ = resolveParams6.rect.maxZ;
 				}
 			}
@@ -188,20 +188,22 @@ namespace ReconAndDiscovery.Maps
 				'N',
 				'E'
 			}, false);
-			BaseGen.symbolStack.Push("roomWithDoor", resolveParams8);
-			BaseGen.symbolStack.Push("roomWithDoor", resolveParams7);
-			BaseGen.symbolStack.Push("roomWithDoor", resolveParams9);
-			BaseGen.symbolStack.Push("roomWithDoor", resolveParams10);
+			BaseGen.symbolStack.Push("roomWithDoor", resolveParams8, null);
+			BaseGen.symbolStack.Push("roomWithDoor", resolveParams7, null);
+			BaseGen.symbolStack.Push("roomWithDoor", resolveParams9, null);
+			BaseGen.symbolStack.Push("roomWithDoor", resolveParams10, null);
 			ResolveParams resolveParams11 = rp;
 			resolveParams11.rect = resolveParams11.rect.ContractedBy(3);
-			BaseGen.symbolStack.Push("edgeShields", resolveParams11);
+			BaseGen.symbolStack.Push("edgeShields", resolveParams11, null);
 			ResolveParams resolveParams12 = rp;
-			BaseGen.symbolStack.Push("doors", resolveParams12);
-			BaseGen.symbolStack.Push("edgeWalls", resolveParams12);
-			BaseGen.symbolStack.Push("floor", resolveParams12);
+			BaseGen.symbolStack.Push("doors", resolveParams12, null);
+			BaseGen.symbolStack.Push("edgeWalls", resolveParams12, null);
+			BaseGen.symbolStack.Push("floor", resolveParams12, null);
 		}
 	}
 }
+
+
 
 
 

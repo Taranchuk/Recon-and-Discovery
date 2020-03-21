@@ -1,6 +1,6 @@
 <Defs>	
 	<ReconAndDiscovery.Triggers.ActivatedActionDef Name="ActionSeraphites" ParentName="BaseActivatedAction">
-		<defName>ActionSeraphites</defName>
+		<defName>RD_ActionSeraphites</defName>
 		<activatedActionClass>ReconAndDiscovery.Triggers.ActivatedAction_Seraphites</activatedActionClass>
 		<numThingsToSpawn>0~0</numThingsToSpawn>
 		<spawnedThingStackSize>0~0</spawnedThingStackSize>

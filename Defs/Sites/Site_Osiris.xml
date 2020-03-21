@@ -3,7 +3,7 @@
 <Defs>  
 
   <SitePartDef>
-    <defName>AbandonedCastle</defName>
+    <defName>RD_AbandonedCastle</defName>
     <label>abandoned castle</label>
 		<description>A long-disused medieval castle.</description>
     <siteTexture>World/WorldObjects/Expanding/DestroyedSettlement</siteTexture>
@@ -11,15 +11,15 @@
   </SitePartDef>
   
   <GenStepDef>
-    <defName>AbandonedCastle</defName>
-    <linkWithSite>AbandonedCastle</linkWithSite>
+    <defName>RD_AbandonedCastle</defName>
+    <linkWithSite>RD_AbandonedCastle</linkWithSite>
     <order>500</order>
     <genStep Class="ReconAndDiscovery.Maps.GenStep_OldCastle">
     </genStep>
   </GenStepDef>  
   
    <IncidentDef>
-		<defName>QuestOsiris</defName>
+		<defName>RD_QuestOsiris</defName>
 		<label>osirisquest</label>
 		<category>Misc</category>
     <targetTags>
@@ -37,7 +37,7 @@
   </IncidentDef>
   
   <SitePartDef>
-    <defName>OsirisCasket</defName>
+    <defName>RD_OsirisCasket</defName>
     <label>osiris casket</label>
     <description>There is an Osiris Casket found here.</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_Osiris</workerClass>
@@ -50,7 +50,7 @@
   </SitePartDef>
   
    <SitePartDef>
-    <defName>WeatherSat</defName>
+    <defName>RD_WeatherSat</defName>
     <label>weather god</label>
     <description>A weather control AI is stationed here.</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_WeatherSat</workerClass>

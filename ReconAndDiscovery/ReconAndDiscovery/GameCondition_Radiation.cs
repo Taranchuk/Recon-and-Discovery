@@ -33,7 +33,7 @@ namespace ReconAndDiscovery
 			{
 				Messages.Message(TranslatorFormattedStringExtensions.Translate("DevelopedRadiationSickness" //"{0} has developed radiation sickness"
 , p.Label), MessageTypeDefOf.NegativeEvent, false);
-				p.health.AddHediff(HediffDef.Named("RadiationSickness"), null, null);
+				p.health.AddHediff(HediffDef.Named("RD_RadiationSickness"), null, null);
 			}
 		}
 
@@ -203,6 +203,8 @@ namespace ReconAndDiscovery
 		private SkyColorSet SkyColours;
 	}
 }
+
+
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   <ThingDef ParentName="BuildingBase">
-    <defName>GattlingLaser</defName>
+    <defName>RD_GattlingLaser</defName>
     <label>gattling laser</label>
     <thingClass>Building_TurretGun</thingClass>
     <graphicData>
@@ -59,13 +59,13 @@
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <building>
 	<ai_combatDangerous>true</ai_combatDangerous>
-      <turretGunDef>Gun_GattlingLaser</turretGunDef>
+      <turretGunDef>RD_Gun_GattlingLaser</turretGunDef>
       <turretBurstCooldownTime>24.00</turretBurstCooldownTime>
     </building>
 </ThingDef>
   
   <ThingDef ParentName="BaseBullet">
-    <defName>Bullet_GattlingLaser</defName>
+    <defName>RD_Bullet_GattlingLaser</defName>
     <label>improvised turret bullet</label>
     <graphicData>
       <texPath>Things/Projectile/Projectile_Gattling</texPath>
@@ -82,7 +82,7 @@
   </ThingDef>
 
   <ThingDef ParentName="BaseWeapon">
-    <defName>Gun_GattlingLaser</defName>
+    <defName>RD_Gun_GattlingLaser</defName>
     <label>Gattling Laser</label>
     <graphicData>
       <texPath>Things/Weapons/GattlingLaser</texPath>
@@ -107,7 +107,7 @@
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>Bullet_GattlingLaser</defaultProjectile>
+        <defaultProjectile>RD_Bullet_GattlingLaser</defaultProjectile>
         <warmupTime>24.0</warmupTime>
         <targetParams>
 			<canTargetLocations>true</canTargetLocations>
@@ -126,7 +126,7 @@
   
   
   <ThingDef ParentName="BuildingBase">
-		<defName>Teleporter</defName>
+		<defName>RD_Teleporter</defName>
 		<label>teleporter</label>
 		<thingClass>Building_WorkTable_HeatPush</thingClass>
 		<description>A glittertech teleportation panel. It can beam people and animals in from anywhere on the planet, but due to crash damage cannot send.</description>
@@ -188,7 +188,7 @@
 	
 	
 	<ThingDef ParentName="BuildingBase">
-		<defName>HolographicEmitter</defName>
+		<defName>RD_HolographicEmitter</defName>
 		<label>holo-emitter</label>
     <description>A holo-Emitter. Used on light, fast ships to simulate useful crew members if they are recovered just after death. The body is destroyed on scanning.</description>
     <thingClass>ReconAndDiscovery.Things.HoloEmitter</thingClass>
@@ -249,7 +249,7 @@
 	</ThingDef>
   
   <ThingDef ParentName="BuildingBase">
-    <defName>PortableGenerator</defName>
+    <defName>RD_PortableGenerator</defName>
     <label>portable generator</label>
     <description>A portable chemfuel-driven generator with a small power cell, designed for power provision away from home.</description>
     <thingClass>Building</thingClass>
@@ -312,7 +312,7 @@
 
   
    <ThingDef ParentName="BuildingBase">
-    <defName>QuestComputerTerminal</defName>
+    <defName>RD_QuestComputerTerminal</defName>
     <label>computerTerminal</label>
     <thingClass>Building</thingClass>
     <graphicData>
@@ -362,7 +362,7 @@
 
   
   <ThingDef ParentName="BuildingBase">
-    <defName>OsirisCasket</defName>
+    <defName>RD_OsirisCasket</defName>
     <label>osiris casket</label>
     <thingClass>ReconAndDiscovery.OsirisCasket</thingClass>
     <graphicData>
@@ -395,7 +395,7 @@
 		<ai_chillDestination>false</ai_chillDestination>
 		</building>
     <costList>
-      <OsirisAI>1</OsirisAI>
+      <RD_OsirisAI>1</RD_OsirisAI>
       <Steel>180</Steel>
       <Gold>100</Gold>
       <Uranium>50</Uranium>
@@ -430,7 +430,7 @@
   
   
   <ThingDef ParentName="BuildingBase">
-    <defName>Stargate</defName>
+    <defName>RD_Stargate</defName>
     <label>stargate</label>
     <graphicData>
       <texPath>Things/Buildings/Stargate</texPath>
@@ -464,7 +464,7 @@
       <Gold>50</Gold>
       <Uranium>300</Uranium>
       <ComponentIndustrial>24</ComponentIndustrial>
-      <ExoticMatter>1</ExoticMatter>
+      <RD_ExoticMatter>1</RD_ExoticMatter>
     </costList>
     <comps>
     	<li Class="CompProperties_Forbiddable"/>
@@ -479,7 +479,7 @@
   </ThingDef>
   
    <ThingDef ParentName="BuildingBase">
-    <defName>WeatherSat</defName>
+    <defName>RD_WeatherSat</defName>
     <label>weather idol</label>
     <graphicData>
       <texPath>Things/Buildings/WeatherSat</texPath>
@@ -525,7 +525,7 @@
   
   
      <ThingDef ParentName="BuildingBase">
-    <defName>PsionicEmanator</defName>
+    <defName>RD_PsionicEmanator</defName>
     <label>war idol</label>
     <graphicData>
       <texPath>Things/Buildings/PsionicEmanator</texPath>

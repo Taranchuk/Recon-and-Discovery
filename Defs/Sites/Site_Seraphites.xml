@@ -2,7 +2,7 @@
 
 <Defs>   
   <IncidentDef>
-		<defName>SeraphitesLab</defName>
+		<defName>RD_SeraphitesLab</defName>
 		<label>seraphitelab</label>
 		<category>Misc</category>
     <targetTags>
@@ -22,7 +22,7 @@
   </IncidentDef>
   
   <SitePartDef>
-    <defName>SeraphitesQuest</defName>
+    <defName>RD_SeraphitesQuest</defName>
     <label>Abandoned lab</label>
 		<description>The rumoured location of the luciferium cure.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
@@ -30,15 +30,15 @@
   </SitePartDef>
   
   <GenStepDef>
-    <defName>AbandonedLabNanites</defName>
-     <linkWithSite>SeraphitesQuest</linkWithSite>
+    <defName>RD_AbandonedLabNanites</defName>
+     <linkWithSite>RD_SeraphitesQuest</linkWithSite>
     <order>800</order>
     <genStep Class="ReconAndDiscovery.Maps.GenStep_AbandonedLab">
     </genStep>
   </GenStepDef>
   
     <SitePartDef>
-    <defName>SitePart_Computer</defName>
+    <defName>RD_SitePart_Computer</defName>
     <label>computer</label>
     <description>A computer!</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_Computer</workerClass>

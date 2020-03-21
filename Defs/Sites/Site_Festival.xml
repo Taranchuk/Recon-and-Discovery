@@ -3,7 +3,7 @@
 <Defs>  
 
   <SitePartDef>
-    <defName>Festival</defName>
+    <defName>RD_Festival</defName>
     <label>trade fair</label>
 		<description>The site of a trade fair.</description>
 		<workerClass>ReconAndDiscovery.Missions.SiteCoreWorker_Festival</workerClass>
@@ -13,7 +13,7 @@
   </SitePartDef>
   
    <IncidentDef>
-		<defName>TradeFair</defName>
+		<defName>RD_TradeFair</defName>
 		<label>tradefair</label>
 		<category>Misc</category>
     <targetTags>

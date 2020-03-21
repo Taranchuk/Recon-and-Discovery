@@ -13,7 +13,7 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-                return ThingRequest.ForDef(ThingDef.Named("PsionicEmanator"));
+                return ThingRequest.ForDef(ThingDef.Named("RD_PsionicEmanator"));
 			}
 		}
 
@@ -61,7 +61,7 @@ namespace ReconAndDiscovery
 			if (ReservationUtility.CanReserveAndReach(pawn, building_PsionicEmanator, PathEndMode.ClosestTouch, Danger.Some, 1, -1, null, false))
 			{
                 var victim = (Thing)pawn.Map.designationManager.SpawnedDesignationsOfDef(DesignationDefOf.Slaughter).RandomElement().target;
-                result = new Job(JobDefOfReconAndDiscovery.SacrificeAtAltar, victim, building_PsionicEmanator);
+                result = new Job(JobDefOfReconAndDiscovery.RD_SacrificeAtAltar, victim, building_PsionicEmanator);
 			}
 			else
 			{
@@ -71,6 +71,8 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
 
 
 

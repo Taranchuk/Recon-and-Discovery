@@ -59,55 +59,55 @@ namespace ReconAndDiscovery.Missions
                     if (TileFinder.TryFindNewSiteTile(out tile))
                     {
 
-                        Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
+                        Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.RD_Adventure);
                         site.Tile = tile;
                         Faction faction = Faction.OfInsects;
                         site.SetFaction(faction);
-                        site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.AbandonedCastle,
-SiteDefOfReconAndDiscovery.AbandonedCastle.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
+                        site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.RD_AbandonedCastle,
+SiteDefOfReconAndDiscovery.RD_AbandonedCastle.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
                         IEnumerable<PowerNet> source = from net in map.powerNetManager.AllNetsListForReading
                                                        where net.hasPowerSource
                                                        select net;
                         if (source.Count<PowerNet>() > 0)
                         {
-                            SitePart osirisCasket = new SitePart(site, SiteDefOfReconAndDiscovery.OsirisCasket, SiteDefOfReconAndDiscovery.OsirisCasket.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            SitePart osirisCasket = new SitePart(site, SiteDefOfReconAndDiscovery.RD_OsirisCasket, SiteDefOfReconAndDiscovery.RD_OsirisCasket.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             osirisCasket.hidden = true;
                             site.parts.Add(osirisCasket);
                         }
                         if (Rand.Value < 0.15f)
                         {
-                            SitePart weatherSat = new SitePart(site, SiteDefOfReconAndDiscovery.WeatherSat, SiteDefOfReconAndDiscovery.WeatherSat.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            SitePart weatherSat = new SitePart(site, SiteDefOfReconAndDiscovery.RD_WeatherSat, SiteDefOfReconAndDiscovery.RD_WeatherSat.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             weatherSat.hidden = true;
                             site.parts.Add(weatherSat);
                         }
                         site.GetComponent<TimeoutComp>().StartTimeout(randomInRange * 60000);
                         if (Rand.Value < 0.25f)
                         {
-                            SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.RD_ScatteredManhunters, SiteDefOfReconAndDiscovery.RD_ScatteredManhunters.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             scatteredManhunters.hidden = true;
                             site.parts.Add(scatteredManhunters);
                         }
                         if (Rand.Value < 0.1f)
                         {
-                            SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.RD_ScatteredTreasure, SiteDefOfReconAndDiscovery.RD_ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             scatteredTreasure.hidden = true;
                             site.parts.Add(scatteredTreasure);
                         }
                         if (Rand.Value < 1f)
                         {
-                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.RD_EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.RD_EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             enemyRaidOnArrival.hidden = true;
                             site.parts.Add(enemyRaidOnArrival);
                         }
                         if (Rand.Value < 0.9f)
                         {
-                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.RD_EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.RD_EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             enemyRaidOnArrival.hidden = true;
                             site.parts.Add(enemyRaidOnArrival);
                         }
                         if (Rand.Value < 0.6f)
                         {
-                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                            SitePart enemyRaidOnArrival = new SitePart(site, SiteDefOfReconAndDiscovery.RD_EnemyRaidOnArrival, SiteDefOfReconAndDiscovery.RD_EnemyRaidOnArrival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                             enemyRaidOnArrival.hidden = true;
                             site.parts.Add(enemyRaidOnArrival);
                         }
@@ -138,6 +138,8 @@ GrammarResolverSimpleStringExtensions.Formatted(Translator
 		private static readonly IntRange TimeoutDaysRange = new IntRange(15, 25);
 	}
 }
+
+
 
 
 

@@ -7,23 +7,25 @@ namespace ReconAndDiscovery
 	[DefOf]
 	public static class ThingDefOfReconAndDiscovery
 	{
-		public static ThingDef RectActionTrigger;
+		public static ThingDef RD_RectActionTrigger;
 
 		public static RaidStrategyDef ImmediateAttackSmart;
 
 		public static ChemicalDef Luciferium;
 
-		public static PawnKindDef Devillo;
+		public static PawnKindDef RD_Devillo;
 
-		public static PawnKindDef Nitralope;
+		public static PawnKindDef RD_Nitralope;
 
-		public static ThingDef Seraphites;
+		public static ThingDef RD_Seraphites;
 
-		public static IncidentDef DiscoveredStargate;
+		public static IncidentDef RD_DiscoveredStargate;
 
-		public static IncidentDef RaidEnemyQuest;
+		public static IncidentDef RD_RaidEnemyQuest;
 	}
 }
+
+
 
 
 

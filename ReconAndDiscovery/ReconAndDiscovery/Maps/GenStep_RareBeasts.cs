@@ -15,10 +15,10 @@ namespace ReconAndDiscovery.Maps
         }
         public override void Generate(Map map, GenStepParams parms)
 		{
-			PawnKindDef pawnKindDef = ThingDefOfReconAndDiscovery.Devillo;
+			PawnKindDef pawnKindDef = ThingDefOfReconAndDiscovery.RD_Devillo;
 			if (Rand.Chance(0.4f))
 			{
-				pawnKindDef = ThingDefOfReconAndDiscovery.Nitralope;
+				pawnKindDef = ThingDefOfReconAndDiscovery.RD_Nitralope;
 			}
 
             PawnGenerationRequest request = new PawnGenerationRequest(pawnKindDef, null, 
@@ -47,6 +47,8 @@ namespace ReconAndDiscovery.Maps
 		}
 	}
 }
+
+
 
 
 

@@ -52,7 +52,7 @@ namespace ReconAndDiscovery
 			base.PostDestroy(mode, previousMap);
 			if (mode == DestroyMode.Deconstruct)
 			{
-				GenSpawn.Spawn(ThingDef.Named("ExoticMatter"), this.parent.Position, previousMap);
+				GenSpawn.Spawn(ThingDef.Named("RD_ExoticMatter"), this.parent.Position, previousMap);
 			}
 		}
 
@@ -63,7 +63,7 @@ namespace ReconAndDiscovery
 			{
 				list.Add(new FloatMenuOption("TravelToTargetGate".Translate(), delegate()
 					{
-						Job job = new Job(JobDefOfReconAndDiscovery.TravelThroughStargate, this.parent);
+						Job job = new Job(JobDefOfReconAndDiscovery.RD_TravelThroughStargate, this.parent);
 						job.playerForced = true;
 						selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
 					}
@@ -118,9 +118,9 @@ namespace ReconAndDiscovery
 						Map map = this.parent.Map;
 						Map map2 = mapParent.Map;
 						Current.Game.CurrentMap = map2;
-						if (map2.listerThings.ThingsOfDef(ThingDef.Named("Stargate")).Count<Thing>() > 0)
+						if (map2.listerThings.ThingsOfDef(ThingDef.Named("RD_Stargate")).Count<Thing>() > 0)
 						{
-							this.MakeLink(map2.listerThings.ThingsOfDef(ThingDef.Named("Stargate")).FirstOrDefault<Thing>());
+							this.MakeLink(map2.listerThings.ThingsOfDef(ThingDef.Named("RD_Stargate")).FirstOrDefault<Thing>());
 							result = true;
 						}
 						else
@@ -132,7 +132,7 @@ namespace ReconAndDiscovery
 					else
 					{
 						Site site = mapParent as Site;
-						if (site != null && site.parts.Select(x => x.def).Contains(SiteDefOfReconAndDiscovery.Stargate))
+						if (site != null && site.parts.Select(x => x.def).Contains(SiteDefOfReconAndDiscovery.RD_Stargate))
 						{
 							this.MakeLink(site);
 							result = true;
@@ -190,7 +190,7 @@ namespace ReconAndDiscovery
 				}
 				else if (this.LinkedSite.HasMap)
 				{
-					IEnumerable<Thing> source = this.LinkedSite.Map.listerThings.ThingsOfDef(ThingDef.Named("Stargate"));
+					IEnumerable<Thing> source = this.LinkedSite.Map.listerThings.ThingsOfDef(ThingDef.Named("RD_Stargate"));
 					if (source.Count<Thing>() == 0)
 					{
 						Messages.Message("StargateNotLinked".Translate(), MessageTypeDefOf.RejectInput);
@@ -261,6 +261,8 @@ namespace ReconAndDiscovery
 		private static readonly Texture2D teleSym = ContentFinder<Texture2D>.Get("UI/StargateSymbol", true);
 	}
 }
+
+
 
 
 

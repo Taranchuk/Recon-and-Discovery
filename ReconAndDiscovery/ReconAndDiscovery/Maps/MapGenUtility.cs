@@ -116,7 +116,7 @@ namespace ReconAndDiscovery.Maps
 			}
 			ResolveParams resolveParams = rp;
 			resolveParams.rect = new CellRect(rp.rect.minX, rp.rect.minZ, 1, rp.rect.Height);
-			BaseGen.symbolStack.Push("edgeWalls", resolveParams);
+			BaseGen.symbolStack.Push("edgeWalls", resolveParams, null);
 			for (int i = 0; i <= rp.rect.Width; i++)
 			{
 				int num = rp.rect.minX + i;
@@ -133,7 +133,7 @@ namespace ReconAndDiscovery.Maps
 					{
 						ResolveParams resolveParams2 = rp;
 						resolveParams2.rect = new CellRect(num, j, 1, 1);
-						BaseGen.symbolStack.Push("edgeWalls", resolveParams2);
+						BaseGen.symbolStack.Push("edgeWalls", resolveParams2, null);
 					}
 				}
 			}
@@ -431,11 +431,13 @@ namespace ReconAndDiscovery.Maps
 
 		private static List<IntVec3> DoorPosList = new List<IntVec3>();
 
-		private static List<ThingStuffPair> weapons;
+		private static List<ThingStuffPair> weapons; 
 
 		private static List<GenStepDef> customGenSteps = new List<GenStepDef>();
 	}
 }
+
+
 
 
 

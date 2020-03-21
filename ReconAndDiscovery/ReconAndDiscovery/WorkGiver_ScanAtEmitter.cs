@@ -70,7 +70,7 @@ namespace ReconAndDiscovery
 					}
 					else
 					{
-						result = new Job(JobDefOfReconAndDiscovery.ScanAtEmitter, t, holoEmitter)
+						result = new Job(JobDefOfReconAndDiscovery.RD_ScanAtEmitter, t, holoEmitter)
 						{
 							count = corpse.stackCount
 						};
@@ -90,6 +90,8 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
 
 
 

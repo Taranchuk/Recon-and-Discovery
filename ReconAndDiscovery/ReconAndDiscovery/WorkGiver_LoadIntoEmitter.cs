@@ -22,7 +22,7 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-				return ThingRequest.ForDef(ThingDef.Named("HoloDisk"));
+				return ThingRequest.ForDef(ThingDef.Named("RD_HoloDisk"));
 			}
 		}
 
@@ -46,7 +46,7 @@ namespace ReconAndDiscovery
 		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
 			Job result;
-			if (t.def.defName != "HoloDisk")
+			if (t.def.defName != "RD_HoloDisk")
 			{
 				result = null;
 			}
@@ -67,7 +67,7 @@ namespace ReconAndDiscovery
 				}
 				else
 				{
-					result = new Job(JobDefOfReconAndDiscovery.LoadIntoEmitter, t, holoEmitter)
+					result = new Job(JobDefOfReconAndDiscovery.RD_LoadIntoEmitter, t, holoEmitter)
 					{
 						count = 1
 					};
@@ -77,10 +77,12 @@ namespace ReconAndDiscovery
 		}
         public override bool ShouldSkip(Pawn pawn, bool forced = false)
 		{
-			return pawn.Map.listerThings.ThingsOfDef(ThingDef.Named("HoloDisk")).Count == 0;
+			return pawn.Map.listerThings.ThingsOfDef(ThingDef.Named("RD_HoloDisk")).Count == 0;
 		}
 	}
 }
+
+
 
 
 

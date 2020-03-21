@@ -56,11 +56,11 @@ namespace ReconAndDiscovery.Triggers
 					};
 					diaOption3.action = delegate()
 					{
-						Thing thing = ThingMaker.MakeThing(ThingDefOfReconAndDiscovery.Seraphites, null);
+						Thing thing = ThingMaker.MakeThing(ThingDefOfReconAndDiscovery.RD_Seraphites, null);
 						thing.stackCount = Rand.RangeInclusive(1, 3);
 						GenSpawn.Spawn(thing, activatedBy.Position, map);
 						List<Thing> list = new List<Thing>();
-						list.AddRange(map.listerThings.ThingsOfDef(ThingDef.Named("QuestComputerTerminal")));
+						list.AddRange(map.listerThings.ThingsOfDef(ThingDef.Named("RD_QuestComputerTerminal")));
 						foreach (Thing thing2 in list)
 						{
 							thing2.Destroy(DestroyMode.Deconstruct);
@@ -87,7 +87,7 @@ namespace ReconAndDiscovery.Triggers
 							}
 						}
 						List<Thing> list = new List<Thing>();
-						list.AddRange(map.listerThings.ThingsOfDef(ThingDef.Named("QuestComputerTerminal")));
+						list.AddRange(map.listerThings.ThingsOfDef(ThingDef.Named("RD_QuestComputerTerminal")));
 						foreach (Thing thing2 in list)
 						{
 							thing2.Destroy(DestroyMode.Deconstruct);
@@ -108,6 +108,8 @@ namespace ReconAndDiscovery.Triggers
 		}
 	}
 }
+
+
 
 
 

@@ -4,7 +4,7 @@
 	<!-- ============================== Big threats ==============================-->
 	
   <IncidentDef>
-    <defName>RaidEnemyQuest</defName>
+    <defName>RD_RaidEnemyQuest</defName>
     <label>enemy raid</label>
 	<targetTags>
     <li>Map_PlayerHome</li>
@@ -16,7 +16,7 @@
   </IncidentDef>
 
   <IncidentDef>
-    <defName>DiscoveredStargate</defName>
+    <defName>RD_DiscoveredStargate</defName>
     <label>discovered stargate</label>
 	<targetTags>
     <li>World</li>
@@ -31,7 +31,7 @@
   </IncidentDef>
   
   <IncidentDef>
-    <defName>RaidStargate</defName>
+    <defName>RD_RaidStargate</defName>
     <label>stargate raid</label>
 	<targetTags>
     <li>Map_PlayerHome</li>
@@ -48,7 +48,7 @@
   </IncidentDef>
   
    <IncidentDef>
-    <defName>MalevolentAI</defName>
+    <defName>RD_MalevolentAI</defName>
     <label>malevolent ai</label>
 	<targetTags>
     <li>Map_PlayerHome</li>
@@ -65,7 +65,7 @@
   </IncidentDef>
 
 <IncidentDef>
-    <defName>RaidTeleporter</defName>
+    <defName>RD_RaidTeleporter</defName>
     <label>teleporter hack</label>
 	<targetTags>
     <li>Map_PlayerHome</li>
@@ -82,14 +82,14 @@
   </IncidentDef>
   
    <IncidentDef>
-		<defName>IncidentTremors</defName>
+		<defName>RD_IncidentTremors</defName>
 		<label>tremors</label>
 		<category>Misc</category>
 	<targetTags>
 		<li>Map_PlayerHome</li>
 	</targetTags>
 		<workerClass>IncidentWorker_MakeGameCondition</workerClass>
-		<gameCondition>Tremors</gameCondition>
+		<gameCondition>RD_Tremors</gameCondition>
 		<letterLabel>Tremors</letterLabel>
 		<letterText>A geological disturbance is causing tremors in the area. The roof in some areas may collapse. While this is merely an inconvenience in artificial structures, it can be very dangerous under mountains.</letterText>
 		<letterDef>NegativeEvent</letterDef>
@@ -104,14 +104,14 @@
 	</IncidentDef>
 	
 	 <IncidentDef>
-		<defName>IncidentRadiation</defName>
+		<defName>RD_IncidentRadiation</defName>
 		<label>radiation</label>
 		<category>Misc</category>
 	<targetTags>
 		<li>Map_PlayerHome</li>
 	</targetTags>
 		<workerClass>IncidentWorker_MakeGameCondition</workerClass>
-		<gameCondition>Radiation</gameCondition>
+		<gameCondition>RD_Radiation</gameCondition>
 		<letterLabel>Radioactive fallout</letterLabel>	 
 		<letterText>The wind has carried radioactive dust across the area. The heightened radiation levels increase the risks of severe illness even indoors, unless deep underground, enclosed in a room with a thick rock roof. You may wish to consider leaving the area until the effect has passed.</letterText>
 		<letterDef>ThreatBig</letterDef>	

@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 	<ThoughtDef>
-		<defName>ReturnedFromTheDeadGood</defName>
+		<defName>RD_ReturnedFromTheDeadGood</defName>
 		<durationDays>15</durationDays>
 		<stackLimit>1</stackLimit>
 		<stages>
@@ -15,7 +15,7 @@
 	</ThoughtDef>
 
 	<ThoughtDef>
-		<defName>ReturnedFromTheDeadBad</defName>
+		<defName>RD_ReturnedFromTheDeadBad</defName>
 		<durationDays>15</durationDays>
 		<stackLimit>1</stackLimit>
 		<stages>

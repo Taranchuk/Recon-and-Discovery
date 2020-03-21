@@ -16,7 +16,7 @@ namespace ReconAndDiscovery.Maps
 				rect.ClipInsideMap(map);
 				ResolveParams baseResolveParams = this.baseResolveParams;
 				baseResolveParams.rect = rect;
-				BaseGen.symbolStack.Push("oldMilitaryBase", baseResolveParams);
+				BaseGen.symbolStack.Push("oldMilitaryBase", baseResolveParams, null);
 				BaseGen.Generate();
 				MapGenUtility.MakeDoors(new ResolveParams
 				{
@@ -30,6 +30,8 @@ namespace ReconAndDiscovery.Maps
 		}
 	}
 }
+
+
 
 
 

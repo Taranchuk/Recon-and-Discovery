@@ -45,7 +45,7 @@ namespace ReconAndDiscovery.Missions
             bool result;
             Faction faction;
             if ((from wo in Find.WorldObjects.AllWorldObjects
-                 where wo.def == SiteDefOfReconAndDiscovery.AdventurePeaceTalks
+                 where wo.def == SiteDefOfReconAndDiscovery.RD_AdventurePeaceTalks
                  select wo).Count<WorldObject>() > 0)
             {
                 result = false;
@@ -59,13 +59,13 @@ namespace ReconAndDiscovery.Missions
                 int tile;
                 if (TileFinder.TryFindNewSiteTile(out tile))
                 {
-                    Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.AdventurePeaceTalks);
+                    Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.RD_AdventurePeaceTalks);
                     site.Tile = tile;
                     site.SetFaction(faction);
-                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.PeaceTalks,
-SiteDefOfReconAndDiscovery.PeaceTalks.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
+                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.RD_PeaceTalks,
+SiteDefOfReconAndDiscovery.RD_PeaceTalks.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
 
-                    SitePart peaceTalksFaction = new SitePart(site, SiteDefOfReconAndDiscovery.PeaceTalksFaction, SiteDefOfReconAndDiscovery.PeaceTalksFaction.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    SitePart peaceTalksFaction = new SitePart(site, SiteDefOfReconAndDiscovery.RD_PeaceTalksFaction, SiteDefOfReconAndDiscovery.RD_PeaceTalksFaction.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                     peaceTalksFaction.hidden = true;
                     site.parts.Add(peaceTalksFaction);
                     site.GetComponent<QuestComp_PeaceTalks>().StartQuest(faction);
@@ -89,5 +89,7 @@ SiteDefOfReconAndDiscovery.PeaceTalks.Worker.GenerateDefaultParams(StorytellerUt
         }
     }
 }
+
+
 
 

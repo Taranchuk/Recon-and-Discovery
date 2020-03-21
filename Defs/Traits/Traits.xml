@@ -2,7 +2,7 @@
 <Defs>
    
    <TraitDef>
-    <defName>Holographic</defName>
+    <defName>RD_Holographic</defName>
     <commonality>0.01</commonality>
     <degreeDatas>
       <li>

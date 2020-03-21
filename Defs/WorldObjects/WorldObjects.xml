@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>  
   <!--<WorldObjectDef>
-    <defName>WorldAdventure</defName>
+    <defName>RD_WorldAdventure</defName>
     <label>adventure</label>
     <description>A mystery waiting to be explored.</description>
     <worldObjectClass>ReconAndDiscovery.WorldAdventure</worldObjectClass>
@@ -14,59 +14,64 @@
   
     
   <WorldObjectDef>
-    <defName>Adventure</defName>
+    <defName>RD_Adventure</defName>
     <worldObjectClass>Site</worldObjectClass>
     <expandingIcon>true</expandingIcon>
     <expandingIconPriority>70</expandingIconPriority>
     <comps>
       <li Class="WorldObjectCompProperties_Timeout" />
+	<li Class="WorldObjectCompProperties_TimedForcedExit"/>
       <li Class="WorldObjectCompProperties_ItemStashContents" />
     </comps>
   </WorldObjectDef>
   
   <WorldObjectDef>
-    <defName>AdventureMedical</defName>
+    <defName>RD_AdventureMedical</defName>
     <worldObjectClass>Site</worldObjectClass>
     <expandingIcon>true</expandingIcon>
     <expandingIconPriority>70</expandingIconPriority>
     <comps>
       <li Class="ReconAndDiscovery.Missions.WorldObjectCompProperties_MedicalEmergency" />
       <li Class="WorldObjectCompProperties_Timeout" />
+	<li Class="WorldObjectCompProperties_TimedForcedExit"/>
       <li Class="WorldObjectCompProperties_ItemStashContents" />
     </comps>
   </WorldObjectDef>
   
   <WorldObjectDef>
-    <defName>AdventurePeaceTalks</defName>
+    <defName>RD_AdventurePeaceTalks</defName>
     <worldObjectClass>Site</worldObjectClass>
     <expandingIcon>true</expandingIcon>
     <expandingIconPriority>70</expandingIconPriority>
     <comps>
       <li Class="ReconAndDiscovery.Missions.WorldObjectCompProperties_PeaceTalks" />
       <li Class="WorldObjectCompProperties_Timeout" />
+	<li Class="WorldObjectCompProperties_TimedForcedExit"/>
       <li Class="WorldObjectCompProperties_ItemStashContents" />
     </comps>
   </WorldObjectDef>
   
   
    <WorldObjectDef>
-    <defName>AdventureDestroyThing</defName>
+    <defName>RD_AdventureDestroyThing</defName>
     <worldObjectClass>Site</worldObjectClass>
     <expandingIcon>true</expandingIcon>
     <expandingIconPriority>70</expandingIconPriority>
     <comps>
       <li Class="WorldObjectCompProperties_Timeout" />
+	<li Class="WorldObjectCompProperties_TimedForcedExit"/>
       <li Class="ReconAndDiscovery.Missions.WorldObjectCompProperties_DestroyThing" />
     </comps>
   </WorldObjectDef>
   
     <WorldObjectDef>
-    <defName>AdventureThingCounter</defName>
+    <defName>RD_AdventureThingCounter</defName>
     <worldObjectClass>Site</worldObjectClass>
     <expandingIcon>true</expandingIcon>
     <expandingIconPriority>70</expandingIconPriority>
     <comps>
       <li Class="WorldObjectCompProperties_Timeout" />
+	<li Class="WorldObjectCompProperties_TimedForcedExit"/>
       <li Class="ReconAndDiscovery.Missions.WorldObjectCompProperties_CountThings" />
     </comps>
   </WorldObjectDef>

@@ -30,13 +30,15 @@ namespace ReconAndDiscovery.Maps
 					incidentParms.spawnCenter = spawnCenter2;
 					incidentParms.points *= 20f;
 					incidentParms.points = Math.Max(incidentParms.points, 250f);
-					QueuedIncident qi = new QueuedIncident(new FiringIncident(ThingDefOfReconAndDiscovery.RaidEnemyQuest, null, incidentParms), Find.TickManager.TicksGame + Rand.RangeInclusive(5000, 15000));
+					QueuedIncident qi = new QueuedIncident(new FiringIncident(ThingDefOfReconAndDiscovery.RD_RaidEnemyQuest, null, incidentParms), Find.TickManager.TicksGame + Rand.RangeInclusive(5000, 15000));
 					Find.Storyteller.incidentQueue.Add(qi);
 				}
 			}
 		}
 	}
 }
+
+
 
 
 

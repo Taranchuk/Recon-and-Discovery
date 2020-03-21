@@ -14,7 +14,7 @@ namespace ReconAndDiscovery.Maps
 			rect.ClipInsideMap(map);
 			ResolveParams baseResolveParams = this.baseResolveParams;
 			baseResolveParams.rect = rect;
-			BaseGen.symbolStack.Push("crashedShip", baseResolveParams);
+			BaseGen.symbolStack.Push("crashedShip", baseResolveParams, null);
 			BaseGen.Generate();
 			MapGenUtility.MakeDoors(new ResolveParams
 			{
@@ -24,6 +24,8 @@ namespace ReconAndDiscovery.Maps
 		}
 	}
 }
+
+
 
 
 

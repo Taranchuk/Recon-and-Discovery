@@ -13,10 +13,12 @@ namespace ReconAndDiscovery.Maps
 
 		public override void Resolve(ResolveParams rp)
 		{
-			BaseGen.symbolStack.Push("clear", rp);
+			BaseGen.symbolStack.Push("clear", rp, null);
 		}
 	}
 }
+
+
 
 
 

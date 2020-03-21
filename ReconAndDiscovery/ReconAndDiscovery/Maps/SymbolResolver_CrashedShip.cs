@@ -49,14 +49,14 @@ namespace ReconAndDiscovery.Maps
 			resolveParams5.rect = new CellRect(resolveParams.rect.minX - 2, resolveParams.rect.minZ + 1, 1, 1);
 			resolveParams5.thingRot = new Rot4?(new Rot4(1));
 			resolveParams5.singleThingDef = ThingDefOf.Ship_Engine;
-			BaseGen.symbolStack.Push("insertFurnishing", resolveParams5);
+			BaseGen.symbolStack.Push("insertFurnishing", resolveParams5, null);
 			resolveParams5.rect.minZ = resolveParams5.rect.minZ + 2;
-			BaseGen.symbolStack.Push("insertFurnishing", resolveParams5);
+			BaseGen.symbolStack.Push("insertFurnishing", resolveParams5, null);
 			resolveParams5.rect.minZ = resolveParams.rect.maxZ;
-			BaseGen.symbolStack.Push("insertFurnishing", resolveParams5);
+			BaseGen.symbolStack.Push("insertFurnishing", resolveParams5, null);
 			resolveParams5.rect.minZ = resolveParams5.rect.minZ - 2;
-			BaseGen.symbolStack.Push("insertFurnishing", resolveParams5);
-			BaseGen.symbolStack.Push("batteryRoom", resolveParams);
+			BaseGen.symbolStack.Push("insertFurnishing", resolveParams5, null);
+			BaseGen.symbolStack.Push("batteryRoom", resolveParams, null);
 			resolveParams2.SetCustom<char[]>("hasDoor", new char[]
 			{
 				'N',
@@ -64,13 +64,15 @@ namespace ReconAndDiscovery.Maps
 				'E',
 				'W'
 			}, false);
-			BaseGen.symbolStack.Push("interior_diningRoom", resolveParams2);
-			BaseGen.symbolStack.Push("roomWithDoor", resolveParams2);
-			BaseGen.symbolStack.Push("triangularRoom", resolveParams3);
-			BaseGen.symbolStack.Push("pathOfDestruction", resolveParams4);
+			BaseGen.symbolStack.Push("interior_diningRoom", resolveParams2, null);
+			BaseGen.symbolStack.Push("roomWithDoor", resolveParams2, null);
+			BaseGen.symbolStack.Push("triangularRoom", resolveParams3, null);
+			BaseGen.symbolStack.Push("pathOfDestruction", resolveParams4, null);
 		}
 	}
 }
+
+
 
 
 

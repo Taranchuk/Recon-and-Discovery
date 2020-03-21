@@ -21,7 +21,7 @@ namespace ReconAndDiscovery.Maps
 			IntVec3 loc;
 			if (RCellFinder.TryFindRandomCellNearTheCenterOfTheMapWith((IntVec3 x) => x.Standable(map) && !x.Fogged(map), map, out loc))
 			{
-				Thing newThing = ThingMaker.MakeThing(ThingDef.Named("Stargate"), null);
+				Thing newThing = ThingMaker.MakeThing(ThingDef.Named("RD_Stargate"), null);
 				GenSpawn.Spawn(newThing, loc, map);
 				foreach (Pawn pawn2 in SitePartWorker_Stargate.tmpPawnsToSpawn)
 				{
@@ -38,6 +38,8 @@ namespace ReconAndDiscovery.Maps
 		public static List<Pawn> tmpPawnsToSpawn = new List<Pawn>();
 	}
 }
+
+
 
 
 

@@ -3,7 +3,7 @@
 <Defs>  
 
   <SitePartDef>
-    <defName>AbandonedColony</defName>
+    <defName>RD_AbandonedColony</defName>
     <label>abandoned colony</label>
 		<description>An abandoned colony.</description>
     <siteTexture>World/WorldObjects/Expanding/DestroyedSettlement</siteTexture>
@@ -11,15 +11,15 @@
   </SitePartDef>
   
   <GenStepDef>
-    <defName>AbandonedColony</defName>
-    <linkWithSite>AbandonedColony</linkWithSite>
+    <defName>RD_AbandonedColony</defName>
+    <linkWithSite>RD_AbandonedColony</linkWithSite>
     <order>500</order>
     <genStep Class="GenStep_Outpost">
     </genStep>
   </GenStepDef>  
   
    <IncidentDef>
-		<defName>AbandonedColonyAdventure</defName>
+		<defName>RD_AbandonedColonyAdventure</defName>
 		<label>abandoned colony</label>
 		<category>Misc</category>
     <targetTags>
@@ -34,7 +34,7 @@
   </IncidentDef>
   
   <SitePartDef>
-    <defName>HoloDisk</defName>
+    <defName>RD_HoloDisk</defName>
     <label>holodisk</label>
     <description>There is a holodisk here.</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_HoloDisk</workerClass>
@@ -47,7 +47,7 @@
   </SitePartDef>
   
   <SitePartDef>
-    <defName>Stargate</defName>
+    <defName>RD_Stargate</defName>
     <label>stargate</label>
     <description>Thehis site contains a stargate.</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_Stargate</workerClass>

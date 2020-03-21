@@ -66,7 +66,7 @@ delegate()
 						this.mana -= 40f;
 						if (source.Count<Pawn>() > 0)
 						{
-							GameCondition_TargetedStorm gameCondition_TargetedStorm = (GameCondition_TargetedStorm)GameConditionMaker.MakeCondition(GameConditionDef.Named("TargetedStorm"), 12000);
+							GameCondition_TargetedStorm gameCondition_TargetedStorm = (GameCondition_TargetedStorm)GameConditionMaker.MakeCondition(GameConditionDef.Named("RD_TargetedStorm"), 12000);
 							map.gameConditionManager.RegisterCondition(gameCondition_TargetedStorm);
 						}
 					}
@@ -88,6 +88,8 @@ delegate()
 		public float mana = 0f;
 	}
 }
+
+
 
 
 

@@ -69,7 +69,7 @@ namespace ReconAndDiscovery.Missions
 			bool result;
 			Faction faction;
 			if ((from wo in Find.WorldObjects.AllWorldObjects
-			where wo.def == SiteDefOfReconAndDiscovery.AdventurePeaceTalks
+			where wo.def == SiteDefOfReconAndDiscovery.RD_AdventurePeaceTalks
 			select wo).Count<WorldObject>() > 0)
 			{
 				result = false;
@@ -86,8 +86,8 @@ namespace ReconAndDiscovery.Missions
                     Site site = (Site)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Site);
                     site.Tile = tile;
                     site.SetFaction(faction);
-                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.Festival,
-    SiteDefOfReconAndDiscovery.Festival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
+                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.RD_Festival,
+    SiteDefOfReconAndDiscovery.RD_Festival.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
                      
                     // TODO: check if this works correctly
                     SitePart outpost = new SitePart(site, SitePartDefOf.Outpost, SitePartDefOf.Outpost.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
@@ -111,6 +111,8 @@ namespace ReconAndDiscovery.Missions
 		}
 	}
 }
+
+
 
 
 

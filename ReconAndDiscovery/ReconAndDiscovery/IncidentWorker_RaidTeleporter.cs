@@ -22,7 +22,7 @@ namespace ReconAndDiscovery
 			}
 			else
 			{
-				IEnumerable<Building> enumerable = from b in map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("Teleporter"))
+				IEnumerable<Building> enumerable = from b in map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("RD_Teleporter"))
 				where b.GetComp<CompPowerTrader>().PowerOn && b.GetComp<CompTeleporter>().ReadyToTransport
 				select b;
 				if (enumerable.Count<Building>() == 0)
@@ -51,6 +51,8 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
 
 
 

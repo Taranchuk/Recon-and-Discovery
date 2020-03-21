@@ -11,7 +11,7 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-				return ThingRequest.ForDef(ThingDef.Named("PsionicEmanator"));
+				return ThingRequest.ForDef(ThingDef.Named("RD_PsionicEmanator"));
 			}
 		}
 
@@ -49,10 +49,12 @@ namespace ReconAndDiscovery
 
 		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
-			return new Job(JobDefOfReconAndDiscovery.PsychicPrayer, t);
+			return new Job(JobDefOfReconAndDiscovery.RD_PsychicPrayer, t);
 		}
 	}
 }
+
+
 
 
 

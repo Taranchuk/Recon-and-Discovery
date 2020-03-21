@@ -16,11 +16,13 @@ namespace ReconAndDiscovery.Maps
 			{
 				thing.Destroy(DestroyMode.Vanish);
 			}
-			GameCondition gameCondition = GameConditionMaker.MakeCondition(GameConditionDef.Named("Radiation"), 3000000);
+			GameCondition gameCondition = GameConditionMaker.MakeCondition(GameConditionDef.Named("RD_Radiation"), 3000000);
 			map.gameConditionManager.RegisterCondition(gameCondition);
 		}
 	}
 }
+
+
 
 
 

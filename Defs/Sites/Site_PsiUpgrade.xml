@@ -2,7 +2,7 @@
 
 <Defs>   
   <SitePartDef>
-    <defName>PsiMachine</defName>
+    <defName>RD_PsiMachine</defName>
     <label>Abandoned military facility</label>
 		<description>The rumoured location of the psychic warriors' base.</description>
     <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
@@ -10,15 +10,15 @@
   </SitePartDef>
   
   <GenStepDef>
-    <defName>MilitaryBasePsiUpgrade</defName>
-     <linkWithSite>PsiMachine</linkWithSite>
+    <defName>RD_MilitaryBasePsiUpgrade</defName>
+     <linkWithSite>RD_PsiMachine</linkWithSite>
     <order>2000</order>
     <genStep Class="ReconAndDiscovery.Maps.GenStep_MilitaryBase">
     </genStep>
   </GenStepDef>
 
   <SitePartDef>
-    <defName>SitePart_WarIdol</defName>
+    <defName>RD_SitePart_WarIdol</defName>
     <label>computer</label>
     <description>A psionic emanator, used by advanced military organisations for psychic warfare.</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_PsionicEmanator</workerClass>
@@ -31,7 +31,7 @@
   </SitePartDef>
   
   <IncidentDef>
-		<defName>WarIdol</defName>
+		<defName>RD_WarIdol</defName>
 		<label>war idol</label>
 		<category>Misc</category>
     <targetTags>

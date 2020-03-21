@@ -93,7 +93,7 @@ namespace ReconAndDiscovery
                 }
                 else
                 {
-                    result = new Job(JobDefOfReconAndDiscovery.TakeToOsirisCasket, t, building_CryptosleepCasket)
+                    result = new Job(JobDefOfReconAndDiscovery.RD_TakeToOsirisCasket, t, building_CryptosleepCasket)
                     {
                         count = corpse.stackCount
                     };
@@ -107,3 +107,5 @@ namespace ReconAndDiscovery
         }
     }
 }
+
+

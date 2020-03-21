@@ -25,7 +25,7 @@ namespace ReconAndDiscovery
 		{
 			IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ThreatBig, Find.World);
 			incidentParms.forced = true;
-			QueuedIncident qi = new QueuedIncident(new FiringIncident(ThingDefOfReconAndDiscovery.DiscoveredStargate, null, incidentParms), Find.TickManager.TicksGame + 100);
+			QueuedIncident qi = new QueuedIncident(new FiringIncident(ThingDefOfReconAndDiscovery.RD_DiscoveredStargate, null, incidentParms), Find.TickManager.TicksGame + 100);
 			Find.Storyteller.incidentQueue.Add(qi);
 		}
         public override bool TryMakePreToilReservations(bool errorOnFailed)
@@ -55,6 +55,8 @@ namespace ReconAndDiscovery
 		private const TargetIndex GateIndex = TargetIndex.A;
 	}
 }
+
+
 
 
 

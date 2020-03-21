@@ -3,7 +3,7 @@
 <Defs>  
 
   <SitePartDef>
-    <defName>MuffaloMigration</defName>
+    <defName>RD_MuffaloMigration</defName>
     <label>muffalo migration</label>
 		<description>A large herd of muffalo are migrating through this region.</description>
 		<workerClass>ReconAndDiscovery.Missions.SiteCoreWorker_MuffaloHerd</workerClass>
@@ -13,7 +13,7 @@
   </SitePartDef>
   
    <IncidentDef>
-		<defName>MuffaloMassInsanity</defName>
+		<defName>RD_MuffaloMassInsanity</defName>
 		<label>muffalo mass instanty</label>
 		<category>Misc</category>
     <targetTags>
@@ -25,7 +25,7 @@
   </IncidentDef>
   
    <IncidentDef>
-		<defName>MuffaloHerdMigration</defName>
+		<defName>RD_MuffaloHerdMigration</defName>
 		<label>muffalo herd migration</label>
 		<category>Misc</category>
     <targetTags>

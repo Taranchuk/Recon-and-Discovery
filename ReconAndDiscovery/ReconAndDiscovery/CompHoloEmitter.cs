@@ -67,11 +67,11 @@ namespace ReconAndDiscovery
 					list.Add(floatMenuOption);
 				}
 			}
-			else if (selPawn.story.traits.HasTrait(TraitDef.Named("Holographic")))
+			else if (selPawn.story.traits.HasTrait(TraitDef.Named("RD_Holographic")))
 			{
 				FloatMenuOption floatMenuOption2 = new FloatMenuOption("TransferToThisEmitter".Translate(), delegate()
 				{
-					foreach (Thing thing in this.parent.Map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("HolographicEmitter")))
+					foreach (Thing thing in this.parent.Map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("RD_HolographicEmitter")))
 					{
 						HoloEmitter holoEmitter = thing as HoloEmitter;
 						if (holoEmitter == null)
@@ -108,7 +108,7 @@ namespace ReconAndDiscovery
 				this.pawn.DeSpawn();
 			}
 			this.pawn.health.Reset();
-			this.pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Holographic"), 0, false));
+			this.pawn.story.traits.GainTrait(new Trait(TraitDef.Named("RD_Holographic"), 0, false));
 			GenSpawn.Spawn(this.pawn, this.parent.Position, this.parent.Map);
 			this.MakeValidAllowedZone();
 		}
@@ -129,7 +129,7 @@ namespace ReconAndDiscovery
 				}
 				else
 				{
-					if (!this.pawn.story.traits.HasTrait(TraitDef.Named("Holographic")))
+					if (!this.pawn.story.traits.HasTrait(TraitDef.Named("RD_Holographic")))
 					{
 						this.SetUpPawn();
 					}
@@ -154,7 +154,7 @@ namespace ReconAndDiscovery
 		{
 			if (this.Emitter.TryAcceptThing(c, true))
 			{
-				c.InnerPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Holographic"), 0, false));
+				c.InnerPawn.story.traits.GainTrait(new Trait(TraitDef.Named("RD_Holographic"), 0, false));
 			}
 		}
 
@@ -203,6 +203,8 @@ namespace ReconAndDiscovery
 		private Pawn pawn;
 	}
 }
+
+
 
 
 

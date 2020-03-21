@@ -40,7 +40,7 @@ namespace ReconAndDiscovery
 				Map map = maps[i];
 				foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
 				{
-					if (pawn.Faction == Faction.OfPlayer && pawn.kindDef == ThingDefOfReconAndDiscovery.Nitralope)
+					if (pawn.Faction == Faction.OfPlayer && pawn.kindDef == ThingDefOfReconAndDiscovery.RD_Nitralope)
 					{
 						if (pawn.GetComp<CompMandatoryMilkable>().Overfull)
 						{
@@ -53,6 +53,8 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
 
 
 

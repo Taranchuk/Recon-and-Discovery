@@ -1,6 +1,6 @@
 <Defs>
 	<ReconAndDiscovery.Triggers.ActivatedActionDef Name="BaseActivatedAction">
-		<defName>BaseActivatedAction</defName>
+		<defName>RD_BaseActivatedAction</defName>
 		<activatedActionClass>ReconAndDiscovery.Triggers.ActivatedAction</activatedActionClass>
 		<numThingsToSpawn>0~0</numThingsToSpawn>
 		<spawnedThingStackSize>1~1</spawnedThingStackSize>
@@ -15,7 +15,7 @@
 	</ReconAndDiscovery.Triggers.ActivatedActionDef>
 	
 	<ReconAndDiscovery.Triggers.ActivatedActionDef Name="LuciferiumGas" ParentName="BaseActivatedAction">
-		<defName>LuciferiumGas</defName>
+		<defName>RD_LuciferiumGas</defName>
 		<activatedActionClass>ReconAndDiscovery.Triggers.ActivatedAction_LuciferiumGas</activatedActionClass>
 		<numThingsToSpawn>1~1</numThingsToSpawn>
 		<spawnedThingStackSize>4~7</spawnedThingStackSize>
@@ -32,7 +32,7 @@
 	</ReconAndDiscovery.Triggers.ActivatedActionDef>
 	
 	<ReconAndDiscovery.Triggers.ActivatedActionDef Name="PsionicLandmine" ParentName="BaseActivatedAction">
-		<defName>PsionicLandmine</defName>
+		<defName>RD_PsionicLandmine</defName>
 		<activatedActionClass>ReconAndDiscovery.Triggers.ActivatedAction_PsionicLandmine</activatedActionClass>
 		<numThingsToSpawn>0~0</numThingsToSpawn>
 		<spawnedThingStackSize>0~0</spawnedThingStackSize>
@@ -43,7 +43,7 @@
 	</ReconAndDiscovery.Triggers.ActivatedActionDef>
 	
 	<ReconAndDiscovery.Triggers.ActivatedActionDef Name="SmallGold" ParentName="BaseActivatedAction">
-		<defName>SmallGold</defName>
+		<defName>RD_SmallGold</defName>
 		<numThingsToSpawn>1~2</numThingsToSpawn>
 		<spawnedThingStackSize>20~90</spawnedThingStackSize>
 		<spawnedThings>
@@ -52,7 +52,7 @@
 	</ReconAndDiscovery.Triggers.ActivatedActionDef>
 	
 	<ReconAndDiscovery.Triggers.ActivatedActionDef Name="SmallSilver" ParentName="BaseActivatedAction">	
-		<defName>SmallSilver</defName>
+		<defName>RD_SmallSilver</defName>
 		<numThingsToSpawn>1~2</numThingsToSpawn>
 		<spawnedThingStackSize>80~300</spawnedThingStackSize>
 		<spawnedThings>
@@ -61,7 +61,7 @@
 	</ReconAndDiscovery.Triggers.ActivatedActionDef>
 	
 	<ReconAndDiscovery.Triggers.ActivatedActionDef Name="MadAnimal" ParentName="BaseActivatedAction">
-		<defName>MadAnimal</defName>
+		<defName>RD_MadAnimal</defName>
 		<numThingsToSpawn>-1~1</numThingsToSpawn>
 		<spawnedThingStackSize>10~60</spawnedThingStackSize>
 		<spawnedThings>

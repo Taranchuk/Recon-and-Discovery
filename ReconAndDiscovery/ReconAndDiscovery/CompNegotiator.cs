@@ -16,7 +16,7 @@ namespace ReconAndDiscovery
             List<FloatMenuOption> list = base.CompFloatMenuOptions(selPawn).ToList<FloatMenuOption>();
             FloatMenuOption item = new FloatMenuOption("Negotiate".Translate(), delegate ()
             {
-                Job job = new Job(JobDefOfReconAndDiscovery.Negotiate);
+                Job job = new Job(JobDefOfReconAndDiscovery.RD_Negotiate);
                 job.targetA = this.parent;
                 job.playerForced = true;
                 selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
@@ -57,5 +57,7 @@ namespace ReconAndDiscovery
         }
     }
 }
+
+
 
 

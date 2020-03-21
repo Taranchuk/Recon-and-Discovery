@@ -18,7 +18,7 @@ namespace ReconAndDiscovery.Maps
 				ResolveParams baseResolveParams = this.baseResolveParams;
 				baseResolveParams.rect = rect;
 				BaseGen.globalSettings.map = map;
-				BaseGen.symbolStack.Push("oldCastle", baseResolveParams);
+				BaseGen.symbolStack.Push("oldCastle", baseResolveParams, null);
 				BaseGen.Generate();
 				MapGenUtility.MakeDoors(new ResolveParams
 				{
@@ -31,6 +31,8 @@ namespace ReconAndDiscovery.Maps
 		}
 	}
 }
+
+
 
 
 

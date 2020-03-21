@@ -72,7 +72,7 @@ namespace ReconAndDiscovery.Maps
 						ResolveParams resolveParams = rp;
 						resolveParams.rect = rect;
 						resolveParams.SetCustom<int>("minRoomDimension", num, false);
-						BaseGen.symbolStack.Push("nestedRoomMaze", resolveParams);
+						BaseGen.symbolStack.Push("nestedRoomMaze", resolveParams, null);
 					}
 				}
 			}
@@ -95,10 +95,12 @@ namespace ReconAndDiscovery.Maps
 				array[1] = 'X';
 			}
 			rp.SetCustom<char[]>("hasDoor", array, false);
-			BaseGen.symbolStack.Push("roomWithDoor", rp);
+			BaseGen.symbolStack.Push("roomWithDoor", rp, null);
 		}
 	}
 }
+
+
 
 
 

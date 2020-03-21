@@ -84,12 +84,14 @@ namespace ReconAndDiscovery.Missions
                 IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.FactionArrival, this.Map);
 				incidentParms.forced = true;
 				incidentParms.points = 100f;
-				QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("MuffaloMassInsanity"), null, incidentParms), Find.TickManager.TicksGame + Rand.RangeInclusive(10000, 45000));
+				QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("RD_MuffaloMassInsanity"), null, incidentParms), Find.TickManager.TicksGame + Rand.RangeInclusive(10000, 45000));
 				Find.Storyteller.incidentQueue.Add(qi);
 			}
 		}
 	}
 }
+
+
 
 
 

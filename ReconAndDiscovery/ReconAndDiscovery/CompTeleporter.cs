@@ -138,7 +138,7 @@ namespace ReconAndDiscovery
 			Rand.PopState();
 			if (value < 0.12f)
 			{
-				pawn.health.AddHediff(HediffDef.Named("Anaphylaxis"), null, null);
+				pawn.health.AddHediff(HediffDef.Named("RD_Anaphylaxis"), null, null);
 			}
 		}
 
@@ -193,6 +193,8 @@ namespace ReconAndDiscovery
 		private static readonly Texture2D teleSym = ContentFinder<Texture2D>.Get("UI/TeleportSymbol", true);
 	}
 }
+
+
 
 
 

@@ -10,7 +10,7 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-				return JobDefOfReconAndDiscovery.MandatoryMilk;
+				return JobDefOfReconAndDiscovery.RD_MandatoryMilk;
 			}
 		}
 
@@ -20,6 +20,8 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
 
 
 

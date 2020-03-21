@@ -1,6 +1,6 @@
 <Defs>
   <WorkGiverDef>
-		<defName>TakeCorpseToCasket</defName>
+		<defName>RD_TakeCorpseToCasket</defName>
 		<label>take corpse to casket</label>
 		<giverClass>ReconAndDiscovery.WorkGiver_TakeToOsirisCasket</giverClass>
 		<workType>Hauling</workType>
@@ -13,7 +13,7 @@
 	</WorkGiverDef>
 	
 	<WorkGiverDef>
-		<defName>ScanCorpseAtEmitter</defName>
+		<defName>RD_ScanCorpseAtEmitter</defName>
 		<label>scan corpse at emitter</label>
 		<giverClass>ReconAndDiscovery.WorkGiver_ScanAtEmitter</giverClass>
 		<workType>Hauling</workType>
@@ -26,7 +26,7 @@
 	</WorkGiverDef>
 	
 	<WorkGiverDef>
-		<defName>DiscoverStargates</defName>
+		<defName>RD_DiscoverStargates</defName>
 		<label>discover stargates</label>
 		<giverClass>ReconAndDiscovery.WorkGiver_DiscoverStargates</giverClass>
 		<workType>Research</workType>
@@ -36,7 +36,7 @@
 	</WorkGiverDef>
 	
 	<WorkGiverDef>
-		<defName>PrayAtObject</defName>
+		<defName>RD_PrayAtObject</defName>
 		<label>Praying</label>
 		<giverClass>ReconAndDiscovery.WorkGiver_PrayAtObject</giverClass>
 		<workType>Research</workType>
@@ -46,7 +46,7 @@
 	</WorkGiverDef>
 	
 	<WorkGiverDef>
-		<defName>SacrificeAt</defName>
+		<defName>RD_SacrificeAt</defName>
 		<label>Sacrificing animal</label>
 		<giverClass>ReconAndDiscovery.WorkGiver_Sacrifice</giverClass>
 		<workType>Hauling</workType>
@@ -56,7 +56,7 @@
 	</WorkGiverDef>
 	
 	<WorkGiverDef>
-		<defName>PsychicPrayer</defName>
+		<defName>RD_PsychicPrayer</defName>
 		<label>Sacrificing animal</label>
 		<giverClass>ReconAndDiscovery.WorkGiver_PsychicPrayer</giverClass>
 		<workType>Research</workType>
@@ -66,7 +66,7 @@
 	</WorkGiverDef>
 	
 	<WorkGiverDef>
-    <defName>MandatoryMilk</defName>
+    <defName>RD_MandatoryMilk</defName>
     <label>milk animals</label>
     <giverClass>ReconAndDiscovery.WorkGiver_MandatoryMilk</giverClass>
     <workType>Handling</workType>
@@ -79,7 +79,7 @@
   </WorkGiverDef>
 	
 	<WorkGiverDef>
-		<defName>LoadIntoEmitter</defName>
+		<defName>RD_LoadIntoEmitter</defName>
 		<label>scan corpse at emitter</label>
 		<giverClass>ReconAndDiscovery.WorkGiver_LoadIntoEmitter</giverClass>
 		<workType>Hauling</workType>

@@ -13,7 +13,7 @@ namespace ReconAndDiscovery
 		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = (Map)parms.target;
-			IEnumerable<Building> source = map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("Stargate"));
+			IEnumerable<Building> source = map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("RD_Stargate"));
 			bool result;
 			if (source.Count<Building>() == 0)
 			{
@@ -88,6 +88,8 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
 
 
 

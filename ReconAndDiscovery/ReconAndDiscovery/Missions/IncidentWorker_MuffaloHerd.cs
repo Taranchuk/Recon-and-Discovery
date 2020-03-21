@@ -65,15 +65,15 @@ namespace ReconAndDiscovery.Missions
 			}
 			else
 			{
-                Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
+                Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.RD_Adventure);
                 site.Tile = num2;
                 Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDefOf.Insect);
                 site.SetFaction(faction);
-                site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.MuffaloMigration,
-SiteDefOfReconAndDiscovery.MuffaloMigration.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), num2, faction)));
+                site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.RD_MuffaloMigration,
+SiteDefOfReconAndDiscovery.RD_MuffaloMigration.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), num2, faction)));
 				if (Rand.Value < 0.5f)
 				{
-                    SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure, SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), num2, faction));
+                    SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.RD_ScatteredTreasure, SiteDefOfReconAndDiscovery.RD_ScatteredTreasure.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), num2, faction));
                     scatteredTreasure.hidden = true;
                     site.parts.Add(scatteredTreasure);
 				}
@@ -88,6 +88,8 @@ SiteDefOfReconAndDiscovery.MuffaloMigration.Worker.GenerateDefaultParams(Storyte
 		private static readonly IntRange TimeoutDaysRange = new IntRange(7, 12);
 	}
 }
+
+
 
 
 

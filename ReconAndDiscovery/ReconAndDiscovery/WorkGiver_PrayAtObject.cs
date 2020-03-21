@@ -11,7 +11,7 @@ namespace ReconAndDiscovery
 		{
 			get
 			{
-				return ThingRequest.ForDef(ThingDef.Named("WeatherSat"));
+				return ThingRequest.ForDef(ThingDef.Named("RD_WeatherSat"));
 			} 
 		}
 
@@ -36,10 +36,12 @@ namespace ReconAndDiscovery
 
 		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
 		{
-			return new Job(JobDefOfReconAndDiscovery.PrayAtObject, t);
+			return new Job(JobDefOfReconAndDiscovery.RD_PrayAtObject, t);
 		}
 	}
 }
+
+
 
 
 

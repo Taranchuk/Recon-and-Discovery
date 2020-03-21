@@ -32,7 +32,7 @@ namespace ReconAndDiscovery
 			base.PostDestroy(mode, previousMap);
 			if (mode == DestroyMode.Deconstruct)
 			{
-				GenSpawn.Spawn(ThingDef.Named("OsirisAI"), this.parent.Position, previousMap);
+				GenSpawn.Spawn(ThingDef.Named("RD_OsirisAI"), this.parent.Position, previousMap);
 			}
 		}
 
@@ -119,11 +119,11 @@ namespace ReconAndDiscovery
 						pawn.ageTracker.AgeBiologicalTicks = 90000000L;
 						if (Rand.Value < 0.65f)
 						{
-							pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDef.Named("ReturnedFromTheDeadBad"), null);
+							pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDef.Named("RD_ReturnedFromTheDeadBad"), null);
 						}
 						else
 						{
-							pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDef.Named("ReturnedFromTheDeadGood"), null);
+							pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDef.Named("RD_ReturnedFromTheDeadGood"), null);
 						}
 					}
 					else if (pawn.RaceProps.Animal)
@@ -178,7 +178,7 @@ namespace ReconAndDiscovery
 			List<FloatMenuOption> list = new List<FloatMenuOption>();
             FloatMenuOption floatMenuOption = new FloatMenuOption("ResurrectContained".Translate(), delegate ()
             {
-                Job job = new Job(JobDefOfReconAndDiscovery.ActivateOsirisCasket, this.parent);
+                Job job = new Job(JobDefOfReconAndDiscovery.RD_ActivateOsirisCasket, this.parent);
                 job.playerForced = true;
                 selPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
             }); ;
@@ -190,6 +190,8 @@ namespace ReconAndDiscovery
 		}
 	}
 }
+
+
 
 
 

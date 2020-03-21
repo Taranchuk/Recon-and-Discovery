@@ -2,7 +2,7 @@
 <Defs>
   
   <ThingDef ParentName="AnimalThingBase">
-    <defName>Devillo</defName>
+    <defName>RD_Devillo</defName>
     <label>devillo</label>
     <description>A lab-developed muffalo strain that secretes devilstrand fiber into its fur. Its milk, devilcream, is especially rich.</description>
     <statBases>
@@ -21,7 +21,7 @@
     </verbs>
     <comps>
       <li Class="CompProperties_Milkable">
-        <milkDef>Devilcream</milkDef>
+        <milkDef>RD_Devilcream</milkDef>
         <milkIntervalDays>2</milkIntervalDays>
         <milkAmount>12</milkAmount>
       </li>
@@ -71,9 +71,9 @@
   </ThingDef>
   
   <PawnKindDef Name="Devillo" ParentName="AnimalKindBase">
-    <defName>Devillo</defName>
+    <defName>RD_Devillo</defName>
     <label>devillo</label>
-    <race>Devillo</race>
+    <race>RD_Devillo</race>
     <combatPower>120</combatPower>
     <ecoSystemWeight>0.0</ecoSystemWeight>
     <wildGroupSize>1~2</wildGroupSize>
@@ -128,7 +128,7 @@
   
   
   <ThingDef ParentName="AnimalThingBase">
-    <defName>Nitralope</defName>
+    <defName>RD_Nitralope</defName>
     <label>nitralope</label>
     <description>A boomalope variant, in which the chemical sac is filled with rocket grade chemfuel, which can be drained and used without causing harm or discomfort to the animal. Due to the extraordinary volatility of this chemical, the nitralope has a low tolerance for hot weather, with gases forming in its sacs at temperatures over 35 degrees celsius. It must also be milked regularly, as it may overfill and explode otherwise. Like its close relative, it produces a large, dangerous explosion on death.</description>
     <statBases>
@@ -198,9 +198,9 @@
   </ThingDef>
   
   <PawnKindDef ParentName="AnimalKindBase">
-    <defName>Nitralope</defName>
+    <defName>RD_Nitralope</defName>
     <label>nitralope</label>
-    <race>Nitralope</race>
+    <race>RD_Nitralope</race>
     <combatPower>95</combatPower>
     <ecoSystemWeight>0.0</ecoSystemWeight>
     <wildGroupSize>1~1</wildGroupSize>

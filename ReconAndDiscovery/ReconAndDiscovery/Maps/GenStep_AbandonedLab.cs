@@ -16,7 +16,7 @@ namespace ReconAndDiscovery.Maps
 				rect.ClipInsideMap(map);
 				ResolveParams baseResolveParams = this.baseResolveParams;
 				baseResolveParams.rect = rect;
-				BaseGen.symbolStack.Push("abandonedLab", baseResolveParams);
+				BaseGen.symbolStack.Push("abandonedLab", baseResolveParams, null);
 				BaseGen.Generate();
 				MapGenUtility.MakeDoors(new ResolveParams
 				{
@@ -27,6 +27,8 @@ namespace ReconAndDiscovery.Maps
 		}
 	}
 }
+
+
 
 
 

@@ -25,9 +25,9 @@ namespace ReconAndDiscovery
 							pawn2.health.AddHediff(HediffDefOf.PsychicShock, null, null);
 						}
 					}
-					else if (!pawn2.health.hediffSet.HasHediff(HediffDef.Named("PsychicAttack")))
+					else if (!pawn2.health.hediffSet.HasHediff(HediffDef.Named("RD_PsychicAttack")))
 					{
-						pawn2.health.AddHediff(HediffDef.Named("PsychicAttack"), null, null);
+						pawn2.health.AddHediff(HediffDef.Named("RD_PsychicAttack"), null, null);
 					}
 				}
 			}
@@ -45,20 +45,22 @@ namespace ReconAndDiscovery
 			{
 				if (pawn.story.traits.HasTrait(TraitDef.Named("PsychicSensitivity")))
 				{
-					if (pawn.health.hediffSet.HasHediff(HediffDef.Named("BattlePrayer")))
+					if (pawn.health.hediffSet.HasHediff(HediffDef.Named("RD_BattlePrayer")))
 					{
-						Hediff other = HediffMaker.MakeHediff(HediffDef.Named("BattlePrayer"), pawn, null);
-						pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("BattlePrayer"), false).TryGetComp<HediffComp_Disappears>().CompPostMerged(other);
+						Hediff other = HediffMaker.MakeHediff(HediffDef.Named("RD_BattlePrayer"), pawn, null);
+						pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("RD_BattlePrayer"), false).TryGetComp<HediffComp_Disappears>().CompPostMerged(other);
 					}
 					else
 					{
-						pawn.health.AddHediff(HediffDef.Named("BattlePrayer"), null, null);
+						pawn.health.AddHediff(HediffDef.Named("RD_BattlePrayer"), null, null);
 					}
 				}
 			}
 		}
 	}
 }
+
+
 
 
 

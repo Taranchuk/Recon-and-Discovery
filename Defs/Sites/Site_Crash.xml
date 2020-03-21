@@ -2,7 +2,7 @@
 
 <Defs>  
   <IncidentDef>
-		<defName>CrashedShip</defName>
+		<defName>RD_CrashedShip</defName>
 		<label>Crashed Ship</label>
 		<category>Misc</category>
     <targetTags>
@@ -23,7 +23,7 @@
   </IncidentDef>
  
   <SitePartDef>
-    <defName>CrashedShip</defName>
+    <defName>RD_CrashedShip</defName>
     <label>crashed ship</label>
 		<description>The approximate place a ship came down.</description>
     <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
@@ -31,8 +31,8 @@
   </SitePartDef>
   
   <GenStepDef>
-    <defName>CrashedShipGen</defName>
-    <linkWithSite>CrashedShip</linkWithSite>
+    <defName>RD_CrashedShipGen</defName>
+    <linkWithSite>RD_CrashedShip</linkWithSite>
     <order>800</order>
     <genStep Class="ReconAndDiscovery.Maps.GenStep_CrashedShip">
     </genStep>
@@ -40,7 +40,7 @@
   
   
    <SitePartDef>
-    <defName>ScatteredTreasure</defName>
+    <defName>RD_ScatteredTreasure</defName>
     <label>treasure</label>
     <description>Some scattered valuables.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
@@ -52,15 +52,15 @@
   </SitePartDef>
 
   <GenStepDef>
-    <defName>ScatteredTreasureGen</defName>
-    <linkWithSite>ScatteredTreasure</linkWithSite>
+    <defName>RD_ScatteredTreasureGen</defName>
+    <linkWithSite>RD_ScatteredTreasure</linkWithSite>
     <order>2500</order>
     <genStep Class="ReconAndDiscovery.Maps.GenStep_ScatteredTreasure"/>
   </GenStepDef>
   
   
   <SitePartDef>
-    <defName>ScatteredManhunters</defName>
+    <defName>RD_ScatteredManhunters</defName>
     <label>manhunters</label>
     <description>Trapped animals going crazy.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
@@ -72,14 +72,14 @@
   </SitePartDef>
 
   <GenStepDef>
-    <defName>ScatteredManhuntersGen</defName>
-    <linkWithSite>ScatteredManhunters</linkWithSite>
+    <defName>RD_ScatteredManhuntersGen</defName>
+    <linkWithSite>RD_ScatteredManhunters</linkWithSite>
     <order>2500</order>
     <genStep Class="ReconAndDiscovery.Maps.GenStep_ScatteredManhunters"/>
   </GenStepDef>
   
   <SitePartDef>
-    <defName>MechanoidForces</defName>
+    <defName>RD_MechanoidForces</defName>
     <label>mechanoids</label>
     <description>A mechanoid hive has forces active here.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
@@ -91,15 +91,15 @@
   </SitePartDef>
 
   <GenStepDef>
-    <defName>MechanoidForcesGen</defName>
-    <linkWithSite>MechanoidForces</linkWithSite>
+    <defName>RD_MechanoidForcesGen</defName>
+    <linkWithSite>RD_MechanoidForces</linkWithSite>
     <order>2500</order>
     <genStep Class="ReconAndDiscovery.Maps.GenStep_MechanoidForces"/>
   </GenStepDef>
   
   
     <SitePartDef>
-    <defName>EnemyRaidOnArrival</defName>
+    <defName>RD_EnemyRaidOnArrival</defName>
     <label>raid</label>
     <description>An enemy faction will arrive here imminently.</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_EnemyRaidOnArrival</workerClass>
@@ -113,14 +113,14 @@
   
 
   <GenStepDef>
-    <defName>EnemyRaidOnArrivalGen</defName>
-    <linkWithSite>EnemyRaidOnArrival</linkWithSite>
+    <defName>RD_EnemyRaidOnArrivalGen</defName>
+    <linkWithSite>RD_EnemyRaidOnArrival</linkWithSite>
     <order>2500</order>
     <genStep Class="ReconAndDiscovery.Maps.GenStep_EnemyRaidOnArrival"/>
   </GenStepDef>
   
    <SitePartDef>
-    <defName>MedicalEmergency</defName>
+    <defName>RD_MedicalEmergency</defName>
     <label>medical emergency</label>
     <description>There is an urgent need for medical assistance here.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
@@ -133,7 +133,7 @@
   </SitePartDef>
   
    <SitePartDef>
-    <defName>RareBeasts</defName>
+    <defName>RD_RareBeasts</defName>
     <label>rare beasts</label>
     <description>Rare, unusual animals roam near here.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
@@ -145,8 +145,8 @@
   </SitePartDef>
 
   <GenStepDef>
-    <defName>RareBeastsGen</defName>
-    <linkWithSite>RareBeasts</linkWithSite>
+    <defName>RD_RareBeastsGen</defName>
+    <linkWithSite>RD_RareBeasts</linkWithSite>
     <order>2500</order>
     <genStep Class="ReconAndDiscovery.Maps.GenStep_RareBeasts"/>
   </GenStepDef>

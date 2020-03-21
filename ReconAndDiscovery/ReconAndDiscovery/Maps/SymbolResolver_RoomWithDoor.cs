@@ -55,7 +55,7 @@ namespace ReconAndDiscovery.Maps
 					i++;
 					continue;
 					IL_1AA:
-					BaseGen.symbolStack.Push("wallDoor", resolveParams);
+					BaseGen.symbolStack.Push("wallDoor", resolveParams, null);
 					goto IL_1BB;
 				}
 			}
@@ -69,42 +69,44 @@ namespace ReconAndDiscovery.Maps
 			rp.TryGetCustom<float>("smallGoldChance", out chance4);
 			float chance5;
 			rp.TryGetCustom<float>("smallSilverChance", out chance5);
-			RectActionTrigger rectActionTrigger = ThingMaker.MakeThing(ThingDefOfReconAndDiscovery.RectActionTrigger, null) as RectActionTrigger;
+			RectActionTrigger rectActionTrigger = ThingMaker.MakeThing(ThingDefOfReconAndDiscovery.RD_RectActionTrigger, null) as RectActionTrigger;
 			rectActionTrigger.Rect = rp.rect;
 			if (Rand.Chance(chance))
 			{
-				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.MadAnimal;
+				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.RD_MadAnimal;
 			}
 			else if (Rand.Chance(chance2))
 			{
-				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.LuciferiumGas;
+				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.RD_LuciferiumGas;
 			}
 			else if (Rand.Chance(chance3))
 			{
-				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.PsionicLandmine;
+				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.RD_PsionicLandmine;
 			}
 			else if (Rand.Chance(chance4))
 			{
-				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.SmallGold;
+				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.RD_SmallGold;
 			}
 			else if (Rand.Chance(chance5))
 			{
-				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.SmallSilver;
+				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.RD_SmallSilver;
 			}
 			else
 			{
-				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.BaseActivatedAction;
+				rectActionTrigger.actionDef = ActionDefOfReconAndDiscovery.RD_BaseActivatedAction;
 			}
 			if (rectActionTrigger.actionDef != null)
 			{
 				ResolveParams resolveParams2 = rp;
 				resolveParams2.SetCustom<RectActionTrigger>("trigger", rectActionTrigger, false);
-				BaseGen.symbolStack.Push("placeTrigger", resolveParams2);
+				BaseGen.symbolStack.Push("placeTrigger", resolveParams2, null);
 			}
-			BaseGen.symbolStack.Push("emptyRoom", rp);
+			BaseGen.symbolStack.Push("emptyRoom", rp, null);
 		}
 	}
 }
+
+
 
 
 

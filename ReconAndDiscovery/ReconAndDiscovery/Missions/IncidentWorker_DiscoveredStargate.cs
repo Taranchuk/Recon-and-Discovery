@@ -32,20 +32,20 @@ namespace ReconAndDiscovery.Missions
             }
             if (tile != -1)
             {
-                Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.Adventure);
+                Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.RD_Adventure);
                 site.Tile = tile;
                 site.SetFaction(faction);
                 float value = Rand.Value;
-                if ((double)value < 0.2)
+                if ((double)value < 0.2) 
                 {
-                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.AbandonedCastle,
-    SiteDefOfReconAndDiscovery.AbandonedCastle.Worker.GenerateDefaultParams
+                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.RD_AbandonedCastle,
+    SiteDefOfReconAndDiscovery.RD_AbandonedCastle.Worker.GenerateDefaultParams
     (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
                 }
                 else if ((double)value < 0.4)
                 {
-                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.AbandonedColony,
-SiteDefOfReconAndDiscovery.AbandonedColony.Worker.GenerateDefaultParams
+                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.RD_AbandonedColony,
+SiteDefOfReconAndDiscovery.RD_AbandonedColony.Worker.GenerateDefaultParams
 (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
                 }
                 else if ((double)value < 0.6)
@@ -74,13 +74,13 @@ SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
                     turrets.hidden = true;
                     site.parts.Add(turrets);
                 }
-                SitePart starGate = new SitePart(site, SiteDefOfReconAndDiscovery.Stargate, SiteDefOfReconAndDiscovery.Stargate.Worker.GenerateDefaultParams
+                SitePart starGate = new SitePart(site, SiteDefOfReconAndDiscovery.RD_Stargate, SiteDefOfReconAndDiscovery.RD_Stargate.Worker.GenerateDefaultParams
 (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                 starGate.hidden = true;
                 site.parts.Add(starGate);
                 if (Rand.Value < 0.2f)
                 {
-                    SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredManhunters, SiteDefOfReconAndDiscovery.ScatteredManhunters.Worker.GenerateDefaultParams
+                    SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.RD_ScatteredManhunters, SiteDefOfReconAndDiscovery.RD_ScatteredManhunters.Worker.GenerateDefaultParams
 (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
 
                     scatteredManhunters.hidden = true;
@@ -89,8 +89,8 @@ SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
                 }
                 if (Rand.Value < 0.85f)
                 {
-                    SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.ScatteredTreasure,
-                    SiteDefOfReconAndDiscovery.ScatteredTreasure.Worker.GenerateDefaultParams
+                    SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.RD_ScatteredTreasure,
+                    SiteDefOfReconAndDiscovery.RD_ScatteredTreasure.Worker.GenerateDefaultParams
                     (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
 
                     scatteredTreasure.hidden = true;
@@ -112,6 +112,8 @@ SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
 		}
 	}
 }
+
+
 
 
 

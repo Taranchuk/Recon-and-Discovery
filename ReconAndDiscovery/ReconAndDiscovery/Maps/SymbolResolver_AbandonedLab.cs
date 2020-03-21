@@ -50,8 +50,8 @@ namespace ReconAndDiscovery.Maps
 				resolveParams3.rect = new CellRect(resolveParams3.rect.minX + 1, resolveParams3.rect.minZ + 1, 1, 1);
 				resolveParams3.thingRot = new Rot4?(Rot4.West);
 				resolveParams3.singleThingDef = list.RandomElement<ThingDef>();
-				BaseGen.symbolStack.Push("insertFurnishing", resolveParams3);
-				BaseGen.symbolStack.Push("roomWithDoor", resolveParams2);
+				BaseGen.symbolStack.Push("insertFurnishing", resolveParams3, null);
+				BaseGen.symbolStack.Push("roomWithDoor", resolveParams2, null);
 				resolveParams2.rect.minZ = resolveParams2.rect.maxZ;
 			}
 			resolveParams2.rect.minX = resolveParams2.rect.maxX + 3;
@@ -101,25 +101,25 @@ namespace ReconAndDiscovery.Maps
 				}
 				resolveParams3.thingRot = new Rot4?(rot);
 				resolveParams3.singleThingDef = list.RandomElement<ThingDef>();
-				BaseGen.symbolStack.Push("insertFurnishing", resolveParams3);
-				BaseGen.symbolStack.Push("roomWithDoor", resolveParams2);
+				BaseGen.symbolStack.Push("insertFurnishing", resolveParams3, null);
+				BaseGen.symbolStack.Push("roomWithDoor", resolveParams2, null);
 				resolveParams2.rect.minX = resolveParams2.rect.maxX;
 			}
 			ResolveParams resolveParams4 = rp;
-			resolveParams4.singleThingDef = ThingDef.Named("TableLong");
+			resolveParams4.singleThingDef = ThingDef.Named("Table2x4c");
 			resolveParams4.rect = new CellRect(resolveParams.rect.CenterCell.x, resolveParams.rect.CenterCell.z, 1, 1);
 			resolveParams4.thingRot = new Rot4?(Rot4.North);
-			BaseGen.symbolStack.Push("insertFurnishing", resolveParams4);
+			BaseGen.symbolStack.Push("insertFurnishing", resolveParams4, null);
 			for (int k = 0; k < 4; k++)
 			{
 				resolveParams4.singleThingDef = ThingDef.Named("DiningChair");
 				resolveParams4.rect = new CellRect(resolveParams.rect.CenterCell.x - 1, resolveParams.rect.CenterCell.z + 2 - k, 1, 1);
 				resolveParams4.thingRot = new Rot4?(Rot4.East);
-				BaseGen.symbolStack.Push("insertFurnishing", resolveParams4);
+				BaseGen.symbolStack.Push("insertFurnishing", resolveParams4, null);
 			}
-			BaseGen.symbolStack.Push("roomWithDoor", resolveParams);
+			BaseGen.symbolStack.Push("roomWithDoor", resolveParams, null);
 			resolveParams.chanceToSkipWallBlock = new float?(0.05f);
-			BaseGen.symbolStack.Push("wireOutline", resolveParams);
+			BaseGen.symbolStack.Push("wireOutline", resolveParams, null);
 			ResolveParams resolveParams5 = rp;
 			resolveParams5.rect = rp.rect.ContractedBy(2);
 			resolveParams5.rect = new CellRect(resolveParams5.rect.minX, resolveParams5.rect.minZ, 6, 5);
@@ -128,18 +128,20 @@ namespace ReconAndDiscovery.Maps
 			{
 				'N'
 			}, false);
-			BaseGen.symbolStack.Push("roomWithDoor", resolveParams5);
-			BaseGen.symbolStack.Push("wireOutline", resolveParams5);
+			BaseGen.symbolStack.Push("roomWithDoor", resolveParams5, null);
+			BaseGen.symbolStack.Push("wireOutline", resolveParams5, null);
 			resolveParams5.rect = resolveParams5.rect.ContractedBy(1);
-			resolveParams5.singleThingDef = ThingDef.Named("FueledGenerator");
+			resolveParams5.singleThingDef = ThingDef.Named("ChemfuelPoweredGenerator");
 			resolveParams5.thingRot = new Rot4?(Rot4.North);
-			BaseGen.symbolStack.Push("insertFurnishing", resolveParams5);
-			BaseGen.symbolStack.Push("edgeFence", rp);
-			BaseGen.symbolStack.Push("floor", rp);
-			BaseGen.symbolStack.Push("clear", rp);
+			BaseGen.symbolStack.Push("insertFurnishing", resolveParams5, null);
+			BaseGen.symbolStack.Push("edgeFence", rp, null);
+			BaseGen.symbolStack.Push("floor", rp, null);
+			BaseGen.symbolStack.Push("clear", rp, null);
 		}
 	}
 }
+
+
 
 
 

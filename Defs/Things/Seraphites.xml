@@ -1,6 +1,6 @@
 <Defs>
   <ThingDef ParentName="DrugPillBase">
-    <defName>Seraphites</defName>
+    <defName>RD_Seraphites</defName>
     <label>seraphites</label>
     <description>An experimental strain of self-replicating luciferium nanites. They have similar advantages to luciferium itself, but as they self-replicate form consumed resources they do not lead to addiction, and indeed will cure an outstanding luciferium addiction.</description>
     <graphicData>
@@ -18,7 +18,7 @@
       <drugCategory>Medical</drugCategory>
       <outcomeDoers>
         <li Class="IngestionOutcomeDoer_GiveHediff">
-          <hediffDef>Seraphites</hediffDef>
+          <hediffDef>RD_Seraphites</hediffDef>
           <severity>1.00</severity>
           <doToGeneratedPawnIfAddicted>false</doToGeneratedPawnIfAddicted>
         </li>
@@ -35,7 +35,7 @@
   </ThingDef>
 
   <HediffDef>
-    <defName>Seraphites</defName>
+    <defName>RD_Seraphites</defName>
     <hediffClass>HediffWithComps</hediffClass>
     <label>seraphites</label>
     <description>seraphites</description>

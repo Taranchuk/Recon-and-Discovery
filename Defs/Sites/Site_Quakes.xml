@@ -2,7 +2,7 @@
 
 <Defs>   
   <IncidentDef>
-		<defName>QuestQuakes</defName>
+		<defName>RD_QuestQuakes</defName>
 		<label>faultygenerator</label>
 		<category>Misc</category>
     <targetTags>
@@ -22,7 +22,7 @@
   </IncidentDef>
   
   <SitePartDef>
-    <defName>QuakesQuest</defName>
+    <defName>RD_QuakesQuest</defName>
     <label>Faulty generator</label>
 		<description>The source of the tremors.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
@@ -30,7 +30,7 @@
   </SitePartDef>
   
     <SitePartDef>
-    <defName>SitePart_FaultyGenerator</defName>
+    <defName>RD_SitePart_FaultyGenerator</defName>
     <label>generator</label>
     <description>A generator!</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_Generator</workerClass>

@@ -8,70 +8,72 @@ namespace ReconAndDiscovery
 	public static class SiteDefOfReconAndDiscovery
 	{
 
-		public static SitePartDef ScatteredTreasure;
+		public static SitePartDef RD_ScatteredTreasure;
 
-        public static SitePartDef ScatteredManhunters;
+        public static SitePartDef RD_ScatteredManhunters;
 
-        public static SitePartDef MechanoidForces;
+        public static SitePartDef RD_MechanoidForces;
 
-        public static SitePartDef EnemyRaidOnArrival;
+        public static SitePartDef RD_EnemyRaidOnArrival;
 
-        public static SitePartDef MedicalEmergency;
+        public static SitePartDef RD_MedicalEmergency;
 
-        public static SitePartDef RareBeasts;
+        public static SitePartDef RD_RareBeasts;
 
-        public static SitePartDef SitePart_Computer;
+        public static SitePartDef RD_SitePart_Computer;
 
-        public static SitePartDef OsirisCasket;
+        public static SitePartDef RD_OsirisCasket;
 
-        public static SitePartDef HoloDisk;
+        public static SitePartDef RD_HoloDisk;
 
-        public static SitePartDef PeaceTalksFaction;
+        public static SitePartDef RD_PeaceTalksFaction;
 
-        public static SitePartDef Stargate;
+        public static SitePartDef RD_Stargate;
 
-        public static SitePartDef WeatherSat;
+        public static SitePartDef RD_WeatherSat;
 
-        public static SitePartDef SitePart_WarIdol;
+        public static SitePartDef RD_SitePart_WarIdol;
 
-        public static SitePartDef SitePart_FaultyGenerator;
+        public static SitePartDef RD_SitePart_FaultyGenerator;
 
-        public static SitePartDef SitePart_RadioactiveDust;
+        public static SitePartDef RD_SitePart_RadioactiveDust;
 
 
-		public static WorldObjectDef Adventure;
+		public static WorldObjectDef RD_Adventure;
 
-		public static WorldObjectDef AdventureMedical;
+        public static WorldObjectDef RD_AdventureMedical;
 
-		public static WorldObjectDef AdventurePeaceTalks;
+		public static WorldObjectDef RD_AdventurePeaceTalks;
 
-		public static WorldObjectDef AdventureDestroyThing;
+        public static WorldObjectDef RD_AdventureDestroyThing;
 
-		public static WorldObjectDef AdventureThingCounter;
+        public static WorldObjectDef RD_AdventureThingCounter;
 
-        public static SitePartDef AbandonedCastle;
+        public static SitePartDef RD_AbandonedCastle;
 
-        public static SitePartDef AbandonedColony;
+        public static SitePartDef RD_AbandonedColony;
 
-        public static SitePartDef CrashedShip;
+        public static SitePartDef RD_CrashedShip;
 
-        public static SitePartDef Nanites;
+        public static SitePartDef RD_Nanites;
 
-        public static SitePartDef PeaceTalks;
+        public static SitePartDef RD_PeaceTalks;
 
-        public static SitePartDef PsiMachine;
+        public static SitePartDef RD_PsiMachine;
 
-        public static SitePartDef SeraphitesQuest;
+        public static SitePartDef RD_SeraphitesQuest;
 
-        public static SitePartDef QuakesQuest;
+        public static SitePartDef RD_QuakesQuest;
 
-        public static SitePartDef SiteRadiationQuest;
+        public static SitePartDef RD_SiteRadiationQuest;
 
-        public static SitePartDef Festival;
+        public static SitePartDef RD_Festival;
 
-        public static SitePartDef MuffaloMigration;
+        public static SitePartDef RD_MuffaloMigration;
     }
 }
+
+
 
 
 

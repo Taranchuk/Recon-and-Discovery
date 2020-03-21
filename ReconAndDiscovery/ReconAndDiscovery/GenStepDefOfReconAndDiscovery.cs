@@ -7,15 +7,17 @@ namespace ReconAndDiscovery
 	[DefOf]
 	public static class GenStepDefOfReconAndDiscovery
 	{
-		public static MapGeneratorDef CrashedShipMapGenerator;
+		public static MapGeneratorDef RD_CrashedShipMapGenerator;
 
-		public static GenStepDef ScatterFaction;
+		public static GenStepDef RD_ScatterFaction;
 
-		public static GenStepDef ThirdPartyRaid;
+		public static GenStepDef RD_ThirdPartyRaid;
 
 		public static GenStepDef FindPlayerStartSpot;
 	}
 }
+
+
 
 
 

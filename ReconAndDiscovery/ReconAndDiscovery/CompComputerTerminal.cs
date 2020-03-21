@@ -25,7 +25,7 @@ namespace ReconAndDiscovery
 
 		public Job UseComputerJob()
 		{
-			return new Job(JobDefOfReconAndDiscovery.UseComputer, this.parent);
+			return new Job(JobDefOfReconAndDiscovery.RD_UseComputer, this.parent);
 		}
 
 		public override void PostExposeData()
@@ -37,6 +37,8 @@ namespace ReconAndDiscovery
 		public ActivatedActionDef actionDef;
 	}
 }
+
+
 
 
 
