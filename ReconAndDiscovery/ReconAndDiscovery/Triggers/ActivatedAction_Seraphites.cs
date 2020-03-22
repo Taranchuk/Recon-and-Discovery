@@ -17,9 +17,9 @@ namespace ReconAndDiscovery.Triggers
 			bool flag = Rand.Value > 0.4f;
 			int level = activatedBy.skills.GetSkill(SkillDefOf.Intellectual).Level;
 			DiaNode diaNode = new DiaNode("");
-            DiaOption diaOption = new DiaOption(TranslatorFormattedStringExtensions.Translate("LogOff", activatedBy.Label));
+           	        DiaOption diaOption = new DiaOption("LogOff".Translate(activatedBy.Named("PAWN")));
 			diaOption.resolveTree = true;
-			DiaOption diaOption2 = new DiaOption(string.Format("OK".Translate(), activatedBy.Label));
+			DiaOption diaOption2 = new DiaOption("OK".Translate(activatedBy.Named("PAWN")));
 			diaOption2.resolveTree = true;
 			diaNode.options.Add(diaOption);
 			if (level < 5)
@@ -34,13 +34,13 @@ namespace ReconAndDiscovery.Triggers
 					if (flag)
 					{
 						DiaNode diaNode2 = diaNode;
-						diaNode2.text += TranslatorFormattedStringExtensions.Translate("ThinksScienceUnderlying", activatedBy.Label); //"\n{0} thinks that the science underlying the project is sound, and though the process has been lost, any remaining samples of the cure probably work."
+						diaNode2.text += "ThinksScienceUnderlying".Translate(activatedBy.Named("PAWN")); //"\n{0} thinks that the science underlying the project is sound, and though the process has been lost, any remaining samples of the cure probably work."
 
 					}
 					else
 					{
 						DiaNode diaNode3 = diaNode;
-						diaNode3.text += TranslatorFormattedStringExtensions.Translate("ThinksResearchDubious", activatedBy.Label); //"\n{0} thinks that the research is dubious, and is concerned that any remaining samples will be dangerous.
+						diaNode3.text += "ThinksResearchDubious".Translate(activatedBy.Named("PAWN")); //"\n{0} thinks that the research is dubious, and is concerned that any remaining samples will be dangerous.
 					}
 				}
 				DiaOption diaOption3 = new DiaOption("DispenseTrialCure".Translate()); //Dispense the trial cure

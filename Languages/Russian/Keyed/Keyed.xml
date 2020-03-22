@@ -6,7 +6,7 @@
 	<BringRain>Bring rain (15 mana)</BringRain>
 	<Charge>Charge: </Charge>
 	<DangrouslyOverfull>Dangrously Overfull!</DangrouslyOverfull>
-	<DevelopedRadiationSickness>{0} has developed radiation sickness</DevelopedRadiationSickness>
+	<DevelopedRadiationSickness>{PAWN_nameDef} has developed radiation sickness</DevelopedRadiationSickness>
 	<DiplomacyAwful>The flailing diplomatic "strategy" of {0} seemed chiefly to involve wild swings between aggression and panic, peppered liberally with lewd insults involving the negotiator for {1}'s antecedents. Your already strained relations have, understandably, worsened ({2} to relations).</DiplomacyAwful>
 	<DiplomacyExcellent>{0}'s easy, but unyielding manner dealt well with a number of the negotiator for {1}'s concerns. Your relations have improved by {2}</DiplomacyExcellent>
 	<DiplomacyMasterWorkLegendary>{0} made diplomacy look as easy as breathing, with an almost magical ability to make {1}'s negotiator see your perspective. Your relations have undergone a substantial improvement of {2}.</DiplomacyMasterWorkLegendary>
@@ -17,18 +17,18 @@
 	<EnteringRepairCycle>Entering Repair Cycle</EnteringRepairCycle>
 	<ExplosiveRisk>Explosive risk!</ExplosiveRisk>
 	<FilesPertanentLuciferiumCure>There seem to be files pertanent to a luciferium cure, but {0} lacks the intellectual skills to access them.</FilesPertanentLuciferiumCure>
-	<FortunatelyDissipateAttack>Fortunately, {0} was able to dissipate the attack with their psychic capabilities.</FortunatelyDissipateAttack>
-	<FortunatelyDissipateAttackShock>{0} was able to channel the attack, preventing harm to others, but is now in psychic shock!</FortunatelyDissipateAttackShock>
+	<FortunatelyDissipateAttack>Fortunately, {PAWN_nameDef} was able to dissipate the attack with their psychic capabilities.</FortunatelyDissipateAttack>
+	<FortunatelyDissipateAttackShock>{PAWN_nameDef} was able to channel the attack, preventing harm to others, but is now in psychic shock!</FortunatelyDissipateAttackShock>
 	<GoldenFoilPacket>A small, golden foil packet drops out of a nearby hatch!</GoldenFoilPacket>
 	<GratefulSurvivorsAmazedDesc>The survivors of the crash are amazed by your rapid and professional emergency medical response, thanks to which no-one died. In gratitude, they have included a special system removed form the wreck.</GratefulSurvivorsAmazedDesc>
 	<GratefulSurvivorsDesc>The survivors of the crash are very thankful for your help, and have send some supplies as a gesture of gratitude.</GratefulSurvivorsDesc>
-	<HoloEmitterAreaFor>HoloEmitter area for {0}.</HoloEmitterAreaFor>
+	<HoloEmitterAreaFor>HoloEmitter area for {PAWN_nameDef}.</HoloEmitterAreaFor>
 	<LargeMuffaloMigration>days!</LargeMuffaloMigration>
 	<LinkGate>Link a gate.</LinkGate>
 	<LinkGateDesc>Link this gate to another.</LinkGateDesc>
-	<MalevolentPsychicDesc>{0} believes that a malevolent psychic energy is massing, and that this peaceful herd of muffalo are on the brink of a mass insanity.</MalevolentPsychicDesc>
+	<MalevolentPsychicDesc>{PAWN_nameDef} believes that a malevolent psychic energy is massing, and that this peaceful herd of muffalo are on the brink of a mass insanity.</MalevolentPsychicDesc>
 	<MechanitesCureCorrupted>The mechanites in the cure have corrupted their programming and escaped their packaging!</MechanitesCureCorrupted>
-	<MiscarriedRadiation>has miscarried due to radiation poisoning.</MiscarriedRadiation>
+	<MiscarriedRadiation>{PAWN_nameDef} has miscarried due to radiation poisoning.</MiscarriedRadiation>
 	<NegotiationsTrap>The negotiations are a trap!</NegotiationsTrap>
 	<NewFaction>New Faction!</NewFaction>
 	<NewFactionDesc>The survivors of the crash have decided to make a life for themselves here, and have founded a new faction</NewFactionDesc>
@@ -47,8 +47,8 @@
 	<Teleport>Teleport.</Teleport>
 	<TeleportDesc>Teleport a person or animal.</TeleportDesc>
 	<TeleporterLannotLockThickRock>Teleporter cannot lock on through the thick rock overhead!</TeleporterLannotLockThickRock>
-	<ThinksResearchDubious>\n{0} thinks that the research is dubious, and is concerned that any remaining samples will be dangerous.</ThinksResearchDubious>
-	<ThinksScienceUnderlying>\n{0} thinks that the science underlying the project is sound, and though the process has been lost, any remaining samples of the cure probably work.</ThinksScienceUnderlying>
+	<ThinksResearchDubious>\n{PAWN_nameDef} thinks that the research is dubious, and is concerned that any remaining samples will be dangerous.</ThinksResearchDubious>
+	<ThinksScienceUnderlying>\n{PAWN_nameDef} thinks that the science underlying the project is sound, and though the process has been lost, any remaining samples of the cure probably work.</ThinksScienceUnderlying>
 	<YouCannotLock>You cannot lock onto anything there.</YouCannotLock>
 	<YourCaravanSpottedMuffaloMigration>Your caravan has spotted a huge muffalo migration!</YourCaravanSpottedMuffaloMigration>
 	<Mana>Mana</Mana>
@@ -56,7 +56,7 @@
 	<Social>Social</Social>
 	<FormatOccupant>Format Occupant</FormatOccupant>
 	<GratefulSurvivors>Grateful survivors</GratefulSurvivors>
-	<LogOff>Log off {0}</LogOff>
+	<LogOff>Log off {PAWN_nameDef}</LogOff>
 	<ManhunterDanger>Manhunter danger</ManhunterDanger>
 	<MuffaloMigration>Muffalo migration</MuffaloMigration>
 	<ResurrectContained>Resurrect contained</ResurrectContained>

@@ -77,8 +77,8 @@ namespace ReconAndDiscovery.Missions
 				if (source.Count<Pawn>() > 0)
 				{
 					Pawn pawn = source.RandomElement<Pawn>();
-					string letterDesc = TranslatorFormattedStringExtensions.Translate("MalevolentPsychicDesc", pawn.Label); //"{0} believes that a malevolent psychic energy is massing, and that this peaceful herd of muffalo are on the brink of a mass insanity."
-					Find.LetterStack.ReceiveLetter("ManhunterDanger".Translate(), string.Format(letterDesc, pawn.Label), LetterDefOf.ThreatSmall, null);
+					Find.LetterStack.ReceiveLetter("ManhunterDanger".Translate(), "MalevolentPsychicDesc".Translate(pawn.Named("PAWN")) //"{0} believes that a malevolent psychic energy is massing, and that this peaceful herd of muffalo are on the brink of a mass insanity."
+, LetterDefOf.ThreatSmall, null);
 				}
                 //TODO: check if it works 
                 IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.FactionArrival, this.Map);

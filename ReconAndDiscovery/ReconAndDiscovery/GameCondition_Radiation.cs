@@ -31,8 +31,8 @@ namespace ReconAndDiscovery
 		{
 			if (p.Faction == Faction.OfPlayer)
 			{
-				Messages.Message(TranslatorFormattedStringExtensions.Translate("DevelopedRadiationSickness" //"{0} has developed radiation sickness"
-, p.Label), MessageTypeDefOf.NegativeEvent, false);
+				Messages.Message("DevelopedRadiationSickness".Translate(p.Named("PAWN"))//"{0} has developed radiation sickness" 
+, MessageTypeDefOf.NegativeEvent, false);
 				p.health.AddHediff(HediffDef.Named("RD_RadiationSickness"), null, null);
 			}
 		}
@@ -93,9 +93,8 @@ namespace ReconAndDiscovery
 				if (pawn.Faction == Faction.OfPlayer)
 				{
 					
-					Messages.Message("MiscarriedRadiation".Translate() //has miscarried due to radiation poisoning.
-+ string.Format("{0} ",
-                        pawn.LabelIndefinite()), pawn, MessageTypeDefOf.NegativeEvent);
+					Messages.Message("MiscarriedRadiation".Translate(pawn.Named("PAWN")) //has miscarried due to radiation poisoning.
+, pawn, MessageTypeDefOf.NegativeEvent);
 				}
 			}
 		}
