@@ -34,7 +34,7 @@ namespace ReconAndDiscovery.Missions
 				{
 					return false;
 				}
-				text = "LargeMuffaloMigration".Translate()
+				text = "RD_LargeMuffaloMigration".Translate()
 
 //A large muffalo migration is due to pass near here in
 
@@ -56,7 +56,7 @@ namespace ReconAndDiscovery.Missions
 				{
 					return false;
 				}
-				text = "YourCaravanSpottedMuffaloMigration".Translate(); //"Your caravan has spotted a huge muffalo migration!";
+				text = "RD_YourCaravanSpottedMuffaloMigration".Translate(); //"Your caravan has spotted a huge muffalo migration!";
 			}
 			bool result;
 			if (num2 == 0 || num2 == -1)
@@ -77,7 +77,7 @@ SiteDefOfReconAndDiscovery.RD_MuffaloMigration.Worker.GenerateDefaultParams(Stor
                     scatteredTreasure.hidden = true;
                     site.parts.Add(scatteredTreasure);
 				}
-				Find.LetterStack.ReceiveLetter("MuffaloMigration".Translate(), text, LetterDefOf.PositiveEvent, site, null);
+				Find.LetterStack.ReceiveLetter("RD_MuffaloMigration".Translate(), text, LetterDefOf.PositiveEvent, site, null);
 				site.GetComponent<TimeoutComp>().StartTimeout(num * 60000);
 				Find.WorldObjects.Add(site);
 				result = true;

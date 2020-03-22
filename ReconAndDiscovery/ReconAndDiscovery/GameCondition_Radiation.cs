@@ -31,7 +31,7 @@ namespace ReconAndDiscovery
 		{
 			if (p.Faction == Faction.OfPlayer)
 			{
-				Messages.Message("DevelopedRadiationSickness".Translate(p.Named("PAWN"))//"{0} has developed radiation sickness" 
+				Messages.Message("RD_DevelopedRadiationSickness".Translate(p.Named("PAWN"))//"{0} has developed radiation sickness" 
 , MessageTypeDefOf.NegativeEvent, false);
 				p.health.AddHediff(HediffDef.Named("RD_RadiationSickness"), null, null);
 			}
@@ -93,7 +93,7 @@ namespace ReconAndDiscovery
 				if (pawn.Faction == Faction.OfPlayer)
 				{
 					
-					Messages.Message("MiscarriedRadiation".Translate(pawn.Named("PAWN")) //has miscarried due to radiation poisoning.
+					Messages.Message("RD_MiscarriedRadiation".Translate(pawn.Named("PAWN")) //has miscarried due to radiation poisoning.
 , pawn, MessageTypeDefOf.NegativeEvent);
 				}
 			}
@@ -151,7 +151,7 @@ namespace ReconAndDiscovery
                                     if (plant.sown)
                                     {
 	
-                                        Messages.Message("PlantDiedRatiation".Translate() //A plant has died due to radiation damage"
+                                        Messages.Message("RD_PlantDiedRatiation".Translate() //A plant has died due to radiation damage"
                                             , MessageTypeDefOf.NegativeEvent);
                                     }
                                 }

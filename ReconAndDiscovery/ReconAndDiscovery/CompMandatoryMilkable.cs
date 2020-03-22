@@ -105,11 +105,11 @@ namespace ReconAndDiscovery
 				string text = "MilkFullness".Translate() + ": " + base.Fullness.ToStringPercent();
 				if ((double)this.ticksOverFull > 0.33 * (double)this.Props.ticksUntilDanger)
 				{
-					text += "\n" + "Overfull".Translate(); //"Overfull!";
+					text += "\n" + "RD_Overfull".Translate(); //"Overfull!";
 				}
 				else if ((float)this.ticksOverFull > 0.67f * (float)this.Props.ticksUntilDanger)
 				{
-					text += "\n" + "DangrouslyOverfull".Translate(); //Dangrously Overfull!
+					text += "\n" + "RD_DangrouslyOverfull".Translate(); //Dangrously Overfull!
 				}
 				result = text;
 			}

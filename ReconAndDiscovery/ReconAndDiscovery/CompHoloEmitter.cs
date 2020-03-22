@@ -55,7 +55,7 @@ namespace ReconAndDiscovery
 			List<FloatMenuOption> list = new List<FloatMenuOption>();
 			if (this.pawn != null)
 			{
-                FloatMenuOption floatMenuOption = new FloatMenuOption("FormatOccupant".Translate(), delegate()
+                FloatMenuOption floatMenuOption = new FloatMenuOption("RD_FormatOccupant".Translate(), delegate()
 				{
 					DamageInfo value = new DamageInfo(DamageDefOf.ExecutionCut, 1000, -1f, -1f, selPawn, null, null, 0);
 					this.pawn.Kill(new DamageInfo?(value));
@@ -69,7 +69,7 @@ namespace ReconAndDiscovery
 			}
 			else if (selPawn.story.traits.HasTrait(TraitDef.Named("RD_Holographic")))
 			{
-				FloatMenuOption floatMenuOption2 = new FloatMenuOption("TransferToThisEmitter".Translate(), delegate()
+				FloatMenuOption floatMenuOption2 = new FloatMenuOption("RD_TransferToThisEmitter".Translate(), delegate()
 				{
 					foreach (Thing thing in this.parent.Map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("RD_HolographicEmitter")))
 					{
@@ -169,7 +169,7 @@ namespace ReconAndDiscovery
 			{
 				area_Allowed[this.parent.Map.cellIndices.CellToIndex(c)] = true;
 			}
-			area_Allowed.SetLabel("HoloEmitterAreaFor".Translate(this.pawn.Named("PAWN"))); //"HoloEmitter area for {0}."
+			area_Allowed.SetLabel("RD_HoloEmitterAreaFor".Translate(this.pawn.Named("PAWN"))); //"HoloEmitter area for {0}."
 			this.pawn.playerSettings.AreaRestriction = area_Allowed;
 		}
 

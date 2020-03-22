@@ -10,18 +10,18 @@ namespace ReconAndDiscovery.Triggers
 		protected override void DisplayDialog(Pawn activatedBy, Map map, Thing trigger)
 		{
 			this.bestPsychic = PawnTalentUtility.FindBestPsychic(base.GetEffectArea(activatedBy.Position), map);
-            DiaNode diaNode = new DiaNode("PsionicLandmine".Translate()); //A psionic landmine in the room generates a short-range psychic shock!"); //"A psionic landmine in the room generates a short-range psychic shock!"
+            DiaNode diaNode = new DiaNode("RD_PsionicLandmine".Translate()); //A psionic landmine in the room generates a short-range psychic shock!"); //"A psionic landmine in the room generates a short-range psychic shock!"
 			if (this.bestPsychic != null)
 			{
 				if (this.bestPsychic.story.traits.DegreeOfTrait(TraitDef.Named("PsychicSensitivity")) == 2)
 				{
 					DiaNode diaNode2 = diaNode;
-					diaNode2.text += "FortunatelyDissipateAttack".Translate(this.bestPsychic.Named("PAWN")); //" Fortunately, {0} was able to dissipate the attack with their psychic capabilities.
+					diaNode2.text += "RD_FortunatelyDissipateAttack".Translate(this.bestPsychic.Named("PAWN")); //" Fortunately, {0} was able to dissipate the attack with their psychic capabilities.
 				}
 				else
 				{
 					DiaNode diaNode3 = diaNode;
-					diaNode3.text += "FortunatelyDissipateAttackShock".Translate( this.bestPsychic.Named("PAWN")); //" {0} was able to channel the attack, preventing harm to others, but is now in psychic shock!
+					diaNode3.text += "RD_FortunatelyDissipateAttackShock".Translate( this.bestPsychic.Named("PAWN")); //" {0} was able to channel the attack, preventing harm to others, but is now in psychic shock!
 				}
 			}
 			DiaOption diaOption = new DiaOption("OK".Translate());

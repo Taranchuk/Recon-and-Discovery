@@ -35,7 +35,7 @@ namespace ReconAndDiscovery
 
 		public override string CompInspectStringExtra()
 		{
-			return "AwaitingPrayersSacrifices".Translate(); //"Awaiting prayers and sacrifices."
+			return "RD_AwaitingPrayersSacrifices".Translate(); //"Awaiting prayers and sacrifices."
 		}
 
 		public void DoBattlePrayer()

@@ -61,7 +61,7 @@ namespace ReconAndDiscovery.Missions
                 {
                     Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.RD_AdventurePeaceTalks);
                     site.Tile = tile;
-                    site.SetFaction(faction);
+                    site.SetFaction(faction); 
                     site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.RD_PeaceTalks,
 SiteDefOfReconAndDiscovery.RD_PeaceTalks.Worker.GenerateDefaultParams(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
 

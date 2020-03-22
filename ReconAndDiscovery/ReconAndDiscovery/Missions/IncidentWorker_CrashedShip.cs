@@ -141,7 +141,7 @@ namespace ReconAndDiscovery.Missions
 					}
 					else
 					{
-						Find.LetterStack.ReceiveLetter("ShootingStar".Translate(), "SawFallFromSky".Translate(pawn.Named("PAWN")) //just saw something fall from the sky near here!
+						Find.LetterStack.ReceiveLetter("RD_ShootingStar".Translate(), "SawFallFromSky".Translate(pawn.Named("PAWN")) //just saw something fall from the sky near here!
 , LetterDefOf.PositiveEvent, site, null);
 					}
 					result = true;

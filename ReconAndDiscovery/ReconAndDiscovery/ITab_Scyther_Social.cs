@@ -11,7 +11,7 @@ namespace ReconAndDiscovery
 		{
 			this.size = new Vector2(540f, 510f);
 			this.labelKey = "TabSocial".Translate();
-			this.tutorTag = "Social".Translate();
+			this.tutorTag = "RD_Social".Translate();
 		}
 
 		public override bool IsVisible

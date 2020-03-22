@@ -36,8 +36,8 @@ namespace ReconAndDiscovery
 		{
 			return new Command_Action
 			{
-				defaultLabel = "Teleport".Translate(), //Teleport."
-				defaultDesc = "TeleportDesc".Translate(), //"Teleport a person or animal."
+				defaultLabel = "RD_Teleport".Translate(), //Teleport."
+				defaultDesc = "RD_TeleportDesc".Translate(), //"Teleport a person or animal."
 				icon = CompTeleporter.teleSym,
 				action = delegate()
 				{
@@ -123,7 +123,7 @@ namespace ReconAndDiscovery
 				else
 				{
 					
-					Messages.Message("YouCannotLock".Translate(), MessageTypeDefOf.RejectInput); //"You cannot lock onto anything there."
+					Messages.Message("RD_YouCannotLock".Translate(), MessageTypeDefOf.RejectInput); //"You cannot lock onto anything there."
 					result = false;
 				}
 			}
@@ -152,7 +152,7 @@ namespace ReconAndDiscovery
 			if (map2.roofGrid.Roofed(position2) && map2.roofGrid.RoofAt(position2) == RoofDefOf.RoofRockThick)
 			{
 				
-				Messages.Message("TeleporterLannotLockThickRock".Translate(), MessageTypeDefOf.RejectInput); //Teleporter cannot lock on through the thick rock overhead!
+				Messages.Message("RD_TeleporterLannotLockThickRock".Translate(), MessageTypeDefOf.RejectInput); //Teleporter cannot lock on through the thick rock overhead!
 			}
 			else
 			{
@@ -183,7 +183,7 @@ namespace ReconAndDiscovery
 
 		public override string CompInspectStringExtra()
 		{
-			return "Charge".Translate() + this.fCharge.ToStringPercent(); //"Charge: "
+			return "RD_Charge".Translate() + this.fCharge.ToStringPercent(); //"Charge: "
 		}
 
 		private float fCharge = 0f;

@@ -17,7 +17,7 @@ namespace ReconAndDiscovery
 			if (this.mana > 10f)
 			{
 				
-				list.Add(new FloatMenuOption("EndExtremeWeather".Translate(), // End Extreme Weather (10 mana)
+				list.Add(new FloatMenuOption("RD_EndExtremeWeather".Translate(), // End Extreme Weather (10 mana)
 				delegate()
 					{
 						this.mana -= 10f;
@@ -39,7 +39,7 @@ namespace ReconAndDiscovery
 			}
 			if (this.mana > 15f)
 			{
-				list.Add(new FloatMenuOption("BringRain".Translate(), delegate() //(15mana)
+				list.Add(new FloatMenuOption("RD_BringRain".Translate(), delegate() //(15mana)
 					{
 						this.mana -= 15f;
 						map.weatherManager.TransitionTo(WeatherDef.Named("Rain"));
@@ -48,7 +48,7 @@ namespace ReconAndDiscovery
 			}
 			if (this.mana > 18f)
 			{
-				list.Add(new FloatMenuOption("BringFog".Translate(), //Bring Fog (18 mana)
+				list.Add(new FloatMenuOption("RD_BringFog".Translate(), //Bring Fog (18 mana)
 delegate()
 					{
 						this.mana -= 18f;
@@ -58,7 +58,7 @@ delegate()
 			}
 			if (this.mana > 40f)
 			{
-				list.Add(new FloatMenuOption("StrikeOurEnemies".Translate(), delegate() //(40mana)
+				list.Add(new FloatMenuOption("RD_StrikeOurEnemies".Translate(), delegate() //(40mana)
 					{
 						IEnumerable<Pawn> source = from p in map.mapPawns.AllPawnsSpawned
 						where p.HostileTo(Faction.OfPlayer)
@@ -77,7 +77,7 @@ delegate()
 
 		public override string CompInspectStringExtra()
 		{
-			return "Mana".Translate() + string.Format(": {0:##.0}", this.mana);
+			return "RD_Mana".Translate() + string.Format(": {0:##.0}", this.mana);
 		}
 
 		public override void PostExposeData()

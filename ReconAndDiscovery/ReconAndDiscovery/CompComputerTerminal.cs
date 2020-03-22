@@ -15,7 +15,7 @@ namespace ReconAndDiscovery
 			List<FloatMenuOption> list = base.CompFloatMenuOptions(selPawn).ToList<FloatMenuOption>();
 			if (this.actionDef != null && this.parent.GetComp<CompPowerTrader>().PowerOn)
 			{
-                list.Add(new FloatMenuOption("UseComputer".Translate(), delegate ()
+                list.Add(new FloatMenuOption("RD_UseComputer".Translate(), delegate ()
                     {
                         selPawn.jobs.TryTakeOrderedJob(this.UseComputerJob(), JobTag.Misc);
                     }));

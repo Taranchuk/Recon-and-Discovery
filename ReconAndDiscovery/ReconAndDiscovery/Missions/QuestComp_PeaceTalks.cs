@@ -88,30 +88,30 @@ namespace ReconAndDiscovery.Missions
                 {
                     case QualityCategory.Awful:
                         num = -5;
-                        text = TranslatorFormattedStringExtensions.Translate("DiplomacyAwful", playerNegotiator.Label, this.requestingFaction.Name, num); //"The flailing diplomatic "strategy" of {0} seemed chiefly to involve wild swings between aggression and panic, peppered liberally with lewd insults involving the negotiator for {1}'s antecedents. Your already strained relations have, understandably, worsened ({2} to relations).";
+                        text = TranslatorFormattedStringExtensions.Translate("RD_DiplomacyAwful", playerNegotiator.Label, this.requestingFaction.Name, num); //"The flailing diplomatic "strategy" of {0} seemed chiefly to involve wild swings between aggression and panic, peppered liberally with lewd insults involving the negotiator for {1}'s antecedents. Your already strained relations have, understandably, worsened ({2} to relations).";
                         break;
                     case QualityCategory.Poor:
                         num = -1;
-                        text = TranslatorFormattedStringExtensions.Translate("DiplomacyPoor" //"The chief negotiation tactic employed by {0} seemed to be staring bored at the wall. This did little to diffuse tensions and engender a feeling of respect ({2} to relations))";
+                        text = TranslatorFormattedStringExtensions.Translate("RD_DiplomacyPoor" //"The chief negotiation tactic employed by {0} seemed to be staring bored at the wall. This did little to diffuse tensions and engender a feeling of respect ({2} to relations))";
 , playerNegotiator.Label, this.requestingFaction.Name, num);
                         break;
                     case QualityCategory.Normal:
                     case QualityCategory.Good:
                         num = 8;
-                        text = TranslatorFormattedStringExtensions.Translate("DiplomacyNormalGood" //"{0}'s negotiation adequately dealt with some minor disputes you have with {1}. Your relations have improved by {2}.";
+                        text = TranslatorFormattedStringExtensions.Translate("RD_DiplomacyNormalGood" //"{0}'s negotiation adequately dealt with some minor disputes you have with {1}. Your relations have improved by {2}.";
 
     , playerNegotiator.Label, this.requestingFaction.Name, num);
                         break;
                     case QualityCategory.Excellent:
                         num = 16;
-                        text = TranslatorFormattedStringExtensions.Translate("DiplomacyExcellent" //"{0}'s easy, but unyielding manner dealt well with a number of the negotiator for {1}'s concerns. Your relations have improved by {2}";
+                        text = TranslatorFormattedStringExtensions.Translate("RD_DiplomacyExcellent" //"{0}'s easy, but unyielding manner dealt well with a number of the negotiator for {1}'s concerns. Your relations have improved by {2}";
 
     , playerNegotiator.Label, this.requestingFaction.Name, num);
                         break;
                     case QualityCategory.Masterwork:
                     case QualityCategory.Legendary:
                         num = 32;
-                        text = TranslatorFormattedStringExtensions.Translate("DiplomacyMasterWorkLegendary" //"{0} made diplomacy look as easy as breathing, with an almost magical ability to make {1}'s negotiator see your perspective. Your relations have undergone a substantial improvement of {2}.";
+                        text = TranslatorFormattedStringExtensions.Translate("RD_DiplomacyMasterWorkLegendary" //"{0} made diplomacy look as easy as breathing, with an almost magical ability to make {1}'s negotiator see your perspective. Your relations have undergone a substantial improvement of {2}.";
 
     , playerNegotiator.Label, this.requestingFaction.Name, num);
                         break;
@@ -132,7 +132,7 @@ namespace ReconAndDiscovery.Missions
             }
             else
             {
-                DiaNode diaNode2 = new DiaNode("NegotiationsTrap".Translate()); //"The negotiations are a trap!"
+                DiaNode diaNode2 = new DiaNode("RD_NegotiationsTrap".Translate()); //"The negotiations are a trap!"
                 DiaOption diaOption2 = new DiaOption("OK".Translate());
                 diaOption2.resolveTree = true;
                 diaNode2.options.Add(diaOption2);

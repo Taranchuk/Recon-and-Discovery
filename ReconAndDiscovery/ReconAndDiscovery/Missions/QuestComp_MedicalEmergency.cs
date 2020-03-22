@@ -212,8 +212,8 @@ namespace ReconAndDiscovery.Missions
 							{
 								stringBuilder.AppendLine("    " + list2[j].LabelCap);
 							}
-                            Find.LetterStack.ReceiveLetter("LetterLabelPawnsLostDueToMapCountdown".Translate(),
-                            TranslatorFormattedStringExtensions.Translate("LetterPawnsLostDueToMapCountdown", 
+                            Find.LetterStack.ReceiveLetter("RD_LetterLabelPawnsLostDueToMapCountdown".Translate(),
+                            TranslatorFormattedStringExtensions.Translate("RD_LetterPawnsLostDueToMapCountdown", 
                             new NamedArgument[]
                             {
                                 stringBuilder.ToString().TrimEndNewlines()
@@ -228,8 +228,8 @@ namespace ReconAndDiscovery.Missions
 
 		private void GiveRewardsAndSendLetter(bool giveTech, bool newFaction)
 		{
-			string text = "GratefulSurvivors".Translate();
-			string text2 = "GratefulSurvivorsDesc".Translate(); //"The survivors of the crash are very thankful for your help, and have send some supplies as a gesture of gratitude.";
+			string text = "RD_GratefulSurvivors".Translate();
+			string text2 = "RD_GratefulSurvivorsDesc".Translate(); //"The survivors of the crash are very thankful for your help, and have send some supplies as a gesture of gratitude.";
 			if (giveTech)
 			{
 				ThingDef.Named("Gun_ChargeRifle");
@@ -240,7 +240,7 @@ namespace ReconAndDiscovery.Missions
 					stuff = GenStuff.DefaultStuffFor(thingDef);
 				}
 				this.rewards.TryAdd(ThingMaker.MakeThing(thingDef, stuff), true);
-				text2 = "GratefulSurvivorsAmazedDesc".Translate(); //"The survivors of the crash are amazed by your rapid and professional emergency medical response, thanks to which no-one died. In gratitude, they have included a special system removed form the wreck.";
+				text2 = "RD_GratefulSurvivorsAmazedDesc".Translate(); //"The survivors of the crash are amazed by your rapid and professional emergency medical response, thanks to which no-one died. In gratitude, they have included a special system removed form the wreck.";
 			}
 			Find.LetterStack.ReceiveLetter(text, text2, LetterDefOf.PositiveEvent, null);
 			Map map = Find.AnyPlayerHomeMap ?? ((MapParent)this.parent).Map;
@@ -275,8 +275,8 @@ namespace ReconAndDiscovery.Missions
 					}
 				}
 				faction.TryAffectGoodwillWith(Faction.OfPlayer, 100);
-				string text3 = "NewFaction".Translate(); //New Faction!
-				string text4 = "NewFactionDesc".Translate() + faction.Name; //"The survivors of the crash have decided to make a life for themselves here, and have founded a new faction"
+				string text3 = "RD_NewFaction".Translate(); //New Faction!
+				string text4 = "RD_NewFactionDesc".Translate() + faction.Name; //"The survivors of the crash have decided to make a life for themselves here, and have founded a new faction"
 				Find.LetterStack.ReceiveLetter(text3, text4, LetterDefOf.PositiveEvent, null);
 			}
 		}

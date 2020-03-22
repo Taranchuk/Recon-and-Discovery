@@ -114,9 +114,9 @@ SiteDefOfReconAndDiscovery.RD_AbandonedCastle.Worker.GenerateDefaultParams(Story
                         Find.WorldObjects.Add(site);
                         QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("PsychicDrone"), null, parms), Find.TickManager.TicksGame + 1);
                         Find.Storyteller.incidentQueue.Add(qi);
-                        Find.LetterStack.ReceiveLetter("PsychicMessage".Translate(), 
+                        Find.LetterStack.ReceiveLetter("RD_PsychicMessage".Translate(), 
 GrammarResolverSimpleStringExtensions.Formatted(Translator
-                    .Translate("ReceivedVisionBattle"), NamedArgumentUtility.Named(pawn, "PAWN"))
+                    .Translate("RD_ReceivedVisionBattle"), NamedArgumentUtility.Named(pawn, "PAWN"))
                     .AdjustedFor(pawn, "PAWN", true)
  //has received visions accompanying the drone, showing a battle and crying out for help. Others must have noticed, so the site will probably be dangerous.
 , LetterDefOf.PositiveEvent, null);

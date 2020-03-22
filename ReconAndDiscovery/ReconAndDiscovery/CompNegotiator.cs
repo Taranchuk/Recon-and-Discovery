@@ -14,7 +14,7 @@ namespace ReconAndDiscovery
         public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
         {
             List<FloatMenuOption> list = base.CompFloatMenuOptions(selPawn).ToList<FloatMenuOption>();
-            FloatMenuOption item = new FloatMenuOption("Negotiate".Translate(), delegate ()
+            FloatMenuOption item = new FloatMenuOption("RD_Negotiate".Translate(), delegate ()
             {
                 Job job = new Job(JobDefOfReconAndDiscovery.RD_Negotiate);
                 job.targetA = this.parent;

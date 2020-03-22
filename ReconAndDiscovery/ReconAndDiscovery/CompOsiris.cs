@@ -176,7 +176,7 @@ namespace ReconAndDiscovery
 		public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
 		{
 			List<FloatMenuOption> list = new List<FloatMenuOption>();
-            FloatMenuOption floatMenuOption = new FloatMenuOption("ResurrectContained".Translate(), delegate ()
+            FloatMenuOption floatMenuOption = new FloatMenuOption("RD_ResurrectContained".Translate(), delegate ()
             {
                 Job job = new Job(JobDefOfReconAndDiscovery.RD_ActivateOsirisCasket, this.parent);
                 job.playerForced = true;
