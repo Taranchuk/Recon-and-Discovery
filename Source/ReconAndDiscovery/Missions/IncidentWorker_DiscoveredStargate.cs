@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Reflection;
 using RimWorld;
 using RimWorld.Planet;
+using UnityEngine;
 using Verse;
 
 namespace ReconAndDiscovery.Missions
@@ -35,6 +37,9 @@ namespace ReconAndDiscovery.Missions
                 Site site = (Site)WorldObjectMaker.MakeWorldObject(SiteDefOfReconAndDiscovery.RD_Adventure);
                 site.Tile = tile;
                 site.SetFaction(faction);
+                SitePart starGate = new SitePart(site, SiteDefOfReconAndDiscovery.RD_Stargate, SiteDefOfReconAndDiscovery.RD_Stargate.Worker.GenerateDefaultParams
+(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                site.AddPart(starGate);
                 float value = Rand.Value;
                 if ((double)value < 0.2) 
                 {
@@ -74,10 +79,6 @@ SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
                     turrets.hidden = true;
                     site.parts.Add(turrets);
                 }
-                SitePart starGate = new SitePart(site, SiteDefOfReconAndDiscovery.RD_Stargate, SiteDefOfReconAndDiscovery.RD_Stargate.Worker.GenerateDefaultParams
-(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
-                starGate.hidden = true;
-                site.parts.Add(starGate);
                 if (Rand.Value < 0.2f)
                 {
                     SitePart scatteredManhunters = new SitePart(site, SiteDefOfReconAndDiscovery.RD_ScatteredManhunters, SiteDefOfReconAndDiscovery.RD_ScatteredManhunters.Worker.GenerateDefaultParams
@@ -112,6 +113,8 @@ SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
 		}
 	}
 }
+
+
 
 
 

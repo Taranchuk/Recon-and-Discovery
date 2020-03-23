@@ -52,7 +52,7 @@
     <description>Thehis site contains a stargate.</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_Stargate</workerClass>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <expandingIconTexture>World/WorldObjects/Stargate</expandingIconTexture>
     <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
     <showFactionInInspectString>false</showFactionInInspectString>
     <badEvenIfNoMap>true</badEvenIfNoMap>

@@ -6,9 +6,9 @@
     <defName>RD_MuffaloMigration</defName>
     <label>muffalo migration</label>
 		<description>A large herd of muffalo are migrating through this region.</description>
-		<workerClass>ReconAndDiscovery.Missions.SiteCoreWorker_MuffaloHerd</workerClass>
-    <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
-    <expandingIconTexture>World/WorldObjects/AdventureSymbol</expandingIconTexture>
+		<workerClass>ReconAndDiscovery.Missions.SitePartWorker_MuffaloHerd</workerClass>
+    <siteTexture>World/WorldObjects/MuffaloMigrate</siteTexture>
+    <expandingIconTexture>World/WorldObjects/MuffaloMigrate</expandingIconTexture>
     <forceExitAndRemoveMapCountdownDurationDays>2</forceExitAndRemoveMapCountdownDurationDays>
   </SitePartDef>
   

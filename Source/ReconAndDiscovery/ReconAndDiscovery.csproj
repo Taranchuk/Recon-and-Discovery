@@ -398,8 +398,8 @@
     <Compile Include="Missions\QuestComp_DestroyThing.cs" />
     <Compile Include="Missions\QuestComp_MedicalEmergency.cs" />
     <Compile Include="Missions\QuestComp_PeaceTalks.cs" />
-    <Compile Include="Missions\SiteCoreWorker_Festival.cs" />
-    <Compile Include="Missions\SiteCoreWorker_MuffaloHerd.cs" />
+    <Compile Include="Missions\SitePartWorker_Festival.cs" />
+    <Compile Include="Missions\SitePartWorker_MuffaloHerd.cs" />
     <Compile Include="Missions\WorldObjectCompProperties_CountThings.cs" />
     <Compile Include="Missions\WorldObjectCompProperties_DestroyThing.cs" />
     <Compile Include="Missions\WorldObjectCompProperties_MedicalEmergency.cs" />

@@ -7,9 +7,9 @@ using Verse;
 
 namespace ReconAndDiscovery.Missions
 {
-	public class SiteCoreWorker_MuffaloHerd : Site
+	public class SitePartWorker_MuffaloHerd : SitePartWorker
 	{
-		public void QueueFactionArrival(Faction faction, Map map)
+		public void QueueFactionArrival(Faction faction, Map map) 
 		{
             //TODO: check if it works
 			IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.FactionArrival, map);
@@ -63,15 +63,15 @@ namespace ReconAndDiscovery.Missions
 			}
 		}
 
-		public override void PostMapGenerate()
+		public override void PostMapGenerate(Map map)
 		{
-			base.PostMapGenerate();
+			base.PostMapGenerate(map);
             
-			this.MakeMuffalo(this.Map);
-			this.QueueArrivals(this.Map);
+			this.MakeMuffalo(map);
+			this.QueueArrivals(map);
 			if (Rand.Chance(0.05f))
 			{
-				IEnumerable<Pawn> source = from p in this.Map.mapPawns.FreeColonistsSpawned
+				IEnumerable<Pawn> source = from p in map.mapPawns.FreeColonistsSpawned
 				where p.story.traits.HasTrait(TraitDef.Named("PsychicSensitivity"))
 				select p;
 				if (source.Count<Pawn>() > 0)
@@ -81,7 +81,7 @@ namespace ReconAndDiscovery.Missions
 , LetterDefOf.ThreatSmall, null);
 				}
                 //TODO: check if it works 
-                IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.FactionArrival, this.Map);
+                IncidentParms incidentParms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.FactionArrival, map);
 				incidentParms.forced = true;
 				incidentParms.points = 100f;
 				QueuedIncident qi = new QueuedIncident(new FiringIncident(IncidentDef.Named("RD_MuffaloMassInsanity"), null, incidentParms), Find.TickManager.TicksGame + Rand.RangeInclusive(10000, 45000));
@@ -90,6 +90,8 @@ namespace ReconAndDiscovery.Missions
 		}
 	}
 }
+
+
 
 
 

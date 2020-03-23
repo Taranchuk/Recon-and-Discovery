@@ -9,7 +9,7 @@ using Verse.AI.Group;
 
 namespace ReconAndDiscovery.Missions
 {
-	public class SiteCoreWorker_Festival : Site
+	public class SitePartWorker_Festival : SitePartWorker
 	{
 		public List<Faction> Factions
 		{
@@ -23,7 +23,7 @@ namespace ReconAndDiscovery.Missions
 						this.factions.Remove(this.hostFaction);
 					}
 					this.factions = (from f in this.factions
-					where f != Faction.OfPlayer && f.GoodwillWith(this.hostFaction) > 10f
+					where f != Faction.OfPlayer && f.GoodwillWith(this.hostFaction) >= 0f
 					select f).ToList<Faction>();
 				}
 				return this.factions;
@@ -34,13 +34,13 @@ namespace ReconAndDiscovery.Missions
 		{
 			foreach (Faction faction in this.Factions)
 			{
-				if (faction.PlayerGoodwill > 0f)
+				if (faction.PlayerGoodwill >= 0f)
 				{
                     faction.TryAffectGoodwillWith(Faction.OfPlayer, 5);
 				}
 			}
 		}
-
+         
 		private List<Pawn> SpawnPawns(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
@@ -112,20 +112,22 @@ namespace ReconAndDiscovery.Missions
 			}
 		}
 
-		public override void PostMapGenerate()
+		public override void PostMapGenerate(Map map)
 		{
-			base.PostMapGenerate();
-            this.hostFaction = Find.WorldObjects.MapParentAt(this.Map.Tile).Faction;
-			this.MakeTradeCaravans(this.Map);
-			this.MakePartyGroups(this.Map);
+			base.PostMapGenerate(map);
+            this.hostFaction = Find.WorldObjects.MapParentAt(map.Tile).Faction;
+			this.MakeTradeCaravans(map);
+			this.MakePartyGroups(map);
 			this.IncrementAllGoodwills();
 		}
 
-		public Faction hostFaction;
+		public Faction hostFaction; 
 
 		private List<Faction> factions;
 	}
 }
+
+
 
 
 
