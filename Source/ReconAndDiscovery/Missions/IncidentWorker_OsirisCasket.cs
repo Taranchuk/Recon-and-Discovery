@@ -139,16 +139,3 @@ GrammarResolverSimpleStringExtensions.Formatted(Translator
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

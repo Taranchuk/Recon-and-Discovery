@@ -13,16 +13,3 @@ namespace ReconAndDiscovery.Missions
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

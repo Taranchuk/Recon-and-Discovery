@@ -315,7 +315,6 @@ namespace ReconAndDiscovery.Missions
 			this.rewards.ClearAndDestroyContents(DestroyMode.Vanish);
 		}
 
-
 		private static List<Thing> tmpRewards = new List<Thing>();
 
 		private static Faction fac = Find.FactionManager.RandomNonHostileFaction(false, false, true, TechLevel.Spacer);
@@ -333,17 +332,4 @@ namespace ReconAndDiscovery.Missions
 		public Faction requestingFaction;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

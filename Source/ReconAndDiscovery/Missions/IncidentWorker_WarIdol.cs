@@ -72,7 +72,6 @@ namespace ReconAndDiscovery.Missions
 			return result;
 		}
 
-
 		protected override bool TryExecuteWorker(IncidentParms parms)
 		{
 			Map map = parms.target as Map;
@@ -158,17 +157,4 @@ SiteDefOfReconAndDiscovery.RD_PsiMachine.Worker.GenerateDefaultParams(Storytelle
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -44,16 +44,3 @@ namespace ReconAndDiscovery.Maps
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

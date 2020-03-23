@@ -28,16 +28,3 @@ namespace ReconAndDiscovery.Maps
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -141,16 +141,3 @@ namespace ReconAndDiscovery.Maps
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

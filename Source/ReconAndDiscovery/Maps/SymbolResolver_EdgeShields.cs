@@ -37,16 +37,3 @@ namespace ReconAndDiscovery.Maps
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

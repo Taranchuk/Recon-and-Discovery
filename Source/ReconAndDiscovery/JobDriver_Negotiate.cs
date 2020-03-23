@@ -41,16 +41,3 @@ namespace ReconAndDiscovery
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

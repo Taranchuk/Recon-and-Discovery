@@ -35,16 +35,3 @@ namespace ReconAndDiscovery.Triggers
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -12,16 +12,3 @@ namespace ReconAndDiscovery
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -64,16 +64,3 @@ namespace ReconAndDiscovery.Triggers
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

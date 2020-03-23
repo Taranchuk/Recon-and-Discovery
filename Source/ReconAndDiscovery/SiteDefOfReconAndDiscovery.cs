@@ -38,7 +38,6 @@ namespace ReconAndDiscovery
 
         public static SitePartDef RD_SitePart_RadioactiveDust;
 
-
 		public static WorldObjectDef RD_Adventure;
 
         public static WorldObjectDef RD_AdventureMedical;
@@ -72,17 +71,4 @@ namespace ReconAndDiscovery
         public static SitePartDef RD_MuffaloMigration;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -47,16 +47,3 @@ namespace ReconAndDiscovery.Things
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

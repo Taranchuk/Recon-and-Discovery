@@ -26,7 +26,6 @@ namespace ReconAndDiscovery
             return this.pawn.Reserve(this.job.targetA, this.job, 1, -1, null, errorOnFailed);
         }
 
-
         protected override IEnumerable<Toil> MakeNewToils()
 		{
 			yield return Toils_Reserve.Reserve(TargetIndex.A, 1, -1, null);
@@ -71,17 +70,4 @@ namespace ReconAndDiscovery
 		private const TargetIndex CasketIndex = TargetIndex.A;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

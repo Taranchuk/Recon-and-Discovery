@@ -154,16 +154,3 @@ namespace ReconAndDiscovery.Missions
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

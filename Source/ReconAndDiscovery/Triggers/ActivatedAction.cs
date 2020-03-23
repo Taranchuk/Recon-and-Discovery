@@ -82,16 +82,3 @@ namespace ReconAndDiscovery.Triggers
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-

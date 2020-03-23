@@ -114,16 +114,3 @@ SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
