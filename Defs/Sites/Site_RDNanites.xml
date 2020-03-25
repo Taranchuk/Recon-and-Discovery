@@ -6,7 +6,7 @@
     <label>Abandoned lab</label>
 		<description>The source of the mystery nanites.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Sites/GenericSite</expandingIconTexture>
+    <expandingIconTexture>World/WorldObjects/Sites/AbandonedLab</expandingIconTexture>
   </SitePartDef>
   
   <GenStepDef>

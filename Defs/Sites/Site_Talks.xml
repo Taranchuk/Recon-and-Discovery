@@ -25,7 +25,7 @@
     <defName>RD_PeaceTalks</defName>
     <label>peace talks</label>
 		<description>A venue for talks with another faction.</description>
-    <siteTexture>World/WorldObjects/Diplomacy</siteTexture>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
     <expandingIconTexture>World/WorldObjects/Expanding/PeaceTalks</expandingIconTexture>
   </SitePartDef>
   

@@ -27,7 +27,7 @@
     <label>Source of radioactive dust</label>
 		<description>The source of the radioactive dust.</description>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Sites/GenericSite</expandingIconTexture>
+    <expandingIconTexture>World/WorldObjects/RadioactiveDust</expandingIconTexture>
     <forceExitAndRemoveMapCountdownDurationDays>15</forceExitAndRemoveMapCountdownDurationDays>
   </SitePartDef>
   
@@ -37,7 +37,7 @@
     <description>Radioactive dust!</description>
     <workerClass>ReconAndDiscovery.Maps.SitePartWorker_RadioactiveDust</workerClass>
     <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-    <expandingIconTexture>World/WorldObjects/Expanding/Sites/Manhunters</expandingIconTexture>
+    <expandingIconTexture>World/WorldObjects/RadioactiveDust</expandingIconTexture>
     <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
     <showFactionInInspectString>false</showFactionInInspectString>
     <badEvenIfNoMap>true</badEvenIfNoMap>

@@ -7,7 +7,7 @@
     <label>muffalo migration</label>
 		<description>A large herd of muffalo are migrating through this region.</description>
 		<workerClass>ReconAndDiscovery.Missions.SitePartWorker_MuffaloHerd</workerClass>
-    <siteTexture>World/WorldObjects/MuffaloMigrate</siteTexture>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
     <expandingIconTexture>World/WorldObjects/MuffaloMigrate</expandingIconTexture>
     <forceExitAndRemoveMapCountdownDurationDays>2</forceExitAndRemoveMapCountdownDurationDays>
   </SitePartDef>

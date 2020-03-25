@@ -5,8 +5,8 @@
     <defName>RD_PsiMachine</defName>
     <label>Abandoned military facility</label>
 		<description>The rumoured location of the psychic warriors' base.</description>
-    <siteTexture>World/WorldObjects/AdventureSymbol</siteTexture>
-    <expandingIconTexture>World/WorldObjects/AdventureSymbol</expandingIconTexture>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+    <expandingIconTexture>World/WorldObjects/MilitaryFacility</expandingIconTexture>
   </SitePartDef>
   
   <GenStepDef>

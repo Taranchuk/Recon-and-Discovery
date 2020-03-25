@@ -41,34 +41,38 @@ namespace ReconAndDiscovery.Missions
 (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
                 site.AddPart(starGate);
                 float value = Rand.Value;
-                if ((double)value < 0.2) 
+                if ((double)value < 0.25) 
                 {
-                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.RD_AbandonedCastle,
+                    SitePart abandonedCastle = new SitePart(site, SiteDefOfReconAndDiscovery.RD_AbandonedCastle,
     SiteDefOfReconAndDiscovery.RD_AbandonedCastle.Worker.GenerateDefaultParams
-    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
+    (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    abandonedCastle.hidden = true;
+                    site.AddPart(abandonedCastle);
                 }
-                else if ((double)value < 0.4)
+                else if ((double)value < 0.50)
                 {
-                    site.AddPart(new SitePart(site, SiteDefOfReconAndDiscovery.RD_AbandonedColony,
+                    SitePart abandonedColony = new SitePart(site, SiteDefOfReconAndDiscovery.RD_AbandonedColony,
 SiteDefOfReconAndDiscovery.RD_AbandonedColony.Worker.GenerateDefaultParams
-(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
+(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    abandonedColony.hidden = true;
+                    site.AddPart(abandonedColony);
                 }
-                else if ((double)value < 0.6)
+                else if ((double)value < 0.75)
                 {
-                    site.AddPart(new SitePart(site, SitePartDefOf.PreciousLump,
+                    SitePart preciousLump = new SitePart(site, SitePartDefOf.PreciousLump,
 SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
-(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction)));
+(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    preciousLump.hidden = true;
+                    site.AddPart(preciousLump);
                 }
-                // TODO: figure out how to convert this to 1.1 code
-                //else if ((double)value < 0.8)
-                //{
-                //	site.def = WorldObjectDefOf.ItemStash;
-                //}
                 else
                 {
                     site = (Site)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Site);
                     site.Tile = tile;
                     site.SetFaction(faction);
+                    SitePart starGate2 = new SitePart(site, SiteDefOfReconAndDiscovery.RD_Stargate, SiteDefOfReconAndDiscovery.RD_Stargate.Worker.GenerateDefaultParams
+(StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
+                    site.AddPart(starGate2);
                     // TODO: check if this works correctly
                     SitePart outpost = new SitePart(site, SitePartDefOf.Outpost, SitePartDefOf.Outpost.Worker.GenerateDefaultParams
 (StorytellerUtility.DefaultSiteThreatPointsNow(), tile, faction));
@@ -88,7 +92,7 @@ SitePartDefOf.PreciousLump.Worker.GenerateDefaultParams
 
                     site.parts.Add(scatteredManhunters);
                 }
-                if (Rand.Value < 0.85f)
+                if (Rand.Value < 0.85f) 
                 {
                     SitePart scatteredTreasure = new SitePart(site, SiteDefOfReconAndDiscovery.RD_ScatteredTreasure,
                     SiteDefOfReconAndDiscovery.RD_ScatteredTreasure.Worker.GenerateDefaultParams

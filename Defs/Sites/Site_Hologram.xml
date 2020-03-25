@@ -6,7 +6,7 @@
     <defName>RD_AbandonedColony</defName>
     <label>abandoned colony</label>
 		<description>An abandoned colony.</description>
-    <siteTexture>World/WorldObjects/Expanding/DestroyedSettlement</siteTexture>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
     <expandingIconTexture>World/WorldObjects/Expanding/DestroyedSettlement</expandingIconTexture>
   </SitePartDef>
   

@@ -12,7 +12,7 @@ namespace ReconAndDiscovery
 		{
 			Map map = (Map)parms.target;
 			bool result;
-			if (map == null)
+			if (map == null) 
 			{
 				result = false;
 			}

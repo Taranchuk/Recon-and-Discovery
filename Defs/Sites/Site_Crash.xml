@@ -26,7 +26,7 @@
     <defName>RD_CrashedShip</defName>
     <label>crashed ship</label>
 		<description>The approximate place a ship came down.</description>
-    <siteTexture>World/WorldObjects/CrashedShip</siteTexture>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
     <expandingIconTexture>World/WorldObjects/CrashedShip</expandingIconTexture>
   </SitePartDef>
   

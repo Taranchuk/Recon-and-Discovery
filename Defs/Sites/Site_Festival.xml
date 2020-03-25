@@ -7,7 +7,7 @@
     <label>trade fair</label>
 		<description>The site of a trade fair.</description>
 		<workerClass>ReconAndDiscovery.Missions.SitePartWorker_Festival</workerClass>
-    <siteTexture>World/WorldObjects/Expanding/Sites/ItemStash</siteTexture>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
     <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
     <forceExitAndRemoveMapCountdownDurationDays>1</forceExitAndRemoveMapCountdownDurationDays>
   </SitePartDef>

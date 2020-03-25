@@ -6,7 +6,7 @@
     <defName>RD_AbandonedCastle</defName>
     <label>abandoned castle</label>
 		<description>A long-disused medieval castle.</description>
-    <siteTexture>World/WorldObjects/Expanding/DestroyedSettlement</siteTexture>
+    <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
     <expandingIconTexture>World/WorldObjects/Expanding/DestroyedSettlement</expandingIconTexture>
   </SitePartDef>
   
