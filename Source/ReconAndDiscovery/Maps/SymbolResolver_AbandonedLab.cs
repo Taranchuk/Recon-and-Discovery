@@ -33,6 +33,7 @@ namespace ReconAndDiscovery.Maps
 			list.Add(ThingDef.Named("SimpleResearchBench"));
 			list.Add(ThingDef.Named("SimpleResearchBench"));
 			list.Add(ThingDef.Named("SimpleResearchBench"));
+			list.Add(ThingDef.Named("HiTechResearchBench"));
 			resolveParams2.floorDef = TerrainDefOf.MetalTile;
 			resolveParams2.wallStuff = ThingDefOf.Plasteel;
 			resolveParams2.SetCustom<char[]>("hasDoor", new char[]
