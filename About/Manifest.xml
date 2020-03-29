@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest>
+  <identifier>ReconAndDiscovery</identifier>
+  <version>1.0.0.0</version>
+  <dependencies />
+  <incompatibleWith />
+  <loadBefore />
+  <loadAfter />
+  <manifestUri>https://raw.githubusercontent.com/Taranchuk/Recon-and-Discovery/master/About/Manifest.xml</manifestUri>
+  <downloadUri>https://github.com/Taranchuk/Recon-and-Discovery/releases</downloadUri>
+</Manifest>
+
+
