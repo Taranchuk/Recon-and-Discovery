@@ -2,7 +2,7 @@
 <ModSyncNinjaData>
   <ID>1ae3a0af-2209-45a4-9ec7-ba5434fc009c</ID>
   <ModName>Recon and Discovery</ModName>
-  <Version>1.0.0.0</Version>
+  <Version>1.0.0.1</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
     <Owner>Taranchuk</Owner>
