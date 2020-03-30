@@ -41,9 +41,6 @@ namespace ReconAndDiscovery
 
         public static void Ressurrect(Pawn pawn, Thing thing)
         {
-            List<Apparel> wornApparels = pawn.apparel.WornApparel.ListFullCopy();
-            pawn.apparel.WornApparel.Clear();
-
             if (thing is HoloEmitter)
             {
                 if (pawn.Corpse.holdingOwner != null)
@@ -62,10 +59,6 @@ namespace ReconAndDiscovery
                         pawn.Corpse.DeSpawn();
                     }
                     GenSpawn.Spawn(pawn, pawn.Corpse.Position, pawn.Corpse.Map);
-                    foreach (Apparel apparel in wornApparels)
-                    {
-                        pawn.apparel.Wear(apparel);
-                    }
                     GiveSideEffects(pawn);
                 }
                 if (pawn.Corpse != null)
@@ -84,14 +77,7 @@ namespace ReconAndDiscovery
                     pawn.Corpse.DeSpawn();
                 }
                 GenSpawn.Spawn(pawn, thing.Position, thing.Map);
-
-                foreach (Apparel apparel in wornApparels)
-                {
-                    pawn.apparel.Wear(apparel);
-                }
-
                 GiveSideEffects(pawn);
-
 
                 Building_Casket building_Casket = thing as Building_Casket;
                 if (building_Casket != null)

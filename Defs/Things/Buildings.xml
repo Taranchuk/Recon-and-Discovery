@@ -409,7 +409,7 @@
       <li Class="ReconAndDiscovery.CompProperties_Osiris"/>
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Refuelable">
-      	<fuelConsumptionRate>0.0</fuelConsumptionRate>
+	  	<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
       	<fuelCapacity>100.0</fuelCapacity>
       	<targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
         <initialConfigurableTargetFuelLevel>75</initialConfigurableTargetFuelLevel>
@@ -418,6 +418,7 @@
           		<li>Luciferium</li>
       		</thingDefs>
       	</fuelFilter>
+        <initialFuelPercent>0</initialFuelPercent>
       	</li>
       	<li Class="CompProperties_Glower">
         	<glowRadius>1</glowRadius>
